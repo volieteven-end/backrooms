@@ -167,18 +167,19 @@ void UBRGameplayAudioSubsystem::StartSmoke()
 }
 void UBRGameplayAudioSubsystem::SmokeNext()
 {
-    if (SmokeIndex < 12)
+    const int32 EventCount = static_cast<int32>(EBRGameplaySound::SkinStealerRoar) + 1;
+    if (SmokeIndex < EventCount)
     {
         FVector Location=GetElevatorLocation(true);
         if (auto* Pawn=UGameplayStatics::GetPlayerPawn(this,0)) Location=Pawn->GetActorLocation();
         PlayEvent(static_cast<EBRGameplaySound>(SmokeIndex),Location);
         ++SmokeIndex; return;
     }
-    if (SmokeIndex++ == 15)
+    if (SmokeIndex++ == EventCount + 3)
     {
         UAudioMixerBlueprintLibrary::StopRecordingOutput(this,EAudioRecordingExportType::WavFile,TEXT("GameplayAudio"),RecordingPath);
         GetWorld()->GetTimerManager().ClearTimer(SmokeTimer);
-        UE_LOG(LogTemp,Display,TEXT("BR_AUDIO_SMOKE result=FINISHED requested_events=12 recording=%s"),*RecordingPath);
+        UE_LOG(LogTemp,Display,TEXT("BR_AUDIO_SMOKE result=FINISHED requested_events=%d recording=%s"),EventCount,*RecordingPath);
         GetWorld()->GetTimerManager().SetTimer(SmokeQuitTimer,FTimerDelegate::CreateWeakLambda(this,[]()
         {FPlatformMisc::RequestExit(false);}),4.0f,false);
     }

@@ -16,6 +16,8 @@ public:
 	ABREntityCharacter();
     virtual void Tick(float DeltaSeconds) override;
     void PlayReplicatedAttack();
+    /** Number of live roar cues received by this instance (also available on the server). */
+    int32 GetRoarCueCount() const { return RoarCueCount; }
 
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|AI")
 	void SetEntityState(EBREntityState NewState, AActor* NewTarget = nullptr);
@@ -30,6 +32,13 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+    UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") float MeshYawOffset = -90.0f;
+    void ApplyFacingConfiguration();
+    void UpdateRoar();
+    UFUNCTION(NetMulticast, Unreliable) void MulticastPlayRoar();
+    UPROPERTY(Transient) TObjectPtr<UAudioComponent> RoarAudio;
+    int32 RoarCueCount = 0;
+    double NextRoarTime = 0;
 
 	UPROPERTY(ReplicatedUsing = OnRep_EntityState, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|AI")
 	EBREntityState EntityState = EBREntityState::Idle;
@@ -48,6 +57,7 @@ protected:
     FVector LastAudioLocation=FVector::ZeroVector;
     float AudioStepDistance=0;
     bool bAlternateStep=false;
+    bool bAudioWasChasing=false;
     void UpdateGameplayAudio();
 
 	UFUNCTION()

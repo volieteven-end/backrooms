@@ -10,8 +10,11 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FBRGameplayAudioAssets,"Backrooms.Audio.AssetBi
 bool FBRGameplayAudioAssets::RunTest(const FString&)
 {
     const auto* Settings=GetDefault<UBRGameplayAudioSettings>();
-    TestEqual(TEXT("Twelve parking audio bindings"),Settings->Sounds.Num(),12);
-    for (int32 I=0;I<12;++I)
+    const int32 EventCount = static_cast<int32>(EBRGameplaySound::SkinStealerRoar) + 1;
+    TestEqual(TEXT("All parking audio bindings"),Settings->Sounds.Num(),EventCount);
+    TestFalse(TEXT("Discovery roar is a one-shot, not an overlapping loop"),UBRGameplayAudioSettings::IsLoop(EBRGameplaySound::SkinStealerRoar));
+    TestTrue(TEXT("Roar interval avoids per-frame spam"),Settings->RoarInterval>=2.f);
+    for (int32 I=0;I<EventCount;++I)
     {
         const auto* Entry=Settings->Sounds.Find(static_cast<EBRGameplaySound>(I));
         if (!TestNotNull(TEXT("Entry exists"),Entry)) continue;

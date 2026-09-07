@@ -19,6 +19,7 @@
 - `Falloff Distance`：从内半径向外衰减的距离，单位 cm。
 - `Occlusion`：使用真实几何表面的遮挡检测；隔墙后降低音量和高频。
 - `Walk Step Distance / Run Step Distance`：窃皮者每次脚步的移动距离。
+- `Roar Interval`：持续追逐时重复嘶吼的间隔，默认 4 秒，最小 2 秒。首次发现目标立即触发；反复感知通知受同一冷却约束。
 
 这些设置保存到项目 Game 配置；修改后重新开始运行。声音可以留空以禁用该事件。正在播放的循环不热替换，重开当前游戏运行即可应用新资源。
 
@@ -34,6 +35,7 @@
 | KeyInsert / ElevatorDoorClose / ElevatorMotor | 全队撤离成功；插钥匙 → 1 秒后关门声 → 3 秒后运行循环 | 撤离区域位置 |
 | SkinStealerChase | 复制状态进入 Chasing；离开追逐或结算时停止 | 跟随窃皮者，3D 循环 |
 | SkinStealerAttack | 已有攻击事件复制到客户端 | 窃皮者的位置，3D |
+| SkinStealerRoar | 发现站立玩家、进入追逐时一次；持续追逐每 4 秒一次；离开追逐、目标倒地/隐藏或结算后停止继续触发 | 服务器发出实时 multicast；客户端在窃皮者位置播放，3D，跟随移动 |
 | SkinStealerStep1 / Step2 | 根据实际移动距离交替；停止、离地、攻击和传送时不触发步行声 | 窃皮者的位置，3D |
 
 音效不会改变现有关卡几何、灯光、门的位置、任务或 AI 决策。电梯声音使用现有入场和结算阶段，不新增电梯门动画、移动轿厢或插钥匙按钮。
@@ -51,19 +53,27 @@
 
 普通启动不需要任何音频参数。可添加 `-BRAudioLog` 记录声音触发。
 
-开发测试使用显式 `-BRAudioSmoke`，会在独立测试进程中播放 12 类声音、记录主混音并自动退出；该功能不进入 Shipping。
+开发测试使用显式 `-BRAudioSmoke`，会在独立测试进程中播放 13 类声音事件、记录主混音并自动退出；该功能不进入 Shipping。新增嘶吼事件复用现有 `skinstealer_gotcha1__1_`，游戏 SoundWave 文件仍为 12 个。
 
 ```powershell
 python -X utf8 'E:\UNREAL\ue projects\backrooms\work\audio_restore_20260906\run_tests.py' framework --project 'E:\UNREAL\ue projects\backrooms\backrooms.uproject' --name LIVE
 ```
 
-修改前、修改后、多人测试和回滚证据见：
+音效基础接入的历史记录见：
 `E:\UNREAL\ue projects\backrooms\work\audio_restore_20260906\VERIFICATION.txt`。
+
+2026-09-07 的窃皮者朝向与嘶吼回归（13 类声音事件、四方向移动及双客户端同步）使用：
+
+```powershell
+& 'C:\Python314\python.exe' -X utf8 'E:\UNREAL\ue projects\backrooms\work\skinstealer_facing_roar_20260907\verify.py' MODIFIED
+```
+
+当前行为与调参见 [窃皮者行为说明](E:/UNREAL/ue%20projects/backrooms/Docs/SkinStealerBehavior.md)，本次命令和结果见 [VERIFICATION.txt](E:/UNREAL/ue%20projects/backrooms/work/skinstealer_facing_roar_20260907/VERIFICATION.txt)。
 
 编译过的开发工程与现有打包文件夹是两份产品。旧 `Builds\Multiplayer\Client\Windows` 不会自动包含新音效逻辑；重新打包后再分发。
 
 ## 回滚
 
-关闭本项目编辑器与服务器后，运行工作目录中的 `ROLLBACK.sh` 或 `ROLLBACK.ps1 -TargetRoot 'E:\UNREAL\ue projects\backrooms'`，然后重新编译 Editor 模块。脚本只恢复本轮变更文件，逐项核对哈希，保留地图、声音资产及其他代码。
+本次嘶吼与朝向修正的源文件恢复脚本为 `E:\UNREAL\ue projects\backrooms\work\skinstealer_facing_roar_20260907\ROLLBACK.sh`，通过 Git Bash 执行并传入目标目录。它逐项核对修改后内容，再恢复本次修改前的源码/配置并移除本次新增文件；测试已在独立临时数据目录完成，主工程保留修正。恢复实际工程前关闭本项目编辑器与服务器，恢复后重新编译对应目标再启动。此脚本不恢复已编译的二进制。
 
 参考：[Epic 音量衰减与遮挡](https://dev.epicgames.com/documentation/en-us/unreal-engine/sound-attenuation-in-unreal-engine)、[Sound Cue](https://dev.epicgames.com/documentation/en-us/unreal-engine/sound-cue-reference-for-unreal-engine)。

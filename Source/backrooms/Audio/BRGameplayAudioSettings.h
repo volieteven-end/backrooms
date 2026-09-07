@@ -11,7 +11,8 @@ enum class EBRGameplaySound : uint8
 {
     Ambience, DoorOpen, KeyPickup, KeyInsert,
     ElevatorDoorOpen, ElevatorDoorClose, ElevatorBell, ElevatorMotor,
-    SkinStealerChase, SkinStealerAttack, SkinStealerStep1, SkinStealerStep2
+    SkinStealerChase, SkinStealerAttack, SkinStealerStep1, SkinStealerStep2,
+    SkinStealerRoar
 };
 
 USTRUCT(BlueprintType)
@@ -41,6 +42,7 @@ public:
     UPROPERTY(EditAnywhere, Config, Category="Sounds") TMap<EBRGameplaySound, FBRGameplaySoundEntry> Sounds;
     UPROPERTY(EditAnywhere, Config, Category="SkinStealer", meta=(ClampMin="50", Units="cm")) float WalkStepDistance = 115.0f;
     UPROPERTY(EditAnywhere, Config, Category="SkinStealer", meta=(ClampMin="50", Units="cm")) float RunStepDistance = 160.0f;
+    UPROPERTY(EditAnywhere, Config, Category="SkinStealer", meta=(ClampMin="2", Units="s")) float RoarInterval = 4.0f;
     UPROPERTY(EditAnywhere, Config, Category="Debug") bool bLogPlayback = false;
     static bool IsLoop(EBRGameplaySound Event);
 };

@@ -75,7 +75,7 @@ void ABREntityAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus
 		Entity->SetEntityState(bWasSeen ? EBREntityState::Chasing : EBREntityState::Investigating, Actor);
 		if (bWasSeen)
 		{
-			MoveToActor(Actor, 90.0f, true, true, true, nullptr, true);
+			MoveToActor(Actor, 90.0f, true, true, false, nullptr, true);
 		}
 		else
 		{
@@ -105,7 +105,7 @@ void ABREntityAIController::UpdateBehavior()
         Entity->GetCharacterMovement()->MaxWalkSpeed = 520.0f;
         if (Entity->GetDistanceTo(Target) < 130.0f && LineOfSightTo(Target) && GetWorld()->GetTimeSeconds() >= AttackCooldown)
         { AttackCooldown = GetWorld()->GetTimeSeconds() + 1.5f; Entity->PlayReplicatedAttack(); Target->GetDownedComponent()->Down(); StopMovement(); Entity->SetEntityState(EBREntityState::Returning); }
-        else if (GetMoveStatus() == EPathFollowingStatus::Idle) MoveToActor(Target,90.0f);
+        else if (GetMoveStatus() == EPathFollowingStatus::Idle) MoveToActor(Target,90.0f,true,true,false);
         return;
     }
     if (GetMoveStatus() == EPathFollowingStatus::Idle)
@@ -115,7 +115,7 @@ void ABREntityAIController::UpdateBehavior()
         {
             FNavLocation Point;
             if (Nav->GetRandomReachablePointInRadius(Entity->GetActorLocation(),900.0f,Point))
-            { Entity->SetEntityState(EBREntityState::Patrolling); MoveToLocation(Point.Location,60.0f); }
+            { Entity->SetEntityState(EBREntityState::Patrolling); MoveToLocation(Point.Location,60.0f,true,true,false,false); }
         }
     }
 }

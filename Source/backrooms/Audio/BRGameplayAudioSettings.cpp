@@ -24,6 +24,7 @@ UBRGameplayAudioSettings::UBRGameplayAudioSettings()
     Add(EBRGameplaySound::SkinStealerAttack,TEXT("SkinStealer/skinstealer_gotcha1__1_"),0.65f,true,1100);
     Add(EBRGameplaySound::SkinStealerStep1,TEXT("SkinStealer/skinstealer_schlep1"),0.45f,true,1200);
     Add(EBRGameplaySound::SkinStealerStep2,TEXT("SkinStealer/skinstealer_schlep2"),0.45f,true,1200);
+    Add(EBRGameplaySound::SkinStealerRoar,TEXT("SkinStealer/skinstealer_gotcha1__1_"),0.85f,true,2200);
 }
 
 bool UBRGameplayAudioSettings::IsLoop(EBRGameplaySound Event)
