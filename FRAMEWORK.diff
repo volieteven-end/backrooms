@@ -1,0 +1,1991 @@
+changed branch/field: PROJECT / multiplayer_framework
+
+warning: in the working copy of 'backrooms.uproject', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/Saved\\CodexFrameworkBaseline\\backrooms.uproject" b/backrooms.uproject
+index 133c59f..31f7f2b 100644
+--- "a/Saved\\CodexFrameworkBaseline\\backrooms.uproject"
++++ b/backrooms.uproject
+@@ -2,7 +2,7 @@
+ 	"FileVersion": 3,
+ 	"EngineAssociation": "5.8",
+ 	"Category": "",
+-	"Description": "",
++	"Description": "A 1-4 player cooperative liminal-horror escape vertical slice.",
+ 	"Modules": [
+ 		{
+ 			"Name": "backrooms",
+@@ -21,6 +21,22 @@
+ 		{
+ 			"Name": "GameplayStateTree",
+ 			"Enabled": true
++		},
++		{
++			"Name": "EnhancedInput",
++			"Enabled": true
++		},
++		{
++			"Name": "OnlineSubsystem",
++			"Enabled": true
++		},
++		{
++			"Name": "OnlineSubsystemUtils",
++			"Enabled": true
++		},
++		{
++			"Name": "OnlineSubsystemNull",
++			"Enabled": true
+ 		}
+ 	]
+-}
+\ No newline at end of file
++}
+warning: in the working copy of 'Source/backrooms/backrooms.Build.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms.Target.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backroomsEditor.Target.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/AI/BREntityAIController.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/AI/BREntityAIController.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/AI/BREntityCharacter.cpp', LF will be replaced by CRLF the next time Git touches it
+diff --git a/Source/backrooms/AI/BREntityAIController.cpp b/Source/backrooms/AI/BREntityAIController.cpp
+new file mode 100644
+index 0000000..ab5cda0
+--- /dev/null
++++ b/Source/backrooms/AI/BREntityAIController.cpp
+@@ -0,0 +1,63 @@
++#include "AI/BREntityAIController.h"
++
++#include "AI/BREntityCharacter.h"
++#include "Perception/AIPerceptionComponent.h"
++#include "Perception/AISenseConfig_Hearing.h"
++#include "Perception/AISenseConfig_Sight.h"
++#include "Perception/AISense_Hearing.h"
++#include "Perception/AISense_Sight.h"
++
++ABREntityAIController::ABREntityAIController()
++{
++	EntityPerception = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("EntityPerception"));
++	SetPerceptionComponent(*EntityPerception);
++
++	SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("SightConfig"));
++	SightConfig->SightRadius = 1600.0f;
++	SightConfig->LoseSightRadius = 2000.0f;
++	SightConfig->PeripheralVisionAngleDegrees = 70.0f;
++	SightConfig->SetMaxAge(4.0f);
++	SightConfig->DetectionByAffiliation.bDetectEnemies = true;
++	SightConfig->DetectionByAffiliation.bDetectFriendlies = true;
++	SightConfig->DetectionByAffiliation.bDetectNeutrals = true;
++
++	HearingConfig = CreateDefaultSubobject<UAISenseConfig_Hearing>(TEXT("HearingConfig"));
++	HearingConfig->HearingRange = 2200.0f;
++	HearingConfig->SetMaxAge(6.0f);
++	HearingConfig->DetectionByAffiliation.bDetectEnemies = true;
++	HearingConfig->DetectionByAffiliation.bDetectFriendlies = true;
++	HearingConfig->DetectionByAffiliation.bDetectNeutrals = true;
++
++	EntityPerception->ConfigureSense(*SightConfig);
++	EntityPerception->ConfigureSense(*HearingConfig);
++	EntityPerception->SetDominantSense(UAISense_Sight::StaticClass());
++	EntityPerception->OnTargetPerceptionUpdated.AddDynamic(this, &ABREntityAIController::OnTargetPerceptionUpdated);
++}
++
++void ABREntityAIController::OnPossess(APawn* InPawn)
++{
++	Super::OnPossess(InPawn);
++	if (ABREntityCharacter* Entity = Cast<ABREntityCharacter>(InPawn))
++	{
++		Entity->SetEntityState(EBREntityState::Patrolling);
++	}
++}
++
++void ABREntityAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
++{
++	ABREntityCharacter* Entity = Cast<ABREntityCharacter>(GetPawn());
++	if (!Entity || !IsValid(Actor))
++	{
++		return;
++	}
++
++	if (Stimulus.WasSuccessfullySensed())
++	{
++		const bool bWasSeen = Stimulus.Type == UAISense::GetSenseID<UAISense_Sight>();
++		Entity->SetEntityState(bWasSeen ? EBREntityState::Chasing : EBREntityState::Investigating, Actor);
++	}
++	else if (Entity->GetTargetActor() == Actor)
++	{
++		Entity->SetEntityState(EBREntityState::Returning);
++	}
++}
+diff --git a/Source/backrooms/AI/BREntityAIController.h b/Source/backrooms/AI/BREntityAIController.h
+new file mode 100644
+index 0000000..601b7f6
+--- /dev/null
++++ b/Source/backrooms/AI/BREntityAIController.h
+@@ -0,0 +1,34 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "AIController.h"
++#include "Perception/AIPerceptionTypes.h"
++#include "BREntityAIController.generated.h"
++
++class UAIPerceptionComponent;
++class UAISenseConfig_Hearing;
++class UAISenseConfig_Sight;
++
++UCLASS()
++class BACKROOMS_API ABREntityAIController : public AAIController
++{
++	GENERATED_BODY()
++
++public:
++	ABREntityAIController();
++
++protected:
++	virtual void OnPossess(APawn* InPawn) override;
++
++	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|AI")
++	TObjectPtr<UAIPerceptionComponent> EntityPerception;
++
++	UPROPERTY()
++	TObjectPtr<UAISenseConfig_Sight> SightConfig;
++
++	UPROPERTY()
++	TObjectPtr<UAISenseConfig_Hearing> HearingConfig;
++
++	UFUNCTION()
++	void OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus);
++};
+diff --git a/Source/backrooms/AI/BREntityCharacter.cpp b/Source/backrooms/AI/BREntityCharacter.cpp
+new file mode 100644
+index 0000000..e7df122
+--- /dev/null
++++ b/Source/backrooms/AI/BREntityCharacter.cpp
+@@ -0,0 +1,33 @@
++#include "AI/BREntityCharacter.h"
++
++#include "Net/UnrealNetwork.h"
++
++ABREntityCharacter::ABREntityCharacter()
++{
++	PrimaryActorTick.bCanEverTick = false;
++	bReplicates = true;
++	SetReplicateMovement(true);
++}
++
+warning: in the working copy of 'Source/backrooms/AI/BREntityCharacter.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Core/BRFrameworkTypes.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Core/BRGameMode.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Core/BRGameMode.h', LF will be replaced by CRLF the next time Git touches it
++void ABREntityCharacter::SetEntityState(const EBREntityState NewState, AActor* NewTarget)
++{
++	if (HasAuthority())
++	{
++		EntityState = NewState;
++		TargetActor = NewTarget;
++		OnRep_EntityState();
++		ForceNetUpdate();
++	}
++}
++
++void ABREntityCharacter::OnRep_EntityState()
++{
++	OnEntityStateChanged(EntityState);
++}
++
++void ABREntityCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
++{
++	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
++	DOREPLIFETIME(ABREntityCharacter, EntityState);
++	DOREPLIFETIME(ABREntityCharacter, TargetActor);
++}
+diff --git a/Source/backrooms/AI/BREntityCharacter.h b/Source/backrooms/AI/BREntityCharacter.h
+new file mode 100644
+index 0000000..fcaac40
+--- /dev/null
++++ b/Source/backrooms/AI/BREntityCharacter.h
+@@ -0,0 +1,39 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "GameFramework/Character.h"
++#include "Core/BRFrameworkTypes.h"
++#include "BREntityCharacter.generated.h"
++
++UCLASS()
++class BACKROOMS_API ABREntityCharacter : public ACharacter
++{
++	GENERATED_BODY()
++
++public:
++	ABREntityCharacter();
++
++	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|AI")
++	void SetEntityState(EBREntityState NewState, AActor* NewTarget = nullptr);
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|AI")
++	EBREntityState GetEntityState() const { return EntityState; }
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|AI")
++	AActor* GetTargetActor() const { return TargetActor; }
++
++	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
++
++protected:
++	UPROPERTY(ReplicatedUsing = OnRep_EntityState, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|AI")
++	EBREntityState EntityState = EBREntityState::Idle;
++
++	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|AI")
++	TObjectPtr<AActor> TargetActor;
++
++	UFUNCTION()
++	void OnRep_EntityState();
++
++	UFUNCTION(BlueprintImplementableEvent, Category = "Backrooms|AI")
++	void OnEntityStateChanged(EBREntityState NewState);
++};
+diff --git a/Source/backrooms/Core/BRFrameworkTypes.h b/Source/backrooms/Core/BRFrameworkTypes.h
+new file mode 100644
+index 0000000..76310f7
+--- /dev/null
++++ b/Source/backrooms/Core/BRFrameworkTypes.h
+@@ -0,0 +1,25 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "BRFrameworkTypes.generated.h"
++
++UENUM(BlueprintType)
++enum class EBRLevelPhase : uint8
++{
++	Lobby,
++	Exploring,
++	ExtractionReady,
++	Escaping,
++	Completed,
++	Failed
++};
++
++UENUM(BlueprintType)
++enum class EBREntityState : uint8
++{
++	Idle,
++	Patrolling,
++	Investigating,
++	Chasing,
++	Returning
++};
+diff --git a/Source/backrooms/Core/BRGameMode.cpp b/Source/backrooms/Core/BRGameMode.cpp
+new file mode 100644
+index 0000000..569ea30
+--- /dev/null
++++ b/Source/backrooms/Core/BRGameMode.cpp
+@@ -0,0 +1,42 @@
++#include "Core/BRGameMode.h"
++
++#include "Core/BRGameState.h"
++#include "Player/BRPlayerCharacter.h"
++#include "Player/BRPlayerState.h"
++#include "Engine/World.h"
++
++ABRGameMode::ABRGameMode()
++{
++	DefaultPawnClass = ABRPlayerCharacter::StaticClass();
++	GameStateClass = ABRGameState::StaticClass();
++	PlayerStateClass = ABRPlayerState::StaticClass();
++	bUseSeamlessTravel = true;
++}
++
++void ABRGameMode::StartPlay()
++{
++	Super::StartPlay();
++	if (ABRGameState* State = GetGameState<ABRGameState>())
++	{
++		State->SetLevelPhase(EBRLevelPhase::Exploring);
++	}
++}
++
++void ABRGameMode::HandleTeamExtracted(const FName NextMapName)
++{
++	if (!HasAuthority())
++	{
++		return;
++	}
++
++	if (ABRGameState* State = GetGameState<ABRGameState>())
++	{
++		State->SetLevelPhase(EBRLevelPhase::Escaping);
++	}
++
++	OnTeamExtracted(NextMapName);
++	if (bAutoTravelOnExtraction && !NextMapName.IsNone() && GetWorld())
++	{
++		GetWorld()->ServerTravel(NextMapName.ToString());
++	}
++}
+diff --git a/Source/backrooms/Core/BRGameMode.h b/Source/backrooms/Core/BRGameMode.h
+new file mode 100644
+index 0000000..d684a1b
+--- /dev/null
++++ b/Source/backrooms/Core/BRGameMode.h
+@@ -0,0 +1,26 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "GameFramework/GameModeBase.h"
++#include "BRGameMode.generated.h"
++
++UCLASS()
+warning: in the working copy of 'Source/backrooms/Core/BRGameState.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Core/BRGameState.h', LF will be replaced by CRLF the next time Git touches it
++class BACKROOMS_API ABRGameMode : public AGameModeBase
++{
++	GENERATED_BODY()
++
++public:
++	ABRGameMode();
++
++	virtual void StartPlay() override;
++
++	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|Extraction")
++	void HandleTeamExtracted(FName NextMapName);
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Extraction")
++	bool bAutoTravelOnExtraction = false;
++
++protected:
++	UFUNCTION(BlueprintImplementableEvent, Category = "Backrooms|Extraction")
++	void OnTeamExtracted(FName NextMapName);
++};
+diff --git a/Source/backrooms/Core/BRGameState.cpp b/Source/backrooms/Core/BRGameState.cpp
+new file mode 100644
+index 0000000..5b1385d
+--- /dev/null
++++ b/Source/backrooms/Core/BRGameState.cpp
+@@ -0,0 +1,66 @@
++#include "Core/BRGameState.h"
++
++#include "Core/BRGameplayRules.h"
++#include "Net/UnrealNetwork.h"
++
++ABRGameState::ABRGameState()
++{
++	SetNetUpdateFrequency(10.0f);
++}
++
++void ABRGameState::RegisterObjective()
++{
++	if (HasAuthority())
++	{
++		++TotalObjectives;
++		OnRep_Objectives();
++		ForceNetUpdate();
++	}
++}
++
++void ABRGameState::NotifyObjectiveCompleted()
++{
++	if (HasAuthority())
++	{
++		CompletedObjectives = FBRGameplayRules::ClampCompletedObjectives(CompletedObjectives + 1, TotalObjectives);
++		if (AreObjectivesComplete())
++		{
++			SetLevelPhase(EBRLevelPhase::ExtractionReady);
++		}
++		OnRep_Objectives();
++		ForceNetUpdate();
++	}
++}
++
++bool ABRGameState::AreObjectivesComplete() const
++{
++	return FBRGameplayRules::AreObjectivesComplete(CompletedObjectives, TotalObjectives);
++}
++
++void ABRGameState::SetLevelPhase(const EBRLevelPhase NewPhase)
++{
++	if (HasAuthority() && LevelPhase != NewPhase)
++	{
++		LevelPhase = NewPhase;
++		OnRep_LevelPhase();
++		ForceNetUpdate();
++	}
++}
++
++void ABRGameState::OnRep_Objectives()
++{
++	OnObjectivesChanged.Broadcast(CompletedObjectives, TotalObjectives);
++}
++
++void ABRGameState::OnRep_LevelPhase()
++{
++	OnLevelPhaseChanged.Broadcast(LevelPhase);
++}
++
++void ABRGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
++{
++	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
++	DOREPLIFETIME(ABRGameState, TotalObjectives);
++	DOREPLIFETIME(ABRGameState, CompletedObjectives);
++	DOREPLIFETIME(ABRGameState, LevelPhase);
++}
+diff --git a/Source/backrooms/Core/BRGameState.h b/Source/backrooms/Core/BRGameState.h
+new file mode 100644
+index 0000000..c3b9aeb
+--- /dev/null
++++ b/Source/backrooms/Core/BRGameState.h
+@@ -0,0 +1,60 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "GameFramework/GameStateBase.h"
++#include "Core/BRFrameworkTypes.h"
++#include "BRGameState.generated.h"
++
++DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBRObjectivesChanged, int32, CompletedObjectives, int32, TotalObjectives);
++DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBRLevelPhaseChanged, EBRLevelPhase, NewPhase);
++
++UCLASS()
++class BACKROOMS_API ABRGameState : public AGameStateBase
++{
++	GENERATED_BODY()
++
++public:
++	ABRGameState();
++
++	void RegisterObjective();
++	void NotifyObjectiveCompleted();
++
+warning: in the working copy of 'Source/backrooms/Core/BRGameplayRules.cpp', LF will be replaced by CRLF the next time Git touches it
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Objectives")
++	bool AreObjectivesComplete() const;
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Objectives")
++	int32 GetCompletedObjectives() const { return CompletedObjectives; }
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Objectives")
++	int32 GetTotalObjectives() const { return TotalObjectives; }
++
++	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|Level")
++	void SetLevelPhase(EBRLevelPhase NewPhase);
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Level")
++	EBRLevelPhase GetLevelPhase() const { return LevelPhase; }
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Objectives")
++	FBRObjectivesChanged OnObjectivesChanged;
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Level")
++	FBRLevelPhaseChanged OnLevelPhaseChanged;
++
++	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
++
++protected:
+warning: in the working copy of 'Source/backrooms/Core/BRGameplayRules.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Interaction/BRInteractable.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Interaction/BRInteractionComponent.cpp', LF will be replaced by CRLF the next time Git touches it
++	UPROPERTY(ReplicatedUsing = OnRep_Objectives, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Objectives")
++	int32 TotalObjectives = 0;
++
++	UPROPERTY(ReplicatedUsing = OnRep_Objectives, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Objectives")
++	int32 CompletedObjectives = 0;
++
++	UPROPERTY(ReplicatedUsing = OnRep_LevelPhase, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Level")
++	EBRLevelPhase LevelPhase = EBRLevelPhase::Lobby;
++
++	UFUNCTION()
++	void OnRep_Objectives();
++
++	UFUNCTION()
++	void OnRep_LevelPhase();
++};
+diff --git a/Source/backrooms/Core/BRGameplayRules.cpp b/Source/backrooms/Core/BRGameplayRules.cpp
+new file mode 100644
+index 0000000..2661cef
+--- /dev/null
++++ b/Source/backrooms/Core/BRGameplayRules.cpp
+@@ -0,0 +1,16 @@
++#include "Core/BRGameplayRules.h"
++
++int32 FBRGameplayRules::ClampCompletedObjectives(const int32 CompletedObjectives, const int32 TotalObjectives)
++{
++	return FMath::Clamp(CompletedObjectives, 0, FMath::Max(0, TotalObjectives));
++}
++
++bool FBRGameplayRules::AreObjectivesComplete(const int32 CompletedObjectives, const int32 TotalObjectives)
++{
++	return TotalObjectives > 0 && CompletedObjectives >= TotalObjectives;
++}
++
++bool FBRGameplayRules::CanExtract(const int32 ActivePlayers, const int32 PlayersInZone, const bool bObjectivesComplete)
++{
++	return bObjectivesComplete && ActivePlayers > 0 && PlayersInZone >= ActivePlayers;
++}
+diff --git a/Source/backrooms/Core/BRGameplayRules.h b/Source/backrooms/Core/BRGameplayRules.h
+new file mode 100644
+index 0000000..1c12dfd
+--- /dev/null
++++ b/Source/backrooms/Core/BRGameplayRules.h
+@@ -0,0 +1,10 @@
++#pragma once
++
++#include "CoreMinimal.h"
++
++struct BACKROOMS_API FBRGameplayRules
++{
++	static int32 ClampCompletedObjectives(int32 CompletedObjectives, int32 TotalObjectives);
++	static bool AreObjectivesComplete(int32 CompletedObjectives, int32 TotalObjectives);
++	static bool CanExtract(int32 ActivePlayers, int32 PlayersInZone, bool bObjectivesComplete);
++};
+diff --git a/Source/backrooms/Interaction/BRInteractable.h b/Source/backrooms/Interaction/BRInteractable.h
+new file mode 100644
+index 0000000..8c451de
+--- /dev/null
++++ b/Source/backrooms/Interaction/BRInteractable.h
+@@ -0,0 +1,28 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "UObject/Interface.h"
++#include "BRInteractable.generated.h"
++
++class APawn;
++
++UINTERFACE(Blueprintable)
++class BACKROOMS_API UBRInteractable : public UInterface
++{
++	GENERATED_BODY()
++};
++
++class BACKROOMS_API IBRInteractable
++{
++	GENERATED_BODY()
++
++public:
++	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Backrooms|Interaction")
++	bool CanInteract(APawn* InstigatorPawn) const;
++
++	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Backrooms|Interaction")
++	FText GetInteractionText(APawn* InstigatorPawn) const;
++
++	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Backrooms|Interaction")
++	void Interact(APawn* InstigatorPawn);
++};
+diff --git a/Source/backrooms/Interaction/BRInteractionComponent.cpp b/Source/backrooms/Interaction/BRInteractionComponent.cpp
+new file mode 100644
+index 0000000..7bb0926
+--- /dev/null
++++ b/Source/backrooms/Interaction/BRInteractionComponent.cpp
+@@ -0,0 +1,78 @@
++#include "Interaction/BRInteractionComponent.h"
++
++#include "GameFramework/Pawn.h"
++#include "GameFramework/PlayerController.h"
++#include "Interaction/BRInteractable.h"
++#include "Engine/World.h"
++
++UBRInteractionComponent::UBRInteractionComponent()
++{
++	PrimaryComponentTick.bCanEverTick = false;
++	SetIsReplicatedByDefault(true);
++}
++
++AActor* UBRInteractionComponent::FindFocusedInteractable() const
++{
++	const APawn* OwnerPawn = Cast<APawn>(GetOwner());
++	if (!OwnerPawn || !OwnerPawn->IsLocallyControlled())
++	{
++		return nullptr;
++	}
++
++	FVector ViewLocation;
++	FRotator ViewRotation;
++	if (const APlayerController* PlayerController = Cast<APlayerController>(OwnerPawn->GetController()))
++	{
++		PlayerController->GetPlayerViewPoint(ViewLocation, ViewRotation);
++	}
++	else
++	{
++		OwnerPawn->GetActorEyesViewPoint(ViewLocation, ViewRotation);
++	}
++
++	FHitResult Hit;
++	FCollisionQueryParams QueryParams(SCENE_QUERY_STAT(BRInteractionTrace), false, OwnerPawn);
+warning: in the working copy of 'Source/backrooms/Interaction/BRInteractionComponent.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Online/BRSessionSubsystem.cpp', LF will be replaced by CRLF the next time Git touches it
++	const FVector TraceEnd = ViewLocation + ViewRotation.Vector() * TraceDistance;
++	if (GetWorld() && GetWorld()->LineTraceSingleByChannel(Hit, ViewLocation, TraceEnd, ECC_Visibility, QueryParams))
++	{
++		AActor* HitActor = Hit.GetActor();
++		if (IsTargetValidForInteraction(HitActor))
++		{
++			return HitActor;
++		}
++	}
++
++	return nullptr;
++}
++
++void UBRInteractionComponent::TryInteract()
++{
++	if (AActor* TargetActor = FindFocusedInteractable())
++	{
++		ServerInteract(TargetActor);
++	}
++}
++
++void UBRInteractionComponent::ServerInteract_Implementation(AActor* TargetActor)
++{
++	if (!IsTargetValidForInteraction(TargetActor))
++	{
++		return;
++	}
++
++	APawn* OwnerPawn = Cast<APawn>(GetOwner());
++	if (!OwnerPawn || FVector::DistSquared(OwnerPawn->GetActorLocation(), TargetActor->GetActorLocation()) > FMath::Square(TraceDistance * 1.25f))
++	{
++		return;
++	}
++
++	if (IBRInteractable::Execute_CanInteract(TargetActor, OwnerPawn))
++	{
++		IBRInteractable::Execute_Interact(TargetActor, OwnerPawn);
++	}
++}
++
++bool UBRInteractionComponent::IsTargetValidForInteraction(AActor* TargetActor) const
++{
++	return IsValid(TargetActor) && TargetActor->GetClass()->ImplementsInterface(UBRInteractable::StaticClass());
++}
+diff --git a/Source/backrooms/Interaction/BRInteractionComponent.h b/Source/backrooms/Interaction/BRInteractionComponent.h
+new file mode 100644
+index 0000000..c490430
+--- /dev/null
++++ b/Source/backrooms/Interaction/BRInteractionComponent.h
+@@ -0,0 +1,35 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "Components/ActorComponent.h"
++#include "BRInteractionComponent.generated.h"
++
++DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBRFocusedInteractableChanged, AActor*, FocusedActor, FText, InteractionText);
++
++UCLASS(ClassGroup = (Backrooms), meta = (BlueprintSpawnableComponent))
++class BACKROOMS_API UBRInteractionComponent : public UActorComponent
++{
++	GENERATED_BODY()
++
++public:
++	UBRInteractionComponent();
++
++	UFUNCTION(BlueprintCallable, Category = "Backrooms|Interaction")
++	void TryInteract();
++
++	UFUNCTION(BlueprintCallable, Category = "Backrooms|Interaction")
++	AActor* FindFocusedInteractable() const;
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Interaction")
++	FBRFocusedInteractableChanged OnFocusedInteractableChanged;
++
++	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Backrooms|Interaction", meta = (ClampMin = "50.0"))
++	float TraceDistance = 350.0f;
++
++protected:
++	UFUNCTION(Server, Reliable)
++	void ServerInteract(AActor* TargetActor);
++
++private:
++	bool IsTargetValidForInteraction(AActor* TargetActor) const;
++};
+diff --git a/Source/backrooms/Online/BRSessionSubsystem.cpp b/Source/backrooms/Online/BRSessionSubsystem.cpp
+new file mode 100644
+index 0000000..31b2764
+--- /dev/null
++++ b/Source/backrooms/Online/BRSessionSubsystem.cpp
+@@ -0,0 +1,209 @@
++#include "Online/BRSessionSubsystem.h"
++
++#include "Engine/GameInstance.h"
++#include "GameFramework/PlayerController.h"
++#include "OnlineSessionSettings.h"
++#include "OnlineSubsystem.h"
++
++void UBRSessionSubsystem::Initialize(FSubsystemCollectionBase& Collection)
++{
++	Super::Initialize(Collection);
++}
++
++void UBRSessionSubsystem::Deinitialize()
++{
++	ClearDelegateHandles();
++	SessionSearch.Reset();
++	Super::Deinitialize();
++}
++
++IOnlineSessionPtr UBRSessionSubsystem::GetSessionInterface() const
++{
++	if (IOnlineSubsystem* Subsystem = IOnlineSubsystem::Get())
++	{
++		return Subsystem->GetSessionInterface();
++	}
++	return nullptr;
++}
++
++void UBRSessionSubsystem::HostSession(const int32 MaxPlayers, const bool bLAN, const FString& LobbyMap)
++{
++	PendingMaxPlayers = FMath::Clamp(MaxPlayers, 1, 4);
++	bPendingLAN = bLAN;
++	PendingLobbyMap = LobbyMap;
++
++	IOnlineSessionPtr Sessions = GetSessionInterface();
++	if (!Sessions.IsValid())
++	{
++		OnHostComplete.Broadcast(false, TEXT("Online session interface is unavailable."));
++		return;
++	}
++
++	if (Sessions->GetNamedSession(NAME_GameSession))
++	{
++		bCreateAfterDestroy = true;
++		DestroyCurrentSession();
++		return;
++	}
++
++	CreateSessionNow();
++}
++
++void UBRSessionSubsystem::CreateSessionNow()
++{
++	IOnlineSessionPtr Sessions = GetSessionInterface();
++	if (!Sessions.IsValid()) return;
++
++	FOnlineSessionSettings Settings;
++	Settings.bIsLANMatch = bPendingLAN;
++	Settings.NumPublicConnections = PendingMaxPlayers;
++	Settings.bShouldAdvertise = true;
++	Settings.bAllowJoinInProgress = true;
++	Settings.bAllowJoinViaPresence = true;
++	Settings.bUsesPresence = true;
++	Settings.bUseLobbiesIfAvailable = true;
++	Settings.Set(FName(TEXT("MAPNAME")), PendingLobbyMap, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
++
++	CreateHandle = Sessions->AddOnCreateSessionCompleteDelegate_Handle(
++		FOnCreateSessionCompleteDelegate::CreateUObject(this, &UBRSessionSubsystem::HandleCreateSessionComplete));
++	if (!Sessions->CreateSession(0, NAME_GameSession, Settings))
++	{
++		Sessions->ClearOnCreateSessionCompleteDelegate_Handle(CreateHandle);
++		CreateHandle.Reset();
++		OnHostComplete.Broadcast(false, TEXT("CreateSession request was rejected."));
++	}
++}
++
++void UBRSessionSubsystem::HandleCreateSessionComplete(FName SessionName, const bool bSuccess)
++{
++	if (IOnlineSessionPtr Sessions = GetSessionInterface(); Sessions.IsValid())
++	{
++		Sessions->ClearOnCreateSessionCompleteDelegate_Handle(CreateHandle);
++	}
++	CreateHandle.Reset();
++	OnHostComplete.Broadcast(bSuccess, bSuccess ? TEXT("Session created.") : TEXT("Session creation failed."));
++
++	if (bSuccess && GetGameInstance())
++	{
++		GetGameInstance()->GetWorld()->ServerTravel(PendingLobbyMap + TEXT("?listen"));
++	}
++}
++
++void UBRSessionSubsystem::FindSessions(const int32 MaxResults, const bool bLAN)
++{
++	IOnlineSessionPtr Sessions = GetSessionInterface();
++	if (!Sessions.IsValid())
++	{
++		OnSearchComplete.Broadcast(false, 0);
++		return;
++	}
++
++	SessionSearch = MakeShared<FOnlineSessionSearch>();
++	SessionSearch->MaxSearchResults = FMath::Max(1, MaxResults);
++	SessionSearch->bIsLanQuery = bLAN;
++	FindHandle = Sessions->AddOnFindSessionsCompleteDelegate_Handle(
++		FOnFindSessionsCompleteDelegate::CreateUObject(this, &UBRSessionSubsystem::HandleFindSessionsComplete));
++	if (!Sessions->FindSessions(0, SessionSearch.ToSharedRef()))
++	{
++		Sessions->ClearOnFindSessionsCompleteDelegate_Handle(FindHandle);
++		FindHandle.Reset();
++		OnSearchComplete.Broadcast(false, 0);
++	}
++}
++
++void UBRSessionSubsystem::HandleFindSessionsComplete(const bool bSuccess)
++{
++	if (IOnlineSessionPtr Sessions = GetSessionInterface(); Sessions.IsValid())
++	{
++		Sessions->ClearOnFindSessionsCompleteDelegate_Handle(FindHandle);
++	}
++	FindHandle.Reset();
++	OnSearchComplete.Broadcast(bSuccess, SessionSearch.IsValid() ? SessionSearch->SearchResults.Num() : 0);
++}
++
++void UBRSessionSubsystem::JoinFirstFoundSession()
++{
++	IOnlineSessionPtr Sessions = GetSessionInterface();
++	if (!Sessions.IsValid() || !SessionSearch.IsValid() || SessionSearch->SearchResults.IsEmpty())
++	{
++		OnJoinComplete.Broadcast(false, TEXT("No session search result is available."));
++		return;
++	}
++
++	JoinHandle = Sessions->AddOnJoinSessionCompleteDelegate_Handle(
++		FOnJoinSessionCompleteDelegate::CreateUObject(this, &UBRSessionSubsystem::HandleJoinSessionComplete));
++	if (!Sessions->JoinSession(0, NAME_GameSession, SessionSearch->SearchResults[0]))
++	{
++		Sessions->ClearOnJoinSessionCompleteDelegate_Handle(JoinHandle);
++		JoinHandle.Reset();
++		OnJoinComplete.Broadcast(false, TEXT("JoinSession request was rejected."));
++	}
++}
++
++void UBRSessionSubsystem::HandleJoinSessionComplete(FName SessionName, const EOnJoinSessionCompleteResult::Type Result)
++{
++	IOnlineSessionPtr Sessions = GetSessionInterface();
++	if (Sessions.IsValid()) Sessions->ClearOnJoinSessionCompleteDelegate_Handle(JoinHandle);
++	JoinHandle.Reset();
++
++	FString ConnectString;
++	const bool bSuccess = Result == EOnJoinSessionCompleteResult::Success && Sessions.IsValid()
++		&& Sessions->GetResolvedConnectString(SessionName, ConnectString);
++	if (bSuccess && GetGameInstance())
++	{
++		if (APlayerController* PC = GetGameInstance()->GetFirstLocalPlayerController())
++		{
++			PC->ClientTravel(ConnectString, TRAVEL_Absolute);
++		}
++	}
++	OnJoinComplete.Broadcast(bSuccess, bSuccess ? ConnectString : TEXT("Failed to resolve or join the session."));
++}
+warning: in the working copy of 'Source/backrooms/Online/BRSessionSubsystem.h', LF will be replaced by CRLF the next time Git touches it
++
++void UBRSessionSubsystem::DestroyCurrentSession()
++{
++	IOnlineSessionPtr Sessions = GetSessionInterface();
++	if (!Sessions.IsValid())
++	{
++		OnDestroyComplete.Broadcast(false, TEXT("Online session interface is unavailable."));
++		return;
++	}
++
++	DestroyHandle = Sessions->AddOnDestroySessionCompleteDelegate_Handle(
++		FOnDestroySessionCompleteDelegate::CreateUObject(this, &UBRSessionSubsystem::HandleDestroySessionComplete));
++	if (!Sessions->DestroySession(NAME_GameSession))
++	{
++		Sessions->ClearOnDestroySessionCompleteDelegate_Handle(DestroyHandle);
++		DestroyHandle.Reset();
++		OnDestroyComplete.Broadcast(false, TEXT("DestroySession request was rejected."));
++	}
++}
++
++void UBRSessionSubsystem::HandleDestroySessionComplete(FName SessionName, const bool bSuccess)
++{
++	if (IOnlineSessionPtr Sessions = GetSessionInterface(); Sessions.IsValid())
++	{
++		Sessions->ClearOnDestroySessionCompleteDelegate_Handle(DestroyHandle);
++	}
++	DestroyHandle.Reset();
++	OnDestroyComplete.Broadcast(bSuccess, bSuccess ? TEXT("Session destroyed.") : TEXT("Session destruction failed."));
++	if (bSuccess && bCreateAfterDestroy)
++	{
++		bCreateAfterDestroy = false;
++		CreateSessionNow();
++	}
++}
++
++void UBRSessionSubsystem::ClearDelegateHandles()
++{
++	if (IOnlineSessionPtr Sessions = GetSessionInterface(); Sessions.IsValid())
++	{
++		if (CreateHandle.IsValid()) Sessions->ClearOnCreateSessionCompleteDelegate_Handle(CreateHandle);
++		if (FindHandle.IsValid()) Sessions->ClearOnFindSessionsCompleteDelegate_Handle(FindHandle);
++		if (JoinHandle.IsValid()) Sessions->ClearOnJoinSessionCompleteDelegate_Handle(JoinHandle);
++		if (DestroyHandle.IsValid()) Sessions->ClearOnDestroySessionCompleteDelegate_Handle(DestroyHandle);
++	}
++	CreateHandle.Reset();
++	FindHandle.Reset();
++	JoinHandle.Reset();
++	DestroyHandle.Reset();
++}
+diff --git a/Source/backrooms/Online/BRSessionSubsystem.h b/Source/backrooms/Online/BRSessionSubsystem.h
+new file mode 100644
+index 0000000..e5524b9
+--- /dev/null
++++ b/Source/backrooms/Online/BRSessionSubsystem.h
+@@ -0,0 +1,62 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "Subsystems/GameInstanceSubsystem.h"
++#include "Interfaces/OnlineSessionInterface.h"
++#include "BRSessionSubsystem.generated.h"
++
++DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBRSessionOperationComplete, bool, bSuccess, const FString&, Message);
++DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBRSessionSearchComplete, bool, bSuccess, int32, ResultCount);
++
++UCLASS()
++class BACKROOMS_API UBRSessionSubsystem : public UGameInstanceSubsystem
++{
++	GENERATED_BODY()
++
++public:
++	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
++	virtual void Deinitialize() override;
++
++	UFUNCTION(BlueprintCallable, Category = "Backrooms|Online")
++	void HostSession(int32 MaxPlayers = 4, bool bLAN = true, const FString& LobbyMap = TEXT("/Game/FirstPerson/Lvl_FirstPerson"));
++
++	UFUNCTION(BlueprintCallable, Category = "Backrooms|Online")
++	void FindSessions(int32 MaxResults = 20, bool bLAN = true);
++
++	UFUNCTION(BlueprintCallable, Category = "Backrooms|Online")
++	void JoinFirstFoundSession();
++
++	UFUNCTION(BlueprintCallable, Category = "Backrooms|Online")
++	void DestroyCurrentSession();
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Online")
++	FBRSessionOperationComplete OnHostComplete;
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Online")
++	FBRSessionSearchComplete OnSearchComplete;
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Online")
++	FBRSessionOperationComplete OnJoinComplete;
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Online")
++	FBRSessionOperationComplete OnDestroyComplete;
++
++private:
++	IOnlineSessionPtr GetSessionInterface() const;
++	void CreateSessionNow();
++	void HandleCreateSessionComplete(FName SessionName, bool bSuccess);
++	void HandleFindSessionsComplete(bool bSuccess);
++	void HandleJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
++	void HandleDestroySessionComplete(FName SessionName, bool bSuccess);
++	void ClearDelegateHandles();
++
+warning: in the working copy of 'Source/backrooms/Player/BRDownedComponent.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Player/BRDownedComponent.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Player/BRPlayerCharacter.cpp', LF will be replaced by CRLF the next time Git touches it
++	TSharedPtr<FOnlineSessionSearch> SessionSearch;
++	FDelegateHandle CreateHandle;
++	FDelegateHandle FindHandle;
++	FDelegateHandle JoinHandle;
++	FDelegateHandle DestroyHandle;
++	FString PendingLobbyMap;
++	int32 PendingMaxPlayers = 4;
++	bool bPendingLAN = true;
++	bool bCreateAfterDestroy = false;
++};
+diff --git a/Source/backrooms/Player/BRDownedComponent.cpp b/Source/backrooms/Player/BRDownedComponent.cpp
+new file mode 100644
+index 0000000..b553899
+--- /dev/null
++++ b/Source/backrooms/Player/BRDownedComponent.cpp
+@@ -0,0 +1,71 @@
++#include "Player/BRDownedComponent.h"
++
++#include "GameFramework/Character.h"
++#include "GameFramework/CharacterMovementComponent.h"
++#include "Player/BRPlayerState.h"
++#include "Net/UnrealNetwork.h"
++
++UBRDownedComponent::UBRDownedComponent()
++{
++	PrimaryComponentTick.bCanEverTick = false;
++	SetIsReplicatedByDefault(true);
++}
++
++void UBRDownedComponent::Down()
++{
++	if (GetOwner() && GetOwner()->HasAuthority() && !bDowned)
++	{
++		bDowned = true;
++		ApplyDownedState();
++	}
++}
++
++void UBRDownedComponent::Revive(APawn* Reviver)
++{
++	if (!GetOwner() || !GetOwner()->HasAuthority() || !bDowned || !IsValid(Reviver) || Reviver == GetOwner())
++	{
++		return;
++	}
++
++	if (FVector::DistSquared(Reviver->GetActorLocation(), GetOwner()->GetActorLocation()) <= FMath::Square(300.0f))
++	{
++		bDowned = false;
++		ApplyDownedState();
++	}
++}
++
++void UBRDownedComponent::OnRep_Downed()
++{
++	ApplyDownedState();
++}
++
++void UBRDownedComponent::ApplyDownedState()
++{
++	if (ACharacter* Character = Cast<ACharacter>(GetOwner()))
++	{
++		if (bDowned)
++		{
++			Character->GetCharacterMovement()->DisableMovement();
++		}
++		else
++		{
++			Character->GetCharacterMovement()->SetMovementMode(MOVE_Walking);
++		}
++
++		if (Character->HasAuthority())
++		{
++			if (ABRPlayerState* State = Character->GetPlayerState<ABRPlayerState>())
++			{
++				State->SetDownedState(bDowned);
++			}
++		}
++	}
++
++	OnDownedStateChanged.Broadcast(bDowned);
++}
++
++void UBRDownedComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
++{
++	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
++	DOREPLIFETIME(UBRDownedComponent, bDowned);
++}
+diff --git a/Source/backrooms/Player/BRDownedComponent.h b/Source/backrooms/Player/BRDownedComponent.h
+new file mode 100644
+index 0000000..844cdd6
+--- /dev/null
++++ b/Source/backrooms/Player/BRDownedComponent.h
+@@ -0,0 +1,42 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "Components/ActorComponent.h"
++#include "BRDownedComponent.generated.h"
++
++class APawn;
++
++DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FBRDownedStateChanged, bool, bIsDowned);
++
++UCLASS(ClassGroup = (Backrooms), meta = (BlueprintSpawnableComponent))
++class BACKROOMS_API UBRDownedComponent : public UActorComponent
++{
++	GENERATED_BODY()
++
++public:
++	UBRDownedComponent();
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Player")
++	bool IsDowned() const { return bDowned; }
++
++	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|Player")
++	void Down();
++
++	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|Player")
++	void Revive(APawn* Reviver);
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Player")
++	FBRDownedStateChanged OnDownedStateChanged;
++
++	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
++
++protected:
++	UPROPERTY(ReplicatedUsing = OnRep_Downed, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Player")
++	bool bDowned = false;
++
++	UFUNCTION()
++	void OnRep_Downed();
++
++private:
++	void ApplyDownedState();
++};
+diff --git a/Source/backrooms/Player/BRPlayerCharacter.cpp b/Source/backrooms/Player/BRPlayerCharacter.cpp
+new file mode 100644
+index 0000000..49edf64
+--- /dev/null
++++ b/Source/backrooms/Player/BRPlayerCharacter.cpp
+@@ -0,0 +1,196 @@
++#include "Player/BRPlayerCharacter.h"
++
++#include "Camera/CameraComponent.h"
++#include "Components/CapsuleComponent.h"
++#include "EnhancedInputComponent.h"
++#include "EnhancedInputSubsystems.h"
++#include "GameFramework/CharacterMovementComponent.h"
++#include "GameFramework/PlayerController.h"
++#include "Interaction/BRInteractionComponent.h"
++#include "Player/BRDownedComponent.h"
++#include "InputAction.h"
++#include "InputMappingContext.h"
++#include "Net/UnrealNetwork.h"
++
++ABRPlayerCharacter::ABRPlayerCharacter()
++{
++	PrimaryActorTick.bCanEverTick = false;
++	bReplicates = true;
++	GetCharacterMovement()->MaxWalkSpeed = WalkSpeed;
++	GetCharacterMovement()->GetNavAgentPropertiesRef().bCanCrouch = true;
++
++	FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FirstPersonCamera"));
++	FirstPersonCamera->SetupAttachment(GetCapsuleComponent());
++	FirstPersonCamera->SetRelativeLocation(FVector(-10.0f, 0.0f, 64.0f));
++	FirstPersonCamera->bUsePawnControlRotation = true;
++
++	InteractionComponent = CreateDefaultSubobject<UBRInteractionComponent>(TEXT("InteractionComponent"));
++	DownedComponent = CreateDefaultSubobject<UBRDownedComponent>(TEXT("DownedComponent"));
++}
++
++void ABRPlayerCharacter::BeginPlay()
++{
++	Super::BeginPlay();
++	ApplySprintState();
++
++	if (const APlayerController* PC = Cast<APlayerController>(Controller))
++	{
++		if (ULocalPlayer* LocalPlayer = PC->GetLocalPlayer())
++		{
++			if (UEnhancedInputLocalPlayerSubsystem* Subsystem = LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
++			{
++				if (DefaultMappingContext)
++				{
++					Subsystem->AddMappingContext(DefaultMappingContext, 0);
++				}
++			}
++		}
++	}
++}
++
++void ABRPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
++{
++	Super::SetupPlayerInputComponent(PlayerInputComponent);
++
++	if (UEnhancedInputComponent* Enhanced = Cast<UEnhancedInputComponent>(PlayerInputComponent))
++	{
++		if (MoveAction) Enhanced->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ABRPlayerCharacter::MoveEnhanced);
++		if (LookAction) Enhanced->BindAction(LookAction, ETriggerEvent::Triggered, this, &ABRPlayerCharacter::LookEnhanced);
++		if (JumpAction)
++		{
++			Enhanced->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
++			Enhanced->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
++		}
++		if (SprintAction)
++		{
++			Enhanced->BindAction(SprintAction, ETriggerEvent::Started, this, &ABRPlayerCharacter::StartSprint);
++			Enhanced->BindAction(SprintAction, ETriggerEvent::Completed, this, &ABRPlayerCharacter::StopSprint);
++		}
++		if (CrouchAction) Enhanced->BindAction(CrouchAction, ETriggerEvent::Started, this, &ABRPlayerCharacter::ToggleCrouch);
++		if (InteractAction) Enhanced->BindAction(InteractAction, ETriggerEvent::Started, this, &ABRPlayerCharacter::TryInteract);
++	}
++
++	// These mappings keep the native framework immediately playable before custom Input Actions are assigned.
++	if (!MoveAction)
++	{
++		PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ABRPlayerCharacter::MoveForwardLegacy);
++		PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ABRPlayerCharacter::MoveRightLegacy);
++	}
++	if (!LookAction)
++	{
++		PlayerInputComponent->BindAxis(TEXT("Turn"), this, &APawn::AddControllerYawInput);
++		PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &APawn::AddControllerPitchInput);
++	}
++	if (!JumpAction)
++	{
++		PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &ACharacter::Jump);
++		PlayerInputComponent->BindAction(TEXT("Jump"), IE_Released, this, &ACharacter::StopJumping);
++	}
++	if (!SprintAction)
++	{
++		PlayerInputComponent->BindAction(TEXT("Sprint"), IE_Pressed, this, &ABRPlayerCharacter::StartSprint);
++		PlayerInputComponent->BindAction(TEXT("Sprint"), IE_Released, this, &ABRPlayerCharacter::StopSprint);
++	}
++	if (!CrouchAction) PlayerInputComponent->BindAction(TEXT("Crouch"), IE_Pressed, this, &ABRPlayerCharacter::ToggleCrouch);
++	if (!InteractAction) PlayerInputComponent->BindAction(TEXT("Interact"), IE_Pressed, this, &ABRPlayerCharacter::TryInteract);
++}
++
++void ABRPlayerCharacter::MoveEnhanced(const FInputActionValue& Value)
++{
++	const FVector2D Movement = Value.Get<FVector2D>();
++	MoveForwardLegacy(Movement.Y);
++	MoveRightLegacy(Movement.X);
++}
++
++void ABRPlayerCharacter::LookEnhanced(const FInputActionValue& Value)
++{
+warning: in the working copy of 'Source/backrooms/Player/BRPlayerCharacter.h', LF will be replaced by CRLF the next time Git touches it
++	const FVector2D Look = Value.Get<FVector2D>();
++	AddControllerYawInput(Look.X);
++	AddControllerPitchInput(Look.Y);
++}
++
++void ABRPlayerCharacter::MoveForwardLegacy(const float Value)
++{
++	if (Controller && !DownedComponent->IsDowned() && !FMath::IsNearlyZero(Value))
++	{
++		const FRotator YawRotation(0.0f, Controller->GetControlRotation().Yaw, 0.0f);
++		AddMovementInput(FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X), Value);
++	}
++}
++
++void ABRPlayerCharacter::MoveRightLegacy(const float Value)
++{
++	if (Controller && !DownedComponent->IsDowned() && !FMath::IsNearlyZero(Value))
++	{
++		const FRotator YawRotation(0.0f, Controller->GetControlRotation().Yaw, 0.0f);
++		AddMovementInput(FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y), Value);
++	}
++}
++
++void ABRPlayerCharacter::StartSprint()
++{
++	if (!DownedComponent->IsDowned())
++	{
++		bIsSprinting = true;
++		ApplySprintState();
++		if (!HasAuthority()) ServerSetSprinting(true);
++	}
++}
++
++void ABRPlayerCharacter::StopSprint()
++{
++	bIsSprinting = false;
++	ApplySprintState();
++	if (!HasAuthority()) ServerSetSprinting(false);
++}
++
++void ABRPlayerCharacter::ServerSetSprinting_Implementation(const bool bNewSprinting)
++{
++	bIsSprinting = bNewSprinting && !DownedComponent->IsDowned();
++	ApplySprintState();
++}
++
++void ABRPlayerCharacter::OnRep_IsSprinting()
++{
++	ApplySprintState();
++}
++
++void ABRPlayerCharacter::ApplySprintState()
++{
++	GetCharacterMovement()->MaxWalkSpeed = bIsSprinting ? SprintSpeed : WalkSpeed;
++}
++
++void ABRPlayerCharacter::ToggleCrouch()
++{
++	if (DownedComponent->IsDowned()) return;
++	if (bIsCrouched) UnCrouch(); else Crouch();
++}
++
++void ABRPlayerCharacter::TryInteract()
++{
++	InteractionComponent->TryInteract();
++}
++
++bool ABRPlayerCharacter::CanInteract_Implementation(APawn* InstigatorPawn) const
++{
++	return IsValid(InstigatorPawn) && InstigatorPawn != this && DownedComponent->IsDowned();
++}
++
++FText ABRPlayerCharacter::GetInteractionText_Implementation(APawn* InstigatorPawn) const
++{
++	return CanInteract_Implementation(InstigatorPawn) ? NSLOCTEXT("Backrooms", "RevivePlayer", "Revive teammate") : FText::GetEmpty();
++}
++
++void ABRPlayerCharacter::Interact_Implementation(APawn* InstigatorPawn)
++{
++	if (HasAuthority() && CanInteract_Implementation(InstigatorPawn))
++	{
++		DownedComponent->Revive(InstigatorPawn);
++	}
++}
++
++void ABRPlayerCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
++{
++	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
++	DOREPLIFETIME(ABRPlayerCharacter, bIsSprinting);
++}
+diff --git a/Source/backrooms/Player/BRPlayerCharacter.h b/Source/backrooms/Player/BRPlayerCharacter.h
+new file mode 100644
+index 0000000..4ade363
+--- /dev/null
++++ b/Source/backrooms/Player/BRPlayerCharacter.h
+@@ -0,0 +1,94 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "GameFramework/Character.h"
++#include "InputActionValue.h"
++#include "Interaction/BRInteractable.h"
++#include "BRPlayerCharacter.generated.h"
++
++class UBRInteractionComponent;
++class UBRDownedComponent;
++class UCameraComponent;
++class UInputAction;
++class UInputMappingContext;
++
++UCLASS()
++class BACKROOMS_API ABRPlayerCharacter : public ACharacter, public IBRInteractable
++{
++	GENERATED_BODY()
++
++public:
++	ABRPlayerCharacter();
++
++	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
++	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
++
++	virtual bool CanInteract_Implementation(APawn* InstigatorPawn) const override;
++	virtual FText GetInteractionText_Implementation(APawn* InstigatorPawn) const override;
++	virtual void Interact_Implementation(APawn* InstigatorPawn) override;
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Player")
++	UBRDownedComponent* GetDownedComponent() const { return DownedComponent; }
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Interaction")
++	UBRInteractionComponent* GetInteractionComponent() const { return InteractionComponent; }
++
++protected:
++	virtual void BeginPlay() override;
++
++	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Camera")
+warning: in the working copy of 'Source/backrooms/Player/BRPlayerState.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/Player/BRPlayerState.h', LF will be replaced by CRLF the next time Git touches it
++	TObjectPtr<UCameraComponent> FirstPersonCamera;
++
++	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Components")
++	TObjectPtr<UBRInteractionComponent> InteractionComponent;
++
++	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Components")
++	TObjectPtr<UBRDownedComponent> DownedComponent;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Input")
++	TObjectPtr<UInputMappingContext> DefaultMappingContext;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Input")
++	TObjectPtr<UInputAction> MoveAction;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Input")
++	TObjectPtr<UInputAction> LookAction;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Input")
++	TObjectPtr<UInputAction> JumpAction;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Input")
++	TObjectPtr<UInputAction> SprintAction;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Input")
++	TObjectPtr<UInputAction> CrouchAction;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Input")
++	TObjectPtr<UInputAction> InteractAction;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Movement")
++	float WalkSpeed = 350.0f;
++
++	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Backrooms|Movement")
++	float SprintSpeed = 600.0f;
++
++	UPROPERTY(ReplicatedUsing = OnRep_IsSprinting, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Movement")
++	bool bIsSprinting = false;
++
++	UFUNCTION()
++	void OnRep_IsSprinting();
++
++	UFUNCTION(Server, Reliable)
++	void ServerSetSprinting(bool bNewSprinting);
++
++private:
++	void MoveEnhanced(const FInputActionValue& Value);
++	void LookEnhanced(const FInputActionValue& Value);
++	void MoveForwardLegacy(float Value);
++	void MoveRightLegacy(float Value);
++	void StartSprint();
++	void StopSprint();
++	void ToggleCrouch();
++	void TryInteract();
++	void ApplySprintState();
++};
+diff --git a/Source/backrooms/Player/BRPlayerState.cpp b/Source/backrooms/Player/BRPlayerState.cpp
+new file mode 100644
+index 0000000..5bb31c6
+--- /dev/null
++++ b/Source/backrooms/Player/BRPlayerState.cpp
+@@ -0,0 +1,36 @@
++#include "Player/BRPlayerState.h"
++
++#include "Net/UnrealNetwork.h"
++
++ABRPlayerState::ABRPlayerState()
++{
++	SetNetUpdateFrequency(10.0f);
++}
++
++void ABRPlayerState::ServerSetReady_Implementation(const bool bNewReady)
++{
++	bReady = bNewReady;
++	OnPlayerStateChanged.Broadcast();
++}
++
++void ABRPlayerState::SetDownedState(const bool bNewDowned)
++{
++	if (HasAuthority() && bDowned != bNewDowned)
++	{
++		bDowned = bNewDowned;
++		OnPlayerStateChanged.Broadcast();
++		ForceNetUpdate();
++	}
++}
++
++void ABRPlayerState::OnRep_PlayerFlags()
++{
++	OnPlayerStateChanged.Broadcast();
++}
++
++void ABRPlayerState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
++{
++	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
++	DOREPLIFETIME(ABRPlayerState, bReady);
++	DOREPLIFETIME(ABRPlayerState, bDowned);
++}
+diff --git a/Source/backrooms/Player/BRPlayerState.h b/Source/backrooms/Player/BRPlayerState.h
+new file mode 100644
+index 0000000..0bc2abc
+--- /dev/null
++++ b/Source/backrooms/Player/BRPlayerState.h
+@@ -0,0 +1,42 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "GameFramework/PlayerState.h"
++#include "BRPlayerState.generated.h"
++
++DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBRPlayerStateChanged);
++
++UCLASS()
++class BACKROOMS_API ABRPlayerState : public APlayerState
++{
++	GENERATED_BODY()
++
++public:
++	ABRPlayerState();
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Player")
++	bool IsReady() const { return bReady; }
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Player")
++	bool IsDowned() const { return bDowned; }
++
++	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Backrooms|Player")
++	void ServerSetReady(bool bNewReady);
++
++	void SetDownedState(bool bNewDowned);
++
++	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Player")
++	FBRPlayerStateChanged OnPlayerStateChanged;
++
+warning: in the working copy of 'Source/backrooms/Tests/BRFrameworkTests.cpp', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/World/BRExtractionZone.cpp', LF will be replaced by CRLF the next time Git touches it
++	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
++
++protected:
++	UPROPERTY(ReplicatedUsing = OnRep_PlayerFlags, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Player")
++	bool bReady = false;
++
++	UPROPERTY(ReplicatedUsing = OnRep_PlayerFlags, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Player")
++	bool bDowned = false;
++
++	UFUNCTION()
++	void OnRep_PlayerFlags();
++};
+diff --git a/Source/backrooms/Tests/BRFrameworkTests.cpp b/Source/backrooms/Tests/BRFrameworkTests.cpp
+new file mode 100644
+index 0000000..fc97c96
+--- /dev/null
++++ b/Source/backrooms/Tests/BRFrameworkTests.cpp
+@@ -0,0 +1,23 @@
++#if WITH_DEV_AUTOMATION_TESTS
++
++#include "Core/BRGameplayRules.h"
++#include "Misc/AutomationTest.h"
++
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(
++	FBRGameplayRulesTest,
++	"Backrooms.Framework.GameplayRules",
++	EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
++
++bool FBRGameplayRulesTest::RunTest(const FString& Parameters)
++{
++	TestEqual(TEXT("Completed objectives clamp below zero"), FBRGameplayRules::ClampCompletedObjectives(-2, 3), 0);
++	TestEqual(TEXT("Completed objectives clamp to total"), FBRGameplayRules::ClampCompletedObjectives(5, 3), 3);
++	TestFalse(TEXT("Zero registered objectives are not complete"), FBRGameplayRules::AreObjectivesComplete(0, 0));
++	TestTrue(TEXT("Registered objectives complete at total"), FBRGameplayRules::AreObjectivesComplete(3, 3));
++	TestFalse(TEXT("No extraction while objectives are incomplete"), FBRGameplayRules::CanExtract(4, 4, false));
++	TestFalse(TEXT("No extraction while one active player is missing"), FBRGameplayRules::CanExtract(4, 3, true));
++	TestTrue(TEXT("Extraction succeeds when every active player is present"), FBRGameplayRules::CanExtract(4, 4, true));
++	return true;
++}
++
++#endif
+diff --git a/Source/backrooms/World/BRExtractionZone.cpp b/Source/backrooms/World/BRExtractionZone.cpp
+new file mode 100644
+index 0000000..f150672
+--- /dev/null
++++ b/Source/backrooms/World/BRExtractionZone.cpp
+@@ -0,0 +1,90 @@
++#include "World/BRExtractionZone.h"
++
++#include "Components/BoxComponent.h"
++#include "Core/BRGameMode.h"
++#include "Core/BRGameState.h"
++#include "Core/BRGameplayRules.h"
++#include "GameFramework/Pawn.h"
++#include "Player/BRPlayerState.h"
++#include "TimerManager.h"
++
++ABRExtractionZone::ABRExtractionZone()
++{
++	PrimaryActorTick.bCanEverTick = false;
++	bReplicates = false;
++	Zone = CreateDefaultSubobject<UBoxComponent>(TEXT("ExtractionZone"));
++	Zone->SetBoxExtent(FVector(200.0f));
++	Zone->SetCollisionProfileName(TEXT("Trigger"));
++	SetRootComponent(Zone);
++}
++
++void ABRExtractionZone::BeginPlay()
++{
++	Super::BeginPlay();
++	if (HasAuthority())
++	{
++		Zone->OnComponentBeginOverlap.AddDynamic(this, &ABRExtractionZone::OnZoneBeginOverlap);
++		Zone->OnComponentEndOverlap.AddDynamic(this, &ABRExtractionZone::OnZoneEndOverlap);
++		GetWorldTimerManager().SetTimer(ExtractionCheckTimer, this, &ABRExtractionZone::CheckExtractionState, 0.5f, true);
++	}
++}
++
++void ABRExtractionZone::OnZoneBeginOverlap(UPrimitiveComponent*, AActor* OtherActor, UPrimitiveComponent*, int32, bool, const FHitResult&)
++{
++	if (APawn* Pawn = Cast<APawn>(OtherActor))
++	{
++		if (Pawn->IsPlayerControlled())
++		{
++			OverlappingPlayers.Add(Pawn);
++			CheckExtractionState();
++		}
++	}
++}
++
++void ABRExtractionZone::OnZoneEndOverlap(UPrimitiveComponent*, AActor* OtherActor, UPrimitiveComponent*, int32)
++{
++	if (APawn* Pawn = Cast<APawn>(OtherActor))
++	{
++		OverlappingPlayers.Remove(Pawn);
++	}
++}
++
++void ABRExtractionZone::CheckExtractionState()
++{
++	if (!HasAuthority() || bTriggered)
++	{
++		return;
++	}
++
++	const ABRGameState* State = GetWorld()->GetGameState<ABRGameState>();
++	if (!State)
++	{
++		return;
++	}
++
++	int32 ActivePlayers = 0;
++	int32 PlayersInZone = 0;
++	for (APlayerState* BasePlayerState : State->PlayerArray)
++	{
++		const ABRPlayerState* PlayerState = Cast<ABRPlayerState>(BasePlayerState);
++		APawn* Pawn = PlayerState ? PlayerState->GetPawn() : nullptr;
++		if (PlayerState && Pawn && !PlayerState->IsDowned())
++		{
++			++ActivePlayers;
++			if (OverlappingPlayers.Contains(Pawn))
+warning: in the working copy of 'Source/backrooms/World/BRExtractionZone.h', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Source/backrooms/World/BRObjectiveActor.cpp', LF will be replaced by CRLF the next time Git touches it
++			{
++				++PlayersInZone;
++			}
++		}
++	}
++
++	if (FBRGameplayRules::CanExtract(ActivePlayers, PlayersInZone, State->AreObjectivesComplete()))
++	{
++		bTriggered = true;
++		OnTeamReadyToExtract();
++		if (ABRGameMode* GameMode = Cast<ABRGameMode>(GetWorld()->GetAuthGameMode()))
++		{
++			GameMode->HandleTeamExtracted(NextMapName);
++		}
++	}
++}
+diff --git a/Source/backrooms/World/BRExtractionZone.h b/Source/backrooms/World/BRExtractionZone.h
+new file mode 100644
+index 0000000..4be3ffe
+--- /dev/null
++++ b/Source/backrooms/World/BRExtractionZone.h
+@@ -0,0 +1,44 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "GameFramework/Actor.h"
++#include "BRExtractionZone.generated.h"
++
++class UBoxComponent;
++
++UCLASS()
++class BACKROOMS_API ABRExtractionZone : public AActor
++{
++	GENERATED_BODY()
++
++public:
++	ABRExtractionZone();
++
++	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|Extraction")
++	void CheckExtractionState();
++
+warning: in the working copy of 'Source/backrooms/World/BRObjectiveActor.h', LF will be replaced by CRLF the next time Git touches it
++	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Backrooms|Extraction")
++	FName NextMapName = NAME_None;
++
++protected:
++	virtual void BeginPlay() override;
++
++	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Extraction")
++	TObjectPtr<UBoxComponent> Zone;
++
++	UFUNCTION()
++	void OnZoneBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
++		UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
++
++	UFUNCTION()
++	void OnZoneEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
++		UPrimitiveComponent* OtherComponent, int32 OtherBodyIndex);
++
++	UFUNCTION(BlueprintImplementableEvent, Category = "Backrooms|Extraction")
++	void OnTeamReadyToExtract();
++
++private:
++	TSet<TWeakObjectPtr<APawn>> OverlappingPlayers;
++	FTimerHandle ExtractionCheckTimer;
++	bool bTriggered = false;
++};
+diff --git a/Source/backrooms/World/BRObjectiveActor.cpp b/Source/backrooms/World/BRObjectiveActor.cpp
+new file mode 100644
+index 0000000..aed20bb
+--- /dev/null
++++ b/Source/backrooms/World/BRObjectiveActor.cpp
+@@ -0,0 +1,68 @@
++#include "World/BRObjectiveActor.h"
++
++#include "Components/StaticMeshComponent.h"
++#include "Core/BRGameState.h"
++#include "Net/UnrealNetwork.h"
++
++ABRObjectiveActor::ABRObjectiveActor()
++{
++	PrimaryActorTick.bCanEverTick = false;
++	bReplicates = true;
++	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
++	SetRootComponent(Mesh);
++}
++
++void ABRObjectiveActor::BeginPlay()
++{
++	Super::BeginPlay();
++	if (HasAuthority())
++	{
++		if (ABRGameState* State = GetWorld()->GetGameState<ABRGameState>())
++		{
++			State->RegisterObjective();
++		}
++	}
++}
++
++bool ABRObjectiveActor::CanInteract_Implementation(APawn* InstigatorPawn) const
++{
++	return !bCompleted && IsValid(InstigatorPawn);
++}
++
++FText ABRObjectiveActor::GetInteractionText_Implementation(APawn* InstigatorPawn) const
++{
++	return CanInteract_Implementation(InstigatorPawn) ? InteractionText : FText::GetEmpty();
++}
++
++void ABRObjectiveActor::Interact_Implementation(APawn* InstigatorPawn)
++{
++	CompleteObjective(InstigatorPawn);
++}
++
++void ABRObjectiveActor::CompleteObjective(APawn* CompletingPawn)
++{
++	if (!HasAuthority() || bCompleted || !IsValid(CompletingPawn))
++	{
++		return;
++	}
++
++	bCompleted = true;
++	if (ABRGameState* State = GetWorld()->GetGameState<ABRGameState>())
++	{
++		State->NotifyObjectiveCompleted();
++	}
++	OnObjectiveCompleted(CompletingPawn);
++	OnObjectiveStateChanged(true);
++	ForceNetUpdate();
++}
++
++void ABRObjectiveActor::OnRep_Completed()
++{
++	OnObjectiveStateChanged(bCompleted);
++}
++
++void ABRObjectiveActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
++{
++	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
++	DOREPLIFETIME(ABRObjectiveActor, bCompleted);
++}
+diff --git a/Source/backrooms/World/BRObjectiveActor.h b/Source/backrooms/World/BRObjectiveActor.h
+new file mode 100644
+index 0000000..16ff81f
+--- /dev/null
++++ b/Source/backrooms/World/BRObjectiveActor.h
+@@ -0,0 +1,49 @@
++#pragma once
++
++#include "CoreMinimal.h"
++#include "GameFramework/Actor.h"
++#include "Interaction/BRInteractable.h"
++#include "BRObjectiveActor.generated.h"
++
++class UStaticMeshComponent;
++
++UCLASS()
++class BACKROOMS_API ABRObjectiveActor : public AActor, public IBRInteractable
++{
++	GENERATED_BODY()
++
++public:
++	ABRObjectiveActor();
++
++	virtual bool CanInteract_Implementation(APawn* InstigatorPawn) const override;
++	virtual FText GetInteractionText_Implementation(APawn* InstigatorPawn) const override;
++	virtual void Interact_Implementation(APawn* InstigatorPawn) override;
++	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
++
++	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category = "Backrooms|Objectives")
++	void CompleteObjective(APawn* CompletingPawn);
++
++	UFUNCTION(BlueprintPure, Category = "Backrooms|Objectives")
++	bool IsCompleted() const { return bCompleted; }
++
++protected:
++	virtual void BeginPlay() override;
++
++	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Objectives")
++	TObjectPtr<UStaticMeshComponent> Mesh;
++
++	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Backrooms|Objectives")
++	FText InteractionText = NSLOCTEXT("Backrooms", "CompleteObjective", "Activate objective");
++
++	UPROPERTY(ReplicatedUsing = OnRep_Completed, VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Objectives")
++	bool bCompleted = false;
++
++	UFUNCTION()
++	void OnRep_Completed();
++
++	UFUNCTION(BlueprintImplementableEvent, Category = "Backrooms|Objectives")
++	void OnObjectiveCompleted(APawn* CompletingPawn);
++
++	UFUNCTION(BlueprintImplementableEvent, Category = "Backrooms|Objectives")
++	void OnObjectiveStateChanged(bool bNowCompleted);
++};
+diff --git "a/Saved\\CodexFrameworkBaseline\\Source/backrooms/backrooms.Build.cs" b/Source/backrooms/backrooms.Build.cs
+index b49a82a..f4da7ae 100644
+--- "a/Saved\\CodexFrameworkBaseline\\Source/backrooms/backrooms.Build.cs"
++++ b/Source/backrooms/backrooms.Build.cs
+@@ -7,17 +7,25 @@ public class backrooms : ModuleRules
+ 	public backrooms(ReadOnlyTargetRules Target) : base(Target)
+ 	{
+ 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
++		PublicIncludePaths.Add(ModuleDirectory);
+ 	
+-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
++		PublicDependencyModuleNames.AddRange(new string[]
++		{
++			"Core",
++			"CoreUObject",
++			"Engine",
++			"InputCore",
++			"EnhancedInput",
++			"AIModule",
++			"NavigationSystem",
++			"GameplayTags",
++			"OnlineSubsystem",
++			"OnlineSubsystemUtils"
++		});
+ 
+-		PrivateDependencyModuleNames.AddRange(new string[] {  });
++		PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+ 
+-		// Uncomment if you are using Slate UI
+-		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
+-		
+-		// Uncomment if you are using online features
+-		// PrivateDependencyModuleNames.Add("OnlineSubsystem");
+-
+-		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
++		// GAS is intentionally not included in the vertical-slice framework.
++		// Add GameplayAbilities only after the design requires a larger ability/effect model.
+ 	}
+ }
+diff --git "a/Saved\\CodexFrameworkBaseline\\Source/backrooms.Target.cs" b/Source/backrooms.Target.cs
+index 34a62b4..99a3aaa 100644
+--- "a/Saved\\CodexFrameworkBaseline\\Source/backrooms.Target.cs"
++++ b/Source/backrooms.Target.cs
+@@ -9,6 +9,7 @@ public class backroomsTarget : TargetRules
+ 	{
+ 		Type = TargetType.Game;
+ 		DefaultBuildSettings = BuildSettingsVersion.V7;
++		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8;
+ 
+ 		ExtraModuleNames.AddRange( new string[] { "backrooms" } );
+ 	}
+diff --git "a/Saved\\CodexFrameworkBaseline\\Source/backroomsEditor.Target.cs" b/Source/backroomsEditor.Target.cs
+index e43925f..7af92d8 100644
+--- "a/Saved\\CodexFrameworkBaseline\\Source/backroomsEditor.Target.cs"
++++ b/Source/backroomsEditor.Target.cs
+@@ -9,6 +9,7 @@ public class backroomsEditorTarget : TargetRules
+ 	{
+ 		Type = TargetType.Editor;
+ 		DefaultBuildSettings = BuildSettingsVersion.V7;
++		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_8;
+ 
+ 		ExtraModuleNames.AddRange( new string[] { "backrooms" } );
+ 	}
+warning: in the working copy of 'Config/DefaultEngine.ini', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Config/DefaultGame.ini', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Config/DefaultInput.ini', LF will be replaced by CRLF the next time Git touches it
+diff --git "a/Saved\\CodexFrameworkBaseline\\Config/DefaultEngine.ini" b/Config/DefaultEngine.ini
+index e4a1f1f..96c4ff8 100644
+--- "a/Saved\\CodexFrameworkBaseline\\Config/DefaultEngine.ini"
++++ b/Config/DefaultEngine.ini
+@@ -7,13 +7,13 @@
+ EditorStartupMap=/Game/FirstPerson/Lvl_FirstPerson.Lvl_FirstPerson
+ LocalMapOptions=
+ TransitionMap=
+-bUseSplitscreen=True
++bUseSplitscreen=False
+ TwoPlayerSplitscreenLayout=Horizontal
+ ThreePlayerSplitscreenLayout=FavorTop
+ GameInstanceClass=/Script/Engine.GameInstance
+ GameDefaultMap=/Game/FirstPerson/Lvl_FirstPerson.Lvl_FirstPerson
+ ServerDefaultMap=/Engine/Maps/Entry
+-GlobalDefaultGameMode=/Game/FirstPerson/Blueprints/BP_FirstPersonGameMode.BP_FirstPersonGameMode_C
++GlobalDefaultGameMode=/Script/backrooms.BRGameMode
+ GlobalDefaultServerGameMode=None
+ bOffsetPlayerGamepadIds=False
+ 
+@@ -88,6 +88,12 @@ NearClipPlane=5.000000
+ +ActiveGameNameRedirects=(OldGameName="TP_FirstPersonBP",NewGameName="/Script/backrooms")
+ +ActiveGameNameRedirects=(OldGameName="/Script/TP_FirstPersonBP",NewGameName="/Script/backrooms")
+ 
++[OnlineSubsystem]
++DefaultPlatformService=Null
++
++[OnlineSubsystemNull]
++bEnabled=true
++
+ [/Script/HardwareTargeting.HardwareTargetingSettings]
+ TargetedHardwareClass=Desktop
+ AppliedTargetedHardwareClass=Desktop
+diff --git "a/Saved\\CodexFrameworkBaseline\\Config/DefaultGame.ini" b/Config/DefaultGame.ini
+index 0cdde56..c11c9d3 100644
+--- "a/Saved\\CodexFrameworkBaseline\\Config/DefaultGame.ini"
++++ b/Config/DefaultGame.ini
+@@ -1,6 +1,7 @@
+ [/Script/EngineSettings.GeneralProjectSettings]
+ ProjectID=1E230CD64D85E0CEC7A769B7CA9917AE
+-ProjectName=First Person BP Game Template
++ProjectName=Backrooms Co-op Vertical Slice
++Description=1-4 player cooperative liminal-horror escape framework
+ 
+ [ConsoleVariables]
+ CommonUI.CheckKeyboardFocusAndParentage=1
+diff --git "a/Saved\\CodexFrameworkBaseline\\Config/DefaultInput.ini" b/Config/DefaultInput.ini
+index 4eb2a18..0b808d3 100644
+--- "a/Saved\\CodexFrameworkBaseline\\Config/DefaultInput.ini"
++++ b/Config/DefaultInput.ini
+@@ -118,3 +118,15 @@ DefaultTouchInterface=None
+ [EnhancedInputPlatformSettings_Windows EnhancedInputPlatformSettings]
+ bShouldLogMappingContextRedirects=False
+ 
++[/Script/Engine.InputSettings]
+++AxisMappings=(AxisName="MoveForward",Scale=1.000000,Key=W)
+++AxisMappings=(AxisName="MoveForward",Scale=-1.000000,Key=S)
+++AxisMappings=(AxisName="MoveRight",Scale=1.000000,Key=D)
+++AxisMappings=(AxisName="MoveRight",Scale=-1.000000,Key=A)
+++AxisMappings=(AxisName="Turn",Scale=1.000000,Key=MouseX)
+++AxisMappings=(AxisName="LookUp",Scale=-1.000000,Key=MouseY)
+++ActionMappings=(ActionName="Jump",Key=SpaceBar)
+++ActionMappings=(ActionName="Sprint",Key=LeftShift)
+++ActionMappings=(ActionName="Crouch",Key=LeftControl)
+++ActionMappings=(ActionName="Interact",Key=E)
++
+warning: in the working copy of 'FRAMEWORK.md', LF will be replaced by CRLF the next time Git touches it
+diff --git a/FRAMEWORK.md b/FRAMEWORK.md
+new file mode 100644
+index 0000000..03e3a9e
+--- /dev/null
++++ b/FRAMEWORK.md
+@@ -0,0 +1,38 @@
++# Backrooms Co-op Framework
++
++This UE 5.8 project now contains a native C++ foundation for a 1–4 player cooperative horror-escape vertical slice.
++
++## Implemented
++
++- `ABRGameMode`, replicated `ABRGameState`, and replicated `ABRPlayerState`.
++- First-person `ABRPlayerCharacter` with Enhanced Input hooks plus immediately usable keyboard/mouse fallbacks.
++- Server-authoritative interaction through `UBRInteractionComponent` and `IBRInteractable`.
++- Replicated objectives and all-active-player extraction gating.
++- Replicated downed/revive state suitable for teammate rescue.
++- LAN-first `UBRSessionSubsystem` with host, search, join-first, destroy, and travel operations.
++- Server-owned entity base and AI perception controller for sight/hearing-driven Blueprint or Behavior Tree logic.
++- Automation coverage for objective and extraction rules.
++- Null Online Subsystem configuration for local multi-process testing.
++
++## Blueprint setup
++
++1. Create Blueprint children of `BRPlayerCharacter`, `BRObjectiveActor`, `BRExtractionZone`, and `BREntityCharacter`.
++2. Assign the existing `/Game/Input/IMC_Default`, movement, look, and jump assets to the player Blueprint. Create Sprint, Crouch, and Interact Input Actions when desired; classic keyboard fallbacks already work.
++3. Add objective actors and one extraction zone to a level. Objectives self-register on the server.
++4. Create a lobby widget that retrieves `BRSessionSubsystem` from the Game Instance and calls Host, Find, Join First, or Destroy.
++5. For AI, create a Blueprint child of `BREntityAIController` or attach a Behavior Tree to it. All AI decision-making stays on the server.
++
++## Networking rules
++
++- Clients request interactions; the server revalidates interface, distance, and objective state.
++- Objective counts, level phase, player readiness/downed state, sprint state, and entity state replicate.
++- The server alone performs AI perception, extraction checks, objective completion, and map travel.
++- GAS is intentionally excluded from the MVP. Add it only when abilities, effects, attributes, and prediction justify the extra framework.
++
++## Local test flow
++
++1. Run the editor with `Number of Players = 2–4` and `Net Mode = Play As Listen Server`.
++2. Place at least one objective and one extraction zone.
++3. Complete all objectives on one client and confirm all clients see the same count.
++4. Move every non-downed player into the extraction zone and confirm the server fires team extraction.
++5. Run `Automation RunTests Backrooms.Framework` from Session Frontend or `UnrealEditor-Cmd`.

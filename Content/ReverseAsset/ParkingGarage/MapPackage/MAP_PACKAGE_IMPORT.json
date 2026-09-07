@@ -1,0 +1,910 @@
+{
+  "format_version": 1,
+  "result": "PASS",
+  "source_package": "EscapeTheBackrooms/Content/Maps/Garage/GarageLevel2.umap",
+  "source_engine": "UE4.27 cooked/unversioned",
+  "destination_engine": "UE5.8.1",
+  "destination_map": "/Game/ReverseAsset/ParkingGarage/MapPackage/Maps/L_GarageLevel2",
+  "layout_manifest": "E:\\UNREAL\\ue projects\\backrooms\\work\\garage_map_import_20260903\\GarageLevel2.layout.json",
+  "layout_manifest_sha256": "07155b9eb7c60bdb16fd2112091869b236d2fd5692f9233fc3d6bd518231f6de",
+  "source_exports": 8472,
+  "source_components": 3291,
+  "source_meshes": 45,
+  "imported_meshes": 44,
+  "engine_meshes": 1,
+  "stage_build": {
+    "result": "PASS",
+    "destination_root": "/Game/ReverseAsset/ParkingGarage/MapPackage",
+    "map": "/Game/ReverseAsset/ParkingGarage/MapPackage/Maps/L_GarageLevel2",
+    "errors": [],
+    "imported_meshes": [
+      {
+        "source": "EscapeTheBackrooms/Content/Backrooms/Meshes/SM_Ceiling_4m.SM_Ceiling_4m",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/d3635bfdbe/SM_Ceiling_4m/StaticMeshes/SM_Ceiling_4m.SM_Ceiling_4m",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/DefectPropsVol1/Geometry/WheelsAndTires/SM_TiresBunch_04.SM_TiresBunch_04",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/519411cd13/SM_TiresBunch_04/StaticMeshes/SM_TiresBunch_04.SM_TiresBunch_04",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop",
+        "material_slots": 3,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/DefectPropsVol1/Geometry/WheelsAndTires/SM_TrackBarricade_02.SM_TrackBarricade_02",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/1d3adc464b/SM_TrackBarricade_02/StaticMeshes/SM_TrackBarricade_02.SM_TrackBarricade_02",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop",
+        "material_slots": 2,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/DefectPropsVol1/Geometry/WheelsAndTires/SM_TrafficCone_01.SM_TrafficCone_01",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/75950eaf98/SM_TrafficCone_01/StaticMeshes/SM_TrafficCone_01.SM_TrafficCone_01",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/FPS_Light_Pack/Meshes/Flashlight/SM_Flashlight.SM_Flashlight",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/d5968364e8/SM_Flashlight/StaticMeshes/SM_Flashlight.SM_Flashlight",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Lamp.M_MP_Lamp",
+        "material_slots": 2,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/Elevator/Elevator_Button_Down.Elevator_Button_Down",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/cda55fb84b/Elevator_Button_Down/StaticMeshes/Elevator_Button_Down.Elevator_Button_Down",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Elevator.M_MP_Elevator",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/Elevator/Elevator_Button_UP.Elevator_Button_UP",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/dce095862e/Elevator_Button_UP/StaticMeshes/Elevator_Button_UP.Elevator_Button_UP",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Elevator.M_MP_Elevator",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/Elevator/Elevator_Exterior.Elevator_Exterior",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/9e3a6c02ea/Elevator_Exterior/StaticMeshes/Elevator_Exterior.Elevator_Exterior",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Elevator.M_MP_Elevator",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/Elevator/Elevator_Interior.Elevator_Interior",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/69b6b0dff0/Elevator_Interior/StaticMeshes/Elevator_Interior.Elevator_Interior",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Elevator.M_MP_Elevator",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/Elevator/Elevator_Lamp.Elevator_Lamp",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/295d19e143/Elevator_Lamp/StaticMeshes/Elevator_Lamp.Elevator_Lamp",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Lamp.M_MP_Lamp",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/Fence/Fence_Cube_008.Fence_Cube_008",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/74f3398050/Fence_Cube_008/StaticMeshes/Fence_Cube_008.Fence_Cube_008",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/Fence/Fence.Fence",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/6e371a99c7/Fence/StaticMeshes/Fence.Fence",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/Sm_CeilingLight_Large.Sm_CeilingLight_Large",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/c8e62463a2/Sm_CeilingLight_Large/StaticMeshes/Sm_CeilingLight_Large.Sm_CeilingLight_Large",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Lamp.M_MP_Lamp",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_GroundCarpet.SM_GroundCarpet",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/c4f7e172bd/SM_GroundCarpet/StaticMeshes/SM_GroundCarpet.SM_GroundCarpet",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_LargeFloor.SM_LargeFloor",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/fdeb7b09fa/SM_LargeFloor/StaticMeshes/SM_LargeFloor.SM_LargeFloor",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1SmallColumn.SM_Level1SmallColumn",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/36b3cf5dc3/SM_Level1SmallColumn/StaticMeshes/SM_Level1SmallColumn.SM_Level1SmallColumn",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1Wall_B.SM_Level1Wall_B",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/e2a1d979b6/SM_Level1Wall_B/StaticMeshes/SM_Level1Wall_B.SM_Level1Wall_B",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1Wall_D.SM_Level1Wall_D",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/8401fcb87d/SM_Level1Wall_D/StaticMeshes/SM_Level1Wall_D.SM_Level1Wall_D",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1Wall_E.SM_Level1Wall_E",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/d2bf7c89c9/SM_Level1Wall_E/StaticMeshes/SM_Level1Wall_E.SM_Level1Wall_E",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1Wall_F.SM_Level1Wall_F",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/3c3411d3fd/SM_Level1Wall_F/StaticMeshes/SM_Level1Wall_F.SM_Level1Wall_F",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1Wall.SM_Level1Wall",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/fae7cee00a/SM_Level1Wall/StaticMeshes/SM_Level1Wall.SM_Level1Wall",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1WallMedium.SM_Level1WallMedium",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/59bb033507/SM_Level1WallMedium/StaticMeshes/SM_Level1WallMedium.SM_Level1WallMedium",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Level1WallSmall.SM_Level1WallSmall",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/3e08d5e9ed/SM_Level1WallSmall/StaticMeshes/SM_Level1WallSmall.SM_Level1WallSmall",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_SmallDoor_Door.SM_SmallDoor_Door",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/82cf5d7262/SM_SmallDoor_Door/StaticMeshes/SM_SmallDoor_Door.SM_SmallDoor_Door",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_SmallDoor_Frame.SM_SmallDoor_Frame",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/1c71d31e00/SM_SmallDoor_Frame/StaticMeshes/SM_SmallDoor_Frame.SM_SmallDoor_Frame",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Ventilation_A.SM_Ventilation_A",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/12240bfce5/SM_Ventilation_A/StaticMeshes/SM_Ventilation_A.SM_Ventilation_A",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Ventilation_B.SM_Ventilation_B",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/4e2ffb88cc/SM_Ventilation_B/StaticMeshes/SM_Ventilation_B.SM_Ventilation_B",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Garage/MiddleFloor/SM_Ventilation_C.SM_Ventilation_C",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/45f9a96f5e/SM_Ventilation_C/StaticMeshes/SM_Ventilation_C.SM_Ventilation_C",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Geometry/Cube.Cube",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/eceaf7c880/Cube/StaticMeshes/Cube.Cube",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ModularParking/Floor/SM_mp_Roof_a_6x6.SM_mp_Roof_a_6x6",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/9dd3db9301/SM_mp_Roof_a_6x6/StaticMeshes/SM_mp_Roof_a_6x6.SM_mp_Roof_a_6x6",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 2,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ModularParking/Tube/SM_mp_tube_3_a.SM_mp_tube_3_a",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/1ebd3c4f30/SM_mp_tube_3_a/StaticMeshes/SM_mp_tube_3_a.SM_mp_tube_3_a",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ModularParking/Tube/SM_mp_tube_Or_a.SM_mp_tube_Or_a",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/21d734a478/SM_mp_tube_Or_a/StaticMeshes/SM_mp_tube_Or_a.SM_mp_tube_Or_a",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ModularParking/Tube/SM_mp_tube_Red_I.SM_mp_tube_Red_I",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/7b01bf0bc3/SM_mp_tube_Red_I/StaticMeshes/SM_mp_tube_Red_I.SM_mp_tube_Red_I",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ModularParking/Tube/SM_mp_TubeFire_a.SM_mp_TubeFire_a",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/fefd724f78/SM_mp_TubeFire_a/StaticMeshes/SM_mp_TubeFire_a.SM_mp_TubeFire_a",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ModularParking/Tube/SM_mp_TubeFire_c.SM_mp_TubeFire_c",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/06adda9032/SM_mp_TubeFire_c/StaticMeshes/SM_mp_TubeFire_c.SM_mp_TubeFire_c",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ModularParking/Tube/Sm_mp_vent_I.Sm_mp_vent_I",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/f3e9a27993/Sm_mp_vent_I/StaticMeshes/Sm_mp_vent_I.Sm_mp_vent_I",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Notes/Paper_Crumpled.Paper_Crumpled",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/d688e3b9e6/Paper_Crumpled/StaticMeshes/Paper_Crumpled.Paper_Crumpled",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/Office/Meshes/Modular/SM_Wall_200b.SM_Wall_200b",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/7f10701e51/SM_Wall_200b/StaticMeshes/SM_Wall_200b.SM_Wall_200b",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ParkingGarage/Meshes/SM_Column_A.SM_Column_A",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/a8e6c5b658/SM_Column_A/StaticMeshes/SM_Column_A.SM_Column_A",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/ParkingGarage/Meshes/SM_Manhole.SM_Manhole",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/972f9bd63a/SM_Manhole/StaticMeshes/SM_Manhole.SM_Manhole",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/StorageHouse/Meshes/Props/SM_CartonDrawer_08.SM_CartonDrawer_08",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/c8db19fdb5/SM_CartonDrawer_08/StaticMeshes/SM_CartonDrawer_08.SM_CartonDrawer_08",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/UndergroundFacility/Meshes/SM_Door_01a.SM_Door_01a",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/a93694b344/SM_Door_01a/StaticMeshes/SM_Door_01a.SM_Door_01a",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/UndergroundFacility/Meshes/SM_Door_01b.SM_Door_01b",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/a938c5e414/SM_Door_01b/StaticMeshes/SM_Door_01b.SM_Door_01b",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      },
+      {
+        "source": "EscapeTheBackrooms/Content/UndergroundFacility/Meshes/SM_Wall_01.SM_Wall_01",
+        "asset": "/Game/ReverseAsset/ParkingGarage/MapPackage/Meshes/5e8a8ad8ed/SM_Wall_01/StaticMeshes/SM_Wall_01.SM_Wall_01",
+        "material": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+        "material_slots": 1,
+        "collision": "complex_as_simple"
+      }
+    ],
+    "materials": {
+      "concrete": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Concrete.M_MP_Concrete",
+      "wall": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_WallYellow.M_MP_WallYellow",
+      "metal": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Metal.M_MP_Metal",
+      "elevator": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Elevator.M_MP_Elevator",
+      "lamp": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Lamp.M_MP_Lamp",
+      "prop": "/Game/ReverseAsset/ParkingGarage/MapPackage/Materials/M_MP_Prop.M_MP_Prop"
+    },
+    "geometry_actor_count": 3291,
+    "hidden_geometry_actor_count": 23,
+    "player_start_count": 4,
+    "point_light_count": 65,
+    "spot_light_count": 3,
+    "gameplay_marker_counts": {
+      "BP_DroppedItem_Flashlight_C": 3,
+      "BP_Elevator_Manager_C": 1,
+      "BP_ElevatorButton_C": 3,
+      "BP_HeavyDoor_C": 1,
+      "BP_ItemSpawnerAny_C": 5,
+      "BP_SingleDoor_C": 22,
+      "BP_SkinStealer_C": 1,
+      "BP_SpawnerManager_C": 1,
+      "BP_Utility_Elevator_C": 3
+    }
+  },
+  "stage_validation": {
+    "mode": "stage",
+    "result": "PASS",
+    "map": "/Game/ReverseAsset/ParkingGarage/MapPackage/Maps/L_GarageLevel2",
+    "errors": [],
+    "world_class": "World",
+    "actors": 3403,
+    "static_mesh_actors": 3291,
+    "player_starts": 4,
+    "point_lights": 65,
+    "spot_lights": 3,
+    "gameplay_markers": 40,
+    "referenced_meshes": 45,
+    "imported_meshes": 44,
+    "native_materials": 6,
+    "missing_meshes": []
+  },
+  "package_file_count_before_manifest": 107,
+  "package_files": [
+    {
+      "path": "Maps/L_GarageLevel2.umap",
+      "bytes": 6145328,
+      "sha256": "bbc185520fd4165a342d615fba1c9373f9ba9a158b4914f886a0c1106289d08d"
+    },
+    {
+      "path": "Materials/M_MP_Concrete.uasset",
+      "bytes": 5334,
+      "sha256": "f2915da9e56ef528808340f057b1c18e4a9db8c976020424e37f9be2374f9681"
+    },
+    {
+      "path": "Materials/M_MP_Elevator.uasset",
+      "bytes": 5334,
+      "sha256": "90520ee79ca09230ae73ab08b12bb32d2f9026bcea5c051e44b6dc09759a4676"
+    },
+    {
+      "path": "Materials/M_MP_Lamp.uasset",
+      "bytes": 5799,
+      "sha256": "50d15eb141797063aba2de25a51f412d53a3e3da81ba22782679282a33b39ee2"
+    },
+    {
+      "path": "Materials/M_MP_Metal.uasset",
+      "bytes": 5319,
+      "sha256": "4f8b00ecc26b2ff5490405be1c1a7dc09de148de4ea5b095c5977fcb2f0a8e0d"
+    },
+    {
+      "path": "Materials/M_MP_Prop.uasset",
+      "bytes": 5314,
+      "sha256": "c995d4c6e635f629fc84063ea1a0955c55744e95705177712a5a2d0ef339e273"
+    },
+    {
+      "path": "Materials/M_MP_WallYellow.uasset",
+      "bytes": 5344,
+      "sha256": "e2b7ad330935f48a6989fc4c169d5856e8f46586187edbb44220675d540fab1b"
+    },
+    {
+      "path": "Meshes/06adda9032/SM_mp_TubeFire_c/Materials/M_mp_Tube_C.uasset",
+      "bytes": 64795,
+      "sha256": "150e63caaf99f8653a56366567e4ba845f5aeb988502f8ec20caaf40774f3761"
+    },
+    {
+      "path": "Meshes/06adda9032/SM_mp_TubeFire_c/StaticMeshes/SM_mp_TubeFire_c.uasset",
+      "bytes": 134272,
+      "sha256": "9dc5590e9debfa1ae65699b46d4c0266347d77e865fac79d96047893e15ad2d0"
+    },
+    {
+      "path": "Meshes/12240bfce5/SM_Ventilation_A/Materials/M_VentilationBox.uasset",
+      "bytes": 64839,
+      "sha256": "3fd4986b43647da50da10b38a86569ec268feae97362d2e574cc913a3d737308"
+    },
+    {
+      "path": "Meshes/12240bfce5/SM_Ventilation_A/StaticMeshes/SM_Ventilation_A.uasset",
+      "bytes": 146926,
+      "sha256": "4c9f0e1cf6b4c82b811d214c0857da7b69899fea19febef178ecff46ac5d1be7"
+    },
+    {
+      "path": "Meshes/1c71d31e00/SM_SmallDoor_Frame/Materials/M_SmallDoor.uasset",
+      "bytes": 64808,
+      "sha256": "91fac9e379cb524d7edfb3a0b4528c77e7154a82397d351aac753bdc0c2c03d9"
+    },
+    {
+      "path": "Meshes/1c71d31e00/SM_SmallDoor_Frame/StaticMeshes/SM_SmallDoor_Frame.uasset",
+      "bytes": 78298,
+      "sha256": "4ebdfa7ac87b375c5fffc4f9dabee5f8f70c55edfc92e2daf43950e3740f9afc"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_01.uasset",
+      "bytes": 64863,
+      "sha256": "ccd43f1c2a64d67fb3d59a5c68bf0215f394e8e794fc1594f9bba3bb6bd0a3f7"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_011.uasset",
+      "bytes": 64898,
+      "sha256": "1c4d844b3b7157ff0173e179c8f28b1fc46e19ac3ed3e59695be99372b1c6dfc"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_012.uasset",
+      "bytes": 64898,
+      "sha256": "58a9ef8c8f9fee6b486f0d457af3c2cac330a8950532b4e0b8290a9fcf6fe32d"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_013.uasset",
+      "bytes": 64898,
+      "sha256": "f93be845ad6064fb7e6d66d8c3c609c209d1f4f57fe01b7a55a57429bdc476cb"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_014.uasset",
+      "bytes": 64898,
+      "sha256": "6dbaff01a0cb66f1ff6c74b0697248fb87703e75431965863c1ae3e93a9dde2d"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_015.uasset",
+      "bytes": 64898,
+      "sha256": "36282f37931746954a0f17e751e1ce339b0b7987bedb4d3448bc078769f63029"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_02.uasset",
+      "bytes": 64863,
+      "sha256": "d32c9ef7ce1c1a5029bdd4c9151602e9da8367c1fad4b8c0a1488df5be7e2616"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/Materials/MI_Tires_021.uasset",
+      "bytes": 64898,
+      "sha256": "23abe0bb880aad8878301dbc4dcde3fb4987f9f2d66f895b5ca3f12aa516674f"
+    },
+    {
+      "path": "Meshes/1d3adc464b/SM_TrackBarricade_02/StaticMeshes/SM_TrackBarricade_02.uasset",
+      "bytes": 230485,
+      "sha256": "2bc27907a925a8c4dee7ba5abc89dcc7a6382bb14973d140819232693f76dced"
+    },
+    {
+      "path": "Meshes/1ebd3c4f30/SM_mp_tube_3_a/Materials/M_mp_tube_B.uasset",
+      "bytes": 64762,
+      "sha256": "73ee3631108d324b398332c4fa0720718b521856fa6dfcf98cf401011d8ffcee"
+    },
+    {
+      "path": "Meshes/1ebd3c4f30/SM_mp_tube_3_a/StaticMeshes/SM_mp_tube_3_a.uasset",
+      "bytes": 81546,
+      "sha256": "57c97342fc748db33e4a53b1652428ee6467eba95818aeaabfb40bd670eda87d"
+    },
+    {
+      "path": "Meshes/21d734a478/SM_mp_tube_Or_a/Materials/M_mp_tube_B.uasset",
+      "bytes": 64774,
+      "sha256": "e48cdc8db81a2484f27818fe4025f3aefa47bf6ce850a347388bc5da6bed9e97"
+    },
+    {
+      "path": "Meshes/21d734a478/SM_mp_tube_Or_a/StaticMeshes/SM_mp_tube_Or_a.uasset",
+      "bytes": 82621,
+      "sha256": "8bb6127e56386cf745cff9fc450b5ad77c388c8173761c8fe44629350a4107e0"
+    },
+    {
+      "path": "Meshes/295d19e143/Elevator_Lamp/Materials/WorldGridMaterial.uasset",
+      "bytes": 64806,
+      "sha256": "8a5661e8ac98b8a1c53c489dc4071346d63a4dfc542f74db852ebc811ba187f1"
+    },
+    {
+      "path": "Meshes/295d19e143/Elevator_Lamp/StaticMeshes/Elevator_Lamp.uasset",
+      "bytes": 106400,
+      "sha256": "26a89ca0dfce6d4044ec8873d5c4e928333ea7159f285a8db45d3aac464afc7e"
+    },
+    {
+      "path": "Meshes/36b3cf5dc3/SM_Level1SmallColumn/Materials/M_Level1Wall.uasset",
+      "bytes": 64843,
+      "sha256": "0b3f3959f80da2f4a31a760c34c6c05157a0bcf1a84e2a2118bbd4fb0cfa7476"
+    },
+    {
+      "path": "Meshes/36b3cf5dc3/SM_Level1SmallColumn/StaticMeshes/SM_Level1SmallColumn.uasset",
+      "bytes": 78896,
+      "sha256": "dc6fad9329889687f8c48d259a626f6c20644ce69244050f922f89a74ce8b2e4"
+    },
+    {
+      "path": "Meshes/3c3411d3fd/SM_Level1Wall_F/Materials/M_Level1Wall.uasset",
+      "bytes": 64783,
+      "sha256": "03980e71399faac181ca29babbe9d1211c4bca15a6793357814b14d485624ae0"
+    },
+    {
+      "path": "Meshes/3c3411d3fd/SM_Level1Wall_F/StaticMeshes/SM_Level1Wall_F.uasset",
+      "bytes": 79072,
+      "sha256": "1c51f97c4bbad8d604529dda0db17f119e8bef4908b90a2b65b07383f00d06cc"
+    },
+    {
+      "path": "Meshes/3e08d5e9ed/SM_Level1WallSmall/Materials/M_Level1Wall.uasset",
+      "bytes": 64819,
+      "sha256": "ffa8ca936ef084a81719c661cdd18874941135511d47aa8b2e863c409e15f090"
+    },
+    {
+      "path": "Meshes/3e08d5e9ed/SM_Level1WallSmall/StaticMeshes/SM_Level1WallSmall.uasset",
+      "bytes": 77262,
+      "sha256": "3594371d17c92ddf0c614417c133b64e779ffd96f51b68a98fe6976b140ad553"
+    },
+    {
+      "path": "Meshes/45f9a96f5e/SM_Ventilation_C/Materials/M_VentilationBox.uasset",
+      "bytes": 64839,
+      "sha256": "bc7ab008be163c50a6581b1f717c5b476db59d2651fcc6fde43079f2cf1c4b9b"
+    },
+    {
+      "path": "Meshes/45f9a96f5e/SM_Ventilation_C/StaticMeshes/SM_Ventilation_C.uasset",
+      "bytes": 156768,
+      "sha256": "0b7882f93f735936f05733131d0dcfd5118ec122ec7b0d1a94fc5c1e92d415bc"
+    },
+    {
+      "path": "Meshes/4e2ffb88cc/SM_Ventilation_B/Materials/M_VentilationBox.uasset",
+      "bytes": 64839,
+      "sha256": "fa4cf1ab2f494a4066d552c0f49bb90a05860274afb8e5865f113010da4619d2"
+    },
+    {
+      "path": "Meshes/4e2ffb88cc/SM_Ventilation_B/StaticMeshes/SM_Ventilation_B.uasset",
+      "bytes": 185761,
+      "sha256": "17fc3f83aa447ac7cf0799bf0daa7dd7ad29242ae06347cf98526660b6565de5"
+    },
+    {
+      "path": "Meshes/519411cd13/SM_TiresBunch_04/Materials/MI_Tires_01.uasset",
+      "bytes": 64815,
+      "sha256": "f1fd1d38c71f3140fd513601eba7711a97c272392d14b3bf5f47132046e047aa"
+    },
+    {
+      "path": "Meshes/519411cd13/SM_TiresBunch_04/Materials/MI_Tires_02.uasset",
+      "bytes": 64815,
+      "sha256": "162dcea303cedec0082ef718e996cb5a9f33c59870a373d59610a32d2f9e7fe3"
+    },
+    {
+      "path": "Meshes/519411cd13/SM_TiresBunch_04/Materials/MI_Tires_03.uasset",
+      "bytes": 64815,
+      "sha256": "2f6161a694e547b616281ef38646732403714b0152e891322d6cf30d6e3acaa7"
+    },
+    {
+      "path": "Meshes/519411cd13/SM_TiresBunch_04/StaticMeshes/SM_TiresBunch_04.uasset",
+      "bytes": 317562,
+      "sha256": "8c4967d05b868bfc650c3942e1af2bb6822ec8ed0bf0aea84b448a5069a7c286"
+    },
+    {
+      "path": "Meshes/59bb033507/SM_Level1WallMedium/Materials/M_Level1Wall.uasset",
+      "bytes": 64831,
+      "sha256": "e15d65b952a2ab5baa709516407b5b813016444d53da2cfbd44467aec3a41f42"
+    },
+    {
+      "path": "Meshes/59bb033507/SM_Level1WallMedium/StaticMeshes/SM_Level1WallMedium.uasset",
+      "bytes": 77507,
+      "sha256": "323ab8bcd8f424068e655694da9eb22c7df42f3c96774f3287a180d2c26a41c2"
+    },
+    {
+      "path": "Meshes/5e8a8ad8ed/SM_Wall_01/Materials/M_Brick_Wall_02_POM.uasset",
+      "bytes": 64825,
+      "sha256": "fda2f8605e10803d3701c6db66a327afd74750256e4cbcea2d6a6ec46ffb7f62"
+    },
+    {
+      "path": "Meshes/5e8a8ad8ed/SM_Wall_01/StaticMeshes/SM_Wall_01.uasset",
+      "bytes": 76939,
+      "sha256": "b65ff90907f6e00e04abf555ab154e6105e31463d597490dcd6d73522eff08a2"
+    },
+    {
+      "path": "Meshes/69b6b0dff0/Elevator_Interior/Materials/M_Elevator_Interior.uasset",
+      "bytes": 64876,
+      "sha256": "627832ce58957160f5b687ad727da7cec85e9fe6fae9b3ef082504deaf5d67ab"
+    },
+    {
+      "path": "Meshes/69b6b0dff0/Elevator_Interior/StaticMeshes/Elevator_Interior.uasset",
+      "bytes": 257438,
+      "sha256": "82c9710b4dacf02ba2e950c35818e73aa7aa70e20b015767e5d84409c113ec7a"
+    },
+    {
+      "path": "Meshes/6e371a99c7/Fence/Materials/M_Fence.uasset",
+      "bytes": 64596,
+      "sha256": "7f7cf9346fa6e7d79e292f864407d7eaf267077c28769ce3ef22e16322ec9704"
+    },
+    {
+      "path": "Meshes/6e371a99c7/Fence/StaticMeshes/Fence.uasset",
+      "bytes": 129002,
+      "sha256": "0048b471b331300255422547a971b205b24953ba9fe79c96bebce9f7473b9435"
+    },
+    {
+      "path": "Meshes/74f3398050/Fence_Cube_008/Materials/M_Fence.uasset",
+      "bytes": 64704,
+      "sha256": "7ca9e3cdc61e67fbc793ebaeba5c6b804c5081cbb7a305b4fd557f2d1a5713eb"
+    },
+    {
+      "path": "Meshes/74f3398050/Fence_Cube_008/StaticMeshes/Fence_Cube_008.uasset",
+      "bytes": 121987,
+      "sha256": "94a14c1e3b8621a1c73f6e34b36afa8cf5acbdcb90ab786d8cd6348039c4955c"
+    },
+    {
+      "path": "Meshes/75950eaf98/SM_TrafficCone_01/Materials/MI_TrafficCone_01.uasset",
+      "bytes": 64902,
+      "sha256": "de81be7e87c987d4a618543808bd3682057ad67716a41cc2a5b18ff7ee9952d5"
+    },
+    {
+      "path": "Meshes/75950eaf98/SM_TrafficCone_01/StaticMeshes/SM_TrafficCone_01.uasset",
+      "bytes": 92286,
+      "sha256": "f7808d8ab25335607cf218ee73ec8309b172ea82208309ea82d8f22d7c5f1deb"
+    },
+    {
+      "path": "Meshes/7b01bf0bc3/SM_mp_tube_Red_I/Materials/M_mp_tube_B.uasset",
+      "bytes": 64786,
+      "sha256": "4abbe182c96c1e63b961df014f47d83e1a1dfd1727efc08a70c4be208d924b73"
+    },
+    {
+      "path": "Meshes/7b01bf0bc3/SM_mp_tube_Red_I/StaticMeshes/SM_mp_tube_Red_I.uasset",
+      "bytes": 82075,
+      "sha256": "4229be841ce07f09a835b26f2f30ba6e9df48c7d76973c5559a6a2a633f86eb5"
+    },
+    {
+      "path": "Meshes/7f10701e51/SM_Wall_200b/Materials/M_Blank.uasset",
+      "bytes": 64707,
+      "sha256": "69605200525de09084dcefd5eb2c58c23ca4bdd2df645c46d09ee73ec9944f50"
+    },
+    {
+      "path": "Meshes/7f10701e51/SM_Wall_200b/StaticMeshes/SM_Wall_200b.uasset",
+      "bytes": 76944,
+      "sha256": "6a7faffa8bfab694d274ebcc73d1d17db2274db1f32ed58a079695efc94c7a86"
+    },
+    {
+      "path": "Meshes/82cf5d7262/SM_SmallDoor_Door/Materials/M_SmallDoor.uasset",
+      "bytes": 64796,
+      "sha256": "8c9c4b78f866ae740e716d0dd8a50449d3e6e918e602884178c1b80971ebd8b5"
+    },
+    {
+      "path": "Meshes/82cf5d7262/SM_SmallDoor_Door/StaticMeshes/SM_SmallDoor_Door.uasset",
+      "bytes": 120006,
+      "sha256": "4d56b034373babaa1994a12d21ef2e852aee1e1c3163b1d2da5550ba08b8220c"
+    },
+    {
+      "path": "Meshes/8401fcb87d/SM_Level1Wall_D/Materials/M_Level1Wall.uasset",
+      "bytes": 64783,
+      "sha256": "d7d31bdcfaaa3e0217619a2f5b3bf5465e0961e6d3e99b0af3df7b2b04790ecf"
+    },
+    {
+      "path": "Meshes/8401fcb87d/SM_Level1Wall_D/StaticMeshes/SM_Level1Wall_D.uasset",
+      "bytes": 77076,
+      "sha256": "2060aad9be3f360b33695ce38a01c83870f0cac7e03ccdd589e33cff8b60872c"
+    },
+    {
+      "path": "Meshes/972f9bd63a/SM_Manhole/Materials/M_Manhole.uasset",
+      "bytes": 64703,
+      "sha256": "1be19f774f7734eb3c2897180651ebe9eb15e2568bcaeb1ef0290b08b5b3855c"
+    },
+    {
+      "path": "Meshes/972f9bd63a/SM_Manhole/StaticMeshes/SM_Manhole.uasset",
+      "bytes": 77654,
+      "sha256": "eb9f0878cc6fdf4d7f1e3a1eb065213099158e45fa17c719da0dd4b1199f531d"
+    },
+    {
+      "path": "Meshes/9dd3db9301/SM_mp_Roof_a_6x6/Materials/M_mp_Floor_Concrete_a.uasset",
+      "bytes": 64898,
+      "sha256": "36b236ed650e60278e3b1ec9dbd9680348e8d8af187cf431e43a7aadb4a2dc32"
+    },
+    {
+      "path": "Meshes/9dd3db9301/SM_mp_Roof_a_6x6/Materials/M_mp_MaterDifMetRoughtAO_Inst.uasset",
+      "bytes": 64986,
+      "sha256": "ffaa992c910da782d9b86e0499fca503493b0bee1d56c269b1d55a6aef24f9fa"
+    },
+    {
+      "path": "Meshes/9dd3db9301/SM_mp_Roof_a_6x6/StaticMeshes/SM_mp_Roof_a_6x6.uasset",
+      "bytes": 82453,
+      "sha256": "231ca25090251ca4db77871d9b8afefcdb344b92bb896e226da29ed226dd50aa"
+    },
+    {
+      "path": "Meshes/9e3a6c02ea/Elevator_Exterior/Materials/M_ElevatorExterior.uasset",
+      "bytes": 64865,
+      "sha256": "0a969a6fa4fbd0bdfc0a63594df9d9d04a7df96c0a7cdde97aefa8ca358341c8"
+    },
+    {
+      "path": "Meshes/9e3a6c02ea/Elevator_Exterior/StaticMeshes/Elevator_Exterior.uasset",
+      "bytes": 95870,
+      "sha256": "d6076998e11806548beaa757fee81ed6a5b8c2854c7a2f53e32c8b4fc7956afd"
+    },
+    {
+      "path": "Meshes/a8e6c5b658/SM_Column_A/Materials/M_Structure.uasset",
+      "bytes": 64737,
+      "sha256": "c20822a009bc4d3a8ab22c119afa54348704a1d13048840e330e0d7183b1517e"
+    },
+    {
+      "path": "Meshes/a8e6c5b658/SM_Column_A/StaticMeshes/SM_Column_A.uasset",
+      "bytes": 80827,
+      "sha256": "07cf786f244e11d50cd82b9b3e821faafacb99f538e1dad1bc752a77f709bc8c"
+    },
+    {
+      "path": "Meshes/a93694b344/SM_Door_01a/Materials/MI_Door_01.uasset",
+      "bytes": 64738,
+      "sha256": "1010a52031d35723c5a60493491b250aac34d24bb033dd2d5a4028184ad9a652"
+    },
+    {
+      "path": "Meshes/a93694b344/SM_Door_01a/StaticMeshes/SM_Door_01a.uasset",
+      "bytes": 137393,
+      "sha256": "d59d05d70f28c8a13c42ef88001e18b21007eceaeecf5a0dd5b6775038c2a87d"
+    },
+    {
+      "path": "Meshes/a938c5e414/SM_Door_01b/Materials/MI_Door_01.uasset",
+      "bytes": 64738,
+      "sha256": "cbcf95d2000aefb7c0beb36928675254956d910987a9d7fb91ced210042ee66e"
+    },
+    {
+      "path": "Meshes/a938c5e414/SM_Door_01b/StaticMeshes/SM_Door_01b.uasset",
+      "bytes": 89682,
+      "sha256": "239ef09d5661d9e630d15ec08ff519027e27255c6218addeb83293eb0a589ce8"
+    },
+    {
+      "path": "Meshes/c4f7e172bd/SM_GroundCarpet/Materials/M_Level1Ceiling.uasset",
+      "bytes": 64816,
+      "sha256": "807302d97bbd1f34558dff0b9b02ab4cd89f1a87a12352e159b0f20f3d618732"
+    },
+    {
+      "path": "Meshes/c4f7e172bd/SM_GroundCarpet/StaticMeshes/SM_GroundCarpet.uasset",
+      "bytes": 77116,
+      "sha256": "8b7989c3e5d4d4b71cb4a1fabf0ab42ac86d8462247343e2d6a5a27b7b3c3a59"
+    },
+    {
+      "path": "Meshes/c8db19fdb5/SM_CartonDrawer_08/Materials/M_CartonDrawer.uasset",
+      "bytes": 64864,
+      "sha256": "da6b28d57b726272c9b900a80118edee67aa9890220b8d22c9d2b8a906c9e01b"
+    },
+    {
+      "path": "Meshes/c8db19fdb5/SM_CartonDrawer_08/StaticMeshes/SM_CartonDrawer_08.uasset",
+      "bytes": 84911,
+      "sha256": "80b7a6e090e6660b6e552989715a61ba398dff67b029167c68b0911797e69c0d"
+    },
+    {
+      "path": "Meshes/c8e62463a2/Sm_CeilingLight_Large/Materials/MI_Ceiling_Light_Inst.uasset",
+      "bytes": 64954,
+      "sha256": "03958b06be537217e62574633458e941abae4e7eb2b9cb59fade4d0b970b638e"
+    },
+    {
+      "path": "Meshes/c8e62463a2/Sm_CeilingLight_Large/StaticMeshes/Sm_CeilingLight_Large.uasset",
+      "bytes": 99990,
+      "sha256": "5e74007f0fb0c898e49cf94011ee31ed4e82a30ba65073e327120e243f860bce"
+    },
+    {
+      "path": "Meshes/cda55fb84b/Elevator_Button_Down/Materials/M_ElevatorExterior.uasset",
+      "bytes": 64901,
+      "sha256": "ab802aea8cfc28b6fdc6d96b5a38e463125144851cdc1aea94afb2406ee85d55"
+    },
+    {
+      "path": "Meshes/cda55fb84b/Elevator_Button_Down/StaticMeshes/Elevator_Button_Down.uasset",
+      "bytes": 91529,
+      "sha256": "5407c2b6e3b3f8f30a985412bfc81712f5e27fd55117fbb01f05241bad08c70a"
+    },
+    {
+      "path": "Meshes/d2bf7c89c9/SM_Level1Wall_E/Materials/M_Level1Wall.uasset",
+      "bytes": 64783,
+      "sha256": "881cab43e2f33c648dc57c6133bce01535e98b0bcf9a91d642cfda748b56f538"
+    },
+    {
+      "path": "Meshes/d2bf7c89c9/SM_Level1Wall_E/StaticMeshes/SM_Level1Wall_E.uasset",
+      "bytes": 78933,
+      "sha256": "ea3aa1bc255f246b6f366d9d22f675b3cf45ad0af0ac521be4ff23e73baf04f6"
+    },
+    {
+      "path": "Meshes/d3635bfdbe/SM_Ceiling_4m/Materials/MI_Ceiling.uasset",
+      "bytes": 64722,
+      "sha256": "c2a800bb9ecc7a822638fc48e44cf69706978533359233642dd67e9c5aae5f28"
+    },
+    {
+      "path": "Meshes/d3635bfdbe/SM_Ceiling_4m/StaticMeshes/SM_Ceiling_4m.uasset",
+      "bytes": 76442,
+      "sha256": "bf6ec482f3d8c049945382066bbee98c779092df629ff90882de8cfed87b9a42"
+    },
+    {
+      "path": "Meshes/d5968364e8/SM_Flashlight/Materials/M_Flashlight.uasset",
+      "bytes": 64785,
+      "sha256": "fda4ccc8759a6cdcfec690748d0942db531d4fde7ca7d07c8aec65810634d8e0"
+    },
+    {
+      "path": "Meshes/d5968364e8/SM_Flashlight/Materials/M_Flashlight_Glass.uasset",
+      "bytes": 64851,
+      "sha256": "f3afd6f9b441dee9fa7009bd20c00d793753b0b2cefc465e3a64e6e68bc08a16"
+    },
+    {
+      "path": "Meshes/d5968364e8/SM_Flashlight/StaticMeshes/SM_Flashlight.uasset",
+      "bytes": 129008,
+      "sha256": "c233590612bf1f89b35bbb24a912c744909b1c8307b29188c3eaa8fea5ca1b12"
+    },
+    {
+      "path": "Meshes/d688e3b9e6/Paper_Crumpled/Materials/Crumpled_Paper_rm4lpgp0_inst.uasset",
+      "bytes": 64930,
+      "sha256": "85abaea7aa51f3601b754a4eb03a2e79f8d8f54a7ae48227cdc38c87f122cb18"
+    },
+    {
+      "path": "Meshes/d688e3b9e6/Paper_Crumpled/Materials/Crumpled_Paper_rm4lpgp0_inst1.uasset",
+      "bytes": 64941,
+      "sha256": "9de35d904f6e633c1b02c5f3bc943ff35c0db9ca2fd6a65a81c90997da529f76"
+    },
+    {
+      "path": "Meshes/d688e3b9e6/Paper_Crumpled/StaticMeshes/Paper_Crumpled.uasset",
+      "bytes": 77336,
+      "sha256": "73cf715f2717deccc5bb7c021c4e37f9159a7992dd82d08d4aa2a123497632d3"
+    },
+    {
+      "path": "Meshes/dce095862e/Elevator_Button_UP/Materials/M_ElevatorExterior.uasset",
+      "bytes": 64877,
+      "sha256": "91caa01fdcdb910b3e88b4f31f2599842c129f009ba302e5b59b10ad64ba9e1d"
+    },
+    {
+      "path": "Meshes/dce095862e/Elevator_Button_UP/StaticMeshes/Elevator_Button_UP.uasset",
+      "bytes": 91318,
+      "sha256": "bc701d8166c89209c3517b315c18e8eb625131c9d17c90488addb1c390c1895e"
+    },
+    {
+      "path": "Meshes/e2a1d979b6/SM_Level1Wall_B/Materials/M_Level1Wall.uasset",
+      "bytes": 64783,
+      "sha256": "7638a05c67fb4c1bef7d8f23ad70bb3e906f6adf719efcac85e56e3dee7d68ff"
+    },
+    {
+      "path": "Meshes/e2a1d979b6/SM_Level1Wall_B/StaticMeshes/SM_Level1Wall_B.uasset",
+      "bytes": 79028,
+      "sha256": "32abb1a42a5abb53211cd4083a96ebc6600d49a1e0dcd91dd061f46e0d587aa5"
+    },
+    {
+      "path": "Meshes/eceaf7c880/Cube/Materials/WorldGridMaterial.uasset",
+      "bytes": 64686,
+      "sha256": "4edcc33da448f64c9be9662f08f787ec7e6151f47e18a7e9f5c19f9891617caf"
+    },
+    {
+      "path": "Meshes/eceaf7c880/Cube/StaticMeshes/Cube.uasset",
+      "bytes": 77029,
+      "sha256": "a2e7b6480df015aca1090866afa924909c288e16ad5c0cebeaa4617ec1177e56"
+    },
+    {
+      "path": "Meshes/f3e9a27993/Sm_mp_vent_I/Materials/M_mp_YellowTube_Inst.uasset",
+      "bytes": 64846,
+      "sha256": "59c0d56da79e58afb5256d816fca34025cffc3468a2f0c40ee1586e7e9bbd544"
+    },
+    {
+      "path": "Meshes/f3e9a27993/Sm_mp_vent_I/StaticMeshes/Sm_mp_vent_I.uasset",
+      "bytes": 85875,
+      "sha256": "7070de86ff3b71babaaf39b64f617272204a0ab166165c405167da4bf052992d"
+    },
+    {
+      "path": "Meshes/fae7cee00a/SM_Level1Wall/Materials/M_Level1Wall.uasset",
+      "bytes": 64759,
+      "sha256": "9e2d432dd98618b5a3abc7b16be689a03fc4fb6d2deb4fb9d9a2b11f6f336d01"
+    },
+    {
+      "path": "Meshes/fae7cee00a/SM_Level1Wall/StaticMeshes/SM_Level1Wall.uasset",
+      "bytes": 77362,
+      "sha256": "ef175f077135735efe732019d8f9d6b76ad0b0122ce244902ad3138179fec3d6"
+    },
+    {
+      "path": "Meshes/fdeb7b09fa/SM_LargeFloor/Materials/M_Level1Floor.uasset",
+      "bytes": 64770,
+      "sha256": "71cb3ce697c3d753e33c44a23af4a754fb761914cead33d290d6bc33826c7828"
+    },
+    {
+      "path": "Meshes/fdeb7b09fa/SM_LargeFloor/StaticMeshes/SM_LargeFloor.uasset",
+      "bytes": 77515,
+      "sha256": "a0efe7bdb816d1928a8d1a3dc3cacdeb8d5bbad4d6566e3de91cbc65cadcf06e"
+    },
+    {
+      "path": "Meshes/fefd724f78/SM_mp_TubeFire_a/Materials/M_mp_Tube_C.uasset",
+      "bytes": 64795,
+      "sha256": "a44a3f7ee74ba841bac3c0fcc76af79b3640502b7525cbef3a9bc3fcdf0012f4"
+    },
+    {
+      "path": "Meshes/fefd724f78/SM_mp_TubeFire_a/StaticMeshes/SM_mp_TubeFire_a.uasset",
+      "bytes": 92884,
+      "sha256": "5cc05b1d79b8c4483ac9c309d0f801ac3b1de2874ea07afc8c37e084955a119f"
+    }
+  ]
+}

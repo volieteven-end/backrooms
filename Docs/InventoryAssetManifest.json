@@ -1,0 +1,1024 @@
+{
+  "export": {
+    "source_archive": "D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks\\EscapeTheBackrooms-WindowsNoEditor.pak",
+    "selected": [
+      {
+        "source": "/Game/UI/Textures/Inventory/BackgroundOverlay",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/BackgroundOverlay.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/Inventory/BagpackBG",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/BagpackBG.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/Inventory/DeactiveIconBG",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/DeactiveIconBG.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/Inventory/Full-streatch-background-9-patch",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/Full-streatch-background-9-patch.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/Inventory/keyInstructor",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/keyInstructor.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/Inventory/MainTitleBG",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/MainTitleBG.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/Inventory/mouseClickIcon",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/mouseClickIcon.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/Inventory/PanelTitle",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/Inventory/PanelTitle.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/UI/Textures/SanityIcon",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/UI/Textures/SanityIcon.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/NewInventorySystem/UI/Textures/Sanity/Level-1",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/NewInventorySystem/UI/Textures/Sanity/Level-1.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/NewInventorySystem/UI/Textures/Sanity/Level-2",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/NewInventorySystem/UI/Textures/Sanity/Level-2.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/NewInventorySystem/UI/Textures/Sanity/Level-3",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/NewInventorySystem/UI/Textures/Sanity/Level-3.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/NewInventorySystem/UI/Textures/Sanity/Option-1",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/NewInventorySystem/UI/Textures/Sanity/Option-1.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/NewInventorySystem/UI/Textures/Sanity/T_SanityBG_Red",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/NewInventorySystem/UI/Textures/Sanity/T_SanityBG_Red.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/NewInventorySystem/Inventory/UI/Icons/NewIcons/Flashlight",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/NewInventorySystem/Inventory/UI/Icons/NewIcons/Flashlight.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/NewInventorySystem/Inventory/UI/Icons/NewIcons/T_UI_Inv_Icon_AlmondWater",
+        "kind": "art",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-png",
+          "-noanim",
+          "-nomesh",
+          "/Game/NewInventorySystem/Inventory/UI/Icons/NewIcons/T_UI_Inv_Icon_AlmondWater.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/Flashlight/Player_Equip_Flashlight_Anim_Hips_HipsAction",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/Flashlight/Player_Equip_Flashlight_Anim_Hips_HipsAction.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/Flashlight/Player_Flashlight_Hold__6__Anim_Hips_HipsAction",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/Flashlight/Player_Flashlight_Hold__6__Anim_Hips_HipsAction.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/Flashlight/Player_Interact_Flashlight_Anim",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/Flashlight/Player_Interact_Flashlight_Anim.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/Grab/PlayerItemGrab_Anim",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/Grab/PlayerItemGrab_Anim.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/Grab/PlayerPutItemInventory_Anim",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/Grab/PlayerPutItemInventory_Anim.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/DrinkCan/PlayerDrinkCan__2__Anim_Hips_HipsAction",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/DrinkCan/PlayerDrinkCan__2__Anim_Hips_HipsAction.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/DrinkCan/PlayerEquipCan__1__Anim_Hips_HipsAction",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/DrinkCan/PlayerEquipCan__1__Anim_Hips_HipsAction.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Player/Arms/DrinkCan/PlayerHoldCan__1__Anim_Hips_HipsAction",
+        "kind": "animation",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "-nooverwrite",
+          "-notex",
+          "-nomesh",
+          "/Game/Player/Arms/DrinkCan/PlayerHoldCan__1__Anim_Hips_HipsAction.uasset"
+        ],
+        "exit": 0
+      },
+      {
+        "source": "/Game/Items/AlmondWater/AWC_low",
+        "kind": "mesh",
+        "command": [
+          "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+          "-export",
+          "-gltf",
+          "-png",
+          "-noanim",
+          "-game=ue4.27",
+          "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+          "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported",
+          "/Game/Items/AlmondWater/AWC_low.uasset"
+        ],
+        "exit": 0
+      }
+    ],
+    "files": [
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\SanityIcon.png",
+        "sha256": "0d2e04a5ad0257bddf5bfad852234263a4a95eaefc264d58a036bdf4c40c56d3",
+        "bytes": 85282
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\BackgroundOverlay.png",
+        "sha256": "6f214c2fa17e95081bdf4cb296af32d6570fbdf30c56533195d325d9b8746e00",
+        "bytes": 1882883
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\BagpackBG.png",
+        "sha256": "6f2f8e7fb93454f462f793ac46d351e7d14e08eb1bed38c114dacf368f0e636f",
+        "bytes": 412996
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\DeactiveIconBG.png",
+        "sha256": "41ba72b5760a5b4c21f92ecd357d364d5edc64a6d6ac9f7f5873b480d65dd6ea",
+        "bytes": 21113
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\Full-streatch-background-9-patch.png",
+        "sha256": "7600a4cf7236cee5b56d8cb30769964bde8d9f995c880a543092aab329433f0a",
+        "bytes": 426
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\keyInstructor.png",
+        "sha256": "756716f9ac517ab55c07216ece9bee942101af654d4a031eef4b37d913d3a13d",
+        "bytes": 64286
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\MainTitleBG.png",
+        "sha256": "4ab6849485a8d04bbdd5bc34c2368d1c73bdd1e962b76ada254f5e3cbd80f3b3",
+        "bytes": 42225
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\mouseClickIcon.png",
+        "sha256": "f091b6256d43c8b115ca6ffd37bcc7fa59d7d9d5da3bb08f6d4d03373cd27fec",
+        "bytes": 1735
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\PanelTitle.png",
+        "sha256": "bfde3879a2c75d6aff850219342dde6322cdf08f9991bfb31094299ef1674c24",
+        "bytes": 26467
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerDrinkCan__2__Anim_Hips_HipsAction.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerDrinkCan__2__Anim_Hips_HipsAction.props.txt",
+        "sha256": "c1bdde4deff0b57a00d9ab3e7d5643a5bc1356d0d4a9beb5feb03fb9d4ad5b21",
+        "bytes": 13700
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerDrinkCan__2__Anim_Hips_HipsAction.psa",
+        "sha256": "79f44936b4623cd0bdf4fdbe998c6c6bb50b10d00e010638f93784609dba8173",
+        "bytes": 219456
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerEquipCan__1__Anim_Hips_HipsAction.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerEquipCan__1__Anim_Hips_HipsAction.props.txt",
+        "sha256": "54938e4dcce6685258273a7b3448ac2f84688e7e3a67d1ec0dcf8f57353e8ed9",
+        "bytes": 13698
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerEquipCan__1__Anim_Hips_HipsAction.psa",
+        "sha256": "f481f7b5cb38fb248dfef4c989b263a1ab864585db77bfc48e6558675f9f69b2",
+        "bytes": 73632
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerHoldCan__1__Anim_Hips_HipsAction.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerHoldCan__1__Anim_Hips_HipsAction.props.txt",
+        "sha256": "f1a128faf1ba892f8802eee848d1b4524b2a0040ebf49a07130303fbdd6eea36",
+        "bytes": 13707
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerHoldCan__1__Anim_Hips_HipsAction.psa",
+        "sha256": "61e03195ca4887fe385fa15f754b27dcc3b7b134f63ffeaa55f46bf83f603ab7",
+        "bytes": 178688
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Equip_Flashlight_Anim_Hips_HipsAction.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Equip_Flashlight_Anim_Hips_HipsAction.props.txt",
+        "sha256": "4f6c7a30158da47d62c3a622326364a9c0d305bf5542da7335172e9138f3d632",
+        "bytes": 13705
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Equip_Flashlight_Anim_Hips_HipsAction.psa",
+        "sha256": "dde5f32de3c6139469eca1cadf67e6ccac51c564d35b92c139023323737a6f79",
+        "bytes": 37568
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Flashlight_Hold__6__Anim_Hips_HipsAction.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Flashlight_Hold__6__Anim_Hips_HipsAction.props.txt",
+        "sha256": "cee475afea7c68f13291d8927ed3f97fe3cd7bc86328186e11193b6ff7cbb91a",
+        "bytes": 13710
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Flashlight_Hold__6__Anim_Hips_HipsAction.psa",
+        "sha256": "602e1e67470254ee74f95d976ecd5a89098fed99183b28db4cbaed7b264d7617",
+        "bytes": 163008
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Interact_Flashlight_Anim.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Interact_Flashlight_Anim.props.txt",
+        "sha256": "e7f2a601c7a2dca0e4edce729904f3bc3fa7f59569634ebcdbed158a0c893b1f",
+        "bytes": 13692
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Interact_Flashlight_Anim.psa",
+        "sha256": "4f604d0ce3f65f6f5b7551b316db5c78c3934bdef51b1a1871d6ab6ce2fc80e6",
+        "bytes": 45408
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerItemGrab_Anim.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerItemGrab_Anim.props.txt",
+        "sha256": "559f2260710e498963ed68cca61a33d9fd95bc72fd69c6269d9dee0079f07dc7",
+        "bytes": 13686
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerItemGrab_Anim.psa",
+        "sha256": "cc8271bdb7834de62d0dd29e47bf8b65e0936e2815a9f3e4b7935d4ce1e913ce",
+        "bytes": 81472
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerPutItemInventory_Anim.config",
+        "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+        "bytes": 823
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerPutItemInventory_Anim.props.txt",
+        "sha256": "281056e2ee2cab2a3823103e4353789636913cb5069e582d6edb68142421a5e0",
+        "bytes": 13696
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerPutItemInventory_Anim.psa",
+        "sha256": "699695aab2196b581f4cff2088aa502f6be3b12625fe3eff059837d97238afaa",
+        "bytes": 53248
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Level-1.png",
+        "sha256": "2d89f0c55ed7dfce3838042478d323d96a3a87e399349d323fed4d2c8ac2dd8d",
+        "bytes": 86273
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Level-2.png",
+        "sha256": "452ec77f4538d4ea49c62994cd466624b5d72d1942b65bd9011b6a2b2eee661d",
+        "bytes": 104454
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Level-3.png",
+        "sha256": "560505ec4af6588a99a4d737871ba77c790726d10f2d36026dd47e306672bbbc",
+        "bytes": 128622
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Option-1.png",
+        "sha256": "65d348c5862548087f80b9d789e3379bbc034e6dd82fa5dac3f8982a464297f5",
+        "bytes": 50319
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\T_SanityBG_Red.png",
+        "sha256": "8315d6eec87d30e7fd37d35c3f39df9b042052269817ac88e8ccea49a6d1325a",
+        "bytes": 20738
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\Inventory\\UI\\Icons\\NewIcons\\Flashlight.png",
+        "sha256": "e796d979531f69896fc60453ed5a5d4b22cec74e014d9d8871e8c60cd4a27f9f",
+        "bytes": 3157020
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\Inventory\\UI\\Icons\\NewIcons\\T_UI_Inv_Icon_AlmondWater.png",
+        "sha256": "7809aff534512e297ab54e556ac1c8f49aeb348fac4b4d2608f3c4cbbbd9e7d6",
+        "bytes": 1152562
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Items\\AlmondWater\\AWC_BaseColor.png",
+        "sha256": "04c429127fc28a019eb06e473a04ed617c5e31ed5c3206ef4a167583c059d4f5",
+        "bytes": 2506797
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Items\\AlmondWater\\AWC_low.bin",
+        "sha256": "323db752390bf3a9cdca001ed8cfee9805beb525887f2e381171906e7850f20c",
+        "bytes": 156856
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Items\\AlmondWater\\AWC_low.gltf",
+        "sha256": "d3e9b48eda8eb31ea182432a00995c27c67d880177a52967f17cc377f39adb0d",
+        "bytes": 2342
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Items\\AlmondWater\\AWC_MAT.mat",
+        "sha256": "6579921f7fb573263f934e82d6343ad5a6e360b94117db369bf6e13741114971",
+        "bytes": 60
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Items\\AlmondWater\\AWC_MAT.props.txt",
+        "sha256": "fd7e345aecacde072bc4329a595da009b66a69feb700d15c6fd8d943f4821a4a",
+        "bytes": 1938
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Items\\AlmondWater\\AWC_Normal.png",
+        "sha256": "192ae1c66adcc78186c13bf5ed93e962eecc8ea50b4fb9b2c2ee994d47d38300",
+        "bytes": 3335787
+      },
+      {
+        "path": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Items\\AlmondWater\\AWC_ORM.png",
+        "sha256": "469f7372cbb782d08f3a6adc5a6a1ae2c2c0a853762d252accef8afe292d537f",
+        "bytes": 3431282
+      }
+    ]
+  },
+  "import_art": [
+    {
+      "asset": "/Game/UI/Inventory/Art/Flashlight.Flashlight",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\Inventory\\UI\\Icons\\NewIcons\\Flashlight.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/T_UI_Inv_Icon_AlmondWater.T_UI_Inv_Icon_AlmondWater",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\Inventory\\UI\\Icons\\NewIcons\\T_UI_Inv_Icon_AlmondWater.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/Level_1.Level_1",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Level-1.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/Level_2.Level_2",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Level-2.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/Level_3.Level_3",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Level-3.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/Option_1.Option_1",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Option-1.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/T_SanityBG_Red.T_SanityBG_Red",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\T_SanityBG_Red.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/SanityIcon.SanityIcon",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\SanityIcon.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/BackgroundOverlay.BackgroundOverlay",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\BackgroundOverlay.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/BagpackBG.BagpackBG",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\BagpackBG.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/DeactiveIconBG.DeactiveIconBG",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\DeactiveIconBG.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/Full_streatch_background_9_patch.Full_streatch_background_9_patch",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\Full-streatch-background-9-patch.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/keyInstructor.keyInstructor",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\keyInstructor.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/MainTitleBG.MainTitleBG",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\MainTitleBG.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/mouseClickIcon.mouseClickIcon",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\mouseClickIcon.png"
+    },
+    {
+      "asset": "/Game/UI/Inventory/Art/PanelTitle.PanelTitle",
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\UI\\Textures\\Inventory\\PanelTitle.png"
+    }
+  ],
+  "animations": [
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerDrinkCan__2__Anim_Hips_HipsAction.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Drink.A_Arms_Drink",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 136,
+      "source_fps": 30.22222137451172,
+      "ue_frames": 135,
+      "ue_keys": 136,
+      "ue_play_length": 4.5,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FD148) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    },
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerEquipCan__1__Anim_Hips_HipsAction.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Can_Equip.A_Arms_Can_Equip",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 43,
+      "source_fps": 30.71428680419922,
+      "ue_frames": 42,
+      "ue_keys": 43,
+      "ue_play_length": 1.4,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FD110) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    },
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\DrinkCan\\PlayerHoldCan__1__Anim_Hips_HipsAction.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Can_Hold.A_Arms_Can_Hold",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 110,
+      "source_fps": 30.27522850036621,
+      "ue_frames": 109,
+      "ue_keys": 110,
+      "ue_play_length": 3.6333333333333333,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FDFC0) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    },
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Equip_Flashlight_Anim_Hips_HipsAction.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Flashlight_Equip.A_Arms_Flashlight_Equip",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 20,
+      "source_fps": 26.3157901763916,
+      "ue_frames": 23,
+      "ue_keys": 24,
+      "ue_play_length": 0.7666666666666667,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FDFA0) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    },
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Flashlight_Hold__6__Anim_Hips_HipsAction.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Flashlight_Hold.A_Arms_Flashlight_Hold",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 100,
+      "source_fps": 25.252525329589844,
+      "ue_frames": 119,
+      "ue_keys": 120,
+      "ue_play_length": 3.966666666666667,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FD250) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    },
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Flashlight\\Player_Interact_Flashlight_Anim.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Flashlight_Toggle.A_Arms_Flashlight_Toggle",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 25,
+      "source_fps": 26.041667938232422,
+      "ue_frames": 29,
+      "ue_keys": 30,
+      "ue_play_length": 0.9666666666666667,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FDF70) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    },
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerItemGrab_Anim.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Grab.A_Arms_Grab",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 48,
+      "source_fps": 30.638296127319336,
+      "ue_frames": 47,
+      "ue_keys": 48,
+      "ue_play_length": 1.5666666666666667,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FDDB0) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    },
+    {
+      "source": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\Exported\\Game\\Player\\Arms\\Grab\\PlayerPutItemInventory_Anim.psa",
+      "asset": "/Game/ReverseAsset/Player/Animations/Arms/A_Arms_Stow.A_Arms_Stow",
+      "skeleton": "/Game/ReverseAsset/Player/Characters/Arms/ArmsMesh/SkeletalMeshes/ArmsMesh_Skeleton.ArmsMesh_Skeleton",
+      "source_bones": 49,
+      "imported_bone_tracks": 49,
+      "source_frames": 30,
+      "source_fps": 31.034482955932617,
+      "ue_frames": 29,
+      "ue_keys": 30,
+      "ue_play_length": 0.9666666666666667,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000022DCD4FE058) {numerator: 30, denominator: 1}>",
+      "coordinate_conversion": "ActorX position (X,Y,Z)->(X,-Y,Z); non-root quaternion (X,Y,Z,W)->(X,-Y,Z,W); root quaternion (X,Y,Z,W)->(-X,Y,-Z,W)"
+    }
+  ],
+  "generated_locomotion": {
+    "assets": [
+      "A_BR_Arms_Walk",
+      "A_BR_Arms_Run"
+    ],
+    "source": "authored compatible 49-bone tracks, not original game walk/run clips"
+  },
+  "battery_icon": "UMG basic image geometry, not an extracted texture",
+  "water_dimensions": {
+    "bounds": "<Struct 'Box' (0x0000029AA524CE00) {min: {x: -4.070355, y: -3.988702, z: -6.809282}, max: {x: 4.042589, y: 4.047467, z: 7.462685}, is_valid: True}>",
+    "height_cm": 14.271966934204102
+  },
+  "assets": [
+    {
+      "path": "Content/UI/Inventory/Art/BackgroundOverlay.uasset",
+      "bytes": 1600721,
+      "sha256": "9eb58d7e79951acafaf251bbf08bccac8c4801d9077f5969b9995aaa7ff62352"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/BagpackBG.uasset",
+      "bytes": 346150,
+      "sha256": "8ea0ad3d345cef6cc491e0051a6d2ef5a6459ef8c7bb9fa52186396be0eb11d6"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/DeactiveIconBG.uasset",
+      "bytes": 26495,
+      "sha256": "2ccce2466a2541d33efcf2c65632c2671076b846a04a23a643bd2c0a57d04b08"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/Flashlight.uasset",
+      "bytes": 2470928,
+      "sha256": "8b4ad396692c09b3163dd697241416157cf0234aa5c71f7ea2f34452c50e3370"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/Full_streatch_background_9_patch.uasset",
+      "bytes": 11519,
+      "sha256": "635237235b9778f4b450e0a4a8f96241efb3998d81873d68e588b924144dfdae"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/keyInstructor.uasset",
+      "bytes": 70360,
+      "sha256": "0b4ecde8b69aec3c0f54a113852a88c894a999d8dc22dabecee0b538b2b56d93"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/Level_1.uasset",
+      "bytes": 87765,
+      "sha256": "055bae1f8a1b22f2a56b433ff8276ea8a15daf7058415656bf95d05832ab5d91"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/Level_2.uasset",
+      "bytes": 108291,
+      "sha256": "910df9f47d36f947260acbcdfdddede82f77a9fa5124a30999a1e65a2a78f516"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/Level_3.uasset",
+      "bytes": 127505,
+      "sha256": "07be8bb7855d2ac1a768f8d7877495730e21a5a8827ba70a7d864f8ee4e06953"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/MainTitleBG.uasset",
+      "bytes": 49118,
+      "sha256": "b67a01554ddfb43425728ca80cf756765a21c964bbe112e3569fd8c45e5d0af3"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/mouseClickIcon.uasset",
+      "bytes": 12988,
+      "sha256": "b47c2ab05342bfb1350d17e0c9098d71f231aef14f0bcda56f2ca42aa8f98186"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/Option_1.uasset",
+      "bytes": 40616,
+      "sha256": "a063c52e047ad3955e79e805b26016ead40e1457af05c9d0510be06f1a7694d1"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/PanelTitle.uasset",
+      "bytes": 37706,
+      "sha256": "467e2fb4d95a6f60449c43a6084c42fa5eb2e38e1cf4e20f1d5cbca6829276d0"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/SanityIcon.uasset",
+      "bytes": 89486,
+      "sha256": "d0c946064f3b886e622fb5ea1360856fffb8b5b63df254c8b8e55b54f20dcdb6"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/T_SanityBG_Red.uasset",
+      "bytes": 21602,
+      "sha256": "61f4c016551776decb783c07c304c8b114d4038447fdd762021e23422466c093"
+    },
+    {
+      "path": "Content/UI/Inventory/Art/T_UI_Inv_Icon_AlmondWater.uasset",
+      "bytes": 937444,
+      "sha256": "7e3604bb35315b666cec93eddda92167c77dab5d89b4f46ae990c8ddf7f05a0a"
+    },
+    {
+      "path": "Content/UI/Inventory/Widgets/WBP_Inventory.uasset",
+      "bytes": 368873,
+      "sha256": "65bf42baa681479ca852c2bbe67ad23cb050596e5e98fe6333f076c05c2b4512"
+    },
+    {
+      "path": "Content/Gameplay/Items/AlmondWater/M_AlmondWater.uasset",
+      "bytes": 6696,
+      "sha256": "c6796b91fbd9a1df7d792ec06ca687dc5c488c7f495d0609d5ab34cc2365ffec"
+    },
+    {
+      "path": "Content/Gameplay/Items/AlmondWater/SM_AlmondWater.uasset",
+      "bytes": 203847,
+      "sha256": "1eac0a851a195fed88cd5879faea643503cba4ee61dce7b87f0b2fd038dd6748"
+    },
+    {
+      "path": "Content/Gameplay/Items/AlmondWater/Textures/AWC_BaseColor.uasset",
+      "bytes": 2195019,
+      "sha256": "d08a3416634414a10054d0e9733b64f2107b7944570e83021ab74329d46b662f"
+    },
+    {
+      "path": "Content/Gameplay/Items/AlmondWater/Textures/AWC_Normal.uasset",
+      "bytes": 2927807,
+      "sha256": "ea782259478b1dfbebbc05bb7c91e484665ed46c48b92d82e2ecfc3ae7fa5744"
+    },
+    {
+      "path": "Content/Gameplay/Items/AlmondWater/Textures/AWC_ORM.uasset",
+      "bytes": 3093197,
+      "sha256": "fd47c3ffc88a458a092f8754965538f804aba300774b7310e1903738d109b300"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Can_Equip.uasset",
+      "bytes": 64487,
+      "sha256": "986da2b7be2acad6b02e5acb5902fc82367fd218346c94973d1ef653c40a163f"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Can_Hold.uasset",
+      "bytes": 73222,
+      "sha256": "ba44bd79174a185af7351d807698d2c44100a0cd2fb95f328f339627819b25b9"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Drink.uasset",
+      "bytes": 465530,
+      "sha256": "ad427e3b5b7d799b3dac69614ec433b386fede2b880af84dbd0da5d71772d29a"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Flashlight_Equip.uasset",
+      "bytes": 59043,
+      "sha256": "870b56ced422fd155b6ddd14667758760f89504b99f6e7fbbe4d006cdc3f1c2b"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Flashlight_Hold.uasset",
+      "bytes": 67490,
+      "sha256": "41d7544881667cbba60eaeba8a9ba537aad1b37b87783f450d6176c32725a69c"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Flashlight_Toggle.uasset",
+      "bytes": 62695,
+      "sha256": "2db219d02fce6a11a786306841b18f594e7d4f366e9e9ac7c8cee1913534ecd4"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Grab.uasset",
+      "bytes": 161139,
+      "sha256": "78378e75068ae1eb301f9e1ca8e68310b8f3cf40d7cc4a6c739e44620eed7abd"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Arms_Stow.uasset",
+      "bytes": 60723,
+      "sha256": "827e00305da9e5be991c18cc988e939e36b9b9989c77f958c33465c259403dfe"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_BR_Arms_Run.uasset",
+      "bytes": 57467,
+      "sha256": "662614536b1ad2835cab9cad3925ebcb5819228d30f9167e22c30a23ca0f13b2"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_BR_Arms_Walk.uasset",
+      "bytes": 60031,
+      "sha256": "9b44404ebaedcdc9db9a4441a917db356a312d92edc904c64fef7837f2193cd7"
+    },
+    {
+      "path": "Content/ReverseAsset/Player/Animations/Arms/A_Player_Arms_Idle.uasset",
+      "bytes": 96159,
+      "sha256": "0392e2514db17a83595a4a06f2e0ade903199712dee636d446980eeed53a5f81"
+    },
+    {
+      "path": "Content/Gameplay/Player/BP_BRPlayerCharacter.uasset",
+      "bytes": 28145,
+      "sha256": "4f60310491b823e921cda02fea0fa9aa94cd4d84debbf86c1838493c9fa706ab"
+    }
+  ]
+}

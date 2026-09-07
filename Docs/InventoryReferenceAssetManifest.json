@@ -1,0 +1,338 @@
+{
+  "command": [
+    "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+    "-export",
+    "-game=ue4.27",
+    "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+    "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection",
+    "-png",
+    "-gltf",
+    "FPS_Light_Pack/Meshes/Flashlight/SM_Flashlight.uasset",
+    "FPS_Light_Pack/Textures/Flashlight/T_Flashlight_ALB.uasset",
+    "FPS_Light_Pack/Textures/Flashlight/T_Flashlight_M_MSK.uasset",
+    "FPS_Light_Pack/Textures/Flashlight/T_Flashlight_NRM.uasset",
+    "Items/AlmondConcentrate/Almond_Bottle_BaseColor.uasset",
+    "Items/AlmondConcentrate/Almond_Bottle_Body.uasset",
+    "Items/AlmondConcentrate/Almond_Bottle_Cap.uasset",
+    "Items/AlmondConcentrate/Almond_Bottle_Normal.uasset",
+    "Items/AlmondConcentrate/Almond_Bottle_OcclusionRoughnessMetallic.uasset",
+    "NewInventorySystem/Inventory/UI/Icons/NewIcons/T_UI_Inv_Icon_AlmondConcentrate.uasset",
+    "NewInventorySystem/UI/Textures/Sanity/cropassets__1_.uasset",
+    "NewInventorySystem/UI/Textures/Sanity/Option-1.uasset",
+    "Player/Arms/Bottle/Player_Drink_Bottle_Anim_Hips_HipsAction.uasset",
+    "Player/Arms/Bottle/Player_Equip_Bottle__2__Anim_Hips_HipsAction.uasset",
+    "Player/Arms/Bottle/Player_Hold_Bottle_Anim_Hips_HipsAction.uasset"
+  ],
+  "exit": 0,
+  "packages": [
+    {
+      "path": "EscapeTheBackrooms/Content/FPS_Light_Pack/Meshes/Flashlight/SM_Flashlight.uasset",
+      "offset": 5232990208,
+      "stored_size": 1395,
+      "pak_sha1": "2b2d041228aad55a422d9302d192cf3c77a9e6c2",
+      "compression": "Zlib"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/FPS_Light_Pack/Textures/Flashlight/T_Flashlight_ALB.uasset",
+      "offset": 5233074741,
+      "stored_size": 738,
+      "pak_sha1": "d217f774d0407fd1547817728d42c3bf53170673",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/FPS_Light_Pack/Textures/Flashlight/T_Flashlight_M_MSK.uasset",
+      "offset": 5233249293,
+      "stored_size": 776,
+      "pak_sha1": "92562dbab194e875b78884f14449f7e75b560d66",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/FPS_Light_Pack/Textures/Flashlight/T_Flashlight_NRM.uasset",
+      "offset": 5234038784,
+      "stored_size": 950,
+      "pak_sha1": "301619961b8422174fc1b77e5f0ef4287ae717d8",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Items/AlmondConcentrate/Almond_Bottle_BaseColor.uasset",
+      "offset": 8937093120,
+      "stored_size": 741,
+      "pak_sha1": "5bb63040c43a3da169e4789a38506047ead01559",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Items/AlmondConcentrate/Almond_Bottle_Body.uasset",
+      "offset": 8937881600,
+      "stored_size": 1394,
+      "pak_sha1": "f151961286b87dcb44d9eb38c8ea5ed4a95f7dbc",
+      "compression": "Zlib"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Items/AlmondConcentrate/Almond_Bottle_Cap.uasset",
+      "offset": 8937926656,
+      "stored_size": 1397,
+      "pak_sha1": "dba8c356496cfd62e75dca5dfac64cc7546a7368",
+      "compression": "Zlib"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Items/AlmondConcentrate/Almond_Bottle_Normal.uasset",
+      "offset": 8937965568,
+      "stored_size": 947,
+      "pak_sha1": "aadb162778706939c3f399155c94f49baafb4134",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Items/AlmondConcentrate/Almond_Bottle_OcclusionRoughnessMetallic.uasset",
+      "offset": 8938542123,
+      "stored_size": 775,
+      "pak_sha1": "50bd2078ca404af181ddaf9685b9bf5cc170c6a1",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/NewInventorySystem/Inventory/UI/Icons/NewIcons/T_UI_Inv_Icon_AlmondConcentrate.uasset",
+      "offset": 20561614848,
+      "stored_size": 814,
+      "pak_sha1": "cf3f0f3e8b5b967f09555e7800d46aba249456ba",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/NewInventorySystem/UI/Textures/Sanity/cropassets__1_.uasset",
+      "offset": 20575813632,
+      "stored_size": 782,
+      "pak_sha1": "93c30b15b1824f33f15db370b98d29944e0c1953",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/NewInventorySystem/UI/Textures/Sanity/Option-1.uasset",
+      "offset": 20576430080,
+      "stored_size": 770,
+      "pak_sha1": "8d6581cdd22eae1a22270b22d90859b7f0058b15",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Player/Arms/Bottle/Player_Drink_Bottle_Anim_Hips_HipsAction.uasset",
+      "offset": 21273229312,
+      "stored_size": 1512,
+      "pak_sha1": "b7acc89f914626a6da67a8fbf229c27c85810794",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Player/Arms/Bottle/Player_Equip_Bottle__2__Anim_Hips_HipsAction.uasset",
+      "offset": 21273241600,
+      "stored_size": 1520,
+      "pak_sha1": "612f4ba52a73e5e2de68d704c3aaa00f53cdd64a",
+      "compression": "None"
+    },
+    {
+      "path": "EscapeTheBackrooms/Content/Player/Arms/Bottle/Player_Hold_Bottle_Anim_Hips_HipsAction.uasset",
+      "offset": 21273245696,
+      "stored_size": 1510,
+      "pak_sha1": "f8de782942a881500c1a1a65a651fef177221f4f",
+      "compression": "None"
+    }
+  ],
+  "exports": [
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Drink_Bottle_Anim_Hips_HipsAction.config",
+      "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+      "bytes": 823
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Drink_Bottle_Anim_Hips_HipsAction.props.txt",
+      "sha256": "de11da71be6d3e682dcd82e81fad68855a34e43b757ce1ce26906f279185dd93",
+      "bytes": 13701
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Drink_Bottle_Anim_Hips_HipsAction.psa",
+      "sha256": "c1f7e7eab7676e85683921872056cfcd3369cac11beb21ecbd5d4003e4ec7704",
+      "bytes": 266496
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Equip_Bottle__2__Anim_Hips_HipsAction.config",
+      "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+      "bytes": 823
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Equip_Bottle__2__Anim_Hips_HipsAction.props.txt",
+      "sha256": "920fee3208807c75eb859fc654946b548be1f16c7ddd239cd07f61e48d1b44e5",
+      "bytes": 13713
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Equip_Bottle__2__Anim_Hips_HipsAction.psa",
+      "sha256": "19d49fad82dc34c338b78895aaa65b9758f977af8744318c296d991c0a702f22",
+      "bytes": 37568
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Hold_Bottle_Anim_Hips_HipsAction.config",
+      "sha256": "7e4f680ddabe1fdd1c501ff83262d6cd9ceeb2d7399776f539da5527a48092ae",
+      "bytes": 823
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Hold_Bottle_Anim_Hips_HipsAction.props.txt",
+      "sha256": "b3ee95bdc80a25f9206e5f0094d36811544c64ca95311fee189172f138d15382",
+      "bytes": 13700
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Player\\Arms\\Bottle\\Player_Hold_Bottle_Anim_Hips_HipsAction.psa",
+      "sha256": "2a419393a269fac2d3862507c13192d841807f0d7e4bbd76b4e765c534dce170",
+      "bytes": 163008
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\cropassets__1_.png",
+      "sha256": "e8bd26496b42c36f2a30419d432203ca39f63c5384bcd4be40e6cb1cc59cb332",
+      "bytes": 224629
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\NewInventorySystem\\UI\\Textures\\Sanity\\Option-1.png",
+      "sha256": "65d348c5862548087f80b9d789e3379bbc034e6dd82fa5dac3f8982a464297f5",
+      "bytes": 50319
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\NewInventorySystem\\Inventory\\UI\\Icons\\NewIcons\\T_UI_Inv_Icon_AlmondConcentrate.png",
+      "sha256": "cf720437c678f8d05356cabf74d4ee94b40cc1ef5f9ca7da5276afc79ea59d01",
+      "bytes": 1684377
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle.mat",
+      "sha256": "23007af789ff30fd5f869533cae9ef3526ff3144a9f34bef07103a4e6aa0e087",
+      "bytes": 113
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle.props.txt",
+      "sha256": "3f0209f8e52debdded69a2f3077930beabc70b76363ff889a27cf930bbc9aa13",
+      "bytes": 2239
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle_BaseColor.png",
+      "sha256": "51763c3a2be5f918e591dfee8621f14b19da29f2db2d4fcde355a2ce82cc9ffa",
+      "bytes": 1504209
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle_Body.bin",
+      "sha256": "fb107ce3263182070cb35b6f24d7656eee09c186c355fc63d905148a33c3b696",
+      "bytes": 32048
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle_Body.gltf",
+      "sha256": "43da21523ccd7a4858ad470f985f3ce25b03b9bec37f32c5dfd94de92e193eff",
+      "bytes": 2375
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle_Cap.bin",
+      "sha256": "a6b6436430b12f090a4932f3406b3628b3916bb4d6f79f8c6414aefcfc7d0cee",
+      "bytes": 39672
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle_Cap.gltf",
+      "sha256": "006ea07a9fda0d93666028a58c8e93bafc1b6c5808cdd249da3a6e3cab57e981",
+      "bytes": 2368
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle_Normal.png",
+      "sha256": "cd06910afd195baab7835313ee594b2672f8cd75a66b1f761300686bc31379f2",
+      "bytes": 592309
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\Items\\AlmondConcentrate\\Almond_Bottle_OcclusionRoughnessMetallic.png",
+      "sha256": "cdcdb23fca1d17d3e1f64bea3d106f10a1ca45b95feaaf6d4a853649f099bf32",
+      "bytes": 2538965
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Textures\\Flashlight\\T_Flashlight_ALB.png",
+      "sha256": "b1e64183bcda5fcb39f34723cea7d64e479cf806e411c1484542d9f7e7c5ffd7",
+      "bytes": 342225
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Textures\\Flashlight\\T_Flashlight_M_MSK.png",
+      "sha256": "2c2c9c24596a4b975645b320d6d77021e5f229619652cec7a80aaaa7243bedb2",
+      "bytes": 1743213
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Textures\\Flashlight\\T_Flashlight_NRM.png",
+      "sha256": "3380233021a1865b15eb62756680e10b725b3213a6c8ab228975d07780489dca",
+      "bytes": 1986433
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Textures\\Lighter\\T_Lighter_ALB.png",
+      "sha256": "9456842f2fb5ca4b6ee3c80da5922798b043392d102e3db4ddeb845e2378dbf1",
+      "bytes": 252825
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Textures\\Lighter\\T_Lighter_M_MSK.png",
+      "sha256": "817926464d51e13c5ee9b28749dbe9fb03a4b1ecc716f36086ed6e7eaaf34b46",
+      "bytes": 1260354
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Textures\\Lighter\\T_Lighter_NRM.png",
+      "sha256": "f9393c7ee61d6bcb26f65e67279d685e8b6b4a4ec93826522d2487ffa2b862ad",
+      "bytes": 773682
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Meshes\\Flashlight\\SM_Flashlight.bin",
+      "sha256": "b5610923a109b1dcb5156a8d2af59b9b96c2c544e8d45998bfedf3bbd294fc54",
+      "bytes": 56264
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Meshes\\Flashlight\\SM_Flashlight.gltf",
+      "sha256": "6d64997cbce50b596d32834a4777a24cf76dbd8452baee0a6769f21baf46991f",
+      "bytes": 4189
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Materials\\Flashlight\\M_Flashlight.mat",
+      "sha256": "e36392dff32d673e0e8ea9663dc72f15e0bd68a76df3f46574d1c7408bf6d6ed",
+      "bytes": 154
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Materials\\Flashlight\\M_Flashlight.props.txt",
+      "sha256": "293cfe45667002c685d430ae00214a14e94204a8b9f21076d166498caedb4a22",
+      "bytes": 1760
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Materials\\Lighter\\M_Lighter.mat",
+      "sha256": "b4cddbd403d0a4186f1ad40955482a9c143e313ffe9072989e559076211da5b4",
+      "bytes": 71
+    },
+    {
+      "file": "E:\\Reverse Assets\\EscapeTheBackrooms\\Inventory\\ReferenceCorrection\\Game\\FPS_Light_Pack\\Materials\\Lighter\\M_Lighter.props.txt",
+      "sha256": "2684ee1d5c779200d4b7f55eed1b369990fa142f2756141697633ff353144cf4",
+      "bytes": 3215
+    }
+  ],
+  "metadata": {
+    "BPCharacter_Demo": {
+      "path": "E:\\UNREAL\\ue projects\\backrooms\\work\\inventory_visual_match_20260906\\source_metadata\\BPCharacter_Demo.json",
+      "sha256": "84bb79226fc814cf2f03bc1db4d51f00766b6dda730ae7b489147cc1e407dbe1"
+    },
+    "ArmsMesh_Skeleton": {
+      "path": "E:\\UNREAL\\ue projects\\backrooms\\work\\inventory_visual_match_20260906\\source_metadata\\ArmsMesh_Skeleton.json",
+      "sha256": "012e0e3db9018463d7b21ce691fb7b7f3d2ff9262c32643021abcf5904e0fe25"
+    },
+    "BP_Item_Flashlight": {
+      "path": "E:\\UNREAL\\ue projects\\backrooms\\work\\inventory_visual_match_20260906\\source_metadata\\BP_Item_Flashlight.json",
+      "sha256": "6a815edd81e43466114a7d5bb8229f640669d92002854e7a7591095b51b7aee7"
+    },
+    "DT_Items": {
+      "path": "E:\\UNREAL\\ue projects\\backrooms\\work\\inventory_visual_match_20260906\\source_metadata\\DT_Items.json",
+      "sha256": "19455d2c9eb1f6362383356a5ba37e1bf585c408beceadc1a56747aaebc29066"
+    },
+    "UI_Inventory": {
+      "path": "E:\\UNREAL\\ue projects\\backrooms\\work\\inventory_visual_match_20260906\\source_metadata\\UI_Inventory.json",
+      "sha256": "0a3571512f122a7a8cb81fe00fbffcc7984dbba2448d6c56b3c8464a7a284a60"
+    },
+    "UI_Sanity": {
+      "path": "E:\\UNREAL\\ue projects\\backrooms\\work\\inventory_visual_match_20260906\\source_metadata\\UI_Sanity.json",
+      "sha256": "1f85ff85cebe14d62944426c7ede4f910d7e1a7989b6207c284e6674d3ea5d8f"
+    }
+  },
+  "correction": "Almond water can model retained; bottle imports quarantined and excluded from delivery.",
+  "imported_assets": [
+    "Content/UI/Inventory/Art/cropassets__1_.uasset",
+    "Content/Gameplay/Items/Reference/Materials/M_Torch.uasset",
+    "Content/Gameplay/Items/Reference/Textures/T_Flashlight_ALB.uasset",
+    "Content/Gameplay/Items/Reference/Textures/T_Flashlight_M_MSK.uasset",
+    "Content/Gameplay/Items/Reference/Textures/T_Flashlight_NRM.uasset",
+    "Content/Gameplay/Items/Reference/Meshes/SM_Flashlight/SM_Flashlight/Materials/M_Flashlight.uasset",
+    "Content/Gameplay/Items/Reference/Meshes/SM_Flashlight/SM_Flashlight/Materials/M_Flashlight_Glass.uasset",
+    "Content/Gameplay/Items/Reference/Meshes/SM_Flashlight/SM_Flashlight/StaticMeshes/SM_Flashlight.uasset"
+  ]
+}

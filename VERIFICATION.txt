@@ -1,0 +1,46 @@
+changed branch/field: PROJECT / multiplayer_framework
+
+ARTIFACT PATHS
+MODIFIED_FILE: E:\UNREAL\ue projects\backrooms\backrooms.uproject
+DIFF_FILE: E:\UNREAL\ue projects\backrooms\FRAMEWORK.diff
+VERIFICATION: E:\UNREAL\ue projects\backrooms\VERIFICATION.txt
+ROLLBACK: E:\UNREAL\ue projects\backrooms\ROLLBACK.sh
+
+BASELINE
+Command: $out=& 'D:\Unreal5.8\UE_5.8\Engine\Build\BatchFiles\Build.bat' backroomsEditor Win64 Development '-Project=E:\UNREAL\ue projects\backrooms\Saved\CodexRollbackTestProject\backrooms.uproject' -WaitMutex -NoHotReloadFromIDE 2>&1; $code=$LASTEXITCODE; $out | Select-String -Pattern '^Output binary:','^Result:' | ForEach-Object Line; "PROCESS_EXIT=$code"; exit $code
+Input: rollback-restored baseline fixture at E:\UNREAL\ue projects\backrooms\Saved\CodexRollbackTestProject\backrooms.uproject; uproject SHA-256 abf1a6a86ccae00c96939f9fc91e8965ca9d62f899e5297b40bb2b29395f7522
+Literal output/result: Output binary: D:\Unreal5.8\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+Literal output/result: Result: Succeeded
+Literal output/result: PROCESS_EXIT=0
+Exit status: 0
+
+MODIFIED
+Command: $out=& 'D:\Unreal5.8\UE_5.8\Engine\Build\BatchFiles\Build.bat' backroomsEditor Win64 Development '-Project=E:\UNREAL\ue projects\backrooms\backrooms.uproject' -WaitMutex -NoHotReloadFromIDE 2>&1; $code=$LASTEXITCODE; $out | Select-String -Pattern '^Output binary:','^Result:' | ForEach-Object Line; "PROCESS_EXIT=$code"; exit $code
+Input: E:\UNREAL\ue projects\backrooms\backrooms.uproject; uproject SHA-256 274279552c412c12612efce5169cba3de36dcb4daecae6fd8cb5f6662e8a48ca
+Literal output/result: Output binary: D:\Unreal5.8\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe
+Literal output/result: Result: Succeeded
+Literal output/result: PROCESS_EXIT=0
+Exit status: 0
+
+AUTOMATION
+Command: & 'D:\Unreal5.8\UE_5.8\Engine\Binaries\Win64\UnrealEditor-Cmd.exe' 'E:\UNREAL\ue projects\backrooms\backrooms.uproject' -unattended -nop4 -nosplash -NullRHI -NoCompile -stdout -FullStdOutLogOutput '-ExecCmds=Automation RunTests Backrooms.Framework.GameplayRules;Quit' '-TestExit=Automation Test Queue Empty' '-log=FrameworkAutomation.log'
+Input: Backrooms.Framework.GameplayRules
+Literal output/result: Found 1 automation tests based on 'Backrooms.Framework.GameplayRules'
+Literal output/result: Test Completed. Result={Success} Name={GameplayRules} Path={Backrooms.Framework.GameplayRules}
+Literal output/result: **** TEST COMPLETE. EXIT CODE: 0 ****
+Exit status: 0
+
+STRUCTURE
+Command: PowerShell plugin, game-mode, source-count, and dependency assertions
+Input: backrooms.uproject, Config\DefaultEngine.ini, Source\backrooms\backrooms.Build.cs, Source\backrooms\**
+Literal output/result: PASS structure: plugins=4; native_game_mode=BRGameMode; framework_source_files=27; GAS_dependency=absent
+Literal output/result: PROCESS_EXIT=0
+Exit status: 0
+
+ROLLBACK
+Command: $bash='C:\WINDOWS\system32\bash.exe'; $script='"/mnt/e/UNREAL/ue projects/backrooms/ROLLBACK.sh" "/mnt/e/UNREAL/ue projects/backrooms/Saved/CodexRollbackTestProject" "/mnt/e/UNREAL/ue projects/backrooms/Saved/CodexFrameworkBaseline"'; & $bash -lc $script; $code=$LASTEXITCODE; "ROLLBACK_EXIT=$code"; exit $code
+Input: modified copy E:\UNREAL\ue projects\backrooms\Saved\CodexRollbackTestProject plus baseline E:\UNREAL\ue projects\backrooms\Saved\CodexFrameworkBaseline
+Literal output/result: ROLLBACK_OK root=/mnt/e/UNREAL/ue projects/backrooms/Saved/CodexRollbackTestProject uproject_sha256=abf1a6a86ccae00c96939f9fc91e8965ca9d62f899e5297b40bb2b29395f7522 created_files_removed=28
+Literal output/result: ROLLBACK_EXIT=0
+Exit status: 0
+Restored behavior/status: FRAMEWORK.md and BRGameMode.cpp are absent in the rollback fixture; the restored uproject SHA-256 matches the baseline; the restored baseline fixture builds successfully. The primary MODIFIED_FILE remains changed at SHA-256 274279552c412c12612efce5169cba3de36dcb4daecae6fd8cb5f6662e8a48ca.

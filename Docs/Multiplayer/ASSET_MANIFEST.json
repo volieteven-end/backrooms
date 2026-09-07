@@ -1,0 +1,864 @@
+{
+  "source_archive": "D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks\\EscapeTheBackrooms-WindowsNoEditor.pak",
+  "source_selection_count": 23,
+  "source_export_manifest": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\UI_ASSET_MANIFEST.json",
+  "extraction_records": [
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_BG_01",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_BG_01.uasset",
+        "offset": 20537970688,
+        "stored_size": 762,
+        "pak_sha1": "10de2269e1d7934c50d4186f3fbe9e7b08e46989",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_BG_01.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_BG_01.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_BG_02",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_BG_02.uasset",
+        "offset": 20538738688,
+        "stored_size": 762,
+        "pak_sha1": "55b4cb9cbfe523c203cc998daa33ce15886fe188",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_BG_02.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_BG_02.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_Button.uasset",
+        "offset": 20539545600,
+        "stored_size": 764,
+        "pak_sha1": "ad2176ed3fbf6bf7d328fe993a32b37cd852d1cb",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_Button.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button__Disabled",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_Button__Disabled.uasset",
+        "offset": 20539564032,
+        "stored_size": 784,
+        "pak_sha1": "08dc6bf580a759aac37c125735a1f5c7eac3a232",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button__Disabled.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_Button__Disabled.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button__Hovered",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_Button__Hovered.uasset",
+        "offset": 20539600896,
+        "stored_size": 782,
+        "pak_sha1": "4827afa77b369434f77b478773e5776944593a10",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button__Hovered.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_Button__Hovered.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button__Pressed",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_Button__Pressed.uasset",
+        "offset": 20539641856,
+        "stored_size": 782,
+        "pak_sha1": "654fa1178bdbdb9f8a40a3017387a39061e2ced1",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button__Pressed.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_Button__Pressed.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button_wide",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_Button_wide.uasset",
+        "offset": 20539682816,
+        "stored_size": 774,
+        "pak_sha1": "4b168836d29e9605a77d5ff8835bc590184c7a12",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Button_wide.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_Button_wide.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Info_SelectBack",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_Menu_Info_SelectBack.uasset",
+        "offset": 20539705344,
+        "stored_size": 786,
+        "pak_sha1": "f450d6e07f21139f76eb52a37fe3d714079de0ed",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_Menu_Info_SelectBack.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Menu_Info_SelectBack.log"
+    },
+    {
+      "package": "/Game/NebulaLobbyUI/UI/Textures/T_TopWindowTitle",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/NebulaLobbyUI/UI/Textures/T_TopWindowTitle.uasset",
+        "offset": 20539729920,
+        "stored_size": 774,
+        "pak_sha1": "23acada6b274e1a86c6a0a7b80b48a543ea41410",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/NebulaLobbyUI/UI/Textures/T_TopWindowTitle.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_TopWindowTitle.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_bgpanel_mid",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_bgpanel_mid.uasset",
+        "offset": 25870139392,
+        "stored_size": 750,
+        "pak_sha1": "74f47b64f42ccbd8f9843a84785de9c1fb0c6661",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_bgpanel_mid.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_bgpanel_mid.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_bgpanel_mid_scrollbox",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_bgpanel_mid_scrollbox.uasset",
+        "offset": 25870276608,
+        "stored_size": 770,
+        "pak_sha1": "f15efd3688951b555d712151f4665cc08685d387",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_bgpanel_mid_scrollbox.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_bgpanel_mid_scrollbox.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_TextEntry",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_TextEntry.uasset",
+        "offset": 25872556032,
+        "stored_size": 856,
+        "pak_sha1": "6b4146fff4901aefe79639cc8357137e72828030",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_TextEntry.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_TextEntry.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_TextEntry_Hovered",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_TextEntry_Hovered.uasset",
+        "offset": 25872658432,
+        "stored_size": 872,
+        "pak_sha1": "5dc8ee5ff4640e9956534ccc1857041c953cc1f7",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_TextEntry_Hovered.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_TextEntry_Hovered.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_TextEntry_Selected",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_TextEntry_Selected.uasset",
+        "offset": 25872752640,
+        "stored_size": 874,
+        "pak_sha1": "afe15bd4ae5f68bc3d8e8ec695fb4b0458cda0ea",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_TextEntry_Selected.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_TextEntry_Selected.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_Icon_Crown",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_Icon_Crown.uasset",
+        "offset": 25871599616,
+        "stored_size": 748,
+        "pak_sha1": "7f9b4008e8df540c062013365be6594da289719e",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_Icon_Crown.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Icon_Crown.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_Icon_Arrow_Right",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_Icon_Arrow_Right.uasset",
+        "offset": 25871583254,
+        "stored_size": 760,
+        "pak_sha1": "ee65be4199d39545eb59685029ee6e7bf6366e11",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_Icon_Arrow_Right.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Icon_Arrow_Right.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_radiobutton_check_off",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_radiobutton_check_off.uasset",
+        "offset": 25872478208,
+        "stored_size": 774,
+        "pak_sha1": "8357bc854b080992aabaec188348c9900751c1f9",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_radiobutton_check_off.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_radiobutton_check_off.log"
+    },
+    {
+      "package": "/Game/UI/Textures/T_radiobutton_check_on",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/UI/Textures/T_radiobutton_check_on.uasset",
+        "offset": 25872504832,
+        "stored_size": 772,
+        "pak_sha1": "447b0987a0f19d069456c7faca824b5dea556abd",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/UI/Textures/T_radiobutton_check_on.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_radiobutton_check_on.log"
+    },
+    {
+      "package": "/Game/MainMenu/Texture/T_Fond",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/MainMenu/Texture/T_Fond.uasset",
+        "offset": 11140745216,
+        "stored_size": 913,
+        "pak_sha1": "fa3c273e6e91a36e25fb86c9dcbf8d118fbf1cf7",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/MainMenu/Texture/T_Fond.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_Fond.log"
+    },
+    {
+      "package": "/Game/MainMenu/Texture/T_BarreH",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/MainMenu/Texture/T_BarreH.uasset",
+        "offset": 11139868672,
+        "stored_size": 917,
+        "pak_sha1": "a5b371854d2daf429cec5098e4a7d5cbbcb4568d",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/MainMenu/Texture/T_BarreH.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\T_BarreH.log"
+    },
+    {
+      "package": "/Game/MainMenu/Texture/VHSFilter",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/MainMenu/Texture/VHSFilter.uasset",
+        "offset": 11143766016,
+        "stored_size": 747,
+        "pak_sha1": "5d1f3e284165fb87eeaa7a3f2ce81f355d8569aa",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/MainMenu/Texture/VHSFilter.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\VHSFilter.log"
+    },
+    {
+      "package": "/Game/MainMenu/Sounds/UI/Wave_Click",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/MainMenu/Sounds/UI/Wave_Click.uasset",
+        "offset": 11139778560,
+        "stored_size": 893,
+        "pak_sha1": "31a875248c8bf55fc1aefc38cf35f8a310c1c572",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/MainMenu/Sounds/UI/Wave_Click.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\Wave_Click.log"
+    },
+    {
+      "package": "/Game/MainMenu/Sounds/UI/Wave_Hovered",
+      "pak_entry": {
+        "path": "EscapeTheBackrooms/Content/MainMenu/Sounds/UI/Wave_Hovered.uasset",
+        "offset": 11139784704,
+        "stored_size": 897,
+        "pak_sha1": "3eb3e914a2095c2b8df6087e25b4899bbfe7066b",
+        "compression": "None"
+      },
+      "command": [
+        "E:\\UNREAL\\ue projects\\backrooms\\work\\parking_replan\\tools\\umodel\\umodel_64.exe",
+        "-export",
+        "-png",
+        "-sounds",
+        "-noanim",
+        "-nomesh",
+        "-nooverwrite",
+        "-game=ue4.27",
+        "-path=D:\\steam\\steamapps\\common\\EscapeTheBackrooms\\EscapeTheBackrooms\\Content\\Paks",
+        "-out=E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported",
+        "/Game/MainMenu/Sounds/UI/Wave_Hovered.uasset"
+      ],
+      "exit": 0,
+      "log": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\asset_logs\\Wave_Hovered.log"
+    }
+  ],
+  "project_assets": [
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_BarreH.uasset",
+      "package": "/Game/UI/Menu/Art/T_BarreH",
+      "bytes": 38065,
+      "sha256": "020027d52f05d6685e2780e4aaaa177e399e8441879dd2d7a0fafbaacc39eb93",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\MainMenu\\Texture\\T_BarreH.png",
+      "source_sha256": "a9aa3dedd9455893cc4bac5a903eec3d733917b86cfba97ee46fb53d8a9418aa",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_bgpanel_mid.uasset",
+      "package": "/Game/UI/Menu/Art/T_bgpanel_mid",
+      "bytes": 244986,
+      "sha256": "4852240db658bc7c54d291a14ac5f7c1d97faa9cd76bbe5e3981cd2a12ddaf3e",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\UI\\Textures\\T_bgpanel_mid.png",
+      "source_sha256": "9377a1740391b24f32375c781c8cb867752a075245a056e57746813c1c2d5dbb",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_bgpanel_mid_scrollbox.uasset",
+      "package": "/Game/UI/Menu/Art/T_bgpanel_mid_scrollbox",
+      "bytes": 251351,
+      "sha256": "67c82c595c214c6a37525f9667485d54e0f60005a8eede85c32bc542e200c3c3",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\UI\\Textures\\T_bgpanel_mid_scrollbox.png",
+      "source_sha256": "cad07f6e324b2c0ffdef90a7bcd83b3d4e39d1c7a57cb5af55faf49b4ca58645",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_Menu_BG_01.uasset",
+      "package": "/Game/UI/Menu/Art/T_Menu_BG_01",
+      "bytes": 894543,
+      "sha256": "7539a3fbd02c7a93ea21f9338db7ffa39bf4c8042d31c2d3b0d86ee93c2c7250",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\NebulaLobbyUI\\UI\\Textures\\T_Menu_BG_01.png",
+      "source_sha256": "6a63732a6f2a6b0bfae15136c5c601bd136fb4ea13f6fc111059b5a5582edf3f",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_Menu_Button.uasset",
+      "package": "/Game/UI/Menu/Art/T_Menu_Button",
+      "bytes": 48357,
+      "sha256": "1607cbc5ba981b907e24b05d780a7f063757d99b847ec391e378ddd323cfc554",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\NebulaLobbyUI\\UI\\Textures\\T_Menu_Button.png",
+      "source_sha256": "d284dee4cba75067ba3d24c9c621640d64460481a34fce732d0fb71caab7ff20",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_Menu_Button__Disabled.uasset",
+      "package": "/Game/UI/Menu/Art/T_Menu_Button__Disabled",
+      "bytes": 44821,
+      "sha256": "cdc33b388511dadd65ae1cc079045e60a43ee83d4c69acfaf35418cd5759516b",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\NebulaLobbyUI\\UI\\Textures\\T_Menu_Button__Disabled.png",
+      "source_sha256": "3331a0690d9f7af3b592aefb8b8fe3e3b1b122a74db35eb75de71505d74b1712",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_Menu_Button__Hovered.uasset",
+      "package": "/Game/UI/Menu/Art/T_Menu_Button__Hovered",
+      "bytes": 49635,
+      "sha256": "6915f8237c1eceb4e9f94e8283653448e35f464227defddc19f03bc08c037f97",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\NebulaLobbyUI\\UI\\Textures\\T_Menu_Button__Hovered.png",
+      "source_sha256": "2842952c1d5613c4892509f6bd476ecd2aff7b38212a325804edec78ecec805f",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_Menu_Button__Pressed.uasset",
+      "package": "/Game/UI/Menu/Art/T_Menu_Button__Pressed",
+      "bytes": 51138,
+      "sha256": "48e6eab1dfaba191393d732c5702f042fbab18c05559a5c23050fff944a89d56",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\NebulaLobbyUI\\UI\\Textures\\T_Menu_Button__Pressed.png",
+      "source_sha256": "6218f716ca834b9ca0dbfa05b1184537dad5adae39430bdf9da0efd56184921c",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_ParkingPreview.uasset",
+      "package": "/Game/UI/Menu/Art/T_ParkingPreview",
+      "bytes": 478017,
+      "sha256": "6edbadfea19f4df11f98c568d1718c19ef25bc45c377ef941c7fecffa1cc3ff6",
+      "purpose": "menu artwork",
+      "source_file": "E:\\UNREAL\\ue projects\\backrooms\\work\\menu_multiplayer_20260906\\parking_preview.png",
+      "source_sha256": "72eabb5789e54ea750036fb9d8063d32f3621c0722ff216fff19b6072ddc93ba",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_TextEntry.uasset",
+      "package": "/Game/UI/Menu/Art/T_TextEntry",
+      "bytes": 74183,
+      "sha256": "1a1f4447e7d309a6320bb3cb3ab4af7827453e53d8569ac0717994cf47ce58d3",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\UI\\Textures\\T_TextEntry.png",
+      "source_sha256": "9a240b3ad7365e23b1522f7759a32ea51aa813fceb22759d469ea925a4cf52a9",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_TextEntry_Hovered.uasset",
+      "package": "/Game/UI/Menu/Art/T_TextEntry_Hovered",
+      "bytes": 70800,
+      "sha256": "061bb9e3975e22cf1592555cd4ad5d6137791c65f0923b1bb056e4f08c8bb010",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\UI\\Textures\\T_TextEntry_Hovered.png",
+      "source_sha256": "5c0337f0a273d7e76ee95455ea008a99c5b45d4a37d8d2c6b3b0ecddaa86ccea",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_TextEntry_Selected.uasset",
+      "package": "/Game/UI/Menu/Art/T_TextEntry_Selected",
+      "bytes": 72086,
+      "sha256": "cbfd66645d1f3240b8b5b89fb7f24f204b9f29fe313eb9aad1511f6d738a4f5a",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\UI\\Textures\\T_TextEntry_Selected.png",
+      "source_sha256": "5a8f9afb095715db372b5671b9b7098cee8ecdfcb2271dcab02dc64f9d7568c8",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\T_TopWindowTitle.uasset",
+      "package": "/Game/UI/Menu/Art/T_TopWindowTitle",
+      "bytes": 49443,
+      "sha256": "08e327219c330ef82a9a99a26dc7aa02447be2ef21321e3dc00dab129da0bb78",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\NebulaLobbyUI\\UI\\Textures\\T_TopWindowTitle.png",
+      "source_sha256": "af9ff3237142c2eb437744d98cd32c299ed99346ff411caaca2426a3a67d692f",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Art\\VHSFilter.uasset",
+      "package": "/Game/UI/Menu/Art/VHSFilter",
+      "bytes": 597592,
+      "sha256": "7ac0ea017e274cd4443d8555ddf805e7e93b6d969643b88e40a31d2547d1a65f",
+      "purpose": "menu artwork",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Exported\\Game\\MainMenu\\Texture\\VHSFilter.png",
+      "source_sha256": "d138de03d07b6043503c057537c93dbe70e1bf4a68dd5cbe92b8a949443c69a1",
+      "compression": "TC_EDITOR_ICON",
+      "texture_group": "UI",
+      "mips": "NoMipmaps",
+      "sRGB": true,
+      "never_stream": true,
+      "alpha": "preserved on import"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Audio\\Wave_Click.uasset",
+      "package": "/Game/UI/Menu/Audio/Wave_Click",
+      "bytes": 7572,
+      "sha256": "edf4d8ff78833860ec60b560864354a7086ab9898a7a374595978322512dd83f",
+      "purpose": "hover/click sound",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Audio\\Wave_Click.wav",
+      "source_sha256": "cdd4d30386702105642db98d9e3715936add5d2348bbda8780c4d2b68f237bbb"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Audio\\Wave_Hovered.uasset",
+      "package": "/Game/UI/Menu/Audio/Wave_Hovered",
+      "bytes": 8724,
+      "sha256": "4de576b2e4cca01f1853703f81aee6a1b6e9d8fb04f07d408fa544d210f670fd",
+      "purpose": "hover/click sound",
+      "source_file": "E:\\Reverse Assets\\EscapeTheBackrooms\\UI\\Audio\\Wave_Hovered.wav",
+      "source_sha256": "e1ceddbb75919da1feba20a3304bbcec7fc5e612aa430ff5c32d7676363c2f65"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Fonts\\F_MenuChinese.uasset",
+      "package": "/Game/UI/Menu/Fonts/F_MenuChinese",
+      "bytes": 2373,
+      "sha256": "a01ca868a88f5d5322b0581f83cb0debfe78983acd8183083acb4bc28fec2c56",
+      "purpose": "embedded Chinese font"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Fonts\\FF_MenuChinese.uasset",
+      "package": "/Game/UI/Menu/Fonts/FF_MenuChinese",
+      "bytes": 3941448,
+      "sha256": "a8a69de48ba42c6b150061b091a9ac0866d0e6767add87edf697fd939e3ab09b",
+      "purpose": "embedded Chinese font"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Maps\\L_Lobby.umap",
+      "package": "/Game/UI/Menu/Maps/L_Lobby",
+      "bytes": 14800,
+      "sha256": "3103999c80605d9de8e41cf9ab3bfafa2858c91259c42b6449e7babd7dd8277a",
+      "purpose": "lightweight frontend world"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Maps\\L_MainMenu.umap",
+      "package": "/Game/UI/Menu/Maps/L_MainMenu",
+      "bytes": 14838,
+      "sha256": "645b81ccd1378c377776c7fa3c6032af22dd6766c2d439822eb25b065802e448",
+      "purpose": "lightweight frontend world"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Maps\\L_Transition.umap",
+      "package": "/Game/UI/Menu/Maps/L_Transition",
+      "bytes": 14864,
+      "sha256": "0d184a3650f6346be580d473bb5a006994c1bc9da8d7ac838a3f0dfe3f96db89",
+      "purpose": "lightweight frontend world"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Widgets\\WBP_GameHUD.uasset",
+      "package": "/Game/UI/Menu/Widgets/WBP_GameHUD",
+      "bytes": 37314,
+      "sha256": "30d8c1bde363dc02e0db5f4193d51f80a107018e06e94d5a0c75123e7b552130",
+      "purpose": "editable UMG"
+    },
+    {
+      "project_file": "E:\\UNREAL\\ue projects\\backrooms\\Content\\UI\\Menu\\Widgets\\WBP_MainMenu.uasset",
+      "package": "/Game/UI/Menu/Widgets/WBP_MainMenu",
+      "bytes": 258030,
+      "sha256": "0c18b5690c70721e22b791ac8e2440553944c06e965dbf727c581f7e2dc489aa",
+      "purpose": "editable UMG"
+    }
+  ],
+  "font_source": "D:\\Unreal5.8\\UE_5.8\\Engine\\Content\\Slate\\Fonts\\DroidSansFallback.ttf",
+  "logic": "UMG/C++ rebuilt locally; no cooked original widget logic imported",
+  "parking_preview": "genuine offscreen capture of existing dark garage"
+}

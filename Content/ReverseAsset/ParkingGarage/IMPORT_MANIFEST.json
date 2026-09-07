@@ -1,0 +1,2837 @@
+{
+  "formatVersion": 1,
+  "engine": "5.8.1-56057345+++UE5+Release-5.8",
+  "sourceRoot": "E:\\ReverseAsset\\ParkingGarage",
+  "destinationDiskRoot": "E:\\UNREAL\\ue projects\\backrooms\\Content\\ReverseAsset\\ParkingGarage",
+  "destinationVirtualRoot": "/Game/ReverseAsset/ParkingGarage",
+  "neutralSourceCounts": {
+    "gltf": 28,
+    "png": 74,
+    "wav": 12,
+    "psa": 4
+  },
+  "assetRegistryClassCounts": {
+    "AnimSequence": 4,
+    "Material": 26,
+    "PhysicsAsset": 1,
+    "SkeletalMesh": 1,
+    "Skeleton": 1,
+    "SoundWave": 12,
+    "StaticMesh": 27,
+    "Texture2D": 74
+  },
+  "assetRegistryAssetCount": 146,
+  "materialSlotsChecked": 40,
+  "removedPlaceholderMaterials": 40,
+  "sources": [
+    {
+      "path": "Audio_WAV/Game/HorrorEngine/Audio/Environment/TakeKey.wav",
+      "bytes": 76286,
+      "sha256": "c11259715b428ff9c6391ccae46bbadc3e096c2ff90f1356ccd15e45ee0e1c71",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction/TakeKey.TakeKey",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/RealDoorsSoundsEffects/Mockup_Files/Keys/Sounds/Keys_Inserting_v4_wav.wav",
+      "bytes": 220578,
+      "sha256": "8ae0a981cce4f39911eb63f7a7947357e7120c19ac81869e91ccdc08ab135728",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction/Keys_Inserting_v4_wav.Keys_Inserting_v4_wav",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/RealDoorsSoundsEffects/Simple_Old_Door_v1/Sounds/Simple_Old_Door_Complete_v1_wav.wav",
+      "bytes": 242630,
+      "sha256": "967c1218a8344155f68ac59786e7d79701eb1a21df99933a46f648796f63bd56",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction/Simple_Old_Door_Complete_v1_wav.Simple_Old_Door_Complete_v1_wav",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/Elevator/Elevator_Bell.wav",
+      "bytes": 446542,
+      "sha256": "ac9c4de3cd1c395a52965d5c49460c9ea9dac7f15f66c2d52f8a3fff2b10ab05",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/Elevator_Bell.Elevator_Bell",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/Elevator/Elevator_Loop.wav",
+      "bytes": 1695822,
+      "sha256": "8251cdaf22e8c6e8f1f377d3a76b4fc720e34aa1a3def09710559c324bc26eb8",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/Elevator_Loop.Elevator_Loop",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/Elevator/door_close.wav",
+      "bytes": 270496,
+      "sha256": "81678e2d9592de5cb775b6842e46add55aab016f08615caf8794f05044785da9",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/door_close.door_close",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/Elevator/door_open.wav",
+      "bytes": 265490,
+      "sha256": "b15bd996b34b6013b05a9bc5c485eefd1bc4e91d26f8f76f329f2c8f2fbe8f38",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/door_open.door_open",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/Level1/Level1_Ambience3.wav",
+      "bytes": 32649294,
+      "sha256": "ca5f6813ef7cab117d56514053f8e00c8fd34f028b123e331de5352859af1025",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/Ambience",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/Ambience/Level1_Ambience3.Level1_Ambience3",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/SkinStealer/skinstealer_chaseloop.wav",
+      "bytes": 6121158,
+      "sha256": "75ff8d56cd3089d4161e7951b6f2441a24c56769b3df31ea7a4106feef976fa1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_chaseloop.skinstealer_chaseloop",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/SkinStealer/skinstealer_gotcha1__1_.wav",
+      "bytes": 305530,
+      "sha256": "662bb639f0bdd9e8a7394e2629f5b5f8460171b1393aad7cba7c87069ff443b6",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_gotcha1__1_.skinstealer_gotcha1__1_",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/SkinStealer/skinstealer_schlep1.wav",
+      "bytes": 106466,
+      "sha256": "4d39a54504089fbf16f8b93bf1fdc4885d0875771252129395f9626ac83f97e4",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_schlep1.skinstealer_schlep1",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Audio_WAV/Game/Sounds/SkinStealer/skinstealer_schlep2.wav",
+      "bytes": 140996,
+      "sha256": "bfa7ffb9575a837598fca2e6b8809f71d35a7301a5c4b119ce9c2cdfdebf9c04",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_schlep2.skinstealer_schlep2",
+          "class": "SoundWave"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Engine/EngineMaterials/T_Default_Material_Grid_M.png",
+      "bytes": 202082,
+      "sha256": "f60e64c3ccf8134b46d1dbec2223041c5551f8aac5ce5f464fe022292649f3a8",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Default_Material_Grid_M.T_Default_Material_Grid_M",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Engine/EngineMaterials/T_Default_Material_Grid_N.png",
+      "bytes": 3673,
+      "sha256": "8084bc33bd52741f89e60cc590582d1b7d4388807b98db8ee3dadeb36fe115a2",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Default_Material_Grid_N.T_Default_Material_Grid_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Meshes/Elevator1/buttons/sm_buttons_floor_button-2.gltf",
+      "bytes": 4720,
+      "sha256": "8ba6d734f13f33b974829e5111e42c5ac7711f926c4cdcd3ae01e8aa2bf36416",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_buttons_floor_button-2/StaticMeshes/sm_buttons_floor_button-2.sm_buttons_floor_button-2",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Meshes/Elevator1/sm_buttonCall.gltf",
+      "bytes": 2602,
+      "sha256": "1a4acb1ac033d25a6f821278609f07271b6dcfe50580107379436b6aa26a2bbe",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_buttonCall/StaticMeshes/sm_buttonCall.sm_buttonCall",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Meshes/Elevator1/sm_doorFrame.gltf",
+      "bytes": 4681,
+      "sha256": "0bcb0b7d85ff67404e2f26a9af82fa68d23bf743043ae94e758c28f9dd7954e5",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_doorFrame/StaticMeshes/sm_doorFrame.sm_doorFrame",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Meshes/Elevator1/sm_elevatorBox.gltf",
+      "bytes": 11004,
+      "sha256": "b6899e2eba5d745293e37fe5008fd66a917fe5ba5ebd8c7b4ca29da758715794",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_elevatorBox/StaticMeshes/sm_elevatorBox.sm_elevatorBox",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Meshes/Elevator1/sm_elevator_doorLeft.gltf",
+      "bytes": 4712,
+      "sha256": "7709b933084d1d28b1ce0b7646d5dc7bee7b3c728faca789952435f665a6c7e1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_elevator_doorLeft/StaticMeshes/sm_elevator_doorLeft.sm_elevator_doorLeft",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Meshes/Elevator1/sm_elevator_doorRight.gltf",
+      "bytes": 4717,
+      "sha256": "e7c9a6f1e7b6f1ed46b4a236d4fa405fd45aaa62ac1b80d3e4934d3f7939b06c",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_elevator_doorRight/StaticMeshes/sm_elevator_doorRight.sm_elevator_doorRight",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Meshes/Elevator1/sm_hatchCover.gltf",
+      "bytes": 2616,
+      "sha256": "fb1aa36241f3c0d1e7fdbf0a2173432e241226a06a403fb3bd543eab9263384a",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_hatchCover/StaticMeshes/sm_hatchCover.sm_hatchCover",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonCall_BC.png",
+      "bytes": 10270,
+      "sha256": "e09bd7e47dc98c4ea167535fabd865ad5f8619d1c0112add236ad3bcfb64eb7f",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_BC.T_buttonCall_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonCall_MT.png",
+      "bytes": 10630,
+      "sha256": "2d646ff6afaf7905b5b1dbd135708878bb08f6484fd612d161d4715ef6b0d2e0",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_MT.T_buttonCall_MT",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonCall_N.png",
+      "bytes": 25346,
+      "sha256": "a697ede810de23e45bc927cb1bbab89f9777ff24f0b2cbac78f5fc5d41101500",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_N.T_buttonCall_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonCall_ON_BC.png",
+      "bytes": 9159,
+      "sha256": "37dd322b3de1a502301af005705619852bd9874b5a0c5cec4765d577c0202ec9",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_ON_BC.T_buttonCall_ON_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonLight_BC.png",
+      "bytes": 51927,
+      "sha256": "7757a0ce13450f87404ac9a136b34b8b57ea704ef6676cc5d28a9b136d9fa65f",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_BC.T_buttonLight_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonLight_MT.png",
+      "bytes": 45656,
+      "sha256": "b1fb5684e9c5649ccfbb0b7504759aaa43d39fc019e6dba11e6d3012f88c791e",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_MT.T_buttonLight_MT",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonLight_N.png",
+      "bytes": 63262,
+      "sha256": "d63bf973c216ac49514de2b33ad887a63cb0b261420832db8b50309ff744b9ed",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_N.T_buttonLight_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttonLight_ON_BC.png",
+      "bytes": 25750,
+      "sha256": "d2b589d8cc590befc1db3a39be3f01166fea8ddd9bba273938cc8eba2486c192",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_ON_BC.T_buttonLight_ON_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttons_BC.png",
+      "bytes": 3225394,
+      "sha256": "769aa063ccd1e572975ead1033fd4719d4de6e30746a8e4f90ccf3c26d175f72",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttons_BC.T_buttons_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttons_MT.png",
+      "bytes": 2737532,
+      "sha256": "0d718d8f75c38ff06ab9ce816e05f58bc90a9b75f730781b78f9529592ba46a7",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttons_MT.T_buttons_MT",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_buttons_N.png",
+      "bytes": 5515828,
+      "sha256": "8f4afc20f423e1377c9a776c549cae9cdad89ba197f26d207a01b31c49ffa105",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttons_N.T_buttons_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_elevatorBox_BC.png",
+      "bytes": 1998650,
+      "sha256": "cd07cce02a852880c95e2d97da44cd870be20f21814cb35311051d81b2707687",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_BC.T_elevatorBox_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_elevatorBox_Emission.png",
+      "bytes": 18191,
+      "sha256": "20a117c742ab47c3b707175276bacd3c9c2e789a7365a796afc6cb810a0de5a1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_Emission.T_elevatorBox_Emission",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_elevatorBox_MT.png",
+      "bytes": 2457356,
+      "sha256": "a35e75831b7239b3971848880aa765bfda057662bf89ff36876a6acb6e7cb140",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_MT.T_elevatorBox_MT",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/1/T_elevatorBox_N.png",
+      "bytes": 3350264,
+      "sha256": "aa3ba923e329cf36933adc4a9127aa3b03498e2a9303adcae904f63ab4fdf63d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_N.T_elevatorBox_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/T_LEDFloors_BC.png",
+      "bytes": 771584,
+      "sha256": "f7058326af8fad9d78d6c8245626f0ea31440a0ab516c7c43142ca3bf7c6423d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_LEDFloors_BC.T_LEDFloors_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/T_railings_BC.png",
+      "bytes": 2341787,
+      "sha256": "39a7644fd981e96ae85d690120568944be593e9f8fc4b4b81c2e171ae2f8c7e2",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_railings_BC.T_railings_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/T_railings_MT.png",
+      "bytes": 1470442,
+      "sha256": "af40e86fb6b2c7555fe8b9fde017c4e9c923d85a890b6b83749805b1025d6a49",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_railings_MT.T_railings_MT",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/T_railings_N.png",
+      "bytes": 5188294,
+      "sha256": "c6cea373d6717f1a0a19c3581022e9947b89480baee620bc8c032f3c49387eac",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_railings_N.T_railings_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/T_windows_BC.png",
+      "bytes": 1561038,
+      "sha256": "bd1bfc340cd135ca580ab53248eaa8bb911ac4c0c73d01fa314a582e69b7aad2",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_windows_BC.T_windows_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Elevator/Textures/T_windows_MT.png",
+      "bytes": 1123559,
+      "sha256": "a573ea73189923263891be7fb87aec1dc15698909870b52fd0b47b520a5907db",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_windows_MT.T_windows_MT",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/SkinStealer_SM_V2.gltf",
+      "bytes": 16587,
+      "sha256": "71c7c140965d76e5216dc85d28041e48c4db87a0ec31040ff3699969f0ce4081",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_Skeleton.SkinStealer_SM_V2_Skeleton",
+          "class": "Skeleton"
+        },
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2.SkinStealer_SM_V2",
+          "class": "SkeletalMesh"
+        },
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_PhysicsAsset.SkinStealer_SM_V2_PhysicsAsset",
+          "class": "PhysicsAsset"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/Textures/CharacterMid_low_CharacterMid_high_BaseColor.png",
+      "bytes": 3367792,
+      "sha256": "842c22ec450a2bd3d4598ae8f10278450fcc0bb656c1a5d7bbcffcfe0596bf47",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_BaseColor.CharacterMid_low_CharacterMid_high_BaseColor",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/Textures/CharacterMid_low_CharacterMid_high_Emissive.png",
+      "bytes": 67606,
+      "sha256": "1081cc4e3c465272105a68f30a575baa4907bd0bc84aed89612361baab9fe5a6",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_Emissive.CharacterMid_low_CharacterMid_high_Emissive",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/Textures/CharacterMid_low_CharacterMid_high_Normal.png",
+      "bytes": 4761676,
+      "sha256": "77de3e7bfb7f853448eb56bd20932f044b012dd711e27c46ed978c61346eec6d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_Normal.CharacterMid_low_CharacterMid_high_Normal",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/Textures/CharacterMid_low_CharacterMid_high_OcclusionRoughnessMetallic.png",
+      "bytes": 2651861,
+      "sha256": "87bdb0214e4c4ed24017c2535fa70938598e386bb40db35c9458ae6ca2761eba",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_OcclusionRoughnessMetallic.CharacterMid_low_CharacterMid_high_OcclusionRoughnessMetallic",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/Walking_6_mixamo_com.psa",
+      "bytes": 102056,
+      "sha256": "4bed81ad2b7bd7cf16467bb69935905c5116b6b289534ccc75a4224615a70dbf",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Walk.A_SkinStealer_Walk",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Walk.A_SkinStealer_Walk",
+          "class": "AnimSequence"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/attack_Anim.psa",
+      "bytes": 363176,
+      "sha256": "366de5f482d7cc26bb9c698a1436dea4a6b497fa7249d75bb83d16cf16c11c5c",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Attack.A_SkinStealer_Attack",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Attack.A_SkinStealer_Attack",
+          "class": "AnimSequence"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/idle_Anim.psa",
+      "bytes": 289192,
+      "sha256": "f671a77271052b2fa5bb14ed12ebab78cd6cdd95f3f8018d6b406b27a38fb959",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Idle.A_SkinStealer_Idle",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Idle.A_SkinStealer_Idle",
+          "class": "AnimSequence"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Entity/SkinStealer/running_Anim.psa",
+      "bytes": 62888,
+      "sha256": "f2d6226848c0787a8e0c650238d129612c7ef8cacb7f484ea95db7f3541f9714",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Run.A_SkinStealer_Run",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Run.A_SkinStealer_Run",
+          "class": "AnimSequence"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/Keys/New/Coop_Open_low__2__Keyhole_low.gltf",
+      "bytes": 2404,
+      "sha256": "ab895b8b01360e5a39adea6cad326ae350f8031a15a9663f6ff36245d5710c15",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys/Coop_Open_low__2__Keyhole_low/StaticMeshes/Coop_Open_low__2__Keyhole_low.Coop_Open_low__2__Keyhole_low",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/Keys/New/Coop_Open_low__2__Plate_low.gltf",
+      "bytes": 2413,
+      "sha256": "ab4faec8f9684787deb0872c24ab40f1e3a4301deb09ec01f982955cfaccd67b",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys/Coop_Open_low__2__Plate_low/StaticMeshes/Coop_Open_low__2__Plate_low.Coop_Open_low__2__Plate_low",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/Keys/Textures/Coop_Open_BaseColor.png",
+      "bytes": 831139,
+      "sha256": "688fdc1fd3468e259517adf7c749d925224f22e55c8aac5a184bd1721ec7c8e5",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Keys",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Keys/Coop_Open_BaseColor.Coop_Open_BaseColor",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/Keys/Textures/Coop_Open_Normal.png",
+      "bytes": 959870,
+      "sha256": "408ad156379671d74a842e97cce94924a883e673335f2f0bf344567a302a0793",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Keys",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Keys/Coop_Open_Normal.Coop_Open_Normal",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/Keys/Textures/Coop_Open_OcclusionRoughnessMetallic.png",
+      "bytes": 440543,
+      "sha256": "ec0eb6db0a20285d5e2eb0c7e7d81e803f6c1911821cf3f1d6bb95d0a6595853",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Keys",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Keys/Coop_Open_OcclusionRoughnessMetallic.Coop_Open_OcclusionRoughnessMetallic",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/MiddleFloor/SM_SmallDoor_Door.gltf",
+      "bytes": 2624,
+      "sha256": "bd776012e839a10d2f8508b86a0f04d018821a72633ab1794c0b628699a6775c",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/SafeRoom",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/SafeRoom/SM_SmallDoor_Door/StaticMeshes/SM_SmallDoor_Door.SM_SmallDoor_Door",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/MiddleFloor/SM_SmallDoor_Frame.gltf",
+      "bytes": 2592,
+      "sha256": "70b561a99d7ea397780723518962d00f99d2b6e76cf097f71abad0b1b8b9422a",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/SafeRoom",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/SafeRoom/SM_SmallDoor_Frame/StaticMeshes/SM_SmallDoor_Frame.SM_SmallDoor_Frame",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/MiddleFloor/Textures/T_DoorSmallLow_wire_115115115_BaseColor.png",
+      "bytes": 3569594,
+      "sha256": "b1cb46142ccaf9b5b4a38665e882dd603a5a01be398ee2d944fda7bad8b26b48",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_BaseColor.T_DoorSmallLow_wire_115115115_BaseColor",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/MiddleFloor/Textures/T_DoorSmallLow_wire_115115115_Normal.png",
+      "bytes": 5348807,
+      "sha256": "ac20d648ccc8df627eba9edd6c3997165d9ed2f0e65bab1e8cf11802512c6e26",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_Normal.T_DoorSmallLow_wire_115115115_Normal",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/Garage/MiddleFloor/Textures/T_DoorSmallLow_wire_115115115_OcclusionRoughnessMetallic.png",
+      "bytes": 3415987,
+      "sha256": "4b1819cd1cfbad4858f927696c1deee38839ec82da6c54d80ec381209dcbe687",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_OcclusionRoughnessMetallic.T_DoorSmallLow_wire_115115115_OcclusionRoughnessMetallic",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/HorrorEngine/Meshes/Key.gltf",
+      "bytes": 2345,
+      "sha256": "a94fef0580169c6565b24783c97fd0bbfce7eadea304c81e99a9333ca48c1180",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys/Key/StaticMeshes/Key.Key",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/HorrorEngine/Textures/Empty_Normal.png",
+      "bytes": 59398,
+      "sha256": "a191a335d8b3922eed17a79f5f003c4d53601db27ac5d829176a4aec3e30a7bc",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/Empty_Normal.Empty_Normal",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/HorrorEngine/Textures/Empty_White.png",
+      "bytes": 59397,
+      "sha256": "c122fa1541bb5d7f58cf4a3b1a826a1c90185683864aaf87a2d16dbe6f30725b",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/Empty_White.Empty_White",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/HorrorEngine/Textures/T_Metal_Aluminum_D.png",
+      "bytes": 9680436,
+      "sha256": "89a6940e9e5173f15b51e0796c29db6604ad2e5c4f04902f94f3ce963fc60886",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Metal_Aluminum_D.T_Metal_Aluminum_D",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/MaterialFunctionCollection/Textures/T_PerlinNoise_01.png",
+      "bytes": 2748809,
+      "sha256": "2c8f44f44600c6e26b17bf3591f937660b4f12a8bac8dbf67157ac27e16cf5f9",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_PerlinNoise_01.T_PerlinNoise_01",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Beam_A.gltf",
+      "bytes": 2296,
+      "sha256": "21ba93c0151cb283ede0b0c570ff4272fc39076412111077ecd27f6c4323f9c1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Beam_A/StaticMeshes/SM_Beam_A.SM_Beam_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Car_B.gltf",
+      "bytes": 4177,
+      "sha256": "f55c836dcc710f43349f577adeb6c7a1d354f012b7ed81018d86a5252b1f7ad4",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Car_B/StaticMeshes/SM_Car_B.SM_Car_B",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Column_A.gltf",
+      "bytes": 2332,
+      "sha256": "f120fcb33e58684f77645337b02df7d2ffcc1943b5bf7cec3d6bf501dc4451b1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Column_A/StaticMeshes/SM_Column_A.SM_Column_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Cone.gltf",
+      "bytes": 2331,
+      "sha256": "83b454201e321fca6daacee98ae33f05a67ffeb7e9c3d2f41a69f7e707118ce2",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Cone/StaticMeshes/SM_Cone.SM_Cone",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Desk.gltf",
+      "bytes": 2316,
+      "sha256": "3f30adafefc4d3fb2c6169021d899a69938c9142df68a9cdd64337fa2de2b6c2",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Desk/StaticMeshes/SM_Desk.SM_Desk",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_DoorBase_A.gltf",
+      "bytes": 2323,
+      "sha256": "930042747a833ef380a7b755cb782465237c146b13dc53a7c627d5f6537448fa",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_DoorBase_A/StaticMeshes/SM_DoorBase_A.SM_DoorBase_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Door_A.gltf",
+      "bytes": 2338,
+      "sha256": "d1ae05c7c8d94581a3733be4d436818fe5de33817d7a43e20db1e752a4364065",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Door_A/StaticMeshes/SM_Door_A.SM_Door_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Drawer_A.gltf",
+      "bytes": 2326,
+      "sha256": "4e137c0a6e9fa805e52217d46b2f55348b7d2f1f08bd9c92c3ebeb40ad80a92f",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Drawer_A/StaticMeshes/SM_Drawer_A.SM_Drawer_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Ground.gltf",
+      "bytes": 4048,
+      "sha256": "68ddbce0a5bdb8e255c4e363517c9e1f5d07e32397ad30495d28304f68604745",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Ground/StaticMeshes/SM_Ground.SM_Ground",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_GroundShape_A.gltf",
+      "bytes": 2328,
+      "sha256": "7e38804a9c2225c852e3e7e4c4ff76007bce03aa71935ea792e2c65b13744e81",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_GroundShape_A/StaticMeshes/SM_GroundShape_A.SM_GroundShape_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Lamp.gltf",
+      "bytes": 2316,
+      "sha256": "f165127bc2062b88bb4988a91b762083e3107c1cd6ea8c4637dd48c29e21e5a5",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Lamp/StaticMeshes/SM_Lamp.SM_Lamp",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_Pipe.gltf",
+      "bytes": 2315,
+      "sha256": "e16dad1ff887ddd789574c60b05bb9b675d35b693f109377bd6c568f6393d28c",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Pipe/StaticMeshes/SM_Pipe.SM_Pipe",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_WallExterior_A.gltf",
+      "bytes": 2327,
+      "sha256": "3e0728dd8b8f9aad41b5e783460d1e3fc0509b82377cf015d797c9a35195e285",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_WallExterior_A/StaticMeshes/SM_WallExterior_A.SM_WallExterior_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_WallInterior_A.gltf",
+      "bytes": 4082,
+      "sha256": "06410787f3379ed75916ab57f27ddd78d9e6a144b7fca64aeb1f82a9b7f93333",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_WallInterior_A/StaticMeshes/SM_WallInterior_A.SM_WallInterior_A",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Meshes/SM_WallInterior_D.gltf",
+      "bytes": 4127,
+      "sha256": "51844322a78747a3ec981395c2501b3f521e6a57751aa75ff2f68c847a6293b1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_WallInterior_D/StaticMeshes/SM_WallInterior_D.SM_WallInterior_D",
+          "class": "StaticMesh"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Asphalt_BC.png",
+      "bytes": 7544252,
+      "sha256": "c231ac2e9db922f459fad13f0d054c2c3a98f5cfab00caa6e3dd7186ac5efc28",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Asphalt_BC.T_Asphalt_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Asphalt_N.png",
+      "bytes": 10446243,
+      "sha256": "e154d03735ab1468f9110846cc104517894738896746d3cb189b80ec6fe22dd8",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Asphalt_N.T_Asphalt_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Asphalt_R.png",
+      "bytes": 5809257,
+      "sha256": "7fcbfb2fd7bdab68c90fbb5113bd0ace66f5ed23d41c8def42859d786476026e",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Asphalt_R.T_Asphalt_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_CarCover_BC.png",
+      "bytes": 1736559,
+      "sha256": "bf00c753c6a42d1e8b123a3ed8cbeed49831a25d262ac54fdca36e5313c3b94d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarCover_BC.T_CarCover_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_CarCover_N.png",
+      "bytes": 1987266,
+      "sha256": "520b7cc376c2eaa1e1afd10acbb73aec7384c910ec54e338fba7d37a7025591e",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarCover_N.T_CarCover_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_CarCover_R.png",
+      "bytes": 315016,
+      "sha256": "18b8bd36d0ab9ee962eeb58301c59898f4d3ba07bd8817f3b50624df96d7844d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarCover_R.T_CarCover_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_CarDetail_A_BC.png",
+      "bytes": 267684,
+      "sha256": "d195d5969a58e050be7c8dc90a9c8c37dc422f2c6f6df161809aa73f79f4219d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_BC.T_CarDetail_A_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_CarDetail_A_M.png",
+      "bytes": 24344,
+      "sha256": "531e207ec1ce7fb223ddc438731e9b5b772e948195e578fdf2a7d8b4a0e9d15c",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_M.T_CarDetail_A_M",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_CarDetail_A_N.png",
+      "bytes": 352858,
+      "sha256": "99e6085a63df687fec43631fe2554e2f7a477ca16d08ed6bab90e83e3e9d2dc6",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_N.T_CarDetail_A_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_CarDetail_A_R.png",
+      "bytes": 54757,
+      "sha256": "5393227da377d273ac0e0785191236d74d5de90943acbd4dea4ce0b9d4714d24",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_R.T_CarDetail_A_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Concrete_BC.png",
+      "bytes": 1542494,
+      "sha256": "8e8b33b9293292210205cbec04460a50367beef46fafe67c1336c4ebe9c36744",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Concrete_BC.T_Concrete_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Concrete_N.png",
+      "bytes": 7376603,
+      "sha256": "c69f4d37f8ac07a9749e1fb0787ea3f8345e56b0777452dad560bb8b894a6e38",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Concrete_N.T_Concrete_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Concrete_R.png",
+      "bytes": 843132,
+      "sha256": "0bc8c59a563224d8bb6de22c89ec6f903e167ef7a9778716321a535dad338b60",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Concrete_R.T_Concrete_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Cone_BC.png",
+      "bytes": 1080554,
+      "sha256": "feba24feccfcd2e395aacf23c78ce7164f0beaca9344ce17caaefc3ea7b89fd4",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_BC.T_Cone_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Cone_M.png",
+      "bytes": 51366,
+      "sha256": "0363ca466c7aef0bcea436c9a52c0c41f2e5b9305c4c7a9d9a4893fb0a00587f",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_M.T_Cone_M",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Cone_N.png",
+      "bytes": 1165001,
+      "sha256": "b5b883a506eb6ec411929371059e9cbffb4b5ee088ffb987ecec36da1f2a0fba",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_N.T_Cone_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Cone_R.png",
+      "bytes": 227031,
+      "sha256": "19f0ddcf6d43dc3f744a24076c261b62a0b8a03b580969882630b4ca839606e4",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_R.T_Cone_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Door_BC.png",
+      "bytes": 4800723,
+      "sha256": "061bbb9c4d81d2b28f72a86e8e536b3eae3892830d027cba5fb9e3b37e067405",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_BC.T_Door_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Door_M.png",
+      "bytes": 530644,
+      "sha256": "50bc093ba24e7bd6d56a26c32639822ca81ce37b3a0f47169aa463d2cbe71ce1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_M.T_Door_M",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Door_N.png",
+      "bytes": 5117958,
+      "sha256": "9482c5abc00221a74a0675e600c621b0568a3893be3f804bbbf4d842c2a00467",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_N.T_Door_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Door_R.png",
+      "bytes": 789786,
+      "sha256": "e99f940cc29f6d813618462ddaa34bb90ffe4fef3800ea6e64c39f11c0377032",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_R.T_Door_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_GroundShapes_BC.png",
+      "bytes": 7201932,
+      "sha256": "18a16f5c25a175ab5c2864aca5204e50f7dc7d33bf576a4f209066157f836a1b",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_GroundShapes_BC.T_GroundShapes_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_GroundShapes_N.png",
+      "bytes": 2044666,
+      "sha256": "40335fb0de8f044c1dfe15f33d121f2c73ec810c5d4a09cb81cf37457f0040f1",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_GroundShapes_N.T_GroundShapes_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Lamp_BC.png",
+      "bytes": 241808,
+      "sha256": "4a42a5cbc6daf0225dc27b2863b04f93cac9ebd87775293d2ca16ff75524f81e",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Lamp_BC.T_Lamp_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Lamp_N.png",
+      "bytes": 247058,
+      "sha256": "f5f265b7687f78601925182eb5a16cca5b10f8d5a1e9ecfec42a74cf0305c4fc",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Lamp_N.T_Lamp_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Lamp_R.png",
+      "bytes": 243224,
+      "sha256": "a9f28a9a4d3efe2c886babcb667b949f76a530ccd3dbbdd86de36f24d2bfe2f8",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Lamp_R.T_Lamp_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Pipe_BC.png",
+      "bytes": 902512,
+      "sha256": "e9a2fac5f58e4defd6785df4154510f53abf47b306ad720f487ad80a8d6b89b9",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_BC.T_Pipe_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Pipe_M.png",
+      "bytes": 29494,
+      "sha256": "711da48b0939772998cb7f6ccc10d28a2238503f9d86215ef30f915a40220583",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_M.T_Pipe_M",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Pipe_N.png",
+      "bytes": 826347,
+      "sha256": "e3d59a121b34a92952a4559c2025dfd9839347c64989884cc16822b769174884",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_N.T_Pipe_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Pipe_R.png",
+      "bytes": 239652,
+      "sha256": "ef7374e64a2b5e05f006015d41468d70e4f4c9ca42dfd819b2f7a0cb678e58be",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_R.T_Pipe_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Structure_BC.png",
+      "bytes": 5239194,
+      "sha256": "095a11841efc8cba38b572c4d0ac980be863770b22e0c7695e16b8314ad2d1a7",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_BC.T_Structure_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Structure_M.png",
+      "bytes": 100498,
+      "sha256": "400408fd42caac4a0dc1d353006da9663f87bb67c0d5aa90b1be336a6010893d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_M.T_Structure_M",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Structure_N.png",
+      "bytes": 5003911,
+      "sha256": "df1bdcf26bd14af520bc5c228c36c4376ac68474bc7379c42e62fbe299b0de8d",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_N.T_Structure_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_Structure_R.png",
+      "bytes": 943946,
+      "sha256": "3b3a81c038ccbbc73c3e3563993379cac64bb3b0722875d619c916258064a545",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_R.T_Structure_R",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_WallPaint_BC.png",
+      "bytes": 3065858,
+      "sha256": "321400405e836ea76dc9d227750c35553531605cbc4cc3ba74bc0fc00af048cd",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_WallPaint_BC.T_WallPaint_BC",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_WallPaint_N.png",
+      "bytes": 3449273,
+      "sha256": "b6781942caabbcc8f70a7ed0da7377acc2e550d2b718e671b5af05df68f67a4a",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_WallPaint_N.T_WallPaint_N",
+          "class": "Texture2D"
+        }
+      ]
+    },
+    {
+      "path": "Exported/Game/ParkingGarage/Textures/T_WallPaint_R.png",
+      "bytes": 661202,
+      "sha256": "b31062a6fe4e0ac5a0c2ef90cf9a999310b90bdb6f9ee7e78b0c9ff1f1127187",
+      "destination": "/Game/ReverseAsset/ParkingGarage/Textures/Environment",
+      "generatedAssets": [
+        {
+          "path": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_WallPaint_R.T_WallPaint_R",
+          "class": "Texture2D"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Ambience/Level1_Ambience3.Level1_Ambience3",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/door_close.door_close",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/door_open.door_open",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/Elevator_Bell.Elevator_Bell",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Elevator/Elevator_Loop.Elevator_Loop",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction/Keys_Inserting_v4_wav.Keys_Inserting_v4_wav",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction/Simple_Old_Door_Complete_v1_wav.Simple_Old_Door_Complete_v1_wav",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/Interaction/TakeKey.TakeKey",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_chaseloop.skinstealer_chaseloop",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_gotcha1__1_.skinstealer_gotcha1__1_",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_schlep1.skinstealer_schlep1",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_schlep2.skinstealer_schlep2",
+      "class": "SoundWave"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Attack.A_SkinStealer_Attack",
+      "class": "AnimSequence"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Idle.A_SkinStealer_Idle",
+      "class": "AnimSequence"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Run.A_SkinStealer_Run",
+      "class": "AnimSequence"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Walk.A_SkinStealer_Walk",
+      "class": "AnimSequence"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2.SkinStealer_SM_V2",
+      "class": "SkeletalMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_PhysicsAsset.SkinStealer_SM_V2_PhysicsAsset",
+      "class": "PhysicsAsset"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_Skeleton.SkinStealer_SM_V2_Skeleton",
+      "class": "Skeleton"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/HE_MasterMaterial.HE_MasterMaterial",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/HE_Metal.HE_Metal",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/MI_SkinStealer.MI_SkinStealer",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/MI_WallPaintGrey.MI_WallPaintGrey",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Asphalt.M_Asphalt",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_buttonCall.M_buttonCall",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_buttonLight.M_buttonLight",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_buttons.M_buttons",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_CarCover.M_CarCover",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_CarDetail_A.M_CarDetail_A",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Concrete.M_Concrete",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Cone.M_Cone",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Door.M_Door",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_ElevatorBox_1.M_ElevatorBox_1",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_GroundShapes.M_GroundShapes",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_KeyTurn.M_KeyTurn",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Lamp.M_Lamp",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_LEDFloorsRed.M_LEDFloorsRed",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Pipe.M_Pipe",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Railings.M_Railings",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_SkinStealer.M_SkinStealer",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_SmallDoor.M_SmallDoor",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Structure.M_Structure",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_WallPaint.M_WallPaint",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/M_Windows.M_Windows",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Materials/WorldGridMaterial.WorldGridMaterial",
+      "class": "Material"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_buttonCall/StaticMeshes/sm_buttonCall.sm_buttonCall",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_buttons_floor_button-2/StaticMeshes/sm_buttons_floor_button-2.sm_buttons_floor_button-2",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_doorFrame/StaticMeshes/sm_doorFrame.sm_doorFrame",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_elevatorBox/StaticMeshes/sm_elevatorBox.sm_elevatorBox",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_elevator_doorLeft/StaticMeshes/sm_elevator_doorLeft.sm_elevator_doorLeft",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_elevator_doorRight/StaticMeshes/sm_elevator_doorRight.sm_elevator_doorRight",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Elevator/sm_hatchCover/StaticMeshes/sm_hatchCover.sm_hatchCover",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Beam_A/StaticMeshes/SM_Beam_A.SM_Beam_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Car_B/StaticMeshes/SM_Car_B.SM_Car_B",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Column_A/StaticMeshes/SM_Column_A.SM_Column_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Cone/StaticMeshes/SM_Cone.SM_Cone",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Desk/StaticMeshes/SM_Desk.SM_Desk",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_DoorBase_A/StaticMeshes/SM_DoorBase_A.SM_DoorBase_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Door_A/StaticMeshes/SM_Door_A.SM_Door_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Drawer_A/StaticMeshes/SM_Drawer_A.SM_Drawer_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Ground/StaticMeshes/SM_Ground.SM_Ground",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_GroundShape_A/StaticMeshes/SM_GroundShape_A.SM_GroundShape_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Lamp/StaticMeshes/SM_Lamp.SM_Lamp",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_Pipe/StaticMeshes/SM_Pipe.SM_Pipe",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_WallExterior_A/StaticMeshes/SM_WallExterior_A.SM_WallExterior_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_WallInterior_A/StaticMeshes/SM_WallInterior_A.SM_WallInterior_A",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Environment/SM_WallInterior_D/StaticMeshes/SM_WallInterior_D.SM_WallInterior_D",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys/Coop_Open_low__2__Keyhole_low/StaticMeshes/Coop_Open_low__2__Keyhole_low.Coop_Open_low__2__Keyhole_low",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys/Coop_Open_low__2__Plate_low/StaticMeshes/Coop_Open_low__2__Plate_low.Coop_Open_low__2__Plate_low",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/Keys/Key/StaticMeshes/Key.Key",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/SafeRoom/SM_SmallDoor_Door/StaticMeshes/SM_SmallDoor_Door.SM_SmallDoor_Door",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Meshes/SafeRoom/SM_SmallDoor_Frame/StaticMeshes/SM_SmallDoor_Frame.SM_SmallDoor_Frame",
+      "class": "StaticMesh"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_BC.T_buttonCall_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_MT.T_buttonCall_MT",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_N.T_buttonCall_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonCall_ON_BC.T_buttonCall_ON_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_BC.T_buttonLight_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_MT.T_buttonLight_MT",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_N.T_buttonLight_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttonLight_ON_BC.T_buttonLight_ON_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttons_BC.T_buttons_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttons_MT.T_buttons_MT",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_buttons_N.T_buttons_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_BC.T_elevatorBox_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_Emission.T_elevatorBox_Emission",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_MT.T_elevatorBox_MT",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_elevatorBox_N.T_elevatorBox_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_LEDFloors_BC.T_LEDFloors_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_railings_BC.T_railings_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_railings_MT.T_railings_MT",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_railings_N.T_railings_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_windows_BC.T_windows_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Elevator/T_windows_MT.T_windows_MT",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/Empty_Normal.Empty_Normal",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/Empty_White.Empty_White",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Asphalt_BC.T_Asphalt_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Asphalt_N.T_Asphalt_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Asphalt_R.T_Asphalt_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarCover_BC.T_CarCover_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarCover_N.T_CarCover_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarCover_R.T_CarCover_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_BC.T_CarDetail_A_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_M.T_CarDetail_A_M",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_N.T_CarDetail_A_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_CarDetail_A_R.T_CarDetail_A_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Concrete_BC.T_Concrete_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Concrete_N.T_Concrete_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Concrete_R.T_Concrete_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_BC.T_Cone_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_M.T_Cone_M",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_N.T_Cone_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Cone_R.T_Cone_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Default_Material_Grid_M.T_Default_Material_Grid_M",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Default_Material_Grid_N.T_Default_Material_Grid_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_BC.T_Door_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_M.T_Door_M",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_N.T_Door_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Door_R.T_Door_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_GroundShapes_BC.T_GroundShapes_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_GroundShapes_N.T_GroundShapes_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Lamp_BC.T_Lamp_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Lamp_N.T_Lamp_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Lamp_R.T_Lamp_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Metal_Aluminum_D.T_Metal_Aluminum_D",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_PerlinNoise_01.T_PerlinNoise_01",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_BC.T_Pipe_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_M.T_Pipe_M",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_N.T_Pipe_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Pipe_R.T_Pipe_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_BC.T_Structure_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_M.T_Structure_M",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_N.T_Structure_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_Structure_R.T_Structure_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_WallPaint_BC.T_WallPaint_BC",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_WallPaint_N.T_WallPaint_N",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Environment/T_WallPaint_R.T_WallPaint_R",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Keys/Coop_Open_BaseColor.Coop_Open_BaseColor",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Keys/Coop_Open_Normal.Coop_Open_Normal",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/Keys/Coop_Open_OcclusionRoughnessMetallic.Coop_Open_OcclusionRoughnessMetallic",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_BaseColor.T_DoorSmallLow_wire_115115115_BaseColor",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_Normal.T_DoorSmallLow_wire_115115115_Normal",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_OcclusionRoughnessMetallic.T_DoorSmallLow_wire_115115115_OcclusionRoughnessMetallic",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_BaseColor.CharacterMid_low_CharacterMid_high_BaseColor",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_Emissive.CharacterMid_low_CharacterMid_high_Emissive",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_Normal.CharacterMid_low_CharacterMid_high_Normal",
+      "class": "Texture2D"
+    },
+    {
+      "asset": "/Game/ReverseAsset/ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_OcclusionRoughnessMetallic.CharacterMid_low_CharacterMid_high_OcclusionRoughnessMetallic",
+      "class": "Texture2D"
+    }
+  ],
+  "animations": [
+    {
+      "source": "E:\\ReverseAsset\\ParkingGarage\\Exported\\Game\\Entity\\SkinStealer\\attack_Anim.psa",
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Attack.A_SkinStealer_Attack",
+      "skeleton": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_Skeleton.SkinStealer_SM_V2_Skeleton",
+      "source_bones": 68,
+      "source_frames": 163,
+      "source_fps": 45.27777862548828,
+      "source_duration_seconds": 3.599999932599215,
+      "resampled_fps": 30,
+      "ue_bone_tracks": 68,
+      "ue_frames": 108,
+      "ue_keys": 109,
+      "ue_play_length": 3.6,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000013B491BDE20) {numerator: 30, denominator: 1}>"
+    },
+    {
+      "source": "E:\\ReverseAsset\\ParkingGarage\\Exported\\Game\\Entity\\SkinStealer\\idle_Anim.psa",
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Idle.A_SkinStealer_Idle",
+      "skeleton": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_Skeleton.SkinStealer_SM_V2_Skeleton",
+      "source_bones": 68,
+      "source_frames": 129,
+      "source_fps": 30.234373092651367,
+      "source_duration_seconds": 4.266666935831197,
+      "resampled_fps": 30,
+      "ue_bone_tracks": 68,
+      "ue_frames": 128,
+      "ue_keys": 129,
+      "ue_play_length": 4.266666666666667,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000013B491BDDE0) {numerator: 30, denominator: 1}>"
+    },
+    {
+      "source": "E:\\ReverseAsset\\ParkingGarage\\Exported\\Game\\Entity\\SkinStealer\\running_Anim.psa",
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Run.A_SkinStealer_Run",
+      "skeleton": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_Skeleton.SkinStealer_SM_V2_Skeleton",
+      "source_bones": 68,
+      "source_frames": 25,
+      "source_fps": 31.25,
+      "source_duration_seconds": 0.8,
+      "resampled_fps": 30,
+      "ue_bone_tracks": 68,
+      "ue_frames": 24,
+      "ue_keys": 25,
+      "ue_play_length": 0.8,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000013B491BDDF0) {numerator: 30, denominator: 1}>"
+    },
+    {
+      "source": "E:\\ReverseAsset\\ParkingGarage\\Exported\\Game\\Entity\\SkinStealer\\Walking_6_mixamo_com.psa",
+      "asset": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Walk.A_SkinStealer_Walk",
+      "skeleton": "/Game/ReverseAsset/ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_Skeleton.SkinStealer_SM_V2_Skeleton",
+      "source_bones": 68,
+      "source_frames": 43,
+      "source_fps": 30.71428680419922,
+      "source_duration_seconds": 1.3999999503202234,
+      "resampled_fps": 30,
+      "ue_bone_tracks": 68,
+      "ue_frames": 42,
+      "ue_keys": 43,
+      "ue_play_length": 1.4,
+      "ue_frame_rate": "<Struct 'FrameRate' (0x0000013B491BDF90) {numerator: 30, denominator: 1}>"
+    }
+  ],
+  "generatedFiles": [
+    {
+      "path": "ParkingGarage/Audio/Ambience/Level1_Ambience3.uasset",
+      "bytes": 12677199,
+      "sha256": "b7bf02820a6a6e99a8d879ef7a67f9e15ba9a44a46ce4792453d0b764a186a7e"
+    },
+    {
+      "path": "ParkingGarage/Audio/Elevator/door_close.uasset",
+      "bytes": 186017,
+      "sha256": "5ac55b784fc67578c24389a819c4d355477bcb9f98d7aa9586d89bdc4aa5b8f6"
+    },
+    {
+      "path": "ParkingGarage/Audio/Elevator/door_open.uasset",
+      "bytes": 188238,
+      "sha256": "17c13e135dddcda50c3589b8c899b6227e4558cd85609f666b4c4ef25d6545e9"
+    },
+    {
+      "path": "ParkingGarage/Audio/Elevator/Elevator_Bell.uasset",
+      "bytes": 110183,
+      "sha256": "e9aef49468cfafb413d8778d1797d8ff5cc0d9eec6e894df45a23415aec2d710"
+    },
+    {
+      "path": "ParkingGarage/Audio/Elevator/Elevator_Loop.uasset",
+      "bytes": 658791,
+      "sha256": "62425a5c9bb9f3ee0aae631c09df20af968a0aeaea46489c8573329e956b4341"
+    },
+    {
+      "path": "ParkingGarage/Audio/Interaction/Keys_Inserting_v4_wav.uasset",
+      "bytes": 92429,
+      "sha256": "09514f71c5d9680e76f5788d81e30869484c5e3b831af8bf103f53b2ee4085eb"
+    },
+    {
+      "path": "ParkingGarage/Audio/Interaction/Simple_Old_Door_Complete_v1_wav.uasset",
+      "bytes": 108423,
+      "sha256": "b4f85dcb3686d52e80825f78bdf2c8b677c589aa3e3164ec743820659267f1dc"
+    },
+    {
+      "path": "ParkingGarage/Audio/Interaction/TakeKey.uasset",
+      "bytes": 49929,
+      "sha256": "eda94c4b05649116194f41e3531e88621b262247c43b5f7b7b9bae17a48c7ce6"
+    },
+    {
+      "path": "ParkingGarage/Audio/SkinStealer/skinstealer_chaseloop.uasset",
+      "bytes": 4801615,
+      "sha256": "01fce66c4072787648a55e236631f25d62489b1c23e9d73b626c1638bbede3ab"
+    },
+    {
+      "path": "ParkingGarage/Audio/SkinStealer/skinstealer_gotcha1__1_.uasset",
+      "bytes": 197537,
+      "sha256": "51fb43a4fb085ce0ec7b4a21f572b2102144d66fce91fbcd32489ef2773bcda8"
+    },
+    {
+      "path": "ParkingGarage/Audio/SkinStealer/skinstealer_schlep1.uasset",
+      "bytes": 40603,
+      "sha256": "e2f1075993d62883780f41079213f6f8e8d4f08f98bc75fb5dab0046e4a63210"
+    },
+    {
+      "path": "ParkingGarage/Audio/SkinStealer/skinstealer_schlep2.uasset",
+      "bytes": 71107,
+      "sha256": "d7f7b543d1d2766b659e20b8132cb50e0dc87ca3c295492edce573e047b42331"
+    },
+    {
+      "path": "ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Attack.uasset",
+      "bytes": 623316,
+      "sha256": "65da59bbeea5745ff2bd6d5bd3b929f58df0734ed3c63dd85a0a5d3292f2f68d"
+    },
+    {
+      "path": "ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Idle.uasset",
+      "bytes": 353547,
+      "sha256": "b4bb9d8d3c305099022617e19411ecdfe975eae776a887de8f212b29e999313b"
+    },
+    {
+      "path": "ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Run.uasset",
+      "bytes": 123908,
+      "sha256": "b6767a536e5bc2e223628554a313e669eb5fba1441b0dbfe8a2a687f9eab6a88"
+    },
+    {
+      "path": "ParkingGarage/Characters/SkinStealer/Animations/A_SkinStealer_Walk.uasset",
+      "bytes": 196680,
+      "sha256": "6da1e6800e865e6096d7f35d394329ffc2ace38896d2a12037495617d58d5af0"
+    },
+    {
+      "path": "ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2.uasset",
+      "bytes": 11334750,
+      "sha256": "f78aac1d02aea296f528b9dfe6613fa60d880802342e1515e2e2e1e8adc6b5c5"
+    },
+    {
+      "path": "ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_PhysicsAsset.uasset",
+      "bytes": 86519,
+      "sha256": "29c9945fb5314947733a859c6c743ffa464c430ee76417531e4e3d86f7517a53"
+    },
+    {
+      "path": "ParkingGarage/Characters/SkinStealer/SkinStealer_SM_V2/SkeletalMeshes/SkinStealer_SM_V2_Skeleton.uasset",
+      "bytes": 16215,
+      "sha256": "bb610decbbff759399eb77c697cc68b98a2aa042d61a452518959390d8c91795"
+    },
+    {
+      "path": "ParkingGarage/Materials/HE_MasterMaterial.uasset",
+      "bytes": 5138,
+      "sha256": "e1dd3b0dfd9ebe18aab815e72e8aa68dabd90875610826665f980b647c8c9a9f"
+    },
+    {
+      "path": "ParkingGarage/Materials/HE_Metal.uasset",
+      "bytes": 6773,
+      "sha256": "a546175f20c103e5c58961d2832d7839d26183fa4517c300d81f1cdf9f40b9cb"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Asphalt.uasset",
+      "bytes": 6512,
+      "sha256": "8a61705a642385fb085119e33ce410a46d4b4e5fb95628d82f5e3ca7b8da90b2"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_buttonCall.uasset",
+      "bytes": 6648,
+      "sha256": "35161b1db4cdb24e6bdb89ed72ebda40dcc1500ed2eb94612f7875160688ed18"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_buttonLight.uasset",
+      "bytes": 6659,
+      "sha256": "48c687523c90d37702dc6e646656096d7fb6d6a22c1eafa5b78799351a0597b6"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_buttons.uasset",
+      "bytes": 6615,
+      "sha256": "743d9cc8e23f53ea335ba4b1b8bf704c0014203749353d83411a269651bd30c1"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_CarCover.uasset",
+      "bytes": 6523,
+      "sha256": "b9c2ac97253311e16d5280ff776b1d1410adf0809600f1b9ede6a5dfb85c232b"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_CarDetail_A.uasset",
+      "bytes": 7235,
+      "sha256": "ea15e8da9826693f6eba919b41ccdeab17f20dd090d28df2f177c6cf4e2e8008"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Concrete.uasset",
+      "bytes": 6523,
+      "sha256": "a45a9844e44d1a6da7b8746e737758fba71a3454dd21b6f0fb38d7f91c4a146c"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Cone.uasset",
+      "bytes": 7144,
+      "sha256": "2585fa4d16ab10fe4b900fea5481de4680216e9a194bcd34dd63a7a7ea9bcaf9"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Door.uasset",
+      "bytes": 7144,
+      "sha256": "2f28de8e8dc6b60c0ed1943d18a471d4832e935dcee6796d19f673448503f466"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_ElevatorBox_1.uasset",
+      "bytes": 7315,
+      "sha256": "ab2ee135b7ac8d8746c45bdaec244516a40f1ca35627158a90e2f6a950b892bc"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_GroundShapes.uasset",
+      "bytes": 5831,
+      "sha256": "1ba3f5b2b472b3c1caf9ef901d99a7bd39b301b16340b6a07590232869723d51"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_KeyTurn.uasset",
+      "bytes": 6793,
+      "sha256": "2506f44f91507f82223920f5e510176c7d9d14046224818949feebe8f4e7ad83"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Lamp.uasset",
+      "bytes": 6479,
+      "sha256": "1b9512f08a2359dff9fb9d36907c22edc918017a9e57c3d8773514c700d3f9a7"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_LEDFloorsRed.uasset",
+      "bytes": 5463,
+      "sha256": "95f668519be95415beffcf0610fc7852fa533e3c6f1b23d6b8d7d7442d88d689"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Pipe.uasset",
+      "bytes": 7144,
+      "sha256": "4e3ee31506f42a552f1de6fb237402ac18e63b7962d274923893b03034066388"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Railings.uasset",
+      "bytes": 6626,
+      "sha256": "a56e93cde3ea61393186f7f95e8f771281e82ff49fdf68125eeb0acf27985cef"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_SkinStealer.uasset",
+      "bytes": 7679,
+      "sha256": "d510144c8c321bb847fa0cef8908541d33a40220ac236858e8f9be688cd140ac"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_SmallDoor.uasset",
+      "bytes": 6935,
+      "sha256": "f93c75c6a9e3644ccc2387ff0a3be7a557f78c46edcff3f10723f72e927349c8"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Structure.uasset",
+      "bytes": 7209,
+      "sha256": "5d130cc27c91bff65b559b3d5f26f171591b32b03da7941e88b90fa6515762e6"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_WallPaint.uasset",
+      "bytes": 6534,
+      "sha256": "8cf9b7f2a95bd8d1783c0ea3134c49e6125e6c79e7a269c01ec5a2efc1b1380d"
+    },
+    {
+      "path": "ParkingGarage/Materials/M_Windows.uasset",
+      "bytes": 6120,
+      "sha256": "ce8d2035a325c57c005754b33e78f5e38f7cd25f04b9dbb0dc97b515d13e6116"
+    },
+    {
+      "path": "ParkingGarage/Materials/MI_SkinStealer.uasset",
+      "bytes": 7684,
+      "sha256": "569356a31c5163d4ccb4403b1ff5c9a06cf670ffabf695accfcead53dbd4ad94"
+    },
+    {
+      "path": "ParkingGarage/Materials/MI_WallPaintGrey.uasset",
+      "bytes": 6559,
+      "sha256": "0f3ab86caf2b7512371108bd241c5be0ae27725ceb32926c94c01df03433381e"
+    },
+    {
+      "path": "ParkingGarage/Materials/WorldGridMaterial.uasset",
+      "bytes": 5963,
+      "sha256": "6d676d9c238aed54462298ca48bac7195798b613e7b4e4d3e5decb192a9c4ee0"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Elevator/sm_buttonCall/StaticMeshes/sm_buttonCall.uasset",
+      "bytes": 78934,
+      "sha256": "3e80c8aaa8303a50bb5c3cdfca98fa65d7bc0c24acab86c6d2e1fab4e27a0f0d"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Elevator/sm_buttons_floor_button-2/StaticMeshes/sm_buttons_floor_button-2.uasset",
+      "bytes": 84313,
+      "sha256": "fdb245e2e825d6dabf2ac669fdecdf2251a595eb78e725754a05c94c4b53f927"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Elevator/sm_doorFrame/StaticMeshes/sm_doorFrame.uasset",
+      "bytes": 89356,
+      "sha256": "7b8ccd49c110c67f0839ecc73a7c202ce92a18f186665387087dbb3769027150"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Elevator/sm_elevator_doorLeft/StaticMeshes/sm_elevator_doorLeft.uasset",
+      "bytes": 87965,
+      "sha256": "a120051980e50670bf56c0583f719fba7b9fe158e0f0ae6f555ad917ee6e7b9d"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Elevator/sm_elevator_doorRight/StaticMeshes/sm_elevator_doorRight.uasset",
+      "bytes": 88048,
+      "sha256": "c62284f26dff712030aa52a25b64a5534bc32ffc978c7d631866a773951338e7"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Elevator/sm_elevatorBox/StaticMeshes/sm_elevatorBox.uasset",
+      "bytes": 282548,
+      "sha256": "085a0c4ff50aca2b536e8e05f691b6cf85e2441873ddfe39312c6e5d14d5610c"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Elevator/sm_hatchCover/StaticMeshes/sm_hatchCover.uasset",
+      "bytes": 82390,
+      "sha256": "02eb822837b405a78231a614a069a324ad9e9a335890b745dfe571ac24301579"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Beam_A/StaticMeshes/SM_Beam_A.uasset",
+      "bytes": 78460,
+      "sha256": "e4418284a1e97927197aee59475d5000e76b14fb5a6963be262e6979af827fdb"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Car_B/StaticMeshes/SM_Car_B.uasset",
+      "bytes": 210474,
+      "sha256": "c95bb5c42c6a85c324033bd004af2fcfe8dc499fd1bce925ea3b9b5e212f089e"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Column_A/StaticMeshes/SM_Column_A.uasset",
+      "bytes": 80911,
+      "sha256": "150414f175f35b66195999cde13092addef888d9a1a1756c19dded5f6d2b81ce"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Cone/StaticMeshes/SM_Cone.uasset",
+      "bytes": 86965,
+      "sha256": "6872916e361fe599912a809aa8df7877813f25022bf8edda8304f078013e5b15"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Desk/StaticMeshes/SM_Desk.uasset",
+      "bytes": 81694,
+      "sha256": "b6e6e5ca0459e1a991d563d6d928d0eb5e293946e7751726ef678e858404b01f"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Door_A/StaticMeshes/SM_Door_A.uasset",
+      "bytes": 90176,
+      "sha256": "46690e71f85255a2dbb3c65624cdc78cd0fb79530c8ab3ddee85757c3126831f"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_DoorBase_A/StaticMeshes/SM_DoorBase_A.uasset",
+      "bytes": 78179,
+      "sha256": "cff7fa9ec26fa884ffb399edc1e76633e139984f3ef27367be6ed116bc82013a"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Drawer_A/StaticMeshes/SM_Drawer_A.uasset",
+      "bytes": 78924,
+      "sha256": "929e50266d67d1e0f3e8c3fdef0f53e2fed6ad7530f5034a178b16636bedae87"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Ground/StaticMeshes/SM_Ground.uasset",
+      "bytes": 80410,
+      "sha256": "f2a4ffbf5c89052ef9462fcd5cb63cde9386d35855c84935c34eb6c6de3a8192"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_GroundShape_A/StaticMeshes/SM_GroundShape_A.uasset",
+      "bytes": 77085,
+      "sha256": "47b1815ba05fe16f3a6a144feeaba0c04722d0b02fca53790f2dc820da9b81b2"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Lamp/StaticMeshes/SM_Lamp.uasset",
+      "bytes": 91132,
+      "sha256": "358945c240b71920a6ca55735a2d0d4f96ec3ade4a3c02ec694ed3223081d2aa"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_Pipe/StaticMeshes/SM_Pipe.uasset",
+      "bytes": 93830,
+      "sha256": "b2aebd0abdf43ace1397e286e95ff739c356f57d717668b8600740932c780bc3"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_WallExterior_A/StaticMeshes/SM_WallExterior_A.uasset",
+      "bytes": 77206,
+      "sha256": "ca966482eddb1b9e98c076fd08ad5eb0583a057ee0236bca6f9c9c6241871ca5"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_WallInterior_A/StaticMeshes/SM_WallInterior_A.uasset",
+      "bytes": 81199,
+      "sha256": "2feac19cb970335c1d0cf3fa4ec39c87557f5d9feda102e3ae855a756c36002c"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Environment/SM_WallInterior_D/StaticMeshes/SM_WallInterior_D.uasset",
+      "bytes": 84243,
+      "sha256": "5f8e670e5fa007ead6f23478b99485c83b20202de60c248f9f98ac29c5919f49"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Keys/Coop_Open_low__2__Keyhole_low/StaticMeshes/Coop_Open_low__2__Keyhole_low.uasset",
+      "bytes": 87670,
+      "sha256": "e3e011240b84af45787aa601d99b5782aae334c63e1a3d162022751cbb05f309"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Keys/Coop_Open_low__2__Plate_low/StaticMeshes/Coop_Open_low__2__Plate_low.uasset",
+      "bytes": 203229,
+      "sha256": "6c2140d9cc15e9ad3832d784e1e96fdd24ecf8f68026dccf3c92dee48794cedc"
+    },
+    {
+      "path": "ParkingGarage/Meshes/Keys/Key/StaticMeshes/Key.uasset",
+      "bytes": 145504,
+      "sha256": "faa8581d10604032f940f1234de65f0eaa2fc60b9157a0aad386479df51fdb51"
+    },
+    {
+      "path": "ParkingGarage/Meshes/SafeRoom/SM_SmallDoor_Door/StaticMeshes/SM_SmallDoor_Door.uasset",
+      "bytes": 120075,
+      "sha256": "abdc2772d9f199699f9f73a41a47a469a07fd1137178f9f355f7d00be11f13b6"
+    },
+    {
+      "path": "ParkingGarage/Meshes/SafeRoom/SM_SmallDoor_Frame/StaticMeshes/SM_SmallDoor_Frame.uasset",
+      "bytes": 78367,
+      "sha256": "86776f97d6de88271e011cb9620b871f1302a96cd0670ea0d84c2be60b591280"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonCall_BC.uasset",
+      "bytes": 20168,
+      "sha256": "efd17af9f8f22b691c82bbc32999782cecf045efdbc51c42cd9d30d792503ca0"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonCall_MT.uasset",
+      "bytes": 19708,
+      "sha256": "2133e15a98eaf9fb8450d335b0c5db890a959fd9ef26e4771074efaaa595e42d"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonCall_N.uasset",
+      "bytes": 38106,
+      "sha256": "62d26f067a4841fc5cdf8558052e2776f858011d5b984c93910db52077c0da3a"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonCall_ON_BC.uasset",
+      "bytes": 19321,
+      "sha256": "ec25f3c352973f8efda52178175a22667430dbd662798257f21fa5629f703dab"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonLight_BC.uasset",
+      "bytes": 58046,
+      "sha256": "a3f620f460743a40c4b6ca7399d0491edcbba5c7af1870b294b309fe00e76eea"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonLight_MT.uasset",
+      "bytes": 47680,
+      "sha256": "a1240494b80001994fcfaa9dfac0d7f6f637448ae9c3cc7292d34a580c6faf99"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonLight_N.uasset",
+      "bytes": 73858,
+      "sha256": "783fdea0bfa7f1238acf0fbaa7945211d929b7c356c40982d1807fc29b614738"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttonLight_ON_BC.uasset",
+      "bytes": 31288,
+      "sha256": "86471c3d9318e19043fc0a2369d2cca060e94399650bd0f9d68b086efc9671c9"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttons_BC.uasset",
+      "bytes": 2895492,
+      "sha256": "293ffe0e43e6d7e1262e3db713ba9c17927bbb7a756fdff02510de94d87871fa"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttons_MT.uasset",
+      "bytes": 2195923,
+      "sha256": "b27743f7043de6aae9f0a64ab6a27006f29bb6df6c5a4da79285997ea445b53a"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_buttons_N.uasset",
+      "bytes": 5624477,
+      "sha256": "d42ce392a5c2d52a30182c933e00ed19309ebf9e0f3423d88f48407a73a367cd"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_elevatorBox_BC.uasset",
+      "bytes": 1726110,
+      "sha256": "6b80d8771081c0de9f35125e09a607ca31b0c243217340bbbd9e48bbcf6d19f7"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_elevatorBox_Emission.uasset",
+      "bytes": 16162,
+      "sha256": "349c45f675b5287b314d220e0fd4858039b7d0da7ec5278fcd5d0c8e12367341"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_elevatorBox_MT.uasset",
+      "bytes": 2115927,
+      "sha256": "dd62e6c59f428cfddce18d8356ca420b35ff75d23b54ecd62aa3e040a1fbd7bd"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_elevatorBox_N.uasset",
+      "bytes": 3168002,
+      "sha256": "dff559ba212c02d57a64c4f447ee1695b402db86b6413d8df2753ee289eee5e8"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_LEDFloors_BC.uasset",
+      "bytes": 529489,
+      "sha256": "615c19c2975b94b66f3f87f03243fc56b0d04fa9446c416ab0cf8b2fe33aff01"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_railings_BC.uasset",
+      "bytes": 2124566,
+      "sha256": "9b92f7e9a173f9b7646123cb58fe90e4ffa1b9c35c82b3f796b1913f1de0587e"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_railings_MT.uasset",
+      "bytes": 1166466,
+      "sha256": "6d41de26d9d4d65ffbb20bfd219080de49f51592e0dbacb670a0c6621c101aaa"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_railings_N.uasset",
+      "bytes": 4937367,
+      "sha256": "e50446278a591fa00ab5df105a43760b3e327b7ddc6ecb45880611d0dda207d1"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_windows_BC.uasset",
+      "bytes": 1243892,
+      "sha256": "dee4cceff8ce685bc8b307a449b077dca74e4eb79a7241abf63e1387f39f0c0c"
+    },
+    {
+      "path": "ParkingGarage/Textures/Elevator/T_windows_MT.uasset",
+      "bytes": 847864,
+      "sha256": "4e2d2b36f23c488d9606c82743b6fa97a6f3ba71f142f88cad0a4b3f10b971a0"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/Empty_Normal.uasset",
+      "bytes": 15265,
+      "sha256": "75f2140a68c91efb76ee4797c0ced27a4c2f52c39f8584dd907e59e36fb85312"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/Empty_White.uasset",
+      "bytes": 12554,
+      "sha256": "6c76d47f651fdc168c3c9ce4fa060e20ff097b2eb05bd0fe32434fcaf1bc4e20"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Asphalt_BC.uasset",
+      "bytes": 5882194,
+      "sha256": "7eb0299e9b1edc8ce62a77cf17341c8fcc5dcdc98f5d3c9e177df38b6c227a19"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Asphalt_N.uasset",
+      "bytes": 11712923,
+      "sha256": "13f9192df9a2493818e6b0a9712f2fff074ee8ca7785e88f51d7e649c5c21a97"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Asphalt_R.uasset",
+      "bytes": 5088702,
+      "sha256": "8d7b8f08b30643f7921c31c911a39f08f0487229a4d7d7bb4b259d13214887b7"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_CarCover_BC.uasset",
+      "bytes": 1343018,
+      "sha256": "f8060063c0f824b59bed65d287e4d21170930b727308f3d6a7eb7eeda0c9422f"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_CarCover_N.uasset",
+      "bytes": 2052449,
+      "sha256": "21346ea74aeee3b97926122a4df608c1df9deba661a38bf977568b1ebf1aac07"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_CarCover_R.uasset",
+      "bytes": 272626,
+      "sha256": "f887711eee34224e976064b46fcedc1bdefaab27c08c58aa2bb35b9a215f86c8"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_CarDetail_A_BC.uasset",
+      "bytes": 223514,
+      "sha256": "04bdcbda4091fdb626dd31a5de3e77d48e3e253529bedf8f5ea8bf4ccf061754"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_CarDetail_A_M.uasset",
+      "bytes": 31082,
+      "sha256": "a08adc3cda3b35972472e25a6dc9537e101612eb62cfd630e92906b533da569b"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_CarDetail_A_N.uasset",
+      "bytes": 375482,
+      "sha256": "ce967256ead219762a47d4a42ca3e5b15fd5f446b89a7536251d678fecd4bf8c"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_CarDetail_A_R.uasset",
+      "bytes": 55870,
+      "sha256": "e836973a3aa223b02edd54fffa1e52e9787b730def9655598734afc95a4607c6"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Concrete_BC.uasset",
+      "bytes": 1188246,
+      "sha256": "3c8d61f50237739a9d6181e5bfc4565ab5447597a2b6948bd9c7e45174af84cd"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Concrete_N.uasset",
+      "bytes": 7391964,
+      "sha256": "8ddd961bc5656086a2dad13f2e9675db65ba905d2a2c9afec6c0f627936fe977"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Concrete_R.uasset",
+      "bytes": 684315,
+      "sha256": "950065bc8c5109c9b7387efff09a768205dd3f27c15e2df11a67503c9662d5f2"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Cone_BC.uasset",
+      "bytes": 967076,
+      "sha256": "37edcc9421c1816b1b56add084c0f11cbc068a4ab7d718693d81aac26fb70b44"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Cone_M.uasset",
+      "bytes": 50883,
+      "sha256": "6d19dc6d0bf6beb8d4cf77f119b71ff158962b2d54735021b2bcd17525dfd40a"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Cone_N.uasset",
+      "bytes": 1164998,
+      "sha256": "623717322c94e336ef4508ef7eb9aca67f17200b88a48ca0ecd351fb8cd7b497"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Cone_R.uasset",
+      "bytes": 191588,
+      "sha256": "6c8b8e504f0c4adc8ed6df17f78868acd217ef056e902818ab5f7988cdf68a61"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Default_Material_Grid_M.uasset",
+      "bytes": 187154,
+      "sha256": "367655f0b72703ffb55d52be96986cbe09ea9f32504d8460ec8c9071d0ad6b53"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Default_Material_Grid_N.uasset",
+      "bytes": 13224,
+      "sha256": "b86e8036cf8d07352b17c54b4e88a9019f3eb5e342cbff746c6ee286beba43ca"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Door_BC.uasset",
+      "bytes": 4118529,
+      "sha256": "9f72d28a7e80d1f6bc2072b783ce6201ad35a883e57e4bc00ed459b167d87d36"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Door_M.uasset",
+      "bytes": 465553,
+      "sha256": "5f60a88225c0f4ae9a34a64c0d083e64683fefa2e12c7dcda97f7cffb8b84997"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Door_N.uasset",
+      "bytes": 4878149,
+      "sha256": "2319075ee736528180f8f27337ea2849bccdde2be0819a1c59bda7aa7a897a06"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Door_R.uasset",
+      "bytes": 642921,
+      "sha256": "15bd89d30fd13a87f60d1246a7918f926330919f9ba64e681e0da8645ad8cfed"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_GroundShapes_BC.uasset",
+      "bytes": 5555735,
+      "sha256": "474fa3cf07e77f3ce2422ddfc352bed0c991717a9c6091ba3216c6415158483e"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_GroundShapes_N.uasset",
+      "bytes": 2190734,
+      "sha256": "e809102fafc0ffe2b2ffc2bf7815603ec263284ff0a663c9034f87100a9a6828"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Lamp_BC.uasset",
+      "bytes": 210390,
+      "sha256": "87b1a8fb88bfff4e8e4e6d3731d11af76600cf2f750ecac99fffd3d3cc860b47"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Lamp_N.uasset",
+      "bytes": 243571,
+      "sha256": "8b3190e38860481e1f4f5d0c5a0008ceac8d3112b4a310d7ce198702eb3ea5bd"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Lamp_R.uasset",
+      "bytes": 208607,
+      "sha256": "d464f83e0676cd530e0c1571644e91c1fb8dc8c43dd05fec4e7358e4f0e7d4ac"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Metal_Aluminum_D.uasset",
+      "bytes": 8004922,
+      "sha256": "cd2e5af1be536096f7fb5ef9b46a1ac63a6df622e2cf2761281bd5f68db741cb"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_PerlinNoise_01.uasset",
+      "bytes": 2176879,
+      "sha256": "6bc4124d05e83476fe7eaf79775b453b6f44814a59ea1f4eb2416cf180d4507a"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Pipe_BC.uasset",
+      "bytes": 823109,
+      "sha256": "90c677bd3354836c6c23975c5e09e51ab030177663e703ac3e4f3002a42d2ea5"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Pipe_M.uasset",
+      "bytes": 33779,
+      "sha256": "25f01740f9c47fff63623618691d2c93195b8257ea8a245a829d8d4e23705798"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Pipe_N.uasset",
+      "bytes": 757983,
+      "sha256": "e1a4af5444e3580194336de46a05a0aed5ea9fc9c9fe05b1e7369b8e6bf94e21"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Pipe_R.uasset",
+      "bytes": 205137,
+      "sha256": "cefac18dec707c903e1e4e4c7f455c4129430c66e77b5700d9571dcecc4f6799"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Structure_BC.uasset",
+      "bytes": 3807692,
+      "sha256": "6cbf294d0a79770e51e0eaa1527b912f6703fc2b55425a3acff7d76ea9841561"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Structure_M.uasset",
+      "bytes": 83993,
+      "sha256": "4315973efed3fdcd76b1ea77be2dee1195f205a302d7ffe7e22dcc61bdfb0e99"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Structure_N.uasset",
+      "bytes": 4928323,
+      "sha256": "b030d1792a0c081b676f21272ac869a0888df17188d60fa621b0d08b87845223"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_Structure_R.uasset",
+      "bytes": 785880,
+      "sha256": "afc37f27b806d247e8c167aae48018e9ec15705f43131735c911b8ea1d8b3cd2"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_WallPaint_BC.uasset",
+      "bytes": 2003509,
+      "sha256": "923ada2f02438096865c3c16c3f72259b0ae903a0c4a245e4f226205d74b3b8e"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_WallPaint_N.uasset",
+      "bytes": 3220054,
+      "sha256": "2ab52a9d920a7cd0335767b91563107518fba0d8fea2d08df1a8a79557a7fa40"
+    },
+    {
+      "path": "ParkingGarage/Textures/Environment/T_WallPaint_R.uasset",
+      "bytes": 491926,
+      "sha256": "72005d4cb8d3bd1369152c969adcf7f6aa436301cb052803d7c32f6d1807099a"
+    },
+    {
+      "path": "ParkingGarage/Textures/Keys/Coop_Open_BaseColor.uasset",
+      "bytes": 752620,
+      "sha256": "929a1f5ba370b6e628574586930c70b3e053621fb1ae2d76ad9740633beff454"
+    },
+    {
+      "path": "ParkingGarage/Textures/Keys/Coop_Open_Normal.uasset",
+      "bytes": 932114,
+      "sha256": "8868da4d082c9c6a3f87560190ad39314fb1bb249eefc38d8969b1e1e8a45fc6"
+    },
+    {
+      "path": "ParkingGarage/Textures/Keys/Coop_Open_OcclusionRoughnessMetallic.uasset",
+      "bytes": 371787,
+      "sha256": "cec1032f08f92fa4e6116d1711a8367a07b57a7dd72bf320e19d06bddba8501c"
+    },
+    {
+      "path": "ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_BaseColor.uasset",
+      "bytes": 2981930,
+      "sha256": "53f914f7a6e8e074f676f0fd18cb851706ec9a7056db7043d2b2975e2a489c0c"
+    },
+    {
+      "path": "ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_Normal.uasset",
+      "bytes": 4947693,
+      "sha256": "2428e0ab659424f17a46e62450a31e9772f8094af9ecefe90ac7d6e47102c441"
+    },
+    {
+      "path": "ParkingGarage/Textures/SafeRoom/T_DoorSmallLow_wire_115115115_OcclusionRoughnessMetallic.uasset",
+      "bytes": 2493606,
+      "sha256": "5d7b668bab09b1c1103821c58fcbbb7708559c207d55068ba5a2121256486218"
+    },
+    {
+      "path": "ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_BaseColor.uasset",
+      "bytes": 3036947,
+      "sha256": "2600b19ea9164a3ed1ca0d73bd6934ba6aed94872b77bc0c1625f273befd9975"
+    },
+    {
+      "path": "ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_Emissive.uasset",
+      "bytes": 25545,
+      "sha256": "4044dba8ec46156157c954ad92d6230296ec58cbd97d6919b073846353ef9b63"
+    },
+    {
+      "path": "ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_Normal.uasset",
+      "bytes": 4653684,
+      "sha256": "aaffda0c1b998c5dcf2a2bb54f67bbe1b1c713110254c82f2f05c4521cd4d379"
+    },
+    {
+      "path": "ParkingGarage/Textures/SkinStealer/CharacterMid_low_CharacterMid_high_OcclusionRoughnessMetallic.uasset",
+      "bytes": 2279425,
+      "sha256": "b3fa53db727b4d2a22b970200ae9542e7d7fc01ecfc746e0757fbe46543712de"
+    }
+  ],
+  "notes": {
+    "materials": "Basic PBR materials reconstructed from neutral textures and MAT/props mapping.",
+    "animation": "Four PSA clips converted to AnimSequence and resampled to 30 fps while preserving duration.",
+    "rawCookedPackagesCopied": false
+  }
+}
