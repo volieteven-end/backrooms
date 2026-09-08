@@ -9,7 +9,10 @@ class BACKROOMS_API UBRGameHUDWidget : public UUserWidget
     GENERATED_BODY()
 public:
     bool HasInteractableFocus() const;
+    bool ShouldDrawInteractionRing() const;
+    bool IsPickupPromptVisible() const;
 protected:
+    virtual void NativeConstruct() override;
     virtual int32 NativePaint(const FPaintArgs& Args,const FGeometry& Geometry,const FSlateRect& Cull,FSlateWindowElementList& Elements,int32 Layer,const FWidgetStyle& Style,bool bEnabled) const override;
     virtual void NativeTick(const FGeometry& Geometry, float DeltaTime) override;
     UPROPERTY(meta=(BindWidget)) TObjectPtr<UTextBlock> KeyStatus;
@@ -17,5 +20,6 @@ protected:
     UPROPERTY(meta=(BindWidget)) TObjectPtr<UTextBlock> RoundStatus;
     UPROPERTY(meta=(BindWidgetOptional)) TObjectPtr<UTextBlock> SanityStatus;
 private:
+    void UpdatePickupPrompt();
     double NextUpdate = 0;
 };

@@ -34,7 +34,7 @@ bool ABRGarageKeyPickup::CanInteract_Implementation(APawn* InstigatorPawn) const
 FText ABRGarageKeyPickup::GetInteractionText_Implementation(APawn* InstigatorPawn) const
 {
 	return CanInteract_Implementation(InstigatorPawn)
-		? NSLOCTEXT("Backrooms", "CollectGarageKey", "拾取任务钥匙")
+		? FText::Format(NSLOCTEXT("Backrooms", "PickupPrompt", "按E拾取：\"{0}\""), NSLOCTEXT("Backrooms", "GarageKeyName", "任务钥匙"))
 		: FText::GetEmpty();
 }
 

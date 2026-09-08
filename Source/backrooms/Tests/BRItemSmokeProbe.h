@@ -14,6 +14,9 @@ public:
     ABRItemSmokeProbe();
     virtual void Tick(float DeltaTime) override;
 private:
+    void TickPickupPrompt();
+    UPROPERTY() TArray<TObjectPtr<AActor>> PromptItems;
+    UPROPERTY() TObjectPtr<AActor> PromptOccluder;
     void Check(bool OK,const TCHAR* Name);
     void Aim(FVector Point);
     void Stand(AActor* Target,FVector LocalOffset);

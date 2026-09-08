@@ -4,6 +4,12 @@
 #include "UI/BRGameHUDWidget.h"
 #include "Player/BRInventoryComponent.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
+#include "Blueprint/WidgetLayoutLibrary.h"
+#include "Blueprint/WidgetTree.h"
+#include "Components/TextBlock.h"
+#include "Engine/StaticMeshActor.h"
+#include "InputKeyEventArgs.h"
+#include "TimerManager.h"
 #include "World/BRGarageDoor.h"
 #include "World/BRLootCabinet.h"
 #include "World/BRSupplyPickup.h"
@@ -61,6 +67,7 @@ void ABRItemSmokeProbe::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 #if !UE_BUILD_SHIPPING
+    if(FParse::Param(FCommandLine::Get(),TEXT("BRPickupPromptSmoke"))){TickPickupPrompt();return;}
     if(Started==0)Started=FPlatformTime::Seconds();
     const double Time=FPlatformTime::Seconds()-Started;
     if(Stage==1 && Time>3)Capture(TEXT("01_hands"));
@@ -127,7 +134,7 @@ void ABRItemSmokeProbe::Tick(float DeltaTime)
     }
     if(Stage==4){
         TArray<UUserWidget*> HUDs;UWidgetBlueprintLibrary::GetAllWidgetsOfClass(this,HUDs,UBRGameHUDWidget::StaticClass(),true);
-        Check(HUDs.Num()==1 && Cast<UBRGameHUDWidget>(HUDs[0])->HasInteractableFocus(),TEXT("FOCUSED_DOOR_RETICLE_CIRCLE"));
+        Check(HUDs.Num()==1 && Cast<UBRGameHUDWidget>(HUDs[0])->ShouldDrawInteractionRing(),TEXT("FOCUSED_DOOR_RETICLE_CIRCLE"));
         auto* Inv=Player->GetInventoryComponent();Player->GrantAlmondWater();for(int32 I=0;I<12;++I)if(Inv->GetSlots()[I].Item==EBRInventoryItem::AlmondWater){Inv->SelectSlot(I);break;}
         const int32 WaterCount=Inv->Count(EBRInventoryItem::AlmondWater);
 CastChecked<ABRMenuPlayerController>(Player->GetController())->UseHeldItem();Check(Door->IsOpen(),TEXT("LMB_DOOR_OPEN"));Check(Inv->Count(EBRInventoryItem::AlmondWater)==WaterCount,TEXT("DOOR_CLICK_DOES_NOT_DRINK"));Check(Door->GetOpenAlpha()<0.9f,TEXT("DOOR_NOT_INSTANT"));}
@@ -166,6 +173,96 @@ CastChecked<ABRMenuPlayerController>(Player->GetController())->UseHeldItem();Che
     {
         for(TActorIterator<ABRLootCabinet> It(GetWorld());It;++It)AuditCabinets.Add(*It);
         NextAuditTime=Time+1;
+    }
+    ++Stage;
+#endif
+}
+
+void ABRItemSmokeProbe::TickPickupPrompt()
+{
+#if !UE_BUILD_SHIPPING
+    const double Now=FPlatformTime::Seconds();
+    if(!Player)
+    {
+        Player=Cast<ABRPlayerCharacter>(UGameplayStatics::GetPlayerPawn(this,0));if(!Player)return;
+        Player->GetCharacterMovement()->SetMovementMode(MOVE_Flying);
+        for(TActorIterator<ABREntityCharacter> It(GetWorld());It;++It)
+            if(auto* AI=Cast<AAIController>(It->GetController())){AI->StopMovement();AI->UnPossess();}
+        for(TActorIterator<ABRSupplyPickup> It(GetWorld());It;++It)
+            if(It->ActorHasTag(TEXT("BR_EntryFlashlight"))){Torch=*It;break;}
+        Check(Torch!=nullptr,TEXT("PROMPT_MAP_FLASHLIGHT"));
+        if(!Torch){FPlatformMisc::RequestExitWithStatus(false,2);return;}
+        PromptItems.Add(Torch);
+        for(int32 I=1;I<=2;++I)
+        {
+            auto* Item=GetWorld()->SpawnActor<ABRSupplyPickup>(Torch->GetActorLocation()+FVector(0,I*65,5),FRotator::ZeroRotator);
+            Item->SupplyType=I==1?EBRSupplyType::Battery:EBRSupplyType::AlmondWater;
+            Item->OnConstruction(Item->GetActorTransform());PromptItems.Add(Item);
+        }
+        PromptItems.Add(GetWorld()->SpawnActor<ABRGarageKeyPickup>(Torch->GetActorLocation()+FVector(0,195,5),FRotator::ZeroRotator));
+        Stand(Torch,FVector(115,0,90));Aim(Torch->GetActorLocation());Started=Now;return;
+    }
+    if(Now-Started<1.5)return;Started=Now;
+    auto* PC=CastChecked<ABRMenuPlayerController>(Player->GetController());
+    TArray<UUserWidget*> HUDs;UWidgetBlueprintLibrary::GetAllWidgetsOfClass(this,HUDs,UBRGameHUDWidget::StaticClass(),false);
+    auto* HUD=HUDs.Num()==1?Cast<UBRGameHUDWidget>(HUDs[0]):nullptr;
+    if(!HUD){Check(false,TEXT("PROMPT_HUD"));FPlatformMisc::RequestExitWithStatus(false,2);return;}
+    auto* Hint=Cast<UTextBlock>(HUD->WidgetTree->FindWidget(TEXT("InteractionHint")));
+    if(Stage==0){Check(HUD->IsPickupPromptVisible(),TEXT("PROMPT_ON_AIM"));PC->SetControlRotation(PC->GetControlRotation()+FRotator(0,90,0));}
+    if(Stage==1){Check(!HUD->IsPickupPromptVisible(),TEXT("PROMPT_HIDDEN_LOOK_AWAY"));Stand(Torch,FVector(600,0,90));Aim(Torch->GetActorLocation());}
+    if(Stage==2){Check(!HUD->IsPickupPromptVisible(),TEXT("PROMPT_HIDDEN_OUT_OF_RANGE"));Stand(Torch,FVector(115,0,90));Aim(Torch->GetActorLocation());}
+    if(Stage==3)
+    {
+        Check(HUD->IsPickupPromptVisible(),TEXT("PROMPT_RETURNS_IN_RANGE"));FVector Eye;FRotator Rotation;Player->GetActorEyesViewPoint(Eye,Rotation);
+        auto* Block=GetWorld()->SpawnActor<AStaticMeshActor>((Eye+Torch->GetActorLocation())*.5,FRotator::ZeroRotator);
+        Block->GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
+        Block->GetStaticMeshComponent()->SetStaticMesh(LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube")));
+        Block->SetActorScale3D(FVector(.3));PromptOccluder=Block;
+    }
+    if(Stage==4){Check(!HUD->IsPickupPromptVisible(),TEXT("PROMPT_HIDDEN_BEHIND_WALL"));PromptOccluder->Destroy();}
+    if(Stage==5){Check(HUD->IsPickupPromptVisible(),TEXT("PROMPT_RETURNS_WITH_LINE_OF_SIGHT"));PC->ToggleInventory();}
+    if(Stage==6){Check(!HUD->IsPickupPromptVisible(),TEXT("PROMPT_HIDDEN_IN_INVENTORY"));PC->ToggleInventory();}
+    if(Stage>=7 && Stage<19)
+    {
+        const int32 Index=(Stage-7)/3,Phase=(Stage-7)%3;auto* Item=PromptItems[Index].Get();
+        const TCHAR* Names[]={TEXT("手电筒"),TEXT("电池组"),TEXT("杏仁水"),TEXT("任务钥匙")};
+        if(Phase==0)
+        {
+            Check(HUD->IsPickupPromptVisible() && Hint && Hint->GetText().ToString()==FString::Printf(TEXT("按E拾取：\"%s\""),Names[Index]),*FString::Printf(TEXT("PROMPT_NAME_%d"),Index));
+            Check(!HUD->ShouldDrawInteractionRing(),*FString::Printf(TEXT("PICKUP_NO_RING_%d"),Index));
+            if(Hint)
+            {
+                FVector2D ItemScreen;UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPosition(PC,Item->GetActorLocation(),ItemScreen,true);
+                const auto ItemAbsolute=UWidgetLayoutLibrary::GetPlayerScreenWidgetGeometry(PC).LocalToAbsolute(ItemScreen);
+                const auto Bottom=Hint->GetCachedGeometry().LocalToAbsolute(Hint->GetCachedGeometry().GetLocalSize()*FVector2D(.5,1));
+                Check(Bottom.Y<ItemAbsolute.Y && FMath::Abs(Bottom.X-ItemAbsolute.X)<60,*FString::Printf(TEXT("PROMPT_ABOVE_ITEM_%d"),Index));
+                UE_LOG(LogTemp,Display,TEXT("BR_PICKUP_PROMPT item=%d label_bottom=%s item_position=%s text=%s"),Index,*Bottom.ToString(),*ItemAbsolute.ToString(),*Hint->GetText().ToString());
+            }
+            Capture(*FString::Printf(TEXT("04_item_%d_prompt"),Index));
+        }
+        if(Phase==1)
+        {
+            PC->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::E,IE_Pressed,1));
+            FTimerHandle Release;GetWorld()->GetTimerManager().SetTimer(Release,FTimerDelegate::CreateWeakLambda(PC,[PC](){PC->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::E,IE_Released,0));}),.1f,false);
+        }
+        if(Phase==2)
+        {
+            const bool Collected=Cast<ABRSupplyPickup>(Item)?Cast<ABRSupplyPickup>(Item)->IsCollected():CastChecked<ABRGarageKeyPickup>(Item)->IsCollected();
+            Check(Collected,*FString::Printf(TEXT("E_KEY_PICKUP_%d"),Index));
+            Check(!HUD->IsPickupPromptVisible(),*FString::Printf(TEXT("PROMPT_GONE_AFTER_PICKUP_%d"),Index));
+            if(Index<3){Stand(PromptItems[Index+1],FVector(115,0,90));Aim(PromptItems[Index+1]->GetActorLocation());}
+        }
+    }
+    if(Stage==19)
+    {
+        for(TActorIterator<ABRGarageDoor> It(GetWorld());It;++It)if(!It->IsA<ABRLootCabinet>()){Door=*It;break;}
+        if(Door){Door->SetUnlockable(true);Stand(Door,FVector(160,50,90));Aim(Door->GetActorTransform().TransformPosition(FVector(0,50,120)));}
+    }
+    if(Stage==20)
+    {
+        Check(Door && HUD->ShouldDrawInteractionRing() && !HUD->IsPickupPromptVisible(),TEXT("DOOR_FOCUS_PRESERVED"));
+        UE_LOG(LogTemp,Display,TEXT("BR_PICKUP_PROMPT_TEST result=%s checks=%d failures=%d"),Failures?TEXT("FAIL"):TEXT("PASS"),Checks,Failures);
+        FPlatformMisc::RequestExitWithStatus(false,Failures?2:0);
     }
     ++Stage;
 #endif

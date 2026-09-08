@@ -10,9 +10,75 @@
 #include "Interaction/BRInteractionComponent.h"
 #include "Interaction/BRInteractable.h"
 #include "Components/TextBlock.h"
+#include "Components/CanvasPanelSlot.h"
+#include "Components/PanelWidget.h"
+#include "Blueprint/WidgetLayoutLibrary.h"
+#include "World/BRSupplyPickup.h"
+#include "World/BRGarageKeyPickup.h"
+
+namespace
+{
+    bool IsPickup(const AActor* Actor)
+    { return Cast<ABRSupplyPickup>(Actor) || Cast<ABRGarageKeyPickup>(Actor); }
+}
+
+void UBRGameHUDWidget::NativeConstruct()
+{
+    Super::NativeConstruct();
+    if (!InteractionHint) return;
+    InteractionHint->SetAutoWrapText(false);
+    InteractionHint->SetShadowColorAndOpacity(FLinearColor::Black);
+    InteractionHint->SetShadowOffset(FVector2D(1.5f,1.5f));
+    InteractionHint->SetVisibility(ESlateVisibility::Collapsed);
+    if (auto* HintSlot = Cast<UCanvasPanelSlot>(InteractionHint->Slot))
+    {
+        HintSlot->SetAnchors(FAnchors(0,0));
+        HintSlot->SetAlignment(FVector2D(0.5f,1.f));
+        HintSlot->SetAutoSize(true);
+    }
+}
+
+void UBRGameHUDWidget::UpdatePickupPrompt()
+{
+    if (!InteractionHint) return;
+    InteractionHint->SetVisibility(ESlateVisibility::Collapsed);
+    auto* PC = Cast<ABRMenuPlayerController>(GetOwningPlayer());
+    auto* Player = Cast<ABRPlayerCharacter>(GetOwningPlayerPawn());
+    if (!PC || PC->IsInventoryOpen() || !Player || Player->GetDownedComponent()->IsDowned() || Player->GetCurrentHideSpot()) return;
+    auto* Target = Player->GetInteractionComponent()->FindFocusedInteractable();
+    if (!IsValid(Target) || !IsPickup(Target) || Target->IsHidden() || !IBRInteractable::Execute_CanInteract(Target,Player)) return;
+
+    FVector Origin, Extent;
+    Target->GetActorBounds(false,Origin,Extent);
+    FVector2D ScreenPosition;
+    if (!UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPosition(PC,Origin+FVector(0,0,Extent.Z+8.f),ScreenPosition,true)) return;
+    auto* HintSlot = Cast<UCanvasPanelSlot>(InteractionHint->Slot);
+    auto* Parent = InteractionHint->GetParent();
+    if (!HintSlot || !Parent) return;
+    // Convert through the viewport and canvas geometries so DPI, window size and
+    // the HUD's 1920x1080 ScaleBox cannot detach the prompt from its world item.
+    const FVector2D Absolute = UWidgetLayoutLibrary::GetPlayerScreenWidgetGeometry(PC).LocalToAbsolute(ScreenPosition);
+    const FVector2D Position = Parent->GetCachedGeometry().AbsoluteToLocal(Absolute)-FVector2D(0,12);
+    HintSlot->SetPosition(Position);
+    InteractionHint->SetText(IBRInteractable::Execute_GetInteractionText(Target,Player));
+    InteractionHint->SetVisibility(ESlateVisibility::HitTestInvisible);
+}
+
+bool UBRGameHUDWidget::IsPickupPromptVisible() const
+{ return InteractionHint && InteractionHint->IsVisible() && IsVisible(); }
+
+bool UBRGameHUDWidget::ShouldDrawInteractionRing() const
+{
+    auto* Player = Cast<ABRPlayerCharacter>(GetOwningPlayerPawn());
+    if (!Player || Player->GetDownedComponent()->IsDowned()) return false;
+    auto* Target = Player->GetInteractionComponent()->FindFocusedInteractable();
+    return IsValid(Target) && !IsPickup(Target) && IBRInteractable::Execute_CanInteract(Target,Player);
+}
+
 void UBRGameHUDWidget::NativeTick(const FGeometry& Geometry, float DeltaTime)
 {
     Super::NativeTick(Geometry,DeltaTime);
+    UpdatePickupPrompt();
     if (FPlatformTime::Seconds() < NextUpdate) return; NextUpdate = FPlatformTime::Seconds() + 0.1;
     auto* GS = GetWorld()->GetGameState<ABRGameState>(); auto* Character = Cast<ABRPlayerCharacter>(GetOwningPlayerPawn());
     if (!GS) return;
@@ -27,7 +93,7 @@ void UBRGameHUDWidget::NativeTick(const FGeometry& Geometry, float DeltaTime)
                 Stamina->IsExhausted() ? TEXT(" · 恢复中") : TEXT(""));
     }
     KeyStatus->SetText(FText::FromString(Inventory));
-    FString Hint,Result;
+    FString Result;
     if (Character)
     {
         if (Character->GetDownedComponent()->IsDowned()) Result = TEXT("你已倒地，等待队友救援");
@@ -35,7 +101,7 @@ void UBRGameHUDWidget::NativeTick(const FGeometry& Geometry, float DeltaTime)
     }
     if (GS->GetLevelPhase()==EBRLevelPhase::Completed) Result=TEXT("逃生成功\n即将返回大厅");
     if (GS->GetLevelPhase()==EBRLevelPhase::Failed) Result=TEXT("队伍全员倒地\n即将返回大厅");
-    InteractionHint->SetText(FText::FromString(Hint)); RoundStatus->SetText(FText::FromString(Result));
+    RoundStatus->SetText(FText::FromString(Result));
 }
 
 bool UBRGameHUDWidget::HasInteractableFocus() const
@@ -46,7 +112,7 @@ int32 UBRGameHUDWidget::NativePaint(const FPaintArgs& A,const FGeometry& G,const
  int32 Layer=Super::NativePaint(A,G,C,E,L,S,B);auto* PC=Cast<ABRMenuPlayerController>(GetOwningPlayer());auto* P=Cast<ABRPlayerCharacter>(GetOwningPlayerPawn());
  if(!PC || PC->IsInventoryOpen() || !P || P->GetDownedComponent()->IsDowned())return Layer;
  const FVector2D Center=G.GetLocalSize()*0.5f;
- TArray<FVector2D> Points;const bool Focus=HasInteractableFocus();const float R=Focus?5.5f:0.7f;
+ TArray<FVector2D> Points;const bool Focus=ShouldDrawInteractionRing();const float R=Focus?5.5f:0.7f;
  for(int32 I=0;I<=32;++I){const float T=2*PI*I/32;Points.Add(Center+FVector2D(FMath::Cos(T)*R,FMath::Sin(T)*R));}
  FSlateDrawElement::MakeLines(E,++Layer,G.ToPaintGeometry(),Points,ESlateDrawEffect::None,FLinearColor(1,1,1,0.9f),true,Focus?1.25f:1.5f);return Layer;
 }

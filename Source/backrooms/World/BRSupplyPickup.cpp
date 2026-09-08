@@ -43,7 +43,8 @@ FText ABRSupplyPickup::GetInteractionText_Implementation(APawn* Pawn) const
 {
     if (bCollected || !bContainerVisible) return FText::GetEmpty();
     if(!CanInteract_Implementation(Pawn))return FText::FromString(SupplyType==EBRSupplyType::Flashlight && Cast<ABRPlayerCharacter>(Pawn) && Cast<ABRPlayerCharacter>(Pawn)->HasFlashlight()?TEXT("已持有手电筒"):TEXT("背包或电池容量已满"));
-    return FText::FromString(SupplyType==EBRSupplyType::Flashlight?TEXT("拾取手电筒"):SupplyType==EBRSupplyType::Battery?TEXT("拾取电池组"):TEXT("拾取杏仁水"));
+    const auto Item = SupplyType==EBRSupplyType::Flashlight ? EBRInventoryItem::Flashlight : SupplyType==EBRSupplyType::Battery ? EBRInventoryItem::Battery : EBRInventoryItem::AlmondWater;
+    return FText::Format(NSLOCTEXT("Backrooms", "PickupPrompt", "按E拾取：\"{0}\""), UBRInventoryComponent::ItemName(Item));
 }
 void ABRSupplyPickup::Interact_Implementation(APawn* Pawn)
 {
