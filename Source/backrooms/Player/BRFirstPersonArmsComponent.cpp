@@ -3,6 +3,7 @@
 #include "Player/BRInventoryComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimSequence.h"
+#include "Animation/BlendSpace.h"
 #include "Animation/AnimSingleNodeInstance.h"
 #include "Engine/SkeletalMesh.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -14,6 +15,8 @@ UBRFirstPersonArmsComponent::UBRFirstPersonArmsComponent()
     BR_ARM(FlashlightEquip,"A_Arms_Flashlight_Equip");BR_ARM(FlashlightHold,"A_Arms_Flashlight_Hold");BR_ARM(FlashlightToggle,"A_Arms_Flashlight_Toggle");
     BR_ARM(Grab,"A_Arms_Grab");BR_ARM(Stow,"A_Arms_Stow");BR_ARM(CanEquip,"A_Arms_Can_Equip");BR_ARM(CanHold,"A_Arms_Can_Hold");BR_ARM(Drink,"A_Arms_Drink");
 #undef BR_ARM
+    static ConstructorHelpers::FObjectFinder<UBlendSpace> Locomotion(TEXT("/Game/Gameplay/Player/Animations/BS_BR_Arms_EmptyLocomotion.BS_BR_Arms_EmptyLocomotion"));
+    EmptyLocomotion=Locomotion.Object;
 }
 void UBRFirstPersonArmsComponent::PlayAction(uint8 A){PendingAction=A;}
 void UBRFirstPersonArmsComponent::Update(float DT,USkeletalMeshComponent* Mesh)
@@ -29,11 +32,16 @@ void UBRFirstPersonArmsComponent::Update(float DT,USkeletalMeshComponent* Mesh)
     {
         ActiveAction=PendingAction;PendingAction=0;
         UAnimSequence* Clip=ActiveAction==1?FlashlightEquip.Get():ActiveAction==2?FlashlightToggle.Get():ActiveAction==3?Grab.Get():ActiveAction==4?CanEquip.Get():ActiveAction==5?Drink.Get():Stow.Get();
-        if(Clip && Clip->GetSkeleton()==Mesh->GetSkeletalMeshAsset()->GetSkeleton()){Active=Clip;Mesh->PlayAnimation(Clip,false);}else ActiveAction=0;
+        if(Clip && Clip->GetSkeleton()==Mesh->GetSkeletalMeshAsset()->GetSkeleton()){Active=Clip;bUsingLocomotion=false;Mesh->PlayAnimation(Clip,false);}else ActiveAction=0;
     }
     if(ActiveAction){Desired=Active;NewState=FName(*FString::Printf(TEXT("Action_%d"),ActiveAction));}
-    if(Desired && Desired!=Active && Desired->GetSkeleton()==Mesh->GetSkeletalMeshAsset()->GetSkeleton())
-    {Active=Desired;Mesh->PlayAnimation(Desired,ActiveAction==0);}
+    if(!Held && !ActiveAction && EmptyLocomotion && EmptyLocomotion->GetSkeleton()==Mesh->GetSkeletalMeshAsset()->GetSkeleton())
+    {
+        if(!bUsingLocomotion){Mesh->PlayAnimation(EmptyLocomotion,true);Active=nullptr;bUsingLocomotion=true;}
+        if(auto* Node=Mesh->GetSingleNodeInstance())Node->SetBlendSpacePosition(FVector(Moving?Speed:0.f,0,0));
+    }
+    else if(Desired && (Desired!=Active || bUsingLocomotion) && Desired->GetSkeleton()==Mesh->GetSkeletalMeshAsset()->GetSkeleton())
+    {Active=Desired;bUsingLocomotion=false;Mesh->PlayAnimation(Desired,ActiveAction==0);}
     if(!ActiveAction && !Held && P->bIsCrouched)NewState=Moving?TEXT("CrouchWalk"):TEXT("CrouchIdle");
     State=NewState;
     // DT_Items specifies Both for the can, Right for the flashlight.
@@ -49,16 +57,17 @@ void UBRFirstPersonArmsComponent::Update(float DT,USkeletalMeshComponent* Mesh)
     const FVector Bob(0,FMath::Sin(Phase)*0.6f*Motion,Breath+FMath::Cos(Phase*2)*0.45f*Motion);
     FVector Base=(Held || ActiveAction)?EquippedOffset:EmptyOffset;
     // Empty arms stay with the torso as the view lowers. Cap the compensation at
-    // 55 degrees so looking straight down keeps the mesh's open shoulders offscreen.
+    // 60 degrees, with the empty mesh behind the camera, to hide its open shoulders.
     // Equipped/one-shot actions retain their authored camera-relative pose.
-    const float BodyPitch = FMath::Max(FRotator::NormalizeAxis(View.Pitch), -55.f);
+    const float ViewPitch=FRotator::NormalizeAxis(View.Pitch);
+    const float BodyPitch=ViewPitch<0 ? FMath::Max(ViewPitch*1.12f,-60.f) : ViewPitch;
     const FQuat BodyView = Relaxed ? FRotator(-BodyPitch,0,0).Quaternion() : FQuat::Identity;
     const FVector Target=BodyView.RotateVector(Base+Bob*SwayStrength+FVector(0,0,P->bIsCrouched?-2.f:0.f));
     Mesh->SetRelativeLocation(FMath::VInterpTo(Mesh->GetRelativeLocation(),Target,DT,10.f));
     const FRotator Sway(-FMath::Clamp(Turn.Pitch,-3.f,3.f)*SwayStrength,0,-FMath::Clamp(Turn.Yaw,-3.f,3.f)*SwayStrength);
     const FQuat TargetRotation=BodyView*Sway.Quaternion()*FRotator(0,-90,0).Quaternion();
     Mesh->SetRelativeRotation(FQuat::Slerp(Mesh->GetRelativeRotation().Quaternion(),TargetRotation,FMath::Clamp(DT*12,0.f,1.f)));
-    if(!ActiveAction && Moving && !Held)Mesh->SetPlayRate(FMath::Clamp(Speed/(Speed>420?600.f:350.f),0.6f,1.3f));else Mesh->SetPlayRate(1);
+    if(!bUsingLocomotion && !ActiveAction && Moving && !Held)Mesh->SetPlayRate(FMath::Clamp(Speed/(Speed>420?600.f:350.f),0.6f,1.3f));else Mesh->SetPlayRate(1);
 }
 
 bool UBRFirstPersonArmsComponent::WantsVisibleArms() const

@@ -19,6 +19,7 @@
 #include "Blueprint/WidgetTree.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Animation/AnimSingleNodeInstance.h"
+#include "Animation/BlendSpace.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Engine/StaticMeshActor.h"
 #include "Engine/StaticMesh.h"
@@ -27,6 +28,7 @@
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 #include "Misc/Paths.h"
+#include "Misc/App.h"
 #include "UnrealClient.h"
 #include "Camera/CameraTypes.h"
 #include "TimerManager.h"
@@ -52,6 +54,7 @@ void ABRInventorySmokeProbe::Tick(float DT)
 {
     Super::Tick(DT);
 #if !UE_BUILD_SHIPPING
+    if(FParse::Param(FCommandLine::Get(),TEXT("BRArmsMotionViews"))){TickArmsMotion(DT);return;}
     if(FParse::Param(FCommandLine::Get(),TEXT("BRArmsViews"))){TickArmsViews();return;}
     if(Started==0)Started=FPlatformTime::Seconds();const double T=FPlatformTime::Seconds()-Started;
     if(P)
@@ -226,5 +229,61 @@ void ABRInventorySmokeProbe::TickArmsViews()
         if(Stage==8)Bag->UseSelected();
         if(Stage==9){Bag->StowHeld();P->GetStaminaComponent()->SetChasedBy(this,true);PC->SetControlRotation(FRotator(-80,180,0));}
     }),0.25f,false);
+#endif
+}
+
+void ABRInventorySmokeProbe::TickArmsMotion(float DT)
+{
+#if !UE_BUILD_SHIPPING
+    if(!P)
+    {
+        P=Cast<ABRPlayerCharacter>(UGameplayStatics::GetPlayerPawn(this,0));if(!P)return;
+        PC=Cast<ABRMenuPlayerController>(P->GetController());if(!PC){P=nullptr;return;}
+        Bag=P->GetInventoryComponent();
+        TArray<USkeletalMeshComponent*> Meshes;P->GetComponents(Meshes);
+        for(auto* Mesh:Meshes)if(Mesh->GetFName()==TEXT("FirstPersonArms"))Arms=Mesh;
+        for(TActorIterator<ABREntityCharacter> It(GetWorld());It;++It)
+        {if(auto* AI=Cast<AAIController>(It->GetController())){AI->StopMovement();AI->UnPossess();}It->SetEntityState(EBREntityState::Returning);}
+        Stand(FVector(3990,2160,3214),180);PC->SetControlRotation(FRotator(-60,180,0));
+        // Set these at startup with -UseFixedTimeStep -FPS=60 so screenshot
+        // readback cannot change the simulation step or pose-jump measurements.
+        Check(FApp::UseFixedTimeStep() && FMath::IsNearlyEqual(FApp::GetFixedDeltaTime(),1.0/60.0,0.0001),TEXT("FIXED_60HZ_SIMULATION"));
+        return;
+    }
+    MotionTime+=DT;
+    if(MotionTime<2.f)return;
+    const float T=MotionTime-2.f;
+    if(T<4.f)P->AddMovementInput(FVector(-1,0,0),1);
+    if(T>=2.f && Stage==0){P->StartSprint();Stage=1;}
+    if(T>=4.f && Stage==1){P->StopSprint();Stage=2;}
+    if(T>=5.f)
+    {
+        Check(bWalkingPoseMoved,TEXT("WALK_SWINGS_BOTH_ARMS"));
+        Check(bRunningPoseMoved,TEXT("RUN_SWINGS_BOTH_ARMS"));
+        if(FParse::Param(FCommandLine::Get(),TEXT("NullRHI")))
+        {
+            Check(MeasuredMotionFrames>=120,TEXT("ENOUGH_MOTION_SAMPLES"));
+            Check(MaxHandStep<9.f,TEXT("NO_LOCOMOTION_POSE_SNAP"));
+        }
+        Check(P->GetArmsAnimationComponent()->GetAnimationState()==TEXT("Idle"),TEXT("SMOOTH_STOP_RETURNS_IDLE"));
+        UE_LOG(LogTemp,Display,TEXT("BR_ARMS_MOTION result=%s checks=%d failures=%d max_hand_step=%.2f measured=%d captures=%d"),Failures?TEXT("FAIL"):TEXT("PASS"),Checks,Failures,MaxHandStep,MeasuredMotionFrames,MotionFrame);
+        FPlatformMisc::RequestExitWithStatus(false,Failures?2:0);return;
+    }
+    const auto Left=Arms->GetSocketTransform(TEXT("LeftHand"),RTS_Component).GetLocation();
+    const auto Right=Arms->GetSocketTransform(TEXT("RightHand"),RTS_Component).GetLocation();
+    if(!MotionLeft.IsZero() && DT<0.04f){++MeasuredMotionFrames;MaxHandStep=FMath::Max(MaxHandStep,FMath::Max(FVector::Dist(Left,MotionLeft),FVector::Dist(Right,MotionRight)));}
+    MotionLeft=Left;MotionRight=Right;
+    if(T>=NextMotionCapture)
+    {
+        auto* Node=Arms->GetSingleNodeInstance();
+        Check(Node && Node->GetAnimationAsset()==P->GetArmsAnimationComponent()->EmptyLocomotion,TEXT("CONTINUOUS_EMPTY_LOCOMOTION"));
+        const bool Alternating=FVector::Dist(Left,CaptureLeft)>1 && FVector::Dist(Right,CaptureRight)>1 && (Left.Y-CaptureLeft.Y)*(Right.Y-CaptureRight.Y)<0;
+        if(T>0.8f && T<2.f && P->GetVelocity().Size2D()>300 && Alternating)bWalkingPoseMoved=true;
+        if(T>2.8f && T<4.f && P->GetVelocity().Size2D()>500 && Alternating)bRunningPoseMoved=true;
+        CaptureLeft=Left;CaptureRight=Right;
+        UE_LOG(LogTemp,Display,TEXT("BR_ARMS_MOTION frame=%d time=%.2f speed=%.1f state=%s left=%s right=%s"),MotionFrame,T,P->GetVelocity().Size2D(),*P->GetArmsAnimationComponent()->GetAnimationState().ToString(),*Left.ToCompactString(),*Right.ToCompactString());
+        Capture(*FString::Printf(TEXT("motion_%03d"),MotionFrame++));
+        NextMotionCapture+=0.1f;
+    }
 #endif
 }
