@@ -7,6 +7,7 @@
 #include "World/BRLootCabinet.h"
 #include "World/BRSupplyPickup.h"
 #include "World/BRGarageKeyPickup.h"
+#include "World/BRGarageKeySocket.h"
 #include "World/BRGarageKeyManager.h"
 #include "AI/BREntityCharacter.h"
 #include "EngineUtils.h"
@@ -87,6 +88,8 @@ void ABRNetworkSmokeProbe::Tick(float DeltaTime)
         {
             for (TActorIterator<ABRGarageKeyPickup> It(GetWorld());It;++It)
                 if (It->IsPickupActive()) It->Interact_Implementation(TestPlayer.Get());
+            for(TActorIterator<ABRGarageKeySocket> Socket(GetWorld());Socket;++Socket)
+                Socket->Interact_Implementation(TestPlayer.Get());
             for (TActorIterator<ABRExtractionZone> Zone(GetWorld());Zone;++Zone)
             {
                 int32 I=0;

@@ -6,6 +6,7 @@
 #include "Player/BRDownedComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "UI/BRGameHUDWidget.h"
+#include "UI/BRRoundResultWidget.h"
 #include "Player/BRPlayerCharacter.h"
 #include "World/BRGarageKeyManager.h"
 #include "World/BRGarageDoor.h"
@@ -87,6 +88,8 @@ void ABRMenuPlayerController::UpdatePresentation()
     const bool bMenu = bLobby || Map.EndsWith(TEXT("L_MainMenu"));
     if (Map == PresentedWorld) return;
     CloseInventory();
+    if(RoundResult){RoundResult->RemoveFromParent();RoundResult=nullptr;}
+    if(bRoundInputLocked){SetIgnoreMoveInput(false);SetIgnoreLookInput(false);bRoundInputLocked=false;}
     PresentedWorld = Map;
     // A client controller can receive PlayerTick before BeginPlay during login.
     // Start capture timing on presentation, not an uninitialized controller clock.
@@ -129,10 +132,16 @@ void ABRMenuPlayerController::PlayerTick(float DeltaTime)
     Super::PlayerTick(DeltaTime);
     if (!IsLocalController() || !GetLocalPlayer() || FPlatformTime::Seconds() < NextUpdate) return;
     NextUpdate = FPlatformTime::Seconds() + 0.25; UpdatePresentation();
+    UpdateRoundResult();
     if(Inventory){auto* P=Cast<ABRPlayerCharacter>(GetPawn());if(!P || P->GetDownedComponent()->IsDowned() || P->GetCurrentHideSpot())CloseInventory();}
     if (!TestRole.IsEmpty()) RunSmokeDriver();
 #if !UE_BUILD_SHIPPING
     FString Capture;
+    if(FParse::Param(FCommandLine::Get(),TEXT("BRKeyResultReturn")) && GetWorld()->GetMapName().EndsWith(TEXT("L_MainMenu")) && FPlatformTime::Seconds()-TestStarted>1)
+    {
+        const bool OK=Menu && !RoundResult && !IsMoveInputIgnored() && !IsLookInputIgnored();
+        UE_LOG(LogTemp,Display,TEXT("BR_KEY_CLIENT case=RETURN_MAIN_MENU result=%s"),OK?TEXT("PASS"):TEXT("FAIL"));FPlatformMisc::RequestExitWithStatus(false,OK?0:2);return;
+    }
     if (FApp::CanEverRender() && FParse::Value(FCommandLine::Get(), TEXT("BRMenuCapture="), Capture))
     {
         const double Elapsed = FPlatformTime::Seconds() - TestStarted;
@@ -314,19 +323,36 @@ void ABRMenuPlayerController::RunSmokeDriver()
 #endif
 }
 
+void ABRMenuPlayerController::UpdateRoundResult()
+{
+    const auto* State=GetWorld()->GetGameState<ABRGameState>();
+    if(RoundResult || !State || (State->GetLevelPhase()!=EBRLevelPhase::Completed && State->GetLevelPhase()!=EBRLevelPhase::Failed))return;
+    if(!bRoundInputLocked)
+    {
+        CloseInventory();SetIgnoreMoveInput(true);SetIgnoreLookInput(true);bRoundInputLocked=true;
+        if(auto* LocalPawn=Cast<ABRPlayerCharacter>(GetPawn())){LocalPawn->StopSprint();LocalPawn->GetCharacterMovement()->StopMovementImmediately();}
+    }
+    if(!FApp::CanEverRender())return;
+    RoundResult=CreateWidget<UBRRoundResultWidget>(this,UBRRoundResultWidget::StaticClass());if(!RoundResult)return;
+    if(GameHUD)GameHUD->SetVisibility(ESlateVisibility::Collapsed);
+    RoundResult->AddToViewport(100);bShowMouseCursor=true;
+    FInputModeUIOnly Mode;Mode.SetWidgetToFocus(RoundResult->TakeWidget());SetInputMode(Mode);
+}
+
 void ABRMenuPlayerController::EndPlay(const EEndPlayReason::Type Reason)
 {
     // A retiring seamless-travel controller must not reset the new controller's input mode.
     if (Inventory) { Inventory->RemoveFromParent();Inventory=nullptr; }
     if (Menu) { Menu->RemoveFromParent();Menu=nullptr; }
     if (GameHUD) { GameHUD->RemoveFromParent();GameHUD=nullptr; }
+    if (RoundResult) { RoundResult->RemoveFromParent();RoundResult=nullptr; }
     Super::EndPlay(Reason);
 }
 
 void ABRMenuPlayerController::ToggleInventory()
 {
     if(!IsLocalController())return;if(Inventory){CloseInventory();return;}
-    auto* P=Cast<ABRPlayerCharacter>(GetPawn());if(!P || P->GetDownedComponent()->IsDowned() || P->GetCurrentHideSpot() || !GameHUD)return;
+    auto* P=Cast<ABRPlayerCharacter>(GetPawn());if(!P || P->GetDownedComponent()->IsDowned() || P->GetCurrentHideSpot() || !GameHUD || bRoundInputLocked)return;
     auto Class=LoadClass<UBRInventoryWidget>(nullptr,TEXT("/Game/UI/Inventory/Widgets/WBP_Inventory.WBP_Inventory_C"));if(!Class)return;
     Inventory=CreateWidget<UBRInventoryWidget>(this,Class);if(!Inventory)return;
     Inventory->AddToViewport(20);if(GameHUD)GameHUD->SetVisibility(ESlateVisibility::Collapsed);bShowMouseCursor=true;

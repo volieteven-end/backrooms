@@ -5,6 +5,7 @@
 class UBRMenuWidget;
 class UBRInventoryWidget;
 class UBRGameHUDWidget;
+class UBRRoundResultWidget;
 class ABRGarageDoor;
 
 UCLASS()
@@ -23,8 +24,10 @@ public:
     UFUNCTION(BlueprintCallable) void ToggleInventory();
     UFUNCTION(BlueprintCallable) void UseHeldItem();
     bool IsInventoryOpen() const {return Inventory!=nullptr;}
+    bool IsResultScreenVisible() const {return RoundResult!=nullptr;}
 private:
     void UpdatePresentation();
+    void UpdateRoundResult();
     void CloseInventory();
     void QuickSlot(int32 Index);
 
@@ -33,6 +36,8 @@ private:
     void RunSmokeDriver();
     UPROPERTY(Transient) TObjectPtr<UBRMenuWidget> Menu;
     UPROPERTY(Transient) TObjectPtr<UBRGameHUDWidget> GameHUD;
+    UPROPERTY(Transient) TObjectPtr<UBRRoundResultWidget> RoundResult;
+    bool bRoundInputLocked=false;
     FString PresentedWorld, TestRole;
     double NextUpdate = 0, TestStarted = 0;
     bool bScreenshotRequested = false;

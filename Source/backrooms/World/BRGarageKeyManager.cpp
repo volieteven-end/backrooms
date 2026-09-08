@@ -5,6 +5,8 @@
 #include "Net/UnrealNetwork.h"
 #include "World/BRGarageDoor.h"
 #include "World/BRGarageKeyPickup.h"
+#include "World/BRGarageKeySocket.h"
+#include "World/BRGarageExitDoor.h"
 #include "World/BRLootCabinet.h"
 
 namespace
@@ -73,7 +75,7 @@ void ABRGarageKeyManager::ConfigureGarageDoors(FRandomStream& RandomStream)
 	TArray<ABRGarageDoor*> Doors;
 	for (TActorIterator<ABRGarageDoor> It(GetWorld()); It; ++It)
 	{
-		if(!It->IsA<ABRLootCabinet>()) Doors.Add(*It);
+		if(!It->IsA<ABRLootCabinet>() && !It->IsA<ABRGarageExitDoor>()) Doors.Add(*It);
 	}
 	ShuffleActors(Doors, RandomStream);
 	const int32 Available = FMath::Clamp(UnlockableDoorCount, 0, Doors.Num());
@@ -102,7 +104,7 @@ bool ABRGarageKeyManager::ConfigureCabinetLoot(FRandomStream& Stream)
         // Never place a required key behind a randomly locked access door.
         if(!Cabinet->RequiredDoorTag.IsNone())
             for(TActorIterator<ABRGarageDoor> Door(GetWorld());Door;++Door)
-                if(!Door->IsA<ABRLootCabinet>() && Door->ControlledActorTag==Cabinet->RequiredDoorTag)Door->SetUnlockable(true);
+                if(!Door->IsA<ABRLootCabinet>() && !Door->IsA<ABRGarageExitDoor>() && Door->ControlledActorTag==Cabinet->RequiredDoorTag)Door->SetUnlockable(true);
     }
     for(auto* Cabinet:Cabinets)if(Cabinet->GetLootType()<0)
     {
@@ -118,16 +120,14 @@ bool ABRGarageKeyManager::ConfigureCabinetLoot(FRandomStream& Stream)
 
 void ABRGarageKeyManager::HandleKeyCollected(ABRGarageKeyPickup* Pickup, APawn*)
 {
-	if (!HasAuthority() || !IsValid(Pickup) || CountedPickups.Contains(Pickup))
+	if (!HasAuthority() || !IsValid(Pickup) || !Pickup->IsCollected() || CountedPickups.Contains(Pickup))
 	{
 		return;
 	}
 	CountedPickups.Add(Pickup);
 	CollectedKeys = FMath::Clamp(CollectedKeys + 1, 0, ActiveKeyCount);
-	if (ABRGameState* State = GetWorld()->GetGameState<ABRGameState>())
-	{
-		State->NotifyObjectiveCompleted();
-	}
+    if(!UsesKeySockets())
+        if(auto* State=GetWorld()->GetGameState<ABRGameState>())State->NotifyObjectiveCompleted();
 	OnRep_KeyProgress();
 	ForceNetUpdate();
 }
@@ -142,4 +142,26 @@ void ABRGarageKeyManager::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(ABRGarageKeyManager, ActiveKeyCount);
 	DOREPLIFETIME(ABRGarageKeyManager, CollectedKeys);
+    DOREPLIFETIME(ABRGarageKeyManager, InsertedKeys);
+}
+
+bool ABRGarageKeyManager::AreAllKeysInserted() const
+{return UsesKeySockets() && KeysRequired==4 && KeySockets.Num()==4 && InsertedKeys==4;}
+bool ABRGarageKeyManager::CanInsertKey(const ABRGarageKeySocket* Socket) const
+{
+    const auto* State=GetWorld()->GetGameState<ABRGameState>();
+    return IsValid(Socket) && Socket->KeyManager==this && KeySockets.Contains(Socket) && KeySockets.Num()==4 &&
+        KeysRequired==4 && ActiveKeyCount==4 && CollectedKeys==4 && InsertedKeys<4 && !Socket->IsInserted() &&
+        IsValid(ExitDoor) && State && State->GetLevelPhase()==EBRLevelPhase::Exploring;
+}
+bool ABRGarageKeyManager::TryInsertKey(ABRGarageKeySocket* Socket)
+{
+    if(!HasAuthority() || !CanInsertKey(Socket))return false;
+    // A single server transaction spends one shared key on one still-empty socket.
+    Socket->MarkInserted();++InsertedKeys;
+    if(auto* State=GetWorld()->GetGameState<ABRGameState>())State->NotifyObjectiveCompleted();
+    OnRep_KeyProgress();ForceNetUpdate();
+    if(AreAllKeysInserted())ExitDoor->OpenAfterKeysInserted();
+    UE_LOG(LogTemp,Display,TEXT("BR_KEY_INSERT socket=%d inserted=%d required=4"),Socket->SocketNumber,InsertedKeys);
+    return true;
 }

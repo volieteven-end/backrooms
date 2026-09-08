@@ -32,13 +32,14 @@
 | KeyPickup | 钥匙由未收集变为已收集 | 钥匙的位置，3D |
 | ElevatorBell / ElevatorDoorOpen | 出生电梯入场提示 | 第一个 PlayerStart 附近 |
 | ElevatorBell | 任务进入 ExtractionReady | 撤离区域位置 |
-| KeyInsert / ElevatorDoorClose / ElevatorMotor | 全队撤离成功；插钥匙 → 1 秒后关门声 → 3 秒后运行循环 | 撤离区域位置 |
+| KeyInsert | 停车场插槽由空变为已插入，每个插槽一次 | 对应插槽位置，3D |
+| KeyInsert / ElevatorDoorClose / ElevatorMotor | 未配置插槽的旧关卡保留撤离成功音效序列；停车场使用实际插入事件 | 旧关卡撤离区域位置 |
 | SkinStealerChase | 复制状态进入 Chasing；离开追逐或结算时停止 | 跟随窃皮者，3D 循环 |
 | SkinStealerAttack | 已有攻击事件复制到客户端 | 窃皮者的位置，3D |
 | SkinStealerRoar | 发现站立玩家、进入追逐时一次；持续追逐每 4 秒一次；离开追逐、目标倒地/隐藏或结算后停止继续触发 | 服务器发出实时 multicast；客户端在窃皮者位置播放，3D，跟随移动 |
 | SkinStealerStep1 / Step2 | 根据实际移动距离交替；停止、离地、攻击和传送时不触发步行声 | 窃皮者的位置，3D |
 
-音效不会改变现有关卡几何、灯光、门的位置、任务或 AI 决策。电梯声音使用现有入场和结算阶段，不新增电梯门动画、移动轿厢或插钥匙按钮。
+停车场的钥匙插入声对应实际插槽状态，中央门沿用门开启声；入场电梯声音仍使用原有入场阶段。
 
 当前导入目录还没有主角脚步和呼吸声音；本轮不使用窃皮者脚步代替主角音效。原游戏的混响分区、精确音量、动画脚步标记及逐帧声画对齐仍需专门调音。
 

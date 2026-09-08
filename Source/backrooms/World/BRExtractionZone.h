@@ -5,6 +5,7 @@
 #include "BRExtractionZone.generated.h"
 
 class UBoxComponent;
+class ABRGarageExitDoor;
 
 UCLASS()
 class BACKROOMS_API ABRExtractionZone : public AActor
@@ -19,6 +20,8 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Backrooms|Extraction")
 	FName NextMapName = NAME_None;
+    UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category="Backrooms|Extraction") TObjectPtr<ABRGarageExitDoor> RequiredExitDoor;
+    UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Backrooms|Extraction") bool bRequireAllPlayers=true;
 
 protected:
 	virtual void BeginPlay() override;

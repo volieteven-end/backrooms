@@ -13,6 +13,7 @@
 #include "Tests/BRInventorySmokeProbe.h"
 #include "Tests/BREntitySmokeProbe.h"
 #include "Tests/BRStaminaSmokeProbe.h"
+#include "Tests/BRKeyInsertionSmokeProbe.h"
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 
@@ -28,6 +29,7 @@ void ABRGameMode::StartPlay()
 {
 	Super::StartPlay();
 #if !UE_BUILD_SHIPPING
+    if(FParse::Param(FCommandLine::Get(),TEXT("BRKeyInsertionSmoke")))GetWorld()->SpawnActor<ABRKeyInsertionSmokeProbe>();
     if (GetNetMode()==NM_DedicatedServer && FParse::Param(FCommandLine::Get(),TEXT("BRStaminaSmoke"))) GetWorld()->SpawnActor<ABRStaminaSmokeProbe>();
     if (FParse::Param(FCommandLine::Get(), TEXT("BREntitySmoke"))) GetWorld()->SpawnActor<ABREntitySmokeProbe>();
     if(GetNetMode()!=NM_DedicatedServer && (FParse::Param(FCommandLine::Get(),TEXT("BRInventorySmoke")) || FParse::Param(FCommandLine::Get(),TEXT("BRArmsViews"))))GetWorld()->SpawnActor<ABRInventorySmokeProbe>();
@@ -70,7 +72,8 @@ void ABRGameMode::HandleTeamExtracted(const FName NextMapName)
 
 	if (ABRGameState* State = GetGameState<ABRGameState>())
 	{
-		State->SetLevelPhase(EBRLevelPhase::Escaping);
+        if(State->GetLevelPhase()==EBRLevelPhase::Completed || State->GetLevelPhase()==EBRLevelPhase::Failed)return;
+		State->SetLevelPhase(GetNetMode()==NM_DedicatedServer?EBRLevelPhase::Escaping:EBRLevelPhase::Completed);
 	}
 
 	OnTeamExtracted(NextMapName);

@@ -15,6 +15,9 @@
 #include "Blueprint/WidgetLayoutLibrary.h"
 #include "World/BRSupplyPickup.h"
 #include "World/BRGarageKeyPickup.h"
+#include "World/BRGarageKeySocket.h"
+#include "World/BRGarageKeyManager.h"
+#include "EngineUtils.h"
 
 namespace
 {
@@ -25,6 +28,8 @@ namespace
 void UBRGameHUDWidget::NativeConstruct()
 {
     Super::NativeConstruct();
+    for(auto* Text:{KeyStatus.Get(),SanityStatus.Get(),RoundStatus.Get()})
+        if(Text){Text->SetShadowColorAndOpacity(FLinearColor::Black);Text->SetShadowOffset(FVector2D(1.5f,1.5f));}
     if (!InteractionHint) return;
     InteractionHint->SetAutoWrapText(false);
     InteractionHint->SetShadowColorAndOpacity(FLinearColor::Black);
@@ -46,7 +51,8 @@ void UBRGameHUDWidget::UpdatePickupPrompt()
     auto* Player = Cast<ABRPlayerCharacter>(GetOwningPlayerPawn());
     if (!PC || PC->IsInventoryOpen() || !Player || Player->GetDownedComponent()->IsDowned() || Player->GetCurrentHideSpot()) return;
     auto* Target = Player->GetInteractionComponent()->FindFocusedInteractable();
-    if (!IsValid(Target) || !IsPickup(Target) || Target->IsHidden() || !IBRInteractable::Execute_CanInteract(Target,Player)) return;
+    const bool Socket=Cast<ABRGarageKeySocket>(Target)!=nullptr;
+    if (!IsValid(Target) || (!IsPickup(Target) && !Socket) || Target->IsHidden() || (!Socket && !IBRInteractable::Execute_CanInteract(Target,Player))) return;
 
     FVector Origin, Extent;
     Target->GetActorBounds(false,Origin,Extent);
@@ -72,7 +78,7 @@ bool UBRGameHUDWidget::ShouldDrawInteractionRing() const
     auto* Player = Cast<ABRPlayerCharacter>(GetOwningPlayerPawn());
     if (!Player || Player->GetDownedComponent()->IsDowned()) return false;
     auto* Target = Player->GetInteractionComponent()->FindFocusedInteractable();
-    return IsValid(Target) && !IsPickup(Target) && IBRInteractable::Execute_CanInteract(Target,Player);
+    return IsValid(Target) && !IsPickup(Target) && !Cast<ABRGarageKeySocket>(Target) && IBRInteractable::Execute_CanInteract(Target,Player);
 }
 
 void UBRGameHUDWidget::NativeTick(const FGeometry& Geometry, float DeltaTime)
@@ -84,6 +90,16 @@ void UBRGameHUDWidget::NativeTick(const FGeometry& Geometry, float DeltaTime)
     if (!GS) return;
     if(SanityStatus && Character){auto* Bag=Character->GetInventoryComponent();SanityStatus->SetText(FText::FromString(FString::Printf(TEXT("SAN %.0f / 100\n[Tab] 背包与快捷栏 %d / 12"),Bag->GetSanity(),Bag->GetUsedSlots())));SanityStatus->SetColorAndOpacity(Bag->GetSanity()<25?FLinearColor(1,0.3f,0.2f,1):FLinearColor::White);}
     FString Inventory=FString::Printf(TEXT("钥匙  %d / %d     队伍 %d 人"),GS->GetCompletedObjectives(),GS->GetTotalObjectives(),GS->PlayerArray.Num());
+    for(TActorIterator<ABRGarageKeyManager> Manager(GetWorld());Manager;++Manager)
+    {
+        if(Manager->UsesKeySockets())
+        {
+            Inventory=FString::Printf(TEXT("已收集钥匙 %d / 4     已插入 %d / 4     队伍 %d 人"),Manager->GetCollectedKeys(),Manager->GetInsertedKeys(),GS->PlayerArray.Num());
+            if(Manager->AreAllKeysInserted())Inventory+=TEXT("\n中央门已打开 · 进入门后区域即可撤离");
+            else if(Manager->GetCollectedKeys()==4)Inventory+=TEXT("\n前往中央房间，按E依次插入四把钥匙");
+        }
+        break;
+    }
     if(Character && Character->HasFlashlight())Inventory+=FString::Printf(TEXT("\n[F] 手电 %s %.0f%%    [R] 换电池 · 备用 %d"),Character->IsFlashlightOn()?TEXT("开"):TEXT("关"),Character->GetBatteryCharge(),Character->GetSpareBatteries());
     if (Character)
     {

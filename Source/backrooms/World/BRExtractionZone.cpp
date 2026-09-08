@@ -7,6 +7,7 @@
 #include "GameFramework/Pawn.h"
 #include "Player/BRPlayerState.h"
 #include "TimerManager.h"
+#include "World/BRGarageExitDoor.h"
 
 ABRExtractionZone::ABRExtractionZone()
 {
@@ -57,7 +58,7 @@ void ABRExtractionZone::CheckExtractionState()
 	}
 
 	const ABRGameState* State = GetWorld()->GetGameState<ABRGameState>();
-	if (!State)
+	if (!State || (RequiredExitDoor && !RequiredExitDoor->IsPassageOpen()) || State->GetLevelPhase()==EBRLevelPhase::Completed || State->GetLevelPhase()==EBRLevelPhase::Failed)
 	{
 		return;
 	}
@@ -78,7 +79,7 @@ void ABRExtractionZone::CheckExtractionState()
 		}
 	}
 
-	if (FBRGameplayRules::CanExtract(ActivePlayers, PlayersInZone, State->AreObjectivesComplete()))
+	if (FBRGameplayRules::CanExtract(bRequireAllPlayers?ActivePlayers:1, PlayersInZone, State->AreObjectivesComplete()))
 	{
 		bTriggered = true;
 		OnTeamReadyToExtract();

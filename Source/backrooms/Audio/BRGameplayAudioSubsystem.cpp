@@ -17,6 +17,7 @@
 #include "Sound/SoundWave.h"
 #include "TimerManager.h"
 #include "World/BRExtractionZone.h"
+#include "World/BRGarageKeyManager.h"
 
 bool UBRGameplayAudioSubsystem::DoesSupportWorldType(EWorldType::Type Type) const
 {
@@ -136,11 +137,15 @@ void UBRGameplayAudioSubsystem::HandleLevelPhase(EBRLevelPhase Phase)
     if ((Phase == EBRLevelPhase::Escaping || Phase == EBRLevelPhase::Completed) && !bExtractionPlayed)
     {
         bExtractionPlayed=true; bRoundEnding=true;
+        bool SocketPuzzle=false;for(TActorIterator<ABRGarageKeyManager> Manager(GetWorld());Manager;++Manager){SocketPuzzle=Manager->UsesKeySockets();break;}
+        if(!SocketPuzzle)
+        {
         PlayEvent(EBRGameplaySound::KeyInsert,GetElevatorLocation(false));
         GetWorld()->GetTimerManager().SetTimer(CloseTimer,FTimerDelegate::CreateWeakLambda(this,[this]()
         {PlayEvent(EBRGameplaySound::ElevatorDoorClose,GetElevatorLocation(false));}),1.0f,false);
         GetWorld()->GetTimerManager().SetTimer(MotorTimer,FTimerDelegate::CreateWeakLambda(this,[this]()
         {PlayEvent(EBRGameplaySound::ElevatorMotor,GetElevatorLocation(false));}),3.0f,false);
+        }
     }
     if (Phase == EBRLevelPhase::Failed) bRoundEnding=true;
     if (bRoundEnding && Ambience) Ambience->AdjustVolume(1.0f,GetDefault<UBRGameplayAudioSettings>()->MasterVolume * 0.05f);

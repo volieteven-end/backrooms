@@ -5,6 +5,7 @@
 #include "World/BRGarageDoor.h"
 #include "World/BRGarageKeyPickup.h"
 #include "World/BRSupplyPickup.h"
+#include "Core/BRGameState.h"
 
 #include "GameFramework/Pawn.h"
 #include "GameFramework/PlayerController.h"
@@ -54,6 +55,8 @@ void UBRInteractionComponent::TryInteract()
 
 void UBRInteractionComponent::ServerInteract_Implementation(AActor* TargetActor)
 {
+    if(const auto* State=GetWorld()->GetGameState<ABRGameState>())
+        if(State->GetLevelPhase()==EBRLevelPhase::Completed || State->GetLevelPhase()==EBRLevelPhase::Failed)return;
 	if (!IsTargetValidForInteraction(TargetActor))
 	{
 		return;
