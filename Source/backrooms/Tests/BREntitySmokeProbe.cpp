@@ -2,6 +2,7 @@
 #include "AI/BREntityCharacter.h"
 #include "Player/BRPlayerCharacter.h"
 #include "Player/BRDownedComponent.h"
+#include "Player/BRStaminaComponent.h"
 #include "Core/BRGameState.h"
 #include "Online/BRRoomDirectorySubsystem.h"
 #include "AIController.h"
@@ -130,6 +131,7 @@ void ABREntitySmokeProbe::Tick(float DT)
     if (Stage == 4 && Now - StageStarted > 2.5)
     {
         Check(Entity->GetEntityState() == EBREntityState::Chasing && Entity->GetTargetActor() == Player, TEXT("REAL_SIGHT_DETECTS_PLAYER"));
+        Check(Player->GetStaminaComponent()->HasUnlimitedStamina(), TEXT("REAL_SIGHT_GRANTS_UNLIMITED_STAMINA"));
         Check(Entity->GetRoarCueCount() == InitialRoars + 1, TEXT("DISCOVERY_ONE_ROAR"));
         Stage = 5; // Keep timing from initial sight setup for a full repeat window.
     }
@@ -146,6 +148,7 @@ void ABREntitySmokeProbe::Tick(float DT)
     if (Stage == 6 && Now - StageStarted > 4.5)
     {
         Check(Entity->GetRoarCueCount() == LastRoars, TEXT("LOST_TARGET_STOPS_ROARS"));
+        Check(!Player->GetStaminaComponent()->HasUnlimitedStamina(), TEXT("LOST_TARGET_RESTORES_LIMITED_STAMINA"));
         auto* GS = GetWorld()->GetGameState<ABRGameState>();
         GS->SetLevelPhase(EBRLevelPhase::Completed);
         Entity->SetEntityState(EBREntityState::Chasing, Player);

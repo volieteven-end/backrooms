@@ -37,7 +37,8 @@ void UBRFirstPersonArmsComponent::Update(float DT,USkeletalMeshComponent* Mesh)
     if(!ActiveAction && !Held && P->bIsCrouched)NewState=Moving?TEXT("CrouchWalk"):TEXT("CrouchIdle");
     State=NewState;
     // DT_Items specifies Both for the can, Right for the flashlight.
-    const bool Both=Item==EBRInventoryItem::AlmondWater || ActiveAction==5;
+    const bool Relaxed = !Held && !ActiveAction;
+    const bool Both=Relaxed || Item==EBRInventoryItem::AlmondWater || ActiveAction==5;
     if(Both && Mesh->IsBoneHiddenByName(TEXT("LeftShoulder")))Mesh->UnHideBoneByName(TEXT("LeftShoulder"));
     if(!Both && !Mesh->IsBoneHiddenByName(TEXT("LeftShoulder")))Mesh->HideBoneByName(TEXT("LeftShoulder"),EPhysBodyOp::PBO_None);
     const FRotator View=P->GetBaseAimRotation();if(!bInitialized){PreviousView=View;bInitialized=true;}
@@ -47,15 +48,18 @@ void UBRFirstPersonArmsComponent::Update(float DT,USkeletalMeshComponent* Mesh)
     const float Breath=FMath::Sin(GetWorld()->GetTimeSeconds()*1.8f)*0.20f;
     const FVector Bob(0,FMath::Sin(Phase)*0.6f*Motion,Breath+FMath::Cos(Phase*2)*0.45f*Motion);
     FVector Base=(Held || ActiveAction)?EquippedOffset:EmptyOffset;
-    const FVector Target=Base+Bob*SwayStrength+FVector(0,0,P->bIsCrouched?-2.f:0.f);
+    // Empty arms stay with the torso as the view lowers. Cap the compensation at
+    // 55 degrees so looking straight down keeps the mesh's open shoulders offscreen.
+    // Equipped/one-shot actions retain their authored camera-relative pose.
+    const float BodyPitch = FMath::Max(FRotator::NormalizeAxis(View.Pitch), -55.f);
+    const FQuat BodyView = Relaxed ? FRotator(-BodyPitch,0,0).Quaternion() : FQuat::Identity;
+    const FVector Target=BodyView.RotateVector(Base+Bob*SwayStrength+FVector(0,0,P->bIsCrouched?-2.f:0.f));
     Mesh->SetRelativeLocation(FMath::VInterpTo(Mesh->GetRelativeLocation(),Target,DT,10.f));
     const FRotator Sway(-FMath::Clamp(Turn.Pitch,-3.f,3.f)*SwayStrength,0,-FMath::Clamp(Turn.Yaw,-3.f,3.f)*SwayStrength);
-    const FQuat TargetRotation=Sway.Quaternion()*FRotator(0,-90,0).Quaternion();
+    const FQuat TargetRotation=BodyView*Sway.Quaternion()*FRotator(0,-90,0).Quaternion();
     Mesh->SetRelativeRotation(FQuat::Slerp(Mesh->GetRelativeRotation().Quaternion(),TargetRotation,FMath::Clamp(DT*12,0.f,1.f)));
     if(!ActiveAction && Moving && !Held)Mesh->SetPlayRate(FMath::Clamp(Speed/(Speed>420?600.f:350.f),0.6f,1.3f));else Mesh->SetPlayRate(1);
 }
 
 bool UBRFirstPersonArmsComponent::WantsVisibleArms() const
-{auto* P=Cast<ABRPlayerCharacter>(GetOwner());if(!P)return false;
- auto Item=P->GetInventoryComponent()->GetEquippedItem();
- return Item==EBRInventoryItem::Flashlight || Item==EBRInventoryItem::AlmondWater || ActiveAction==5;}
+{return Cast<ABRPlayerCharacter>(GetOwner()) != nullptr;}

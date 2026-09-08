@@ -3,6 +3,7 @@
 #include "Player/BRInventoryComponent.h"
 #include "Player/BRFirstPersonArmsComponent.h"
 #include "Player/BRDownedComponent.h"
+#include "Player/BRStaminaComponent.h"
 #include "UI/BRMenuPlayerController.h"
 #include "UI/BRInventoryWidget.h"
 #include "World/BRHideSpot.h"
@@ -28,6 +29,7 @@
 #include "Misc/Paths.h"
 #include "UnrealClient.h"
 #include "Camera/CameraTypes.h"
+#include "TimerManager.h"
 #include "Input/DragAndDrop.h"
 ABRInventorySmokeProbe::ABRInventorySmokeProbe(){PrimaryActorTick.bCanEverTick=true;}
 void ABRInventorySmokeProbe::Check(bool OK,const TCHAR* N){++Checks;if(!OK)++Failures;UE_LOG(LogTemp,Display,TEXT("BR_INVENTORY_SMOKE case=%s result=%s"),N,OK?TEXT("PASS"):TEXT("FAIL"));}
@@ -50,6 +52,7 @@ void ABRInventorySmokeProbe::Tick(float DT)
 {
     Super::Tick(DT);
 #if !UE_BUILD_SHIPPING
+    if(FParse::Param(FCommandLine::Get(),TEXT("BRArmsViews"))){TickArmsViews();return;}
     if(Started==0)Started=FPlatformTime::Seconds();const double T=FPlatformTime::Seconds()-Started;
     if(P)
     {
@@ -65,7 +68,7 @@ void ABRInventorySmokeProbe::Tick(float DT)
         for(TActorIterator<ABREntityCharacter> It(GetWorld());It;++It)if(auto* AI=Cast<AAIController>(It->GetController())){AI->StopMovement();AI->UnPossess();}
         Check(Bag && Bag->GetSlots().Num()==12 && Bag->GetUsedSlots()==0,TEXT("TWELVE_EMPTY_SLOTS"));Check(Bag->GetSanity()>99 && Bag->GetSanity()<=100,TEXT("SAN_INITIAL"));
         FMinimalViewInfo View;P->CalcCamera(0,View);Check(FMath::IsNearlyEqual(View.PerspectiveNearClipPlane,1.f),TEXT("FIRST_PERSON_NEAR_PLANE"));
-        Check(!Arms->IsVisible(),TEXT("EMPTY_HANDS_HIDDEN"));
+        Check(Arms->IsVisible() && !Arms->IsBoneHiddenByName(TEXT("LeftShoulder")),TEXT("EMPTY_HANDS_VISIBLE"));
         int32 Disabled=0,Rooms=0;
         for(TActorIterator<ABRHideSpot> H(GetWorld());H;++H){if(H->Cabinet){++Disabled;Check(!H->CanInteract_Implementation(P),TEXT("CABINET_HIDE_DISABLED"));}else ++Rooms;}
         UE_LOG(LogTemp,Display,TEXT("BR_HIDE_AUDIT cabinet_disabled=%d room_spots=%d"),Disabled,Rooms);
@@ -158,7 +161,7 @@ void ABRInventorySmokeProbe::Tick(float DT)
     if(Stage==13)
     {
         Check(P->GetActorLocation().X>-19700,TEXT("STEP_5_CM"));Check(P->GetArmsAnimationComponent()->GetAnimationState()==TEXT("Walk"),TEXT("WALK_ANIMATION_STATE"));
-        Check(!Arms->IsVisible(),TEXT("EMPTY_WALK_HANDS_HIDDEN"));StepFixture(20);
+        Check(Arms->IsVisible(),TEXT("EMPTY_WALK_HANDS_VISIBLE"));StepFixture(20);
     }
     if(Stage==14){Check(P->GetActorLocation().X>-19700,TEXT("STEP_20_CM"));StepFixture(35);}
     if(Stage==15){Check(P->GetActorLocation().X>-19700,TEXT("STEP_35_CM"));StepFixture(60);}
@@ -167,8 +170,61 @@ void ABRInventorySmokeProbe::Tick(float DT)
     if(Stage==17){Capture(TEXT("07_relaxed_arms"));Check(P->GetArmsAnimationComponent()->GetAnimationState()==TEXT("Idle"),TEXT("STOP_RETURNS_IDLE"));StepFixture(5);P->GetCharacterMovement()->MaxWalkSpeed=600;}
     if(Stage==18){Check(P->GetArmsAnimationComponent()->GetAnimationState()==TEXT("Run"),TEXT("RUN_ANIMATION_STATE"));StepFixture(5);P->GetCharacterMovement()->MaxWalkSpeed=350;P->Crouch();}
     if(Stage==19){Check(P->bIsCrouched && P->GetArmsAnimationComponent()->GetAnimationState()==TEXT("CrouchWalk"),TEXT("CROUCH_WALK_ANIMATION"));P->UnCrouch();Stand(FVector(3990,2160,3214),180);}
-    if(Stage==20){Capture(TEXT("08_final_relaxed"));Check(!Arms->IsVisible(),TEXT("EMPTY_FINAL_HANDS_HIDDEN"));Check(!P->bIsCrouched && P->GetArmsAnimationComponent()->GetAnimationState()==TEXT("Idle"),TEXT("UN_CROUCH_IDLE"));}
+    if(Stage==20){Capture(TEXT("08_final_relaxed"));Check(Arms->IsVisible(),TEXT("EMPTY_FINAL_HANDS_VISIBLE"));Check(!P->bIsCrouched && P->GetArmsAnimationComponent()->GetAnimationState()==TEXT("Idle"),TEXT("UN_CROUCH_IDLE"));}
     if(Stage==21){UE_LOG(LogTemp,Display,TEXT("BR_INVENTORY_SMOKE result=%s checks=%d failures=%d"),Failures?TEXT("FAIL"):TEXT("PASS"),Checks,Failures);FPlatformMisc::RequestExit(false);}
     ++Stage;
+#endif
+}
+
+void ABRInventorySmokeProbe::TickArmsViews()
+{
+#if !UE_BUILD_SHIPPING
+    const double Now=FPlatformTime::Seconds();
+    if(!P)
+    {
+        P=Cast<ABRPlayerCharacter>(UGameplayStatics::GetPlayerPawn(this,0));if(!P)return;
+        PC=Cast<ABRMenuPlayerController>(P->GetController());if(!PC){P=nullptr;return;}
+        Bag=P->GetInventoryComponent();
+        TArray<USkeletalMeshComponent*> Meshes;P->GetComponents(Meshes);
+        for(auto* Mesh:Meshes)if(Mesh->GetFName()==TEXT("FirstPersonArms"))Arms=Mesh;
+        for(TActorIterator<ABREntityCharacter> It(GetWorld());It;++It)
+        {if(auto* AI=Cast<AAIController>(It->GetController())){AI->StopMovement();AI->UnPossess();}It->SetEntityState(EBREntityState::Returning);}
+        Stand(FVector(3990,2160,3214),180);Started=Now;Stage=0;return;
+    }
+    if(Now-Started<2.5)return;
+    const TCHAR* Names[]={TEXT("01_empty_forward"),TEXT("02_empty_look_down"),TEXT("03_empty_full_down"),TEXT("04_crouched_look_down"),TEXT("05_flashlight_forward"),TEXT("06_flashlight_down"),TEXT("07_stowed_look_down"),TEXT("08_almond_water"),TEXT("09_drink"),TEXT("10_chased_empty")};
+    if(Stage>=UE_ARRAY_COUNT(Names))
+    {
+        UE_LOG(LogTemp,Display,TEXT("BR_ARMS_VIEWS result=%s checks=%d failures=%d"),Failures?TEXT("FAIL"):TEXT("PASS"),Checks,Failures);
+        FPlatformMisc::RequestExitWithStatus(false,Failures?2:0);return;
+    }
+    Check(Arms && Arms->IsVisible(),Names[Stage]);
+    if(Stage==1 || Stage==2 || Stage==3 || Stage==6 || Stage==9)
+    {
+        Check(!Arms->IsBoneHiddenByName(TEXT("LeftShoulder")),TEXT("EMPTY_BOTH_ARMS"));
+        for(const TCHAR* Bone:{TEXT("LeftHand"),TEXT("RightHand")})
+        {
+            FVector2D Screen;int32 Width=0,Height=0;PC->GetViewportSize(Width,Height);
+            const bool InFront=PC->ProjectWorldLocationToScreen(Arms->GetSocketLocation(Bone),Screen);
+            Check(InFront && Screen.X>=0 && Screen.X<Width && Screen.Y>=0 && Screen.Y<Height, TEXT("EMPTY_HAND_INSIDE_VIEW"));
+            UE_LOG(LogTemp,Display,TEXT("BR_ARMS_VIEW stage=%d bone=%s screen=%s viewport=%dx%d front=%d local=%s"),Stage,Bone,*Screen.ToString(),Width,Height,InFront,*Arms->GetSocketTransform(Bone,RTS_Component).GetLocation().ToCompactString());
+        }
+    }
+    Capture(Names[Stage]);
+    ++Stage;Started=Now;
+    // Apply the next pose after the screenshot has captured the current settled frame.
+    FTimerHandle PoseTimer;
+    GetWorld()->GetTimerManager().SetTimer(PoseTimer,FTimerDelegate::CreateWeakLambda(this,[this]()
+    {
+        if(Stage==1)PC->SetControlRotation(FRotator(-55,180,0));
+        if(Stage==2)PC->SetControlRotation(FRotator(-80,180,0));
+        if(Stage==3){P->Crouch();PC->SetControlRotation(FRotator(-55,180,0));}
+        if(Stage==4){P->UnCrouch();PC->SetControlRotation(FRotator(0,180,0));P->GrantFlashlight();}
+        if(Stage==5)PC->SetControlRotation(FRotator(-55,180,0));
+        if(Stage==6)Bag->StowHeld();
+        if(Stage==7){P->GrantAlmondWater();PC->SetControlRotation(FRotator(0,180,0));}
+        if(Stage==8)Bag->UseSelected();
+        if(Stage==9){Bag->StowHeld();P->GetStaminaComponent()->SetChasedBy(this,true);PC->SetControlRotation(FRotator(-80,180,0));}
+    }),0.25f,false);
 #endif
 }

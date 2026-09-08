@@ -5,6 +5,7 @@
 #include "Core/BRGameState.h"
 #include "Player/BRPlayerCharacter.h"
 #include "Player/BRInventoryComponent.h"
+#include "Player/BRStaminaComponent.h"
 #include "Player/BRDownedComponent.h"
 #include "Interaction/BRInteractionComponent.h"
 #include "Interaction/BRInteractable.h"
@@ -18,6 +19,13 @@ void UBRGameHUDWidget::NativeTick(const FGeometry& Geometry, float DeltaTime)
     if(SanityStatus && Character){auto* Bag=Character->GetInventoryComponent();SanityStatus->SetText(FText::FromString(FString::Printf(TEXT("SAN %.0f / 100\n[Tab] 背包与快捷栏 %d / 12"),Bag->GetSanity(),Bag->GetUsedSlots())));SanityStatus->SetColorAndOpacity(Bag->GetSanity()<25?FLinearColor(1,0.3f,0.2f,1):FLinearColor::White);}
     FString Inventory=FString::Printf(TEXT("钥匙  %d / %d     队伍 %d 人"),GS->GetCompletedObjectives(),GS->GetTotalObjectives(),GS->PlayerArray.Num());
     if(Character && Character->HasFlashlight())Inventory+=FString::Printf(TEXT("\n[F] 手电 %s %.0f%%    [R] 换电池 · 备用 %d"),Character->IsFlashlightOn()?TEXT("开"):TEXT("关"),Character->GetBatteryCharge(),Character->GetSpareBatteries());
+    if (Character)
+    {
+        const auto* Stamina = Character->GetStaminaComponent();
+        Inventory += Stamina->HasUnlimitedStamina() ? TEXT("\n耐力 ∞ · 被追击中") :
+            FString::Printf(TEXT("\n耐力 %.0f / %.0f%s"), Stamina->GetStamina(), Stamina->GetMaxStamina(),
+                Stamina->IsExhausted() ? TEXT(" · 恢复中") : TEXT(""));
+    }
     KeyStatus->SetText(FText::FromString(Inventory));
     FString Hint,Result;
     if (Character)

@@ -12,6 +12,7 @@
 #include "Tests/BRItemSmokeProbe.h"
 #include "Tests/BRInventorySmokeProbe.h"
 #include "Tests/BREntitySmokeProbe.h"
+#include "Tests/BRStaminaSmokeProbe.h"
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
 
@@ -27,8 +28,9 @@ void ABRGameMode::StartPlay()
 {
 	Super::StartPlay();
 #if !UE_BUILD_SHIPPING
+    if (GetNetMode()==NM_DedicatedServer && FParse::Param(FCommandLine::Get(),TEXT("BRStaminaSmoke"))) GetWorld()->SpawnActor<ABRStaminaSmokeProbe>();
     if (FParse::Param(FCommandLine::Get(), TEXT("BREntitySmoke"))) GetWorld()->SpawnActor<ABREntitySmokeProbe>();
-    if(GetNetMode()!=NM_DedicatedServer && FParse::Param(FCommandLine::Get(),TEXT("BRInventorySmoke")))GetWorld()->SpawnActor<ABRInventorySmokeProbe>();
+    if(GetNetMode()!=NM_DedicatedServer && (FParse::Param(FCommandLine::Get(),TEXT("BRInventorySmoke")) || FParse::Param(FCommandLine::Get(),TEXT("BRArmsViews"))))GetWorld()->SpawnActor<ABRInventorySmokeProbe>();
     if(GetNetMode()!=NM_DedicatedServer && FParse::Param(FCommandLine::Get(),TEXT("BRItemsSmoke")))GetWorld()->SpawnActor<ABRItemSmokeProbe>();
     if (GetNetMode()==NM_DedicatedServer && FParse::Param(FCommandLine::Get(),TEXT("BRNetworkSmoke"))) GetWorld()->SpawnActor<ABRNetworkSmokeProbe>();
 #endif

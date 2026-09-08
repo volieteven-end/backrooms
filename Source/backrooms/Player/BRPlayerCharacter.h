@@ -7,6 +7,7 @@
 #include "BRPlayerCharacter.generated.h"
 
 class UBRInventoryComponent;
+class UBRStaminaComponent;
 class UBRFirstPersonArmsComponent;
 class UBRInteractionComponent;
 class ABRHideSpot;
@@ -25,6 +26,11 @@ class BACKROOMS_API ABRPlayerCharacter : public ACharacter, public IBRInteractab
 
 public:
 	ABRPlayerCharacter();
+    UFUNCTION(BlueprintPure, Category="Backrooms|Stamina") UBRStaminaComponent* GetStaminaComponent() const { return StaminaComponent; }
+    UFUNCTION(BlueprintPure, Category="Backrooms|Movement") bool IsSprinting() const { return bIsSprinting; }
+    UFUNCTION(BlueprintCallable, Category="Backrooms|Movement") void StartSprint();
+    UFUNCTION(BlueprintCallable, Category="Backrooms|Movement") void StopSprint();
+    void RefreshSprintState();
     virtual void CalcCamera(float DeltaTime,FMinimalViewInfo& OutResult) override;
     virtual void GetActorEyesViewPoint(FVector& Location, FRotator& Rotation) const override;
     bool GrantFlashlight(float Charge=100);
@@ -78,6 +84,7 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Backrooms|Components")
 	TObjectPtr<UBRDownedComponent> DownedComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Backrooms|Components") TObjectPtr<UBRInventoryComponent> InventoryComponent;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Backrooms|Components") TObjectPtr<UBRStaminaComponent> StaminaComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Backrooms|Components") TObjectPtr<UBRFirstPersonArmsComponent> ArmsAnimation;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Backrooms|Equipment") TObjectPtr<UStaticMeshComponent> FirstPersonCan;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Backrooms|Equipment") TObjectPtr<USceneComponent> ItemGrip;
@@ -119,6 +126,7 @@ protected:
 	void ServerSetSprinting(bool bNewSprinting);
 
 private:
+    bool bSprintRequested = false;
     UPROPERTY() TObjectPtr<UAnimSequence> ArmsIdleAnimation;
     UPROPERTY(ReplicatedUsing=OnRep_Equipment) bool bHasFlashlight=false;
     UPROPERTY(ReplicatedUsing=OnRep_Equipment) bool bFlashlightOn=false;
@@ -142,8 +150,6 @@ private:
 	void LookEnhanced(const FInputActionValue& Value);
 	void MoveForwardLegacy(float Value);
 	void MoveRightLegacy(float Value);
-	void StartSprint();
-	void StopSprint();
 	void ToggleCrouch();
 	void TryInteract();
 	void ApplySprintState();

@@ -32,6 +32,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+    virtual void EndPlay(const EEndPlayReason::Type Reason) override;
     UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") float MeshYawOffset = -90.0f;
     void ApplyFacingConfiguration();
     void UpdateRoar();

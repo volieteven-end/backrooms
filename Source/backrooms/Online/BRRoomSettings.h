@@ -11,7 +11,7 @@ public:
     UPROPERTY(Config, EditAnywhere, Category="Network") FString ServerHost = TEXT("127.0.0.1");
     UPROPERTY(Config, EditAnywhere, Category="Network") int32 GamePort = 7777;
     UPROPERTY(Config, EditAnywhere, Category="Network") int32 BeaconPort = 15000;
-    UPROPERTY(Config, EditAnywhere, Category="Network") FString BuildId = TEXT("backrooms-room-v5-skinstealer");
+    UPROPERTY(Config, EditAnywhere, Category="Network") FString BuildId = TEXT("backrooms-room-v6-stamina");
     UPROPERTY(Config, EditAnywhere, Category="Maps") FString MenuMap = TEXT("/Game/UI/Menu/Maps/L_MainMenu");
     UPROPERTY(Config, EditAnywhere, Category="Maps") FString LobbyMap = TEXT("/Game/UI/Menu/Maps/L_Lobby");
     UPROPERTY(Config, EditAnywhere, Category="Maps") FString GameplayMap = TEXT("/Game/ReverseAsset/ParkingGarage/LightingStudy/L_MiddleFloor_Dark");

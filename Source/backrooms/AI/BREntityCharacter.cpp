@@ -5,6 +5,7 @@
 #include "Core/BRGameState.h"
 #include "Player/BRPlayerCharacter.h"
 #include "Player/BRDownedComponent.h"
+#include "Player/BRStaminaComponent.h"
 
 #include "AI/BREntityAIController.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -50,8 +51,12 @@ void ABREntityCharacter::SetEntityState(const EBREntityState NewState, AActor* N
 {
 	if (HasAuthority())
 	{
+        auto* PreviousPlayer = EntityState == EBREntityState::Chasing ? Cast<ABRPlayerCharacter>(TargetActor) : nullptr;
+        auto* NextPlayer = NewState == EBREntityState::Chasing ? Cast<ABRPlayerCharacter>(NewTarget) : nullptr;
+        if (IsValid(PreviousPlayer) && PreviousPlayer != NextPlayer) PreviousPlayer->GetStaminaComponent()->SetChasedBy(this, false);
 		EntityState = NewState;
 		TargetActor = NewTarget;
+        if (IsValid(NextPlayer)) NextPlayer->GetStaminaComponent()->SetChasedBy(this, true);
 		OnRep_EntityState();
 		ForceNetUpdate();
 		UpdateRoar();
@@ -69,6 +74,16 @@ void ABREntityCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 	DOREPLIFETIME(ABREntityCharacter, EntityState);
 	DOREPLIFETIME(ABREntityCharacter, TargetActor);
     DOREPLIFETIME(ABREntityCharacter, AttackRevision);
+}
+
+void ABREntityCharacter::EndPlay(const EEndPlayReason::Type Reason)
+{
+    if (HasAuthority())
+    {
+        auto* Player = Cast<ABRPlayerCharacter>(TargetActor);
+        if (IsValid(Player)) Player->GetStaminaComponent()->SetChasedBy(this, false);
+    }
+    Super::EndPlay(Reason);
 }
 
 void ABREntityCharacter::PlayReplicatedAttack()

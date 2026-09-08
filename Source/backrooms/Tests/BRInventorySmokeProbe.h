@@ -9,6 +9,7 @@ class BACKROOMS_API ABRInventorySmokeProbe : public AActor
     GENERATED_BODY()
 public:ABRInventorySmokeProbe();virtual void Tick(float DT) override;
 private:
+    void TickArmsViews();
     void Check(bool OK,const TCHAR* Name);void Capture(const TCHAR* Name);void Stand(FVector Location,float Yaw=0);void StepFixture(float Height);
     UPROPERTY() TObjectPtr<ABRPlayerCharacter> P;
     UPROPERTY() TObjectPtr<ABRMenuPlayerController> PC;

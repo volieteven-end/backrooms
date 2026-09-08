@@ -1,6 +1,7 @@
 #include "Player/BRPlayerCharacter.h"
 #include "World/BRHideSpot.h"
 #include "Player/BRInventoryComponent.h"
+#include "Player/BRStaminaComponent.h"
 #include "Player/BRFirstPersonArmsComponent.h"
 
 #include "Camera/CameraComponent.h"
@@ -86,6 +87,7 @@ ABRPlayerCharacter::ABRPlayerCharacter()
 	InteractionComponent = CreateDefaultSubobject<UBRInteractionComponent>(TEXT("InteractionComponent"));
 	DownedComponent = CreateDefaultSubobject<UBRDownedComponent>(TEXT("DownedComponent"));
     InventoryComponent=CreateDefaultSubobject<UBRInventoryComponent>(TEXT("Inventory"));
+    StaminaComponent=CreateDefaultSubobject<UBRStaminaComponent>(TEXT("Stamina"));
     ArmsAnimation=CreateDefaultSubobject<UBRFirstPersonArmsComponent>(TEXT("ArmsAnimation"));
     FirstPersonCan=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FirstPersonCan"));
     FirstPersonCan->SetupAttachment(ItemGrip);
@@ -125,8 +127,8 @@ void ABRPlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	ApplySprintState();
-    FirstPersonArms->HideBoneByName(TEXT("LeftShoulder"),EPhysBodyOp::PBO_None);
-    FirstPersonArms->SetVisibility(false);
+    FirstPersonArms->UnHideBoneByName(TEXT("LeftShoulder"));
+    FirstPersonArms->SetVisibility(IsLocallyControlled());
     if (GetNetMode()!=NM_DedicatedServer && ArmsIdleAnimation) FirstPersonArms->PlayAnimation(ArmsIdleAnimation,true);
 	UE_LOG(LogTemp, Display, TEXT("BR_PLAYER_RUNTIME result=READY location=%s"), *GetActorLocation().ToCompactString());
 
@@ -228,25 +230,35 @@ void ABRPlayerCharacter::MoveRightLegacy(const float Value)
 
 void ABRPlayerCharacter::StartSprint()
 {
-	if (!DownedComponent->IsDowned() && !CurrentHideSpot)
-	{
-		bIsSprinting = true;
-		ApplySprintState();
-		if (!HasAuthority()) ServerSetSprinting(true);
-	}
+    bSprintRequested = true;
+    RefreshSprintState();
+    if (!HasAuthority()) ServerSetSprinting(true);
 }
 
 void ABRPlayerCharacter::StopSprint()
 {
-	bIsSprinting = false;
-	ApplySprintState();
+    bSprintRequested = false;
+    RefreshSprintState();
 	if (!HasAuthority()) ServerSetSprinting(false);
 }
 
 void ABRPlayerCharacter::ServerSetSprinting_Implementation(const bool bNewSprinting)
 {
-	bIsSprinting = bNewSprinting && !DownedComponent->IsDowned() && !CurrentHideSpot;
-	ApplySprintState();
+    bSprintRequested = bNewSprinting;
+    RefreshSprintState();
+}
+
+void ABRPlayerCharacter::RefreshSprintState()
+{
+    if (!HasAuthority() && !IsLocallyControlled()) return;
+    const bool bSprintNow = bSprintRequested && StaminaComponent && StaminaComponent->CanSprint() &&
+        !DownedComponent->IsDowned() && !CurrentHideSpot && !bIsCrouched;
+    if (bIsSprinting != bSprintNow)
+    {
+        bIsSprinting = bSprintNow;
+        ApplySprintState();
+        if (HasAuthority()) ForceNetUpdate();
+    }
 }
 
 void ABRPlayerCharacter::OnRep_IsSprinting()
@@ -318,6 +330,7 @@ void ABRPlayerCharacter::EndPlay(const EEndPlayReason::Type Reason)
 void ABRPlayerCharacter::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
+    RefreshSprintState();
     TickEquipment(DeltaTime);
     if (GetNetMode() == NM_DedicatedServer) return;
     const float Speed = GetVelocity().Size2D();
