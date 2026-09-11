@@ -34,7 +34,7 @@ void ABRGarageDoor::CachePanels()
     for (AActor* Panel:Found) if (IsValid(Panel) && OwnsPanel(Panel))
     {
         if (auto* Mesh=Panel->FindComponentByClass<UStaticMeshComponent>())
-        { Mesh->SetMobility(EComponentMobility::Movable); Mesh->SetCanEverAffectNavigation(false); }
+        { Mesh->SetMobility(EComponentMobility::Movable); Mesh->SetCanEverAffectNavigation(true); }
         Panels.Add(Panel); ClosedTransforms.Add(Panel->GetActorTransform());
         Panel->SetActorHiddenInGame(false); Panel->SetActorEnableCollision(true);
     }

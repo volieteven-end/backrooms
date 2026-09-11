@@ -12,6 +12,7 @@
 #include "Tests/BRItemSmokeProbe.h"
 #include "Tests/BRInventorySmokeProbe.h"
 #include "Tests/BREntitySmokeProbe.h"
+#include "Tests/BREntityAISmokeProbe.h"
 #include "Tests/BRStaminaSmokeProbe.h"
 #include "Tests/BRKeyInsertionSmokeProbe.h"
 #include "Misc/CommandLine.h"
@@ -29,6 +30,7 @@ void ABRGameMode::StartPlay()
 {
 	Super::StartPlay();
 #if !UE_BUILD_SHIPPING
+    if (FParse::Param(FCommandLine::Get(), TEXT("BREntityAISmoke"))) GetWorld()->SpawnActor<ABREntityAISmokeProbe>();
     if(FParse::Param(FCommandLine::Get(),TEXT("BRKeyInsertionSmoke")))GetWorld()->SpawnActor<ABRKeyInsertionSmokeProbe>();
     if (GetNetMode()==NM_DedicatedServer && FParse::Param(FCommandLine::Get(),TEXT("BRStaminaSmoke"))) GetWorld()->SpawnActor<ABRStaminaSmokeProbe>();
     if (FParse::Param(FCommandLine::Get(), TEXT("BREntitySmoke"))) GetWorld()->SpawnActor<ABREntitySmokeProbe>();

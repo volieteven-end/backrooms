@@ -1,50 +1,59 @@
-# 窃皮者：移动朝向与追逐嘶吼
+# 窃皮者 AI 与声音
 
-更新日期：2026-09-07。
+更新日期：2026-09-11。
 
-## 当前行为
+## 巡逻与追逐
 
-- 模型正面与角色前进方向对齐，巡逻和追击按移动方向平滑转身。
-- 首次发现有效玩家并进入追逐时发出一次嘶吼。
-- 持续追逐时默认每 **4 秒**再次嘶吼；反复感知通知共用冷却，不会每帧叠播。
-- 离开追逐、目标倒地/隐藏或回合结算后停止继续触发；攻击叫声与发现叫声避免重叠。
-- 服务器决定触发时机，实时 multicast 通知客户端播放；声音从怪物位置发出，随怪物移动，支持距离衰减和遮挡。纯服务器不播放声音。
+- 从当前位置 25000 cm 半径内选择随机可达巡逻目标，优先选择相距至少 1400 cm、远离近期到访位置的目标；小导航区域允许较短距离回退。
+- 巡逻和追逐都要求完整路径，不能把“只走到门前”的部分路径当作可达目标。
+- 基础巡逻速度 150 cm/s，追逐速度 575 cm/s，约半秒加速。模型前向保持 Mesh Yaw -90°，按移动方向转身，不侧移。
+- 视觉半径 10000 cm、丢失半径 10500 cm、半视角 60°。每 0.2 秒更新行为；持续可见时刷新 7 秒追逐记忆，失去视线后到期清除目标。
+- 视觉追逐优先于听觉，听觉失败不会取消视觉目标。听觉调查使用声音发生位置，不读取隐藏玩家的实时位置。
+- 目标隐藏、倒地或回合结束后释放追逐状态及该怪物给予玩家的无限耐力。
+- 移动失败或持续无进展会重新规划。追逐结束后选择远离阻塞区域的巡逻目标，优先离开至少 1600 cm；最近阻塞位置附近 800 cm 暂时不作为目标。可见但不可达的同一目标暂缓重试 10 秒，避免反复贴门。
+- 攻击保留合作倒地机制，要求近距离且视线无遮挡；攻击动画期间不继续行走或切换目标。服务器发出一次可靠 multicast，客户端不因新加入或状态重放而再次播放旧攻击。
 
-## 本次修正
+巡逻范围、距离、速度、视线记忆时间、无进展时间及退离距离在 `BREntityAIController` 的 `Backrooms|AI` 默认属性中定义。
 
-本机实际读取 Idle/Walk/Run 的骨骼姿态，确认导入模型的前向为局部 **+Y**。地图中原 Mesh Yaw 为 0，而 UE 角色移动前向为 **+X**，形成约 90° 偏差。
+## 门与导航
 
-代码现在将 Mesh 相对 Yaw 设为 **-90°**，关闭 Controller Yaw/DesiredRotation，启用 OrientRotationToMovement，Yaw 转速为 **540°/秒**。所有追击及巡逻路径请求均关闭侧移。BeginPlay 对已放置的 Actor 应用相同设置，并更新网络平滑使用的 Mesh 初始偏移，防止客户端恢复旧的 0° 偏移。
+项目 Recast 导航使用 Dynamic，移动门板参与导航更新。默认与高精度导航单元为 5 cm，AgentRadius 保持 35 cm。原来 19 cm 的单元会在导航侵蚀过程中封住部分约 1 米宽的门洞：物理碰撞可通过，导航却仍不连通。仅重新生成同样精度的导航不能解决这一问题。
 
-地图几何、角色位置/缩放、骨骼和动作资源没有重导入。
+这些设置位于 `Config/DefaultEngine.ini`；开关门触发相应区域更新。无需修改门洞、缩小角色碰撞或保存用户的地图编辑。游戏启动后导航会依据当前配置重建。
 
-## 声音与可调参数
+地图中窃皮者的整体缩放还把实际碰撞体缩小为半径约 6.4 cm、总高 33 cm，使跨门槛受移动步长影响。启动时会恢复至少 34 cm 半径、144 cm 总高的世界碰撞尺寸，并补偿模型偏移以保持显示大小和脚底位置。
 
-UE：**Project Settings → Game → Parking Garage Audio**。
+## 声音
 
-| 设置 | 默认值 |
-|---|---|
-| Roar Interval | 4 秒；最小 2 秒 |
-| Sounds → SkinStealerRoar → Sound | 复用 `skinstealer_gotcha1__1_`，约 1.73 秒 |
-| Volume | 0.85，再乘游戏音效 Master Volume |
-| Spatial / Occlusion | 开启 |
-| Falloff Distance | 2200 cm |
+- 保留首次发现时的一次嘶吼和追逐期间每 4 秒一次的嘶吼；同一冷却限制重复感知通知，离开追逐或结束回合后停止。
+- 攻击在 gotcha1 / gotcha2 / gotcha3 三条叫声间随机，服务器选定变体并发送给各客户端。
+- 受击者听到无空间遮挡衰减的近身叫声，并叠加 `Impact_1` 与 `Scream_1`。其他玩家听到位于窃皮者位置的空间叫声，保留距离和墙体遮挡。
+- 攻击叫声事件倍率默认 1.0，受击者再乘 1.25，均受全局游戏音效 Master Volume（默认 0.8）控制；冲击与尖叫也分别受同一总音量控制。
+- 发现叫声与攻击叫声避免重叠；独立服务器不播放或加载攻击音频。
 
-现有追逐底音保留；新增的是独立的一次性嘶吼事件。13 个游戏声音事件复用 12 个 SoundWave 文件，可在同一设置页替换独立嘶吼素材。
+调整入口：**Project Settings → Game → Parking Garage Audio**。`Sounds` 中可以调整 Attack、Impact、Pain，或替换 Attack 的 Variations。
 
-## 工程位置
+## 原游戏对照依据
 
-- [角色朝向与服务器嘶吼触发](E:/UNREAL/ue%20projects/backrooms/Source/backrooms/AI/BREntityCharacter.cpp)
-- [AI 路径请求](E:/UNREAL/ue%20projects/backrooms/Source/backrooms/AI/BREntityAIController.cpp)
-- [声音默认设置](E:/UNREAL/ue%20projects/backrooms/Source/backrooms/Audio/BRGameplayAudioSettings.cpp)
-- [回归探针](E:/UNREAL/ue%20projects/backrooms/Source/backrooms/Tests/BREntitySmokeProbe.cpp)
+本机原游戏包中的 `BP_SkinStealer`、`AIC_SkinStealer`、`BT_SkinStealer`、`BTTask_RoamLocation`、`SkinStealer_Kill_Cue`、`SkinStealerScare`，并检查 `MiddleFloor` 中的实际窃皮者实例。
 
-联机 BuildId 更新为 `backrooms-room-v5-skinstealer`，双方使用本次同版本源码构建。开发服务器重启后生效；旧的打包客户端没有自动更新。
+原版使用大范围随机巡逻，持续感知刷新 7 秒延迟，到期清除黑板目标再巡逻；未发现独立的“关门后立即撤退”任务。本项目额外增加近期位置避让、阻塞地点排除和无进展处理，适应重建后的地图。仍使用原有合作倒地玩法，没有复制原版死亡演出。
 
-## 验证说明
+## 验证
 
-`Backrooms.Entity.FacingAndRoarContracts` 检查转向配置、模型前向和 multicast 属性。
+真实地图开发探针 `-BREntityAISmoke` 只在非 Shipping 且显式提供参数时创建。它不保存地图，使用临时玩家位置与门状态准备场景；巡逻、感知、追逐超时、离门与穿门攻击均由实际 AI 执行。
 
-显式开发参数 `-BREntitySmoke` 在独立运行的测试进程中建立临时地面，检查四个移动方向、真实视觉感知发现玩家、首次/重复嘶吼、感知重复通知、失去目标、倒地和结算停止条件。多人测试同时核对两客户端朝向和嘶吼事件接收；测试对象不保存到地图，普通启动不带此参数。
+```powershell
+python Tools/Testing/Run-EntityAITests.py standalone --render --output work/ai-standalone
+python Tools/Testing/Run-EntityAITests.py network --render --rounds 2 --output work/ai-network
+```
 
-本次具体命令、运行结果和恢复验证见 [VERIFICATION.txt](E:/UNREAL/ue%20projects/backrooms/work/skinstealer_facing_roar_20260907/VERIFICATION.txt)。
+覆盖 75 秒巡逻、完整且足够远的目标、六扇普通门关闭阻断与开启恢复、真实视觉发现、关门后的追逐宽限与超时、离门位移、重新开门后穿门攻击、攻击只触发一次。渲染模式保存玩家视角截图和实际混音录音。`--doors-only` 只用于门的局部诊断，不能替代完整巡逻验证。
+
+`Backrooms.Entity.FacingAndRoarContracts`、`Backrooms.Audio.AssetBindings` 和 `Backrooms.Audio.LoopDoesNotMutateAsset` 检查既有朝向、声音绑定和资源不变性。旧 `-BREntitySmoke` 在临时地面冻结角色来隔离嘶吼测试，因此单独延长测试对象的无进展时间；实际脱困测试使用新探针和正常默认值。
+
+2026-09-11 最终验证：Editor 与 Game 的 Win64 Development 构建通过；`Backrooms` 13 项自动化和独立朝向／嘶吼探针 16 项检查通过。完整渲染单机通过 35 项检查；独立服务器与两个渲染客户端连续两轮各通过 35 项检查，并完成返回大厅再开局。联机每轮 75 秒巡逻约走过 110 米，失去目标后离门约 26–27 米；三轮均重新穿门攻击成功。两个客户端轮流成为受击者，每次各收到一次攻击提示，服务器与客户端的音效变体一致。最终单机和联机受击录音峰值约为 −1.7 / −1.2 dBFS，无削波样本。
+
+本机日志、截图和实际混音位于 `work/skinstealer_ai_fix_20260911/standalone-final`、`network-final`，各目录的 `RESULT.json` 保存完整检查结果；同级 `regressions.json` 与 `mixed-audio-metrics.json` 保存回归和录音统计。测试只修改独立进程中的临时状态，不保存地图。
+
+联机 BuildId 为 `backrooms-room-v8-skinstealer-ai`，客户端与服务器需要使用同版本构建。已有打包产物不会随源码修改自动更新。

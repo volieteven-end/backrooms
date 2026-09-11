@@ -21,10 +21,16 @@ UBRGameplayAudioSettings::UBRGameplayAudioSettings()
     Add(EBRGameplaySound::ElevatorBell,TEXT("Elevator/Elevator_Bell"),0.55f,true,2000);
     Add(EBRGameplaySound::ElevatorMotor,TEXT("Elevator/Elevator_Loop"),0.35f,true,1500);
     Add(EBRGameplaySound::SkinStealerChase,TEXT("SkinStealer/skinstealer_chaseloop"),0.38f,true,1800);
-    Add(EBRGameplaySound::SkinStealerAttack,TEXT("SkinStealer/skinstealer_gotcha1__1_"),0.65f,true,1100);
+    Add(EBRGameplaySound::SkinStealerAttack,TEXT("SkinStealer/skinstealer_gotcha1__1_"),1.0f,true,1600);
     Add(EBRGameplaySound::SkinStealerStep1,TEXT("SkinStealer/skinstealer_schlep1"),0.45f,true,1200);
     Add(EBRGameplaySound::SkinStealerStep2,TEXT("SkinStealer/skinstealer_schlep2"),0.45f,true,1200);
     Add(EBRGameplaySound::SkinStealerRoar,TEXT("SkinStealer/skinstealer_gotcha1__1_"),0.85f,true,2200);
+    Add(EBRGameplaySound::SkinStealerImpact,TEXT("SkinStealer/Impact_1"),0.65f,false,1);
+    Add(EBRGameplaySound::SkinStealerPain,TEXT("SkinStealer/Scream_1"),0.55f,false,1);
+    auto& Attack = Sounds.FindChecked(EBRGameplaySound::SkinStealerAttack);
+    Attack.InnerRadius = 200.f;
+    Attack.Variations.Add(TSoftObjectPtr<USoundWave>(FSoftObjectPath(TEXT("/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_gotcha2__1_.skinstealer_gotcha2__1_"))));
+    Attack.Variations.Add(TSoftObjectPtr<USoundWave>(FSoftObjectPath(TEXT("/Game/ReverseAsset/ParkingGarage/Audio/SkinStealer/skinstealer_gotcha3__1_.skinstealer_gotcha3__1_"))));
 }
 
 bool UBRGameplayAudioSettings::IsLoop(EBRGameplaySound Event)

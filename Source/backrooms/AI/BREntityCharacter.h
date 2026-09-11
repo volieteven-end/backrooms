@@ -15,7 +15,9 @@ class BACKROOMS_API ABREntityCharacter : public ACharacter
 public:
 	ABREntityCharacter();
     virtual void Tick(float DeltaSeconds) override;
-    void PlayReplicatedAttack();
+    void PlayReplicatedAttack(APawn* Victim = nullptr);
+    float GetAttackAnimationDuration() const;
+    int32 GetAttackCueCount() const { return AttackCueCount; }
     /** Number of live roar cues received by this instance (also available on the server). */
     int32 GetRoarCueCount() const { return RoarCueCount; }
 
@@ -50,9 +52,9 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") TObjectPtr<UAnimSequence> WalkAnimation;
     UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") TObjectPtr<UAnimSequence> RunAnimation;
     UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") TObjectPtr<UAnimSequence> AttackAnimation;
-    UPROPERTY(ReplicatedUsing=OnRep_AttackRevision) uint8 AttackRevision=0;
+    UFUNCTION(NetMulticast, Reliable) void MulticastPlayAttack(APawn* Victim, uint8 Variation);
+    int32 AttackCueCount = 0;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> ActiveAnimation;
-    UFUNCTION() void OnRep_AttackRevision();
     double AttackAnimationEnds=0;
     UPROPERTY(Transient) TObjectPtr<UAudioComponent> ChaseAudio;
     FVector LastAudioLocation=FVector::ZeroVector;

@@ -17,6 +17,7 @@
 #include "Engine/GameInstance.h"
 #include "EngineUtils.h"
 #include "Net/UnrealNetwork.h"
+#include "UObject/UnrealType.h"
 
 ABREntitySmokeProbe::ABREntitySmokeProbe()
 {
@@ -118,6 +119,11 @@ void ABREntitySmokeProbe::Tick(float DT)
                 Check(Entity->GetRoarCueCount() == InitialRoars, TEXT("PATROL_SILENT"));
                 MovementController->UnPossess();
                 Entity->GetCharacterMovement()->DisableMovement();
+                // This isolated roar fixture deliberately freezes movement on
+                // a temporary floor. Real obstruction recovery is covered by
+                // BREntityAISmoke on the saved garage with the default timeout.
+                if (auto* Timeout = FindFProperty<FFloatProperty>(OriginalController->GetClass(), TEXT("StuckSeconds")))
+                    Timeout->SetPropertyValue_InContainer(OriginalController, 60.f);
                 Entity->SetActorRotation(FRotator::ZeroRotator);
                 Player->TeleportTo(Entity->GetActorLocation() + FVector(1000,0,0), FRotator(0,180,0), false, true);
                 OriginalController->Possess(Entity);

@@ -20,11 +20,13 @@ public:
     virtual void Deinitialize() override;
     UFUNCTION(BlueprintCallable, Category="Backrooms|Audio")
     UAudioComponent* PlayEvent(EBRGameplaySound Event, FVector Location, AActor* AttachTo = nullptr, float Pitch = 1.0f);
+    void PlaySkinStealerAttack(FVector Location, APawn* Victim, uint8 Variation);
     void HandleLevelPhase(EBRLevelPhase Phase);
     bool IsRoundEnding() const { return bRoundEnding; }
     static USoundCue* BuildLoopCue(UObject* Outer, USoundWave* Wave);
 
 private:
+    UAudioComponent* PlayEntry(EBRGameplaySound Event, const FBRGameplaySoundEntry& Entry, FVector Location, AActor* AttachTo, float Pitch, int32 Variation = INDEX_NONE);
     UPROPERTY(Transient) TMap<EBRGameplaySound,TObjectPtr<USoundCue>> LoopCues;
     UPROPERTY(Transient) TArray<TObjectPtr<UAudioComponent>> Loops;
     UPROPERTY(Transient) TObjectPtr<UAudioComponent> Ambience;

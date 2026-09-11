@@ -10,7 +10,7 @@ IMPLEMENT_SIMPLE_AUTOMATION_TEST(FBRGameplayAudioAssets,"Backrooms.Audio.AssetBi
 bool FBRGameplayAudioAssets::RunTest(const FString&)
 {
     const auto* Settings=GetDefault<UBRGameplayAudioSettings>();
-    const int32 EventCount = static_cast<int32>(EBRGameplaySound::SkinStealerRoar) + 1;
+    const int32 EventCount = static_cast<int32>(EBRGameplaySound::Count);
     TestEqual(TEXT("All parking audio bindings"),Settings->Sounds.Num(),EventCount);
     TestFalse(TEXT("Discovery roar is a one-shot, not an overlapping loop"),UBRGameplayAudioSettings::IsLoop(EBRGameplaySound::SkinStealerRoar));
     TestTrue(TEXT("Roar interval avoids per-frame spam"),Settings->RoarInterval>=2.f);
@@ -20,6 +20,9 @@ bool FBRGameplayAudioAssets::RunTest(const FString&)
         if (!TestNotNull(TEXT("Entry exists"),Entry)) continue;
         USoundWave* Wave=Entry->Sound.LoadSynchronous();
         if (TestNotNull(*Entry->Sound.ToString(),Wave)) TestTrue(TEXT("Non-empty sound"),Wave->Duration>0);
+        for (const auto& Variation : Entry->Variations)
+            if (auto* Alternate = Variation.LoadSynchronous()) TestTrue(TEXT("Non-empty variation"), Alternate->Duration > 0);
+            else AddError(FString::Printf(TEXT("Missing sound variation: %s"), *Variation.ToString()));
         TestTrue(TEXT("Volume is bounded"),Entry->Volume>=0 && Entry->Volume<=2);
     }
     return true;

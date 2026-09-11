@@ -1,6 +1,7 @@
 #include "AI/BREntityCharacter.h"
 #include "Audio/BRGameplayAudioSubsystem.h"
 #include "Components/AudioComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Engine/World.h"
 #include "Core/BRGameState.h"
 #include "Player/BRPlayerCharacter.h"
@@ -34,6 +35,25 @@ ABREntityCharacter::ABREntityCharacter()
 void ABREntityCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+    // The imported actor is scaled to 0.1875 to fit its mesh. That also shrank
+    // its capsule to 6.4 x 16.5 cm, making ordinary door sills frame-dependent.
+    // Restore a usable collision body while keeping the rendered feet in place.
+    auto* Capsule = GetCapsuleComponent();
+    const float ShapeScale = Capsule->GetShapeScale();
+    if (ShapeScale > UE_SMALL_NUMBER)
+    {
+        const float OldHalfHeight = Capsule->GetScaledCapsuleHalfHeight();
+        Capsule->SetCapsuleSize(FMath::Max(Capsule->GetUnscaledCapsuleRadius(), 34.f / ShapeScale),
+            FMath::Max(Capsule->GetUnscaledCapsuleHalfHeight(), 72.f / ShapeScale));
+        const float Lift = Capsule->GetScaledCapsuleHalfHeight() - OldHalfHeight;
+        if (Lift > UE_SMALL_NUMBER)
+        {
+            const FVector WorldLift = GetActorUpVector() * Lift;
+            GetMesh()->AddLocalOffset(-GetActorTransform().InverseTransformVector(WorldLift));
+            if (HasAuthority()) SetActorLocation(GetActorLocation() + WorldLift, false, nullptr, ETeleportType::TeleportPhysics);
+        }
+        GetCharacterMovement()->UpdateNavAgent(*Capsule);
+    }
     // Existing placed actors can retain serialized component defaults. Enforce the
     // same facing contract on server and clients without changing saved map geometry.
     ApplyFacingConfiguration();
@@ -73,7 +93,6 @@ void ABREntityCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(ABREntityCharacter, EntityState);
 	DOREPLIFETIME(ABREntityCharacter, TargetActor);
-    DOREPLIFETIME(ABREntityCharacter, AttackRevision);
 }
 
 void ABREntityCharacter::EndPlay(const EEndPlayReason::Type Reason)
@@ -86,16 +105,22 @@ void ABREntityCharacter::EndPlay(const EEndPlayReason::Type Reason)
     Super::EndPlay(Reason);
 }
 
-void ABREntityCharacter::PlayReplicatedAttack()
+float ABREntityCharacter::GetAttackAnimationDuration() const
+{
+    return AttackAnimation ? AttackAnimation->GetPlayLength() : 1.5f;
+}
+
+void ABREntityCharacter::PlayReplicatedAttack(APawn* Victim)
 {
     if (!HasAuthority()) return;
-    ++AttackRevision; OnRep_AttackRevision(); ForceNetUpdate();
+    MulticastPlayAttack(Victim, uint8(FMath::RandRange(0, 2)));
 }
-void ABREntityCharacter::OnRep_AttackRevision()
+void ABREntityCharacter::MulticastPlayAttack_Implementation(APawn* Victim, uint8 Variation)
 {
+    ++AttackCueCount;
     if (GetNetMode()==NM_DedicatedServer) return;
     if (IsValid(RoarAudio)) { RoarAudio->Stop(); RoarAudio->DestroyComponent(); RoarAudio=nullptr; }
-    if (auto* Audio=GetWorld()->GetSubsystem<UBRGameplayAudioSubsystem>()) Audio->PlayEvent(EBRGameplaySound::SkinStealerAttack,GetActorLocation());
+    if (auto* Audio=GetWorld()->GetSubsystem<UBRGameplayAudioSubsystem>()) Audio->PlaySkinStealerAttack(GetActorLocation(), Victim, Variation);
     if (!AttackAnimation) return;
     AttackAnimationEnds=FPlatformTime::Seconds()+AttackAnimation->GetPlayLength();
     ActiveAnimation=AttackAnimation; GetMesh()->PlayAnimation(AttackAnimation,false);

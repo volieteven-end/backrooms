@@ -12,7 +12,7 @@ enum class EBRGameplaySound : uint8
     Ambience, DoorOpen, KeyPickup, KeyInsert,
     ElevatorDoorOpen, ElevatorDoorClose, ElevatorBell, ElevatorMotor,
     SkinStealerChase, SkinStealerAttack, SkinStealerStep1, SkinStealerStep2,
-    SkinStealerRoar
+    SkinStealerRoar, SkinStealerImpact, SkinStealerPain, Count UMETA(Hidden)
 };
 
 USTRUCT(BlueprintType)
@@ -20,6 +20,8 @@ struct FBRGameplaySoundEntry
 {
     GENERATED_BODY()
     UPROPERTY(EditAnywhere, Category="Sound") TSoftObjectPtr<USoundWave> Sound;
+    /** Optional alternatives; the first Sound remains variation zero. */
+    UPROPERTY(EditAnywhere, Category="Sound") TArray<TSoftObjectPtr<USoundWave>> Variations;
     UPROPERTY(EditAnywhere, Category="Sound", meta=(ClampMin="0", ClampMax="2")) float Volume = 0.6f;
     UPROPERTY(EditAnywhere, Category="Sound") bool bSpatial = true;
     UPROPERTY(EditAnywhere, Category="Sound") bool bOcclusion = true;
