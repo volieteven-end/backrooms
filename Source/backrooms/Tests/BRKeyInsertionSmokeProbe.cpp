@@ -36,6 +36,16 @@
 
 namespace
 {
+    TArray<ABRGarageKeyPickup*> SpawnKeys(UWorld* World,const ABRGarageKeyManager* Manager)
+    {
+        TArray<ABRGarageKeyPickup*> Keys;
+        for(TActorIterator<ABRGarageKeyPickup> It(World);It;++It)
+            if(It->GetOwner()==Manager)Keys.Add(*It);
+        // Dynamic actor names differ between authority and clients; order the physical row instead.
+        Keys.Sort([](const ABRGarageKeyPickup& A,const ABRGarageKeyPickup& B)
+        {return FVector::DotProduct(A.GetActorLocation(),A.GetActorRightVector())<FVector::DotProduct(B.GetActorLocation(),B.GetActorRightVector());});
+        return Keys;
+    }
     void AttemptServerInteraction(ABRPlayerCharacter* Pawn,AActor* Target)
     {
         struct {AActor* TargetActor;} Params{Target};
@@ -74,6 +84,16 @@ void ABRKeyInsertionSmokeProbe::CollectKeys(int32 Count)
     for(TActorIterator<ABRGarageKeyPickup> It(GetWorld());It && Manager->GetCollectedKeys()<Count;++It)
         if(It->IsPickupActive())It->Interact_Implementation(Subject);
 }
+void ABRKeyInsertionSmokeProbe::PlaceAtSpawnKey(int32 Index)
+{
+    const auto Keys=SpawnKeys(GetWorld(),Manager);
+    if(!Keys.IsValidIndex(Index)){Check(false,TEXT("SPAWN_KEY_EXISTS"));return;}
+    auto* Key=Keys[Index];
+    Subject->GetCharacterMovement()->StopMovementImmediately();
+    Subject->GetCharacterMovement()->SetMovementMode(MOVE_Flying);
+    Subject->SetActorLocation(Key->GetActorLocation()-Key->GetActorForwardVector()*90.f+FVector(0,0,88),false,nullptr,ETeleportType::TeleportPhysics);
+    AimAt(Subject,Key->GetActorLocation());Subject->ForceNetUpdate();
+}
 void ABRKeyInsertionSmokeProbe::Capture(const TCHAR* Name)
 {
     if(Observed.Contains(Name))return;Observed.Add(Name);FString Path;
@@ -86,22 +106,34 @@ void ABRKeyInsertionSmokeProbe::TickLocal()
     auto* Pawn=PC?Cast<ABRPlayerCharacter>(PC->GetPawn()):nullptr;
     if(!Pawn || !Subject || !Manager || Manager->KeySockets.Num()!=4)return;
     const bool IsSubject=Pawn==Subject;
+    const bool SpawnKeyStage=Stage>=20 && Stage<=23;
+    const auto TestKeys=SpawnKeys(GetWorld(),Manager);
     if(LocalStage!=Stage){LocalStage=Stage;LocalStageStarted=FPlatformTime::Seconds();bPressed=false;}
     const double Elapsed=FPlatformTime::Seconds()-LocalStageStarted;
     const int32 Index=Stage==7?1:Stage==8?2:Stage==9?3:0;
     if(Elapsed<0.7 && Stage>=1 && Stage<=9 && Stage!=2 && (IsSubject || Stage<=6))AimAt(Pawn,Manager->KeySockets[Index]->GetActorLocation());
     if(Elapsed<0.7 && Stage==10 && IsSubject)AimAt(Pawn,FVector(1318,7710,3265));
-    const bool PressStage=Stage==1 || Stage==3 || Stage==5 || Stage==6 || (IsSubject && Stage>=7 && Stage<=9);
+    if(IsSubject && (Stage==19 || SpawnKeyStage) && TestKeys.Num()==4)
+        AimAt(Pawn,SpawnKeyStage?TestKeys[Stage-20]->GetActorLocation():(TestKeys[0]->GetActorLocation()+TestKeys[3]->GetActorLocation())*.5f);
+    const bool PressStage=Stage==1 || Stage==3 || Stage==5 || Stage==6 || (IsSubject && ((Stage>=7 && Stage<=9) || SpawnKeyStage));
     if(PressStage && Elapsed>0.8 && !bPressed)
     {
         bPressed=true;auto* Focus=Pawn->GetInteractionComponent()->FindFocusedInteractable();
-        Check(Focus==Manager->KeySockets[Index],TEXT("REAL_E_AIMS_AT_SOCKET"));
-        if(Focus!=Manager->KeySockets[Index])UE_LOG(LogTemp,Display,TEXT("BR_KEY_TRACE expected=%s actual=%s pawn=%s rotation=%s"),*GetNameSafe(Manager->KeySockets[Index]),*GetNameSafe(Focus),*Pawn->GetActorLocation().ToCompactString(),*PC->GetControlRotation().ToCompactString());
+        AActor* Expected=SpawnKeyStage?(TestKeys.IsValidIndex(Stage-20)?static_cast<AActor*>(TestKeys[Stage-20]):nullptr):Manager->KeySockets[Index].Get();
+        Check(Expected && Focus==Expected,SpawnKeyStage?TEXT("REAL_E_AIMS_AT_SPAWN_KEY"):TEXT("REAL_E_AIMS_AT_SOCKET"));
+        if(Focus!=Expected)UE_LOG(LogTemp,Display,TEXT("BR_KEY_TRACE expected=%s actual=%s pawn=%s rotation=%s"),*GetNameSafe(Expected),*GetNameSafe(Focus),*Pawn->GetActorLocation().ToCompactString(),*PC->GetControlRotation().ToCompactString());
         PC->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::E,IE_Pressed,1));
     }
     if(bPressed && Elapsed>1.0)PC->InputKey(FInputKeyEventArgs::CreateSimulated(EKeys::E,IE_Released,0));
     auto Observe=[this](bool OK,FName Name)
     {if(OK && !Observed.Contains(Name)){Observed.Add(Name);UE_LOG(LogTemp,Display,TEXT("BR_KEY_CLIENT case=%s result=PASS"),*Name.ToString());}};
+    if(Stage==19)
+    {
+        bool AllActive=TestKeys.Num()==4;
+        for(auto* Key:TestKeys)AllActive &= Key->IsPickupActive() && !Key->IsHidden();
+        Observe(AllActive && Manager->GetRequiredKeys()==4 && Manager->GetCollectedKeys()==0,TEXT("FOUR_SPAWN_KEYS_VISIBLE"));
+        if(AllActive && Elapsed>1.2)Capture(TEXT("00_spawn_test_keys"));
+    }
     Observe(Stage==1 && Manager->GetInsertedKeys()==0 && !Manager->ExitDoor->IsOpen() && !Manager->KeySockets[0]->IsInsertedKeyVisible(),TEXT("FRESH_ROUND_EMPTY"));
     Observe(Stage==4 && Manager->GetCollectedKeys()==4 && Manager->GetInsertedKeys()==0 && !Manager->ExitDoor->IsOpen() && !PC->IsResultScreenVisible(),TEXT("FOUR_COLLECTED_STILL_CLOSED"));
     Observe(Stage>=6 && Stage<=7 && Manager->GetInsertedKeys()==1 && Manager->KeySockets[0]->IsInsertedKeyVisible() && !Manager->KeySockets[1]->IsInsertedKeyVisible(),TEXT("FIRST_INSERT_REPLICATED_ONCE"));
@@ -148,7 +180,7 @@ void ABRKeyInsertionSmokeProbe::Tick(float DeltaSeconds)
     Super::Tick(DeltaSeconds);
 #if !UE_BUILD_SHIPPING
     if(GetNetMode()!=NM_DedicatedServer)TickLocal();
-    if(!HasAuthority() || Stage>=13)return;
+    if(!HasAuthority() || Stage==13 || Stage==99)return;
     const double Now=FPlatformTime::Seconds();if(!Started)Started=Now;
     if(Now-Started>100){Check(false,TEXT("TIMEOUT"));SetStage(99);FPlatformMisc::RequestExitWithStatus(false,2);return;}
     if(Stage==0)
@@ -167,18 +199,52 @@ void ABRKeyInsertionSmokeProbe::Tick(float DeltaSeconds)
         Check(Manager->GetCollectedKeys()==0 && Manager->GetInsertedKeys()==0 && !Manager->ExitDoor->IsOpen(),TEXT("FRESH_ZERO_COUNTS_CLOSED_DOOR"));
         for(const auto& Socket:Manager->KeySockets)Check(Socket && !Socket->IsInserted() && !Socket->IsInsertedKeyVisible(),TEXT("SAVED_SOCKET_STARTS_EMPTY"));
         Check(!Manager->ExitDoor->OpenAfterKeysInserted() && !Manager->ExitDoor->CanInteract_Implementation(Subject),TEXT("EXIT_CANNOT_MANUALLY_OPEN"));
+        if(FParse::Param(FCommandLine::Get(),TEXT("BRSpawnKeysSmoke")))
+        {
+            const auto Keys=SpawnKeys(GetWorld(),Manager);
+            Check(Keys.Num()==4,TEXT("FOUR_EXTRA_SPAWN_KEYS"));
+            int32 WorldKeys=0;
+            for(TActorIterator<ABRLootCabinet> It(GetWorld());It;++It)if(It->GetKey())++WorldKeys;
+            Check(WorldKeys==4,TEXT("FOUR_ORIGINAL_CABINET_KEYS_REMAIN"));
+            Check(Manager->GetRequiredKeys()==4 && GetWorld()->GetGameState<ABRGameState>()->GetTotalObjectives()==4,TEXT("GOAL_REMAINS_FOUR"));
+            SetStage(19);return;
+        }
         PlaceAtSocket(0,true);SetStage(1);return;
     }
     const double Elapsed=Now-StageStarted;auto* State=GetWorld()->GetGameState<ABRGameState>();
     if(Elapsed<(Stage==12?1.0:2.5))return;
+    if(Stage==19){PlaceAtSocket(0,true);SetStage(1);return;}
+    if(Stage>=20 && Stage<=23)
+    {
+        const int32 Collected=Stage-19;
+        Check(Manager->GetCollectedKeys()==Collected,TEXT("SPAWN_KEY_COLLECTED_WITH_REAL_E"));
+        if(Stage<22){PlaceAtSpawnKey(Collected);SetStage(Stage+1);}
+        else {PlaceAtSocket(0,true);SetStage(Stage==22?3:4);}
+        return;
+    }
     if(Stage==1)
     {Check(Manager->GetInsertedKeys()==0,TEXT("ZERO_KEYS_REJECT_E"));Subject->SetActorLocation(Zone->GetActorLocation());SetStage(2);return;}
     if(Stage==2)
-    {Check(State->GetLevelPhase()==EBRLevelPhase::Exploring,TEXT("EARLY_EXIT_ZONE_NO_RESULT"));CollectKeys(3);PlaceAtSocket(0,true);SetStage(3);return;}
+    {
+        Check(State->GetLevelPhase()==EBRLevelPhase::Exploring,TEXT("EARLY_EXIT_ZONE_NO_RESULT"));
+        if(FParse::Param(FCommandLine::Get(),TEXT("BRSpawnKeysSmoke"))){PlaceAtSpawnKey(0);SetStage(20);return;}
+        CollectKeys(3);PlaceAtSocket(0,true);SetStage(3);return;
+    }
     if(Stage==3)
-    {Check(Manager->GetCollectedKeys()==3 && Manager->GetInsertedKeys()==0,TEXT("THREE_KEYS_REJECT_E"));CollectKeys(4);SetStage(4);return;}
+    {
+        Check(Manager->GetCollectedKeys()==3 && Manager->GetInsertedKeys()==0,TEXT("THREE_KEYS_REJECT_E"));
+        if(FParse::Param(FCommandLine::Get(),TEXT("BRSpawnKeysSmoke"))){PlaceAtSpawnKey(3);SetStage(23);return;}
+        CollectKeys(4);SetStage(4);return;
+    }
     if(Stage==4)
     {
+        if(FParse::Param(FCommandLine::Get(),TEXT("BRSpawnKeysSmoke")))
+        {
+            ABRGarageKeyPickup* Extra=nullptr;
+            for(TActorIterator<ABRLootCabinet> It(GetWorld());It;++It)if(It->GetKey()){Extra=It->GetKey();break;}
+            if(Extra)Extra->Interact_Implementation(Subject);
+            Check(Extra && Extra->IsCollected() && Manager->GetCollectedKeys()==4 && State->GetTotalObjectives()==4,TEXT("EXTRA_WORLD_KEY_KEEPS_GOAL_AT_FOUR"));
+        }
         Check(Manager->GetCollectedKeys()==4 && Manager->GetInsertedKeys()==0 && State->GetCompletedObjectives()==0 && !Manager->ExitDoor->IsOpen(),TEXT("COLLECTION_DOES_NOT_OPEN_OR_FINISH"));
         const FVector Saved=Subject->GetActorLocation();Subject->SetActorLocation(Saved+FVector(0,800,0));AttemptServerInteraction(Subject,Manager->KeySockets[0]);
         Check(Manager->GetInsertedKeys()==0,TEXT("SERVER_REJECTS_OUT_OF_RANGE"));Subject->SetActorLocation(Saved);

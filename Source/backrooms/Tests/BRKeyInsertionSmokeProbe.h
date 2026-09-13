@@ -19,6 +19,7 @@ private:
     void Check(bool OK,const TCHAR* Name);
     void SetStage(int32 Value);
     void PlaceAtSocket(int32 Index,bool Both=false);
+    void PlaceAtSpawnKey(int32 Index);
     void CollectKeys(int32 Count);
     void TickLocal();
     void Capture(const TCHAR* Name);

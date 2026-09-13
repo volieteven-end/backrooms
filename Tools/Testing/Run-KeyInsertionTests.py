@@ -9,6 +9,7 @@ from pathlib import Path
 p = argparse.ArgumentParser()
 p.add_argument('mode', choices=['views', 'network'])
 p.add_argument('--output', required=True)
+p.add_argument('--spawn-keys', action='store_true', help='Pick up the four extra spawn keys with real E input before escaping')
 p.add_argument('--engine', default='D:/Unreal5.8/UE_5.8')
 p.add_argument('--game-port', type=int, default=19677)
 p.add_argument('--beacon-port', type=int, default=19650)
@@ -19,6 +20,7 @@ out.mkdir(parents=True, exist_ok=True)
 engine = Path(a.engine)/'Engine/Binaries/Win64/UnrealEditor-Cmd.exe'
 running = []
 report = {'mode': a.mode, 'result': 'RUNNING', 'processes': []}
+report['spawn_keys'] = a.spawn_keys
 
 
 def read(item):
@@ -31,6 +33,8 @@ def launch(role, map_name, flags):
     log = out/(role+'.log')
     command = [str(engine), str(root/'backrooms.uproject'), map_name, '-unattended', '-nop4',
                '-nosound', '-stdout', '-abslog='+str(log), '-BRKeyInsertionSmoke', *flags]
+    if a.spawn_keys:
+        command.append('-BRSpawnKeysSmoke')
     if role != 'server':
         command += ['-RenderOffscreen', '-windowed', '-ForceRes', '-ResX=1280', '-ResY=720',
                     '-ExecCmds=t.MaxFPS 30', '-BRKeyCapture='+str(capture)]
@@ -88,6 +92,14 @@ try:
         assert read(server).count('BR_KEY_TEST result=PASS') == 2
     for item in running:
         report[item[3]['role']+'_checks'] = re.findall(r'BR_KEY_(?:TEST|CLIENT) case=(\w+) result=(\w+)', read(item))
+        if a.spawn_keys:
+            rounds = 2 if a.mode == 'network' else 1
+            if item[3]['role'] in ['server', 'standalone']:
+                assert read(item).count('BR_KEY_TEST case=SPAWN_KEY_COLLECTED_WITH_REAL_E result=PASS') == rounds*4
+                for case in ['FOUR_EXTRA_SPAWN_KEYS', 'FOUR_ORIGINAL_CABINET_KEYS_REMAIN', 'GOAL_REMAINS_FOUR', 'EXTRA_WORLD_KEY_KEEPS_GOAL_AT_FOUR']:
+                    assert read(item).count('BR_KEY_TEST case='+case+' result=PASS') == rounds
+            if item[3]['role'] != 'server':
+                assert read(item).count('BR_KEY_CLIENT case=FOUR_SPAWN_KEYS_VISIBLE result=PASS') == rounds
     report['result'] = 'PASS'
 except Exception as error:
     report['result'] = 'FAIL'

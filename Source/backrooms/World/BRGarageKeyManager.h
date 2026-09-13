@@ -10,7 +10,7 @@ class ABRGarageExitDoor;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FBRGarageKeysChanged, int32, CollectedKeys, int32, RequiredKeys);
 
-UCLASS()
+UCLASS(Config=Game)
 class BACKROOMS_API ABRGarageKeyManager : public AActor
 {
 	GENERATED_BODY()
@@ -44,6 +44,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Backrooms|Garage")
 	int32 RandomSeed = 0;
 
+    /** Extra pickups for quick escape verification; normal loot and the four-key goal are unchanged. */
+    UPROPERTY(Config, EditAnywhere, BlueprintReadOnly, Category="Backrooms|Garage|Testing")
+    bool bSpawnPointTestKeys = false;
+
 	UPROPERTY(BlueprintAssignable, Category = "Backrooms|Garage")
 	FBRGarageKeysChanged OnGarageKeysChanged;
 
@@ -63,6 +67,7 @@ protected:
 	void OnRep_KeyProgress();
 
 private:
+    void SpawnPointTestKeys();
     bool ConfigureCabinetLoot(FRandomStream& RandomStream);
 	void ConfigureKeyCandidates(FRandomStream& RandomStream);
 	void ConfigureGarageDoors(FRandomStream& RandomStream);

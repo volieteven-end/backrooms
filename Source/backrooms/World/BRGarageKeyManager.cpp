@@ -2,6 +2,9 @@
 
 #include "Core/BRGameState.h"
 #include "EngineUtils.h"
+#include "Engine/World.h"
+#include "Components/StaticMeshComponent.h"
+#include "GameFramework/PlayerStart.h"
 #include "Net/UnrealNetwork.h"
 #include "World/BRGarageDoor.h"
 #include "World/BRGarageKeyPickup.h"
@@ -41,7 +44,51 @@ void ABRGarageKeyManager::BeginPlay()
 	FRandomStream Stream(Seed);
 	ConfigureGarageDoors(Stream);
     if(!ConfigureCabinetLoot(Stream)) ConfigureKeyCandidates(Stream);
+    // Add the test pickups after random loot selection, without registering extra objectives.
+    if(bSpawnPointTestKeys && UsesKeySockets() && KeysRequired==4) SpawnPointTestKeys();
 	UE_LOG(LogTemp, Display, TEXT("BR_GARAGE_RUNTIME result=READY seed=%d active_keys=%d required_keys=%d"), Seed, ActiveKeyCount, KeysRequired);
+}
+
+void ABRGarageKeyManager::SpawnPointTestKeys()
+{
+    APlayerStart* Start=nullptr;
+    for(TActorIterator<APlayerStart> It(GetWorld());It;++It)
+        if(!Start || It->GetName()<Start->GetName())Start=*It;
+    if(!Start)
+    {
+        UE_LOG(LogTemp,Warning,TEXT("BR_SPAWN_TEST_KEYS result=SKIPPED reason=no_player_start"));
+        return;
+    }
+
+    const FRotator Facing(0,Start->GetActorRotation().Yaw,0);
+    const FVector Forward=Facing.Vector();
+    const FVector Right=FRotationMatrix(Facing).GetUnitAxis(EAxis::Y);
+    int32 Spawned=0;
+    for(int32 Index=0;Index<4;++Index)
+    {
+        const FVector Above=Start->GetActorLocation()+Forward*240.f+Right*((Index-1.5f)*50.f);
+        FHitResult Ground;
+        FCollisionQueryParams Query(SCENE_QUERY_STAT(BRSpawnTestKeys),true,this);
+        if(!GetWorld()->LineTraceSingleByObjectType(Ground,Above,Above-FVector(0,0,350),
+            FCollisionObjectQueryParams(ECC_WorldStatic),Query) || Ground.ImpactNormal.Z<0.7f)
+        {
+            UE_LOG(LogTemp,Warning,TEXT("BR_SPAWN_TEST_KEYS result=SKIPPED key=%d reason=no_floor"),Index+1);
+            continue;
+        }
+        FActorSpawnParameters Params;
+        Params.Owner=this;
+        Params.Name=FName(*FString::Printf(TEXT("BR_SpawnTestKey_%d"),Index+1));
+        Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+        auto* Key=GetWorld()->SpawnActor<ABRGarageKeyPickup>(Ground.ImpactPoint,Facing,Params);
+        if(!Key)continue;
+        Key->SetActorScale3D(FVector(2));
+        // Rest the visible mesh on the floor even if its imported pivot is not at the bottom.
+        if(const auto* Mesh=Key->FindComponentByClass<UStaticMeshComponent>())
+            Key->AddActorWorldOffset(FVector(0,0,Ground.ImpactPoint.Z+1.f-Mesh->Bounds.GetBox().Min.Z));
+        Key->SetPickupActive(true);
+        ++Spawned;
+    }
+    UE_LOG(LogTemp,Display,TEXT("BR_SPAWN_TEST_KEYS result=READY spawned=%d start=%s required=%d"),Spawned,*Start->GetName(),ActiveKeyCount);
 }
 
 void ABRGarageKeyManager::ConfigureKeyCandidates(FRandomStream& RandomStream)
