@@ -20,7 +20,6 @@ public:
     virtual void Deinitialize() override;
     UFUNCTION(BlueprintCallable, Category="Backrooms|Audio")
     UAudioComponent* PlayEvent(EBRGameplaySound Event, FVector Location, AActor* AttachTo = nullptr, float Pitch = 1.0f);
-    void PlaySkinStealerAttack(FVector Location, APawn* Victim, uint8 Variation);
     void HandleLevelPhase(EBRLevelPhase Phase);
     bool IsRoundEnding() const { return bRoundEnding; }
     static USoundCue* BuildLoopCue(UObject* Outer, USoundWave* Wave);

@@ -105,8 +105,11 @@ try:
         assert read(authority).count('BR_AI_TEST case='+case+' result=PASS') >= rounds, case
     for client in clients:
         assert read(client).count('BR_AI_CLIENT case=ATTACK_ONCE result=PASS') == rounds
+        attack_sounds = re.findall(r'BR_AUDIO result=PLAY event=SkinStealer(?:Attack|Impact|Pain)\b', read(client))
+        assert not attack_sounds, client['record']['role'] + ': unexpected kill sound'
+        client['record']['kill_sound_playbacks'] = len(attack_sounds)
         if args.render:
-            assert 'BR_ATTACK_AUDIO ' in read(client)
+            assert 'BR_AUDIO result=PLAY event=SkinStealerRoar ' in read(client), 'Audio must be active during the silence check'
             assert (out/client['record']['role']/'attack.wav').exists()
     result['cases'] = required
     result['result'] = 'PASS'

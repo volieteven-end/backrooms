@@ -6,7 +6,6 @@
 #include "Engine/World.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerStart.h"
-#include "GameFramework/Pawn.h"
 #include "GameFramework/WorldSettings.h"
 #include "Kismet/GameplayStatics.h"
 #include "Misc/CommandLine.h"
@@ -46,28 +45,6 @@ UAudioComponent* UBRGameplayAudioSubsystem::PlayEvent(EBRGameplaySound Event, FV
 {
     const auto* Entry = GetDefault<UBRGameplayAudioSettings>()->Sounds.Find(Event);
     return Entry ? PlayEntry(Event, *Entry, Location, AttachTo, Pitch) : nullptr;
-}
-
-void UBRGameplayAudioSubsystem::PlaySkinStealerAttack(FVector Location, APawn* Victim, uint8 Variation)
-{
-    const auto* Configured = GetDefault<UBRGameplayAudioSettings>()->Sounds.Find(EBRGameplaySound::SkinStealerAttack);
-    if (!Configured) return;
-    const bool bVictim = IsValid(Victim) && Victim->IsLocallyControlled();
-    FBRGameplaySoundEntry Entry = *Configured;
-    if (bVictim)
-    {
-        // Close-contact feedback belongs to the victim's listener, so a door,
-        // the entity mesh, or a falling camera cannot muffle the attack itself.
-        Entry.bSpatial = Entry.bOcclusion = false;
-        Entry.Volume *= 1.25f;
-    }
-    PlayEntry(EBRGameplaySound::SkinStealerAttack, Entry, Location, nullptr, 1.f, Variation);
-    if (bVictim)
-    {
-        PlayEvent(EBRGameplaySound::SkinStealerImpact, Location, nullptr, .8f);
-        PlayEvent(EBRGameplaySound::SkinStealerPain, Location);
-    }
-    if (LogPlayback()) UE_LOG(LogTemp, Display, TEXT("BR_ATTACK_AUDIO victim=%d spatial=%d layers=%d variation=%d"), bVictim, Entry.bSpatial, bVictim ? 3 : 1, Variation);
 }
 
 UAudioComponent* UBRGameplayAudioSubsystem::PlayEntry(EBRGameplaySound Event, const FBRGameplaySoundEntry& SoundEntry, FVector Location, AActor* AttachTo, float Pitch, int32 Variation)

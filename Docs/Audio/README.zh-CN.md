@@ -2,7 +2,7 @@
 
 ## 声音在哪
 
-- 游戏音效：`E:\UNREAL\ue projects\backrooms\Content\ReverseAsset\ParkingGarage\Audio`（16 个 SoundWave，15 个事件；攻击叫声另有两个随机变体）。
+- 游戏音效：`E:\UNREAL\ue projects\backrooms\Content\ReverseAsset\ParkingGarage\Audio`（16 个 SoundWave、15 项事件配置；其中攻击、冲击与受击尖叫配置已停用实际击杀触发）。
 - 菜单音效：`E:\UNREAL\ue projects\backrooms\Content\UI\Menu\Audio`（已有点击、悬停）。
 - 原始 WAV：`E:\ReverseAsset\ParkingGarage\Audio_WAV`。
 - 在 UE 内容浏览器中选择 SoundWave，点击播放图标试听。
@@ -35,8 +35,8 @@
 | KeyInsert | 停车场插槽由空变为已插入，每个插槽一次 | 对应插槽位置，3D |
 | KeyInsert / ElevatorDoorClose / ElevatorMotor | 未配置插槽的旧关卡保留撤离成功音效序列；停车场使用实际插入事件 | 旧关卡撤离区域位置 |
 | SkinStealerChase | 复制状态进入 Chasing；离开追逐或结算时停止 | 跟随窃皮者，3D 循环 |
-| SkinStealerAttack | 服务器可靠 multicast，同一攻击所有客户端使用同一随机变体 | 受击者 2D 近身反馈；其他玩家在窃皮者位置听到 3D 声音 |
-| SkinStealerImpact / SkinStealerPain | 与攻击同时触发，仅受击者播放 | 2D，不受门墙遮挡；仍受 Master Volume 控制 |
+| SkinStealerAttack | 2026-09-13 起不再随击杀触发 | 仅保留历史资源与配置 |
+| SkinStealerImpact / SkinStealerPain | 2026-09-13 起不再随击杀触发 | 仅保留历史资源与配置 |
 | SkinStealerRoar | 发现站立玩家、进入追逐时一次；持续追逐每 4 秒一次；离开追逐、目标倒地/隐藏或结算后停止继续触发 | 服务器发出实时 multicast；客户端在窃皮者位置播放，3D，跟随移动 |
 | SkinStealerStep1 / Step2 | 根据实际移动距离交替；停止、离地、攻击和传送时不触发步行声 | 窃皮者的位置，3D |
 
@@ -44,7 +44,7 @@
 
 当前导入目录还没有主角脚步和呼吸声音；本轮不使用窃皮者脚步代替主角音效。原游戏的混响分区、精确音量、动画脚步标记及逐帧声画对齐仍需专门调音。
 
-攻击配置中的 `Sound` 为 gotcha1，`Variations` 为 gotcha2、gotcha3。2026-09-11 新增的 gotcha2、gotcha3、Impact_1、Scream_1 来自本机原游戏 pak 的 `Sounds/SkinStealer`、`Sounds/Jumpscares` 与 `Sounds/Screams`，转换为 PCM WAV 后导入。受击反馈使用调整后的游戏混音，不直接照搬原版死亡演出的高音量倍率。
+攻击配置中的 `Sound` 为 gotcha1，`Variations` 为 gotcha2、gotcha3。2026-09-11 新增的 gotcha2、gotcha3、Impact_1、Scream_1 来自本机原游戏 pak 的 `Sounds/SkinStealer`、`Sounds/Jumpscares` 与 `Sounds/Screams`，转换为 PCM WAV 后导入。2026-09-13 按需求移除了击杀时的全部三层音效触发；这些资源仍可在编辑器中单独试听。
 
 ## 多人处理
 

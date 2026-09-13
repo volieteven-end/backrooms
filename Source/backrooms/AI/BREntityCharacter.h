@@ -15,7 +15,7 @@ class BACKROOMS_API ABREntityCharacter : public ACharacter
 public:
 	ABREntityCharacter();
     virtual void Tick(float DeltaSeconds) override;
-    void PlayReplicatedAttack(APawn* Victim = nullptr);
+    void PlayReplicatedAttack();
     float GetAttackAnimationDuration() const;
     int32 GetAttackCueCount() const { return AttackCueCount; }
     /** Number of live roar cues received by this instance (also available on the server). */
@@ -52,7 +52,7 @@ protected:
     UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") TObjectPtr<UAnimSequence> WalkAnimation;
     UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") TObjectPtr<UAnimSequence> RunAnimation;
     UPROPERTY(EditDefaultsOnly, Category="Backrooms|Animation") TObjectPtr<UAnimSequence> AttackAnimation;
-    UFUNCTION(NetMulticast, Reliable) void MulticastPlayAttack(APawn* Victim, uint8 Variation);
+    UFUNCTION(NetMulticast, Reliable) void MulticastPlayAttack();
     int32 AttackCueCount = 0;
     UPROPERTY(Transient) TObjectPtr<UAnimSequence> ActiveAnimation;
     double AttackAnimationEnds=0;

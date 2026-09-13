@@ -110,17 +110,17 @@ float ABREntityCharacter::GetAttackAnimationDuration() const
     return AttackAnimation ? AttackAnimation->GetPlayLength() : 1.5f;
 }
 
-void ABREntityCharacter::PlayReplicatedAttack(APawn* Victim)
+void ABREntityCharacter::PlayReplicatedAttack()
 {
     if (!HasAuthority()) return;
-    MulticastPlayAttack(Victim, uint8(FMath::RandRange(0, 2)));
+    MulticastPlayAttack();
 }
-void ABREntityCharacter::MulticastPlayAttack_Implementation(APawn* Victim, uint8 Variation)
+void ABREntityCharacter::MulticastPlayAttack_Implementation()
 {
     ++AttackCueCount;
     if (GetNetMode()==NM_DedicatedServer) return;
     if (IsValid(RoarAudio)) { RoarAudio->Stop(); RoarAudio->DestroyComponent(); RoarAudio=nullptr; }
-    if (auto* Audio=GetWorld()->GetSubsystem<UBRGameplayAudioSubsystem>()) Audio->PlaySkinStealerAttack(GetActorLocation(), Victim, Variation);
+    // The kill cue synchronizes the animation without playing attack sounds.
     if (!AttackAnimation) return;
     AttackAnimationEnds=FPlatformTime::Seconds()+AttackAnimation->GetPlayLength();
     ActiveAnimation=AttackAnimation; GetMesh()->PlayAnimation(AttackAnimation,false);

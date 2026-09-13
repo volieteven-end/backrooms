@@ -1,6 +1,6 @@
 # 窃皮者 AI 与声音
 
-更新日期：2026-09-11。
+更新日期：2026-09-13。
 
 ## 巡逻与追逐
 
@@ -26,12 +26,12 @@
 ## 声音
 
 - 保留首次发现时的一次嘶吼和追逐期间每 4 秒一次的嘶吼；同一冷却限制重复感知通知，离开追逐或结束回合后停止。
-- 攻击在 gotcha1 / gotcha2 / gotcha3 三条叫声间随机，服务器选定变体并发送给各客户端。
-- 受击者听到无空间遮挡衰减的近身叫声，并叠加 `Impact_1` 与 `Scream_1`。其他玩家听到位于窃皮者位置的空间叫声，保留距离和墙体遮挡。
-- 攻击叫声事件倍率默认 1.0，受击者再乘 1.25，均受全局游戏音效 Master Volume（默认 0.8）控制；冲击与尖叫也分别受同一总音量控制。
-- 发现叫声与攻击叫声避免重叠；独立服务器不播放或加载攻击音频。
+- 击杀时不额外播放攻击叫声、冲击声或受击尖叫；受击者与其他客户端均不触发这些声音。
+- 攻击 multicast 只同步动画，击杀开始时停止正在播放的发现／追逐嘶吼。
+- 历史攻击音效资源和配置保留在工程中，但已移除实际击杀的音频播放入口。
+- 独立服务器不播放游戏音频。
 
-调整入口：**Project Settings → Game → Parking Garage Audio**。`Sounds` 中可以调整 Attack、Impact、Pain，或替换 Attack 的 Variations。
+调整入口：**Project Settings → Game → Parking Garage Audio**。`Sounds` 中的 Chase、Roar、Step1 / Step2 控制当前窃皮者声音；Attack、Impact、Pain 是保留的历史配置，不再随击杀触发。
 
 ## 原游戏对照依据
 
@@ -52,8 +52,10 @@ python Tools/Testing/Run-EntityAITests.py network --render --rounds 2 --output w
 
 `Backrooms.Entity.FacingAndRoarContracts`、`Backrooms.Audio.AssetBindings` 和 `Backrooms.Audio.LoopDoesNotMutateAsset` 检查既有朝向、声音绑定和资源不变性。旧 `-BREntitySmoke` 在临时地面冻结角色来隔离嘶吼测试，因此单独延长测试对象的无进展时间；实际脱困测试使用新探针和正常默认值。
 
-2026-09-11 最终验证：Editor 与 Game 的 Win64 Development 构建通过；`Backrooms` 13 项自动化和独立朝向／嘶吼探针 16 项检查通过。完整渲染单机通过 35 项检查；独立服务器与两个渲染客户端连续两轮各通过 35 项检查，并完成返回大厅再开局。联机每轮 75 秒巡逻约走过 110 米，失去目标后离门约 26–27 米；三轮均重新穿门攻击成功。两个客户端轮流成为受击者，每次各收到一次攻击提示，服务器与客户端的音效变体一致。最终单机和联机受击录音峰值约为 −1.7 / −1.2 dBFS，无削波样本。
+2026-09-11 最终验证（移除击杀音效前）：Editor 与 Game 的 Win64 Development 构建通过；`Backrooms` 13 项自动化和独立朝向／嘶吼探针 16 项检查通过。完整渲染单机通过 35 项检查；独立服务器与两个渲染客户端连续两轮各通过 35 项检查，并完成返回大厅再开局。联机每轮 75 秒巡逻约走过 110 米，失去目标后离门约 26–27 米；三轮均重新穿门攻击成功。两个客户端轮流成为受击者，每次各收到一次攻击提示，服务器与客户端的音效变体一致。最终单机和联机受击录音峰值约为 −1.7 / −1.2 dBFS，无削波样本。
 
 本机日志、截图和实际混音位于 `work/skinstealer_ai_fix_20260911/standalone-final`、`network-final`，各目录的 `RESULT.json` 保存完整检查结果；同级 `regressions.json` 与 `mixed-audio-metrics.json` 保存回归和录音统计。测试只修改独立进程中的临时状态，不保存地图。
 
-联机 BuildId 为 `backrooms-room-v8-skinstealer-ai`，客户端与服务器需要使用同版本构建。已有打包产物不会随源码修改自动更新。
+2026-09-13 移除击杀音效验证：Editor 与 Game 的 Win64 Development 构建通过；独立服务器与两个启用音频的渲染客户端完成一轮 `network --render --doors-only --rounds 1` 局部回归。真实穿门攻击、倒地和两端各一次攻击同步均通过；两个客户端的 Attack / Impact / Pain 播放次数均为 0，发现／追逐嘶吼仍正常触发。结果、日志与混音录音位于 `work/silent_kill_20260913/network`。本轮没有重跑完整巡逻验证。
+
+联机 BuildId 为 `backrooms-room-v9-silent-kill`，客户端与服务器需要使用同版本构建。已有打包产物不会随源码修改自动更新。

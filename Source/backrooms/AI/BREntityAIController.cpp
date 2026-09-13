@@ -277,7 +277,7 @@ void ABREntityAIController::UpdateBehavior()
         if (Entity->GetDistanceTo(Target) < 130.f && LineOfSightTo(Target))
         {
             AttackCooldown = Now + FMath::Max(1.5f, Entity->GetAttackAnimationDuration());
-            Entity->PlayReplicatedAttack(Target);
+            Entity->PlayReplicatedAttack();
             Target->GetDownedComponent()->Down();
             BeginReturn(false);
             TraceBehavior(TEXT("ATTACK"));
